@@ -1,7 +1,7 @@
 <?php
 //User Types
 define("ADMINISTRATOR", 999);
-
+define("counter", 100);
 
 //User Status
 define("USERSTATUS_ACTIVE", 1);

@@ -4,7 +4,7 @@ if ( !defined('CHECK_INCLUDED') ){
     exit();
 }
 
-if(isset($_SESSION[SESSION_TITLE.'admin_userid']) && $_SESSION[SESSION_TITLE.'admin_userid'] > 0 && isset($_SESSION[SESSION_TITLE.'administrator_type']) && $_SESSION[SESSION_TITLE.'administrator_type'] == ADMINISTRATOR){
+if(isset($_SESSION[SESSION_TITLE.'counter_userid']) && $_SESSION[SESSION_TITLE.'counter_userid'] > 0 && isset($_SESSION[SESSION_TITLE.'counter_userid']) && $_SESSION[SESSION_TITLE.'administrator_type'] == COUNTER){
 	header ("Location: dashboard.php");
 	exit();
 }
@@ -20,7 +20,7 @@ if ( $_POST['passwd'] == "" ){
 if ( $login_error == "" ){
       $username = trim($_POST['loginname']);
       $password = md5(trim($_POST['passwd']));
-      $myuser = new AdministratorSession($username,$password,$myconnection);
+      $myuser = new CounterSession($username,$password,$myconnection);
       $chk = $myuser->login();
       if ( $chk == true ){
           $chk = $myuser->register_login();

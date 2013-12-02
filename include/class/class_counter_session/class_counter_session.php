@@ -31,7 +31,7 @@ class CounterSession {
     }
 
     function login(){
-          $strSQL = "SELECT * FROM administrators WHERE username = '".mysql_real_escape_string($this->username);
+          $strSQL = "SELECT * FROM counters WHERE username = '".mysql_real_escape_string($this->username);
           $strSQL .= "' AND password='".$this->password."'";
           $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
           if ( mysql_num_rows($rsRES) > 0 ){
@@ -53,7 +53,7 @@ class CounterSession {
            $_SESSION[SESSION_TITLE.'administrator_type'] = COUNTER;
 
 
-			$strSQL = "UPDATE administrators SET lastlogin=now() WHERE id='".$this->id."'";
+			$strSQL = "UPDATE counters SET lastlogin=now() WHERE id='".$this->id."'";
 			mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
             return true;
     }
@@ -70,7 +70,7 @@ class CounterSession {
 
 
     function check_login(){
-		if ( isset($_SESSION[SESSION_TITLE.'counter_userid']) && $_SESSION[SESSION_TITLE.'counter_userid'] > 0 && $this->user_id == $_SESSION[SESSION_TITLE.'counter_userid'] && $_SESSION[SESSION_TITLE.'administrator_type'] == ADMINISTRATOR ) {
+		if ( isset($_SESSION[SESSION_TITLE.'counter_userid']) && $_SESSION[SESSION_TITLE.'counter_userid'] > 0 && $this->user_id == $_SESSION[SESSION_TITLE.'counter_userid'] && $_SESSION[SESSION_TITLE.'administrator_type'] == COUNTER ) {
 			return true;
 		}else{
 			return false;

@@ -29,10 +29,13 @@ $page = new Page;
     $content_list[$index]['file_name']='inc_menu.php';
     $content_list[$index]['var_name']='menu';
     $index++;
+	
+	$content_list[$index]['file_name']='inc_index.php';
+    $content_list[$index]['var_name']='content';
+    $index++;
 
 	$page->content_list = $content_list;
 
-	$page->module_path = 'modules/counter/'; 
-    $page->module = 'login';
+	
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>
