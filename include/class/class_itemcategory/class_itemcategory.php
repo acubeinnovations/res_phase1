@@ -108,26 +108,26 @@ function get_list_array()
 
 	{
         	$cities = array();$i=0;
-			$strSQL = "SELECT id AS id,language_name,publish FROM languages";
+			$strSQL = "SELECT id AS id,name, FROM item_categories";
 			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
 			if ( mysql_num_rows($rsRES) > 0 )
-				{
-					while ( list ($id,$language,$publish) = mysql_fetch_row($rsRES) ){
-						$languages[$i]["id"] =  $id;
-						$languages[$i]["language"] = $language;
-						$languages[$i]["publish"] = $publish;
-						if ( $languages[$i]["publish"] == CONF_NOT_PUBLISH )
-							$languages[$i]["publish_status"] = "No";
+				 {
+					while ( list ($id,$name,$st_id) = mysql_fetch_row($rsRES) ){
+						$item[$i]["id"] =  $id;
+						$item[$i]["name"] = $name;
+						$item[$i]["status_id"] = $st_id;
+						if ( $item[$i]["name"] == CONF_NOT_PUBLISH )
+							$item[$i]["status_id"] = "No";
 					else
-						$languages[$i]["publish_status"] = "Yes";
+						$item[$i]["status_id"] = "Yes";
 					$i++;
-           		 	}
+           		 		}
             		return $languages;
-       			 }else{
+       			}else{
 					$this->error_number = 4;
-					$this->error_description="Can't list languages";
+					$this->error_description="Can't list item";
 					return false;
     				}
-}
+		}
 		
 }
