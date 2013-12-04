@@ -26,8 +26,12 @@ $page = new Page;
 
 
     $index=0;
-    $content_list[$index]['file_name']='inc_menu.php';
-    $content_list[$index]['var_name']='menu';
+    $content_list[$index]['file_name']='inc_left_menu.php';
+    $content_list[$index]['var_name']='left_menu';
+    $index++;
+
+	$content_list[$index]['file_name']='inc_right_menu.php';
+    $content_list[$index]['var_name']='right_menu';
     $index++;
 
 	$content_list[$index]['file_name']='inc_index.php';

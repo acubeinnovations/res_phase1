@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 04, 2013 at 09:53 AM
+-- Generation Time: Dec 04, 2013 at 06:53 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.8
 
@@ -188,6 +188,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `rate` double NOT NULL,
   `tax` double NOT NULL,
   `status_id` int(11) NOT NULL,
+  `from_master_kitchen` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
