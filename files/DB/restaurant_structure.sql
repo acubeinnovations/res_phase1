@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2013 at 06:30 PM
+-- Generation Time: Dec 04, 2013 at 09:53 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.8
 
@@ -201,6 +201,7 @@ CREATE TABLE IF NOT EXISTS `item_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `status_id` int(11) NOT NULL,
+  `parent_id` int(11) DEFAULT NULL COMMENT 'Category may have valid parent category',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
