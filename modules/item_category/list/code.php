@@ -5,29 +5,20 @@ if(!defined('CHECK_INCLUDED')){
 		exit();
 }
 
-$list = new Item($myconnection);
-$list->connection=$myconnection;
+$itemcategory = new Itemcategory($myconnection);
+$itemcategory->connection=$myconnection;
 
 
-if(isset($_SESSION['id']))
- {
-	$list->id=$_SESSION['id'];
-	$list->get_all();
-	
-	
-}	
-else
-{
-	
- 	//header("Location:test.php");
+if(isset($_SESSION['id'])){
+	$itemcategory->id=$_SESSION['id'];
+	$itemcategory->get_all();
+}else{
+	//header("Location:test.php");
 }
-$get_detl=$list->get_all();
+$get_detl=$itemcategory->get_list_array();
 if($get_detl!=false){
 	
 	$count=count($get_detl);
-
 }
-
-
-
+$array_category=$itemcategory->get_array();
 ?>

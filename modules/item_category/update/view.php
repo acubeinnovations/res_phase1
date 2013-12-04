@@ -16,22 +16,23 @@ if(!defined('CHECK_INCLUDED')){
 </tr>
 <tr>
 <td valign="top">Category name <span style="color:red;">*</span> &nbsp;</td>
-<td><input type="text"  value="<?php echo $item->name;?>" name="item" id="item" /></td>
+<td><input type="text"  value="<?php echo $item_category->name;?>" name="name" id="name" /></td>
 
 <tr>
 
         
       <tr>
         <td>&nbsp;</td>
-        <td><label for="list"></label>
-          <select name="list" id="list">
-        </select></td>
+        <td><label for="listitem"></label>
+        
+          <?php echo populate_list_array("lstitem_category", $arr_item_category, 'id', 'name', $item_category->parent_id,$disable=false);
+?></td>
        
       </tr>
       <tr>
         <td>&nbsp;</td>
         <td><input type="submit" name="submit" id="submit" value="Submit" />
-        <input type="hidden" name="st_id" id="status_id" /></td>
+        <input type="hidden" name="h_id" id="h_id" value="<?php echo $item_category->id ?>"  /></td>
        
       </tr>
     </table>
