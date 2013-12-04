@@ -5,24 +5,31 @@ if ( !defined('CHECK_INCLUDED') ){
 }
 
 
-$item =new Item($myconnection);
-$item->connection=$myconnection;
+if(isset($_POST['submit']) && $_POST['submit']=="Submit" ){
+ $item_category =new ItemCategory($myconnection);
+ $item_category->connection=$myconnection;
+ $item_category->id=$_POST['h_id'];
+ $item_category->name=$_POST['name'];
+ $item_category->status_id=STATUS_ACTIVE;
+ $item_category->parent_id=$_POST['lstitem_category'];
+ 
+ $item_category->update();
 
-$message="";
+}
+$item_category =new ItemCategory($myconnection);
+$item_category->connection=$myconnection;
+$arr_item_category=$item_category->get_list_array();
+if($arr_item_category==false){
+	$arr_item_category=array();
+}
 
 if(isset($_GET['id'])){
-	$item->id=$_GET['id'];
-	$get_details=$item->get_details();
-}
+	$item_category->id=$_GET['id'];
+	$item_category->get_details();
+	}
+ 
+  
 
-//submit action
-
-if(isset($_POST['submit'])){
-	$item->name=$_POST['item'];
-	$update=$item->update();
-	
-		
-}
 
 
 ?>
