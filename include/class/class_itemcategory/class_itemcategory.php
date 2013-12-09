@@ -124,11 +124,6 @@ function get_array()
 		
 
 
-
-
-
-		
-
 }
 
 	

@@ -9,7 +9,7 @@ if(!defined('CHECK_INCLUDED')){
     <table >
       
       <tr>
-<td colspan="2" class="page_caption">Item Category</td>
+<td colspan="2" class="page_caption">Item Category<br /> <?php echo $msg;?></td>
 </tr>
 <tr>
 <td colspan="2" align="right"><a href="item_categories.php">List All</a> &nbsp;</td>
