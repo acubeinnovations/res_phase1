@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 04, 2013 at 06:53 PM
+-- Generation Time: Dec 05, 2013 at 10:56 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.8
 
@@ -60,6 +60,12 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `amount` double NOT NULL,
   `tax` double NOT NULL,
   `discount` double NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `address` text NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `table_id` int(11) NOT NULL,
+  `chair_number` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -242,6 +248,20 @@ CREATE TABLE IF NOT EXISTS `statuses` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tables`
+--
+
+CREATE TABLE IF NOT EXISTS `tables` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `number_of_chairs` smallint(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

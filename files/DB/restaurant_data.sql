@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2013 at 06:28 PM
+-- Generation Time: Dec 05, 2013 at 10:56 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.8
 
@@ -35,7 +35,9 @@ INSERT INTO `bill_item_statuses` (`id`, `name`) VALUES
 (1, 'Active'),
 (2, 'Cancelled'),
 (3, 'Rejected by Coustomer'),
-(4, 'Unavailable on Kitchen');
+(4, 'Unavailable on Kitchen'),
+(5, 'Accepted by Kitchen'),
+(6, 'Finished');
 
 --
 -- Dumping data for table `bill_statuses`
@@ -68,7 +70,7 @@ INSERT INTO `contenttypes` (`id`, `name`, `description`) VALUES
 --
 
 INSERT INTO `counters` (`id`, `username`, `password`, `name`, `image`, `securityquestion_id`, `answer`, `lastlogin`, `created`, `updated`) VALUES
-(1, 'counter1', 'e10adc3949ba59abbe56e057f20f883e', 'Counter 1', NULL, NULL, NULL, NULL, '2013-12-02 00:00:00', NULL);
+(1, 'counter1', 'e10adc3949ba59abbe56e057f20f883e', 'Counter 1', NULL, NULL, NULL, '2013-12-04 14:20:37', '2013-12-02 00:00:00', NULL);
 
 --
 -- Dumping data for table `languages`
