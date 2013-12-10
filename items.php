@@ -33,6 +33,6 @@ $page = new Page;
 	$page->content_list = $content_list;
 
 	$page->module_path = 'modules/item/'; 
-    $page->module = 'update';
+    $page->module = 'list';
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>

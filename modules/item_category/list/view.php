@@ -32,7 +32,7 @@
      <tr>
       <td><?php echo $get_detl[$i]['id']?></td>
       <td><a href="item_category.php?id=<?php echo $get_detl[$i]['id']?>"><?php echo $get_detl[$i]['name']?></a></td>
-      <td><?php if (isset($array_category[$get_detl[$i]['parent_id']]))echo $array_category[$get_detl[$i]['parent_id']]; ?></td>
+      <td><?php if (isset($array_item_category[$get_detl[$i]['parent_id']]))echo $array_item_category[$get_detl[$i]['parent_id']]; ?></td>
       
     </tr>
      <?php

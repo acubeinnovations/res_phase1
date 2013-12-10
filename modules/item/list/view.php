@@ -15,18 +15,34 @@
 	 <tr>
       <td>Id</td>
       <td>Item</td>
+      <td>Item category</td>
+      <td>Rate</td>
+      <td>Tax</td>
     </tr>
-    <?php
-    if(get_item==false){ ?>
+    <?php if($get_item==false)
+      { ?>
 
-    	<tr><td>No Records Found</td></tr>
+    	<tr><td colspan="6"> No Records Found </td></tr>
 
-    	<?php }else { ?>
-    	$i=0;
-    	while($i<count) {?>
-    	<td><tr> <?php echo get_item[$i]['id']; ?></td></tr>
+    	<?php } else { 
+    	   $i=0;
+    	   while($i<$count){
+
+      ?>
+    	<tr>
+        <td> <?php echo $get_item[$i]['id']; ?></td>
+         <td><a href="item.php?id=<?php echo $get_item[$i]['id']?>"><?php echo $get_item[$i]['name']?></a></td>
+         <td><?php if(isset($array_item_category[$get_item[$i]['item_category_id']])){echo $array_item_category[$get_item[$i]['item_category_id']] ;}?></td>
+         <td> <?php echo $get_item[$i]['rate'] ;?></td>
+          <td> <?php echo  $get_item[$i]['tax'];?> </td>
+       </tr>
+
+      <?php $i++; }
+          }
+           
+            ?>
+
    
 </table>
  	</form>
  </body>
- </html>
