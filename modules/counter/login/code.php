@@ -4,7 +4,7 @@ if ( !defined('CHECK_INCLUDED') ){
     exit();
 }
 
-if(isset($_SESSION[SESSION_TITLE.'counter_userid']) && $_SESSION[SESSION_TITLE.'counter_userid'] > 0 && isset($_SESSION[SESSION_TITLE.'counter_userid']) && $_SESSION[SESSION_TITLE.'administrator_type'] == COUNTER){
+if(isset($_SESSION[SESSION_TITLE.'counter_userid']) && $_SESSION[SESSION_TITLE.'counter_userid'] > 0 && isset($_SESSION[SESSION_TITLE.'counter_userid']) && $_SESSION[SESSION_TITLE.'user_type'] == COUNTER){
 	header ("Location: dashboard.php");
 	exit();
 }
@@ -29,7 +29,7 @@ if ( $login_error == "" ){
       }else{
 	$login_error .= "Invalid Login name/Password.";
 	}
-	
+
 }
 
 }
