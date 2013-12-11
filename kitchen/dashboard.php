@@ -18,7 +18,7 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 
 	$page->function_list = array("functions.php");
-	$page->class_list = array("class_counter_session.php");
+	$page->class_list = array("class_kitchen_session.php");
 
 	$page->access_list = array("MASTER_KITCHEN","KITCHEN");
 
