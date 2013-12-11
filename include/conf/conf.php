@@ -1,13 +1,9 @@
 <?php
 //User Types
 define("ADMINISTRATOR", 999);
-define("counter", 100);
-
-//User Status
-define("USERSTATUS_ACTIVE", 1);
-define("USERSTATUS_INACTIVE", 2);
-define("USERSTATUS_WAITING_EMAIL_ACTIVATION", 3);
-
+define("COUNTER", 100);
+define("KITCHEN", 200);
+define("MASTER_KITCHEN", 300);
 
 // Status
 define("STATUS_ACTIVE", 1);
@@ -24,14 +20,16 @@ GLOBAL $g_obj_select_default_text;
 $g_obj_select_default_text = "Choose from list..";
 
 
-//Email 
-define("EMAIL_NO_REPLY", "noreply@acubemvc.local");
-define("EMAIL_INFO", "noreply@acubemvc.local");
-define("EMAIL_SUPPORT", "noreply@acubemvc.local");
+//Email
+define("EMAIL_NO_REPLY", "noreply@restaurant.local");
+define("EMAIL_INFO", "noreply@restaurant.local");
+define("EMAIL_SUPPORT", "noreply@restaurant.local");
 
 
-define("WEB_URL", "http://www.acubemvc.local");
-define("ADMIN_URL", "http://www.acubemvc.local/admin");
-define("WEB_NAME", "acubemvc.local");
-define("ORG_NAME", "acubemvc");
+define("WEB_URL", "http://www.restaurant.local");
+define("ADMIN_URL", "http://www.restaurant.local/admin");
+define("COUNTER_URL", "http://www.restaurant.local/counter");
+define("KITCHEN_URL", "http://www.restaurant.local/kitchen");
+define("WEB_NAME", "restaurant.local");
+define("ORG_NAME", "restaurant");
 ?>

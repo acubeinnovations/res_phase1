@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2013 at 10:56 AM
+-- Generation Time: Dec 11, 2013 at 10:16 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.8
 
@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `bill_number` int(11) NOT NULL,
   `bill_date` date NOT NULL,
   `booking_date` datetime NOT NULL,
+  `payment_date` datetime DEFAULT NULL,
   `bill_status_id` int(11) NOT NULL,
   `amount` double NOT NULL,
   `tax` double NOT NULL,
@@ -64,8 +65,11 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `address` text NOT NULL,
   `phone` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `counter_id` int(11) NOT NULL,
   `table_id` int(11) NOT NULL,
   `chair_number` tinyint(4) NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -84,6 +88,8 @@ CREATE TABLE IF NOT EXISTS `bill_items` (
   `tax` double NOT NULL,
   `discount` double NOT NULL,
   `bill_item_status_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -129,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `contents` (
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`,`language_id`),
   KEY `contenttype_id` (`contenttype_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -159,6 +165,8 @@ CREATE TABLE IF NOT EXISTS `counters` (
   `securityquestion_id` int(11) DEFAULT NULL,
   `answer` text,
   `lastlogin` datetime DEFAULT NULL,
+  `last_bill_number` int(11) NOT NULL DEFAULT '0',
+  `status_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -175,6 +183,7 @@ CREATE TABLE IF NOT EXISTS `counters` (
 CREATE TABLE IF NOT EXISTS `counter_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `counter_id` int(11) NOT NULL,
+  `kitchen_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `quantity` double NOT NULL,
@@ -215,6 +224,31 @@ CREATE TABLE IF NOT EXISTS `item_categories` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kitchen`
+--
+
+CREATE TABLE IF NOT EXISTS `kitchen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `counter_id` int(11) DEFAULT NULL COMMENT 'NULL For Master Kitchen',
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `name` text,
+  `image` text,
+  `securityquestion_id` int(11) DEFAULT NULL,
+  `answer` text,
+  `lastlogin` datetime DEFAULT NULL,
+  `last_bill_number` int(11) NOT NULL DEFAULT '0',
+  `status_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  KEY `securityquestion_id` (`securityquestion_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `languages`
 --
 
@@ -235,7 +269,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
