@@ -26,7 +26,7 @@ if(isset($_POST['submit']))
 	$item->update();
 	$msg="Item Updated";
 	}else{
-	$msg="Valid Entry";
+	$msg="Invalid Entry";
 }
 if(isset($_GET['id'])){
 	$item->id=$_GET['id'];

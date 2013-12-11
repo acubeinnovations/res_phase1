@@ -9,37 +9,45 @@
 
 <form id="form2" name="form2" method="post" action="">
   <table width="295" height="68" align="center">
-    <tr>
+  <tr>
       <td colspan="3" valign="top">Item Category List</td>
+  </tr>
+
+    <tr>
+        <td>Id</td>
+        <td>Item</td>
+        <td>Category</td>
     </tr>
-     <tr>
-      <td>Id</td>
-      <td>Item</td>
-      <td>Category</td>
+
+     <?php
+      	if($get_detl==false)
+	       { 
+	     ?>
+
+    <tr>
+      <td colspan="7" >No records found </td>
     </tr>
-    <?php
-	if($get_detl==false)
-	{ 
-	?>
-     <tr><td colspan="7" >No records found </td></tr>
+
        <?php } else {
 		   
 		    $i=0;
 			  while($i<$count){
 		
-		  ?> 
+		     ?> 
    
      <tr>
       <td><?php echo $get_detl[$i]['id']?></td>
       <td><a href="item_category.php?id=<?php echo $get_detl[$i]['id']?>"><?php echo $get_detl[$i]['name']?></a></td>
-      <td><?php if (isset($array_item_category[$get_detl[$i]['parent_id']]))echo $array_item_category[$get_detl[$i]['parent_id']]; ?></td>
+      <td><?php if(isset($array_category[$get_detl[$i]['parent_id']])){echo $array_category[$get_detl[$i]['parent_id']];}?></td>
+      
       
     </tr>
+
      <?php
 		  $i++;
 		  }
 		   } ?>
-  </table>
-</form>
-</body>
-</html>
+    </table>
+    </form>
+   </body>
+   </html>

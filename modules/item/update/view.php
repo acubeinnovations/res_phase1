@@ -44,5 +44,10 @@ if(!defined('CHECK_INCLUDED')){
 		<td><input type="submit" name="submit" id="submit" value="Submit" /><input type="hidden" name="status_id" id="status_id" value=""/></td>
     </tr>
        
+       <tr>
+       	<td>
+       		<?php echo $msg;?>
+       	</td>
+       </tr>
   	</table>
   </form>
