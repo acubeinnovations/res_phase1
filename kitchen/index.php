@@ -32,7 +32,7 @@ $page = new Page;
 
 	$page->content_list = $content_list;
 
-	$page->module_path = 'modules/counter/';
+	$page->module_path = 'modules/kitchen/';
     $page->module = 'login';
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>
