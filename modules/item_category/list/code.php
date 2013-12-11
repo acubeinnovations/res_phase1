@@ -8,7 +8,6 @@ if(!defined('CHECK_INCLUDED')){
 $itemcategory = new Itemcategory($myconnection);
 $itemcategory->connection=$myconnection;
 
-
 if(isset($_SESSION['id'])){
 	$itemcategory->id=$_SESSION['id'];
 	$itemcategory->get_all();
