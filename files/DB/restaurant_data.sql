@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2013 at 10:16 AM
+-- Generation Time: Dec 11, 2013 at 04:27 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.8
 
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `administrators` (`id`, `username`, `password`, `emailid`, `registrationdate`, `lastlogin`, `image`, `securityquestion_id`, `answer`, `created`, `updated`, `record_user_id`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, NULL, '2013-07-11 17:17:43', NULL, NULL, NULL, '2013-04-22 00:00:00', NULL, NULL);
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, NULL, '2013-12-11 11:24:30', NULL, NULL, NULL, '2013-04-22 00:00:00', NULL, NULL);
 
 --
 -- Dumping data for table `bill_item_statuses`
@@ -62,14 +62,14 @@ INSERT INTO `contenttypes` (`id`, `name`, `description`) VALUES
 --
 
 INSERT INTO `counters` (`id`, `username`, `password`, `name`, `image`, `securityquestion_id`, `answer`, `lastlogin`, `last_bill_number`, `status_id`, `created`, `updated`) VALUES
-(1, 'counter1', 'e10adc3949ba59abbe56e057f20f883e', 'Counter 1', NULL, NULL, NULL, '2013-12-04 14:20:37', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
+(1, 'counter1', '39bb37cf36d3b29a9280d8a70a0eed42', 'Counter 1', NULL, NULL, NULL, '2013-12-11 16:17:18', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Dumping data for table `kitchen`
 --
 
 INSERT INTO `kitchen` (`id`, `counter_id`, `username`, `password`, `name`, `image`, `securityquestion_id`, `answer`, `lastlogin`, `last_bill_number`, `status_id`, `created`, `updated`) VALUES
-(1, NULL, 'master', 'e10adc3949ba59abbe56e057f20f883e', 'Master Kitchen', NULL, NULL, NULL, '2013-12-04 14:20:37', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
+(1, NULL, 'master', '39bb37cf36d3b29a9280d8a70a0eed42', 'Master Kitchen', NULL, NULL, NULL, '2013-12-04 14:20:37', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Dumping data for table `languages`
