@@ -4,73 +4,86 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php if (!empty($this->title)) echo $this->title ?></title>
-    <link rel="stylesheet" href="/css/foundation_restaurant.css" />
-	<script src="/js/vendor/custom.modernizr.js"></script>
+    <link rel="stylesheet" href="/css/foundation.css" />
+    <script src="/js/modernizr.js"></script>
+
+
+	<style type="text/css" media="screen">
+	/* <![CDATA[ */
+		.row {min-width:100% !important;}
+	/* ]]> */
+	</style>
 		<?php if (!empty($this->script)) echo $this->script ?>
 		<?php if (!empty($this->style)) echo $this->style ?>
 	</head>
   <body>
 
-<div class="large-16 columns">
-	<div class="off-canvas-wrap docs-wrap">
-	  <div class="inner-wrap">
-		<nav class="tab-bar">
-		  <section class="left-small">
-		    <a class="left-off-canvas-toggle menu-icon"><span></span></a>
-		  </section>
+    <!-- Navigation -->
+<div class="fixed">
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <h1>
+          <a  href="#">
+            Restaurant
+          </a>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+    </ul>
 
-		  <section class="middle tab-bar-section">
-		    <h1 class="title">My Restaurant</h1>
-		  </section>
+	<?php if (isset($right_menu)) echo $right_menu; ?>
+  </nav>
+</div>
+  <!-- End Top Bar -->
 
-		  <section class="right-small">
-		    <a class="right-off-canvas-toggle menu-icon"><span></span></a>
-		  </section>
-		</nav>
+  <div class="row" id="main_content" >
+    <div class="large-12 columns">
 
-		<aside class="left-off-canvas-menu">
-		  <ul class="off-canvas-list">
-			<?php if (isset($left_menu)) echo $left_menu ?>
-		  </ul>
-		</aside>
+    <!-- Content  -->
 
-		<aside class="right-off-canvas-menu">
-		  <ul class="off-canvas-list">
-			<?php if (isset($right_menu)) echo $right_menu ?>
-		  </ul>
-		</aside>
-
-		<section class="main-section">
-		  <div class="row">
-		    <div class="large-16 columns">
+      <div class="row">
+        <div class="large-12 columns">
 				<?php if (isset($content)) echo $content; ?>
 				<?php if (isset($this->print_page)) echo $this->print_page;  ?>
 
-		    </div>
-		  </div>
-		</section>
+      </div>
+    </div>
 
-	  <a class="exit-off-canvas"></a>
+    <!-- End Content  -->
 
-	  </div>
-	</div>
+
 
     <!-- Footer -->
 
       <footer class="row">
-        <div class="large-16 columns"><hr>
+        <div class="large-12 columns"><hr>
             <div class="row">
-              <div class="large-16 columns">
+
+              <div class="large-6 columns">
                   <p><?php if (isset($footer)) echo $footer ?> Copyright &copy; Acube Innovations Private Limitted. All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;</p>
               </div>
 
-
+              <div class="large-6 small-12 columns">
+                  <ul class="inline-list right">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                  </ul>
+              </div>
 
             </div>
         </div>
       </footer>
-</div>
+
     <!-- End Footer -->
+
+    </div>
+  </div>
+
+
  	<script src="/js/jquery.js"></script>
  	<script src="/js/foundation.min.js"></script>
 

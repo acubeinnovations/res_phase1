@@ -20,23 +20,16 @@ $page = new Page;
 	$page->function_list = array("functions.php");
 	$page->class_list = array("class_counter_session.php");
 
-	$page->use_dynamic_content = true;
-	$page->dynamic_content_list = array("index.php");
+	$page->access_list = array("COUNTER");
 
 
 
     $index=0;
-    $content_list[$index]['file_name']='inc_left_menu.php';
-    $content_list[$index]['var_name']='left_menu';
-    $index++;
 
 	$content_list[$index]['file_name']='inc_right_menu.php';
     $content_list[$index]['var_name']='right_menu';
     $index++;
 
-	$content_list[$index]['file_name']='inc_index.php';
-    $content_list[$index]['var_name']='content';
-    $index++;
 
 	$page->content_list = $content_list;
 

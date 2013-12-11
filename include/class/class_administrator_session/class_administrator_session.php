@@ -52,12 +52,9 @@ class AdministratorSession {
     function register_login(){
            $_SESSION[SESSION_TITLE.'admin_userid'] = $this->id;
            $_SESSION[SESSION_TITLE.'admin_username'] = $this->username;
-           $_SESSION[SESSION_TITLE.'administrator_type'] = ADMINISTRATOR;
+           $_SESSION[SESSION_TITLE.'user_type'] = ADMINISTRATOR;
 
-			// Forum session
-			$_SESSION[mlf2_user_id] = $this->id;
-			$_SESSION[mlf2_user_name] =$this->username;
-			$_SESSION[mlf2_user_type] = 2;
+
 
 			$strSQL = "UPDATE administrators SET lastlogin=now() WHERE id='".$this->id."'";
 			mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
@@ -76,14 +73,14 @@ class AdministratorSession {
 
 
     function check_login(){
-		if ( isset($_SESSION[SESSION_TITLE.'admin_userid']) && $_SESSION[SESSION_TITLE.'admin_userid'] > 0 && $this->user_id == $_SESSION[SESSION_TITLE.'admin_userid'] && $_SESSION[SESSION_TITLE.'administrator_type'] == ADMINISTRATOR ) {
+		if ( isset($_SESSION[SESSION_TITLE.'admin_userid']) && $_SESSION[SESSION_TITLE.'admin_userid'] > 0 && $this->user_id == $_SESSION[SESSION_TITLE.'admin_userid'] && $_SESSION[SESSION_TITLE.'user_type'] == ADMINISTRATOR ) {
 			return true;
 		}else{
 			return false;
 		}
-    
+
 	}
 
 }
- 
+
 ?>

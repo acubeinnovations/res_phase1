@@ -50,7 +50,7 @@ class CounterSession {
     function register_login(){
            $_SESSION[SESSION_TITLE.'counter_userid'] = $this->id;
            $_SESSION[SESSION_TITLE.'counter_username'] = $this->username;
-           $_SESSION[SESSION_TITLE.'administrator_type'] = COUNTER;
+           $_SESSION[SESSION_TITLE.'user_type'] = COUNTER;
 
 
 			$strSQL = "UPDATE counters SET lastlogin=now() WHERE id='".$this->id."'";
@@ -70,7 +70,7 @@ class CounterSession {
 
 
     function check_login(){
-		if ( isset($_SESSION[SESSION_TITLE.'counter_userid']) && $_SESSION[SESSION_TITLE.'counter_userid'] > 0 && $this->user_id == $_SESSION[SESSION_TITLE.'counter_userid'] && $_SESSION[SESSION_TITLE.'administrator_type'] == COUNTER ) {
+		if ( isset($_SESSION[SESSION_TITLE.'counter_userid']) && $_SESSION[SESSION_TITLE.'counter_userid'] > 0 && $this->user_id == $_SESSION[SESSION_TITLE.'counter_userid'] && $_SESSION[SESSION_TITLE.'user_type'] == COUNTER ) {
 			return true;
 		}else{
 			return false;
