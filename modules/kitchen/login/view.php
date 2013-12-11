@@ -3,24 +3,55 @@ if ( !defined('CHECK_INCLUDED') ){
     exit();
 }
 ?>
-<form method="" action="post">
+
+
+
+<form target="_self" method="post" action="" name="frmlogin">
+
 	<table>
 
 		<tr>
-		<td><label>username</label></td>
-		<td><input type="text"  value="" name="username" id="username" /></td>
+			<td><strong>Username:</strong> </td>
+			<td><input onclick="clean_loginname();"  type="text" name="loginname" id="loginname"  title="<?php //echo $msg_default_username ?>"  value="<?php //echo $msg_default_username ?>" ></td>
 		</tr>
 
 		<tr>
-		<td><label>password</label</td>
-		<td><input type="text"  value="" name="password" id="password" /></td>
+			<td><strong>Password:</strong> </td>
+			<td><input class="login_box"  type="password" name="password" id="passwd" ></td>
 		</tr>
 
 		<tr>
-		<td><input type="submit" name="submit" id="submit" value="Submit" /></td>
+			<td colspan="2" > &nbsp;</td>
 		</tr>
 
-	</table>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" /></td>
+        	<td><input name="h_id" value="<?php if(isset($h_id))echo $h_id; ?>" type="hidden">
+			<input name="h_login" value="pass" type="hidden"> </td>
+		</tr>
 
-</form>
+		<tr>
+			<td colspan="2" > &nbsp;</td>
+		</tr>
 
+		<tr>
+			<td colspan="2"align="center" > <div class="login_error">
+			<?php if(isset($myuser->err_desc)) echo $myuser->err_desc; if(isset($login_error)) echo $login_error ;?></div>
+			
+			</td>
+		</tr>
+
+			</table>
+			
+		</form>
+
+
+    <script language="javascript" type="text/javascript">
+    //<!--
+            document.getElementById("loginname").focus();
+            document.getElementById("loginname").select();
+   //-->
+    </script>   
+
+
+</div>
