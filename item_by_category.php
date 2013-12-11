@@ -10,7 +10,7 @@ $page = new Page;
 	$page->current_url = $current_url;	// current url for pages
 	$page->title = "Acube MVC";	// page Title
 	$page->page_name = 'index';		// page name for menu and other purpose
-	$page->layout = 'restaurant.html';		// layout name
+	$page->layout = 'null.html';		// layout name
 
 
     $page->conf_list = array("conf.php");
@@ -24,16 +24,14 @@ $page = new Page;
 	$page->script_list = array("jquery.min.js");
 
 
-    $index=0;
+    
+	//$page->content_list = $content_list;
+	$page->module_path 	= '/modules/item/';
+	$page->module		= 'list_item_to_counter';
 
-	$content_list[$index]['file_name']='inc_right_menu.php';
-    $content_list[$index]['var_name']='right_menu';
-    $index++;
 
-
-	$page->content_list = $content_list;
-	$page->module_path = 'modules/bill/';
-    $page->module = 'update';
 
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>
+    
+

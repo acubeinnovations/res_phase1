@@ -134,6 +134,30 @@ function get_array()
 
 
 
+function get_items_by_category(){
+		$items = array();
+			$i=0;
+			$strSQL = "SELECT  id,name,item_category_id,rate,tax FROM items WHERE item_category_id=".$this->item_category_id;
+			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+			if ( mysql_num_rows($rsRES) > 0 )
+				 {
+					while ( list ($id,$name,$item_category_id,$rate,$tax) = mysql_fetch_row($rsRES) ){
+						$items[$i]['id'] =  $id;
+						$items[$i]['name'] =  $name;
+						$items[$i]['item_category_id'] =$item_category_id;
+						$items[$i]['rate'] =  $rate;
+						$items[$i]['tax'] =  $tax;
+
+						$i++;
+           		 	}
+            		return $items;
+       				}else{
+					$this->error_number = 4;
+					$this->error_description="Can't list item";
+					return false;
+    				}
+			}	
+
 }
 ?>
 

@@ -30,10 +30,14 @@ $page = new Page;
     $content_list[$index]['var_name']='right_menu';
     $index++;
 
-
+	
 	$page->content_list = $content_list;
-	$page->module_path = 'modules/bill/';
-    $page->module = 'update';
+	$page->module_path 	= '/modules/item/';
+	$page->module		= 'list_item_to_counter';
+
+
 
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>
+    
+
