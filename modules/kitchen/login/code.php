@@ -23,7 +23,8 @@ if ( $login_error == "" ){
           $chk = $myuser->login();
             if ($chk == true){
               $chk = $myuser->register_login();
-              header ("Location: dashboard.php");
+              print_r($_SESSION);
+              //header ("Location: dashboard.php");
               exit();
             }else{
 	         $login_error .= "Invalid Login name/Password.";

@@ -63,7 +63,7 @@ var $error_description="";
          	  $_SESSION[SESSION_TITLE.'administrator_type'] = KITCHEN;
        		}else{
        			 $_SESSION[SESSION_TITLE.'administrator_type'] = MASTER_KITCHEN;
-       			echo ($_SESSION[SESSION_TITLE.'administrator_type']);
+       			
 
        			}
 
