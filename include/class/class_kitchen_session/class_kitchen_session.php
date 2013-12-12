@@ -60,9 +60,9 @@ var $error_description="";
            $_SESSION[SESSION_TITLE.'kitchen_username'] = $this->username;
            $_SESSION[SESSION_TITLE.'counter_id'] = $this->counter_id;
            if($_SESSION[SESSION_TITLE.'counter_id']>0){
-         	  $_SESSION[SESSION_TITLE.'administrator_type'] = KITCHEN;
+         	  $_SESSION[SESSION_TITLE.'user_type'] = KITCHEN;
        		}else{
-       			 $_SESSION[SESSION_TITLE.'administrator_type'] = MASTER_KITCHEN;
+       			 $_SESSION[SESSION_TITLE.'user_type'] = MASTER_KITCHEN;
        			
 
        			}
@@ -85,8 +85,8 @@ function logout(){
 function get_details()
 {
 	if($this->id >0){
-		$strSQL = "SELECT counter_id FROM kitchen WHERE id = '".$this->id."'";
-		$rsRES	= mysql_query($strSQL,$this->connection) or die(mysql_error().$strSQL);
+		  $strSQL = "SELECT counter_id FROM kitchen WHERE id = '".$this->id."'";
+		  $rsRES	= mysql_query($strSQL,$this->connection) or die(mysql_error().$strSQL);
 		 if(mysql_num_rows($rsRES) > 0){
 			$user 	= mysql_fetch_assoc($rsRES);
 			$this->counter_id 	= $user['counter_id'];
