@@ -1,1 +1,2 @@
-<?php echo $content.'' . $this->print_page;  ?>
+<?php if (isset($content)) echo $content; ?>
+<?php if (isset($this->print_page)) echo $this->print_page;  ?>

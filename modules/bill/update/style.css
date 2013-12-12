@@ -1,44 +1,30 @@
 .parent {
     width:6000px;
+	height:500px;
 }
-.item_div{
-    font-size:10em;
-    text-align:center;
-    line-height:400px;
-    height:500px;
-    width:200px;
-    margin:10px;
-    border:1px solid black;
-    float:left;
+
+.bill{
+    overflow:auto;
+	height:300px;
+    width:400px;
 }
-.menu_div{
-    font-size:10em;
-    text-align:center;
-    line-height:400px;
-    height:500px;
-    width:800px;
-    margin:10px;
-    border:1px solid black;
-    float:left;
-}
-.bill_div{
-    font-size:10em;
-    text-align:center;
-    line-height:400px;
-    height:500px;
-    width:280px;
-    margin:10px;
-    border:1px solid black;
-    float:left;
-}
-.individual_item_div{
+.item_qty{
     font-size:1em;
     text-align:center;
-   	height:50px;
-    width:100px;
-    margin:10px;
+   	height:10px;
+    width:40px;
     border:1px solid black;
     float:left;
-	background:green;
-	color:white;
+	
 }
+.calculater{
+float:right;
+height:10px;
+width:40px;
+}
+/*
+.items{
+ height:350px;
+ width:500px;
+}
+*/

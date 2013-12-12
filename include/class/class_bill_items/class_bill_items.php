@@ -1,0 +1,317 @@
+<?php
+// prevent execution of this page by direct call by browser
+if ( !defined('CHECK_INCLUDED') ){
+    exit();
+}
+
+class BillItems {
+    var $connection;
+    var $id 			= gINVALID;
+    var $bill_id		= "";
+    var $item_id 	= "";
+    var $quantity		= "";
+    var $rate 	= "";
+    var $tax		= "";
+    var $discount			= "";
+    var $bill_item_status_id = "";
+    var $created 	= "";
+    var $updated	= "";
+   	
+    var $error 			= false;
+    var $error_number	= gINVALID;
+    var $error_description= "";
+    //for pagination
+    var $total_records	= "";
+
+
+    function __construct()
+    {
+
+    }
+function set_defaults(){
+$this->amount=0;
+$this->credit=0;
+$this->commision=0;
+$this->discount=0;
+$this->valid_from=gINVALID;
+$this->valid_to=gINVALID;
+$this->voucher_bill_item_status_id=gINVALID;
+$this->number_of_vouchers=gINVALID;
+
+}
+
+
+    function update(){
+        if ( $this->id == "" || $this->id == gINVALID) {
+		
+		
+              $strSQL = "INSERT INTO bill_items (bill_id,item_id, quantity,rate,tax,discount,bill_item_status_id,created,updated) ";
+              $strSQL .= "VALUES ('".addslashes(trim($this->bill_id))."','";
+			  $strSQL .= addslashes(trim($this->item_id))."','";
+              $strSQL .= addslashes(trim($this->quantity))."','";
+              $strSQL .= addslashes(trim($this->rate))."','";
+              $strSQL .= addslashes(trim($this->tax))."','";
+			  $strSQL .= addslashes(trim($this->discount))."','";
+				$strSQL .= addslashes(trim($this->bill_item_status_id))."','";
+			  $strSQL .= addslashes(trim($this->created))."','";
+			  $strSQL .= addslashes(trim($this->updated))."')";
+             
+			 //try{
+				
+		      $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+			// throw new Exception((mysql_error(). $strSQL ));
+				 
+				//}
+				//catch(Exception $e){
+				
+				//return false;
+				//}
+              if ( mysql_affected_rows($this->connection) > 0 ){
+                    $this->id = mysql_insert_id();
+		    		return true;
+              }
+              else{
+                $this->error_description = "Voucher bill adding failed.Please Try Again.";
+                return false;
+              }
+
+        }
+        elseif($this->id > 0 ) {
+        $strSQL = "UPDATE bill_items SET ";
+	    if($this->rate!=''){
+	    $strSQL .= "rate = '".addslashes(trim($this->rate))."',";
+	    }
+		if($this->quantity!=''){
+            $strSQL .= "quantity = '".addslashes(trim($this->quantity))."',";
+		}
+		if($this->tax!=''){
+            $strSQL .= "tax = '".addslashes(trim($this->tax))."',";
+	     }
+		if($this->discount!=''){
+	    	$strSQL .= "discount = '".addslashes(trim($this->discount))."',";
+		}
+		if($this->bill_item_status_id!=''){
+	    $strSQL .= "bill_item_status_id = '".$this->bill_item_status_id."',";
+	    }
+
+		if($this->updated!=''){
+            $strSQL .= "updated = '".addslashes(trim($this->updated))."'";
+		}
+					
+	    $strSQL .= " WHERE id = ".$this->id;
+		
+        $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_affected_rows($this->connection) >= 0 ) {
+		$this->error_description = "Updated data Successfuly";                    
+		return true;
+            }
+        else{
+             $this->error_description = "Update data Failed";
+             return false;
+            }
+        }
+
+    }
+
+
+
+    function exist(){
+        $strSQL = "SELECT id FROM bill_items WHERE bill_id = '".$this->bill_id."'"; 
+  		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_num_rows($rsRES) > 0 ){
+		$this->id = mysql_result($rsRES,0,'id');
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+
+    function get_detail(){
+		$strcondition='';
+        $strSQL = "SELECT * FROM bill_items WHERE id = '".$this->id."'";//
+		
+        $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_num_rows($rsRES) > 0 ){
+                $this->id = mysql_result($rsRES,0,'id');
+                $this->bill_id = mysql_result($rsRES,0,'bill_id');
+                $this->item_id= mysql_result($rsRES,0,'item_id');
+				$this->discount = mysql_result($rsRES,0,'discount');
+                $this->rate= mysql_result($rsRES,0,'rate');
+				$this->quantity = mysql_result($rsRES,0,'quantity');
+                $this->tax = mysql_result($rsRES,0,'tax');
+                $this->created = mysql_result($rsRES,0,'created');
+		        $this->updated = mysql_result($rsRES,0,'updated');
+				$this->bill_item_status_id = mysql_result($rsRES,0,'bill_item_status_id');
+				
+               
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+
+
+function get_array_bill_item_status_id(){
+        $bill_items_statuses = array();
+        $strSQL = "SELECT id,name FROM bill_item_statuses ORDER BY id";
+        $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_num_rows($rsRES) > 0 ){
+        while ( list ($id,$name) = mysql_fetch_row($rsRES) ){
+          $bill_items_statuses[$id] = $name;
+        }
+        return $bill_items_statuses;
+        }
+        else{
+        $this->error_number = 4;
+        $this->error_description="Can't list bill_items";
+        return false;
+        }
+}
+
+
+
+
+ 
+    function get_list_array_bylimit($start_record = 0,$max_records = 25){
+        $limited_data = array(); 
+		$i=0;
+		$str_condition = "";
+        $strSQL = "SELECT id,bill_id,rate,tax,quantity,bill_item_status_id FROM bill_items WHERE 1";
+		if($this->id!='' && $this->id!=gINVALID){
+           $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
+      	 }
+        if ($this->bill_id!='') { 
+       	$strSQL .= " AND bill_id = '".addslashes(trim($this->bill_id))."'";  
+        }
+		
+	 if ($this->bill_item_status_id!='') { 
+        $strSQL .= " AND bill_item_status_id = '".addslashes(trim($this->bill_item_status_id))."'";  
+        }
+		
+         $strSQL .= " ORDER BY id";
+		
+
+		$strSQL_limit = sprintf("%s LIMIT %d, %d", $strSQL, $start_record, $max_records);
+		$rsRES = mysql_query($strSQL_limit, $this->connection) or die(mysql_error(). $strSQL_limit);
+
+        if ( mysql_num_rows($rsRES) > 0 ){
+
+            //without limit  , result of that in $all_rs
+            if (trim($this->total_records)!="" && $this->total_records > 0) {
+            } else {
+				
+                $all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit); 
+                $this->total_records = mysql_num_rows($all_rs);
+            }
+			while (list ($id,$bill_id,$rate,$tax,$quantity,$bill_item_status_id) = mysql_fetch_row($rsRES) ){
+		          $limited_data[$i]["id"] = $id;
+				  $limited_data[$i]["bill_id"]=$bill_id;
+		          $limited_data[$i]["rate"] = $rate;
+		          $limited_data[$i]["tax"] = $tax;
+				  $limited_data[$i]["quantity"] = $quantity;
+				  $limited_data[$i]["bill_item_status_id"]=$bill_item_status_id;
+				  $i++;
+		    }
+        	return $limited_data;
+        }
+        else{
+        	return false;
+        }
+    }
+
+
+
+function delete(){
+    if($this->id > 0 ) {
+        $strSQL = " DELETE FROM bill_items WHERE id = '".$this->id."'";
+        $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_affected_rows($this->connection) > 0 ) {
+            return true;
+        }
+        else{
+            $this->error_number = 6;
+            $this->error_description="Can't delete this User";
+            return  false;
+        }
+    }
+}
+function get_counts(){
+$strSQL = "SELECT count(id) as total_bill_items from bill_items";
+$rsRES = mysql_query($strSQL, $this->connection);
+if ( mysql_num_rows($rsRES) > 0 ){
+$this->total_bill_items=mysql_result($rsRES,0,'total_bill_items');
+}
+$strSQL = "SELECT count(id) as total_bill_items_active from bill_items WHERE status_id=".STATUS_ACTIVE;
+$rsRES = mysql_query($strSQL, $this->connection);
+if ( mysql_num_rows($rsRES) > 0 ){
+$this->total_bill_items_active=mysql_result($rsRES,0,'total_bill_items_active');
+}
+$strSQL = "SELECT count(id) as total_bill_items_inactive from bill_items WHERE status_id=".STATUS_INACTIVE;
+$rsRES = mysql_query($strSQL, $this->connection);
+if ( mysql_num_rows($rsRES) > 0 ){
+$this->total_bill_items_inactive=mysql_result($rsRES,0,'total_bill_items_inactive');
+}
+$strSQL ="SELECT count(id) as total_bill_items_used from bill_items  WHERE used=".intval(true);
+$rsRES = mysql_query($strSQL, $this->connection);
+if ( mysql_num_rows($rsRES) > 0 ){
+$this->total_bill_items_used=mysql_result($rsRES,0,'total_bill_items_used');
+}
+}
+
+
+
+
+function voucher_start_id(){
+$start_id="";
+$strSQL = "SELECT id  from bill_items WHERE status_id='".STATUS_INACTIVE."' AND used='".intval(false)."' ORDER BY id ASC";
+$rsRES = mysql_query($strSQL, $this->connection);
+if ( mysql_num_rows($rsRES) > 0 ){
+$start_id=mysql_result($rsRES,0,'id');
+return $start_id;
+}
+
+}
+
+
+function get_array_id(){
+$voucher_bill_id="";
+$i=0;
+$strSQL = "SELECT id  from bill_items WHERE voucher_bill_id='".addslashes(trim($this->voucher_bill_id))."'";
+$rsRES = mysql_query($strSQL, $this->connection);
+if ( mysql_num_rows($rsRES) > 0 ){
+        while ( list ($id) = mysql_fetch_row($rsRES) ){
+          $voucher_bill_id[$i] = $id;
+			$i++;
+        }
+        return $voucher_bill_id;
+        }
+        else{
+        $this->error_number = 4;
+        $this->error_description="Can't list voucher_bill_id";
+        return false;
+        }
+
+
+}
+
+
+function bill_item_check(){
+		$strSQL = "SELECT id FROM bill_items WHERE bill_id = '".$this->bill_id."' AND item_id =".$this->item_id; 
+  		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_num_rows($rsRES) > 0 ){
+		$this->id = mysql_result($rsRES,0,'id');
+        return true;
+        }
+        else{
+            return false;
+        }
+
+}
+}
+?>

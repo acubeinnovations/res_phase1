@@ -1,6 +1,6 @@
 <!--
 
-
+var current_url = "<?php echo $current_url; ?>";
 
 $(document).ready(function(){
 
@@ -19,21 +19,39 @@ $(document).ready(function(){
 		});
 	
 	});
-
+	
 	$( document ).on("click", ".items", function() {
-	var item_det='';
 	var item_id='';
 	item_id=$(this).attr('item_id');
-	item_det=$(this).attr('item_details');
-	var item_details='';
-	item_details=item_det.split("/");
-	var bill_item_div='';
-	for(i=0;i<item_details.length;i++){
-	bill_item_div=bill_item_div+'<a href="#" class="tiny button bill_items" item_id="'+item_id+'">'+item_details[i]+'</a>&nbsp;';
-	}
-	$(".bill").append(bill_item_div);
+	
+	var success_post = $.post('add_to_bill.php',
+		{
+			item_id:item_id,
+		});
+	success_post.done(function(data){
+		if(data!=''){
+			if (data.indexOf('!@#$%*') >= 0){
+			var bill_items=data.split('!@#$%*');
+			$('#item_quantity'+bill_items[0]).val(bill_items[1]);
+			$('#item_rate'+bill_items[0]).html(bill_items[2]);
+			}else{
+			$(".bill").append(data);
+			}
+		}else{
+			$(".bill").html("");
+		}
+		});
 	
 	});
+
+	$( document ).on("focus", ".item_quantity", function() {alert("hi");
+	item_id=$(this).attr('item_id');
+	$(".calculater").show();
+	$("#item_id_hidden").val(item_id);
+	});
+	
+
+	
 	
 });
 
