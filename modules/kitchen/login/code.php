@@ -3,7 +3,7 @@
 if ( !defined('CHECK_INCLUDED') ){
     exit();
 }
-  if(isset($_SESSION[SESSION_TITLE.'kitchen_userid']) && $_SESSION[SESSION_TITLE.'kitchen_userid'] > 0 && isset($_SESSION[SESSION_TITLE.'kitchen_userid']) && $_SESSION[SESSION_TITLE.'administrator_type'] == KITCHEN){
+  if(isset($_SESSION[SESSION_TITLE.'kitchen_userid']) && $_SESSION[SESSION_TITLE.'kitchen_userid'] > 0 && isset($_SESSION[SESSION_TITLE.'kitchen_userid']) && $_SESSION[SESSION_TITLE.'user_type'] == KITCHEN){
   header ("Location: dashboard.php");
 	exit();
 }
@@ -23,8 +23,7 @@ if ( $login_error == "" ){
           $chk = $myuser->login();
             if ($chk == true){
               $chk = $myuser->register_login();
-              print_r($_SESSION);
-              //header ("Location: dashboard.php");
+             header ("Location: dashboard.php");
               exit();
             }else{
 	         $login_error .= "Invalid Login name/Password.";

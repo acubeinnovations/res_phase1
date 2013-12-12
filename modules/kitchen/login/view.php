@@ -6,52 +6,46 @@ if ( !defined('CHECK_INCLUDED') ){
 
 
 
-<form target="_self" method="post" action="" name="frmlogin">
+<form data-abide target="_self" method="post" action="<?php echo $current_url?>" name="frmlogin">
 
-	<table>
+	<fieldset>
+    <legend>Kitchen Login</legend>
+    <div class="row">
+		<div class="large-4 columns">
+		<small> <?php if(isset($myuser->err_desc)) echo $myuser->err_desc;
+		if(isset($login_error)) echo $login_error ;?> </small>
+		</div>
+		</div>
 
-		<tr>
-			<td><strong>Username:</strong> </td>
-			<td><input onclick="clean_loginname();"  type="text" name="loginname" id="loginname"  title="<?php //echo $msg_default_username ?>"  value="<?php //echo $msg_default_username ?>" ></td>
-		</tr>
+		<div class="row">
+		<div class="large-4 columns">
+		   <label for="loginname">User Name <small>required</small></label>
+		  <input placeholder=""  required pattern="[a-zA-Z]+"  type="text" name="loginname"  >
+		  <small class="error">Please Enter Your User Name.</small>
+		</div>
+	</div>
 
-		<tr>
-			<td><strong>Password:</strong> </td>
-			<td><input class="login_box"  type="password" name="password" id="passwd" ></td>
-		</tr>
+	<div class="row">
+		<div class="large-4 columns">
+		  <label for="password">Password <small>required</small></label>
+		  <input placeholder="Asdf1234" required type="password" name="password"  >
+			<small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number.</small>
+		</div>
+	</div>
 
-		<tr>
-			<td colspan="2" > &nbsp;</td>
-		</tr>
+	<div class="row">
+		<div class="large-4 columns">
+			<input class="small button" value="<?php echo $submit_sign_in ?>" type="submit" name="submit" >
+			<input name="h_id" value="<?php if(isset($h_id))echo $h_id; ?>" type="hidden">
+			<input name="h_login" value="pass" type="hidden">
+		</div>
+	</div>
 
-		<tr>
-			<td colspan="2" align="center"><input type="submit" name="submit" /></td>
-        	<td><input name="h_id" value="<?php if(isset($h_id))echo $h_id; ?>" type="hidden">
-			<input name="h_login" value="pass" type="hidden"> </td>
-		</tr>
-
-		<tr>
-			<td colspan="2" > &nbsp;</td>
-		</tr>
-
-		<tr>
-			<td colspan="2"align="center" > <div class="login_error">
-			<?php if(isset($myuser->err_desc)) echo $myuser->err_desc; if(isset($login_error)) echo $login_error ;?></div>
-			
-			</td>
-		</tr>
-
-			</table>
-			
-		</form>
+	</fieldset>
+	</form>
 
 
-    <script language="javascript" type="text/javascript">
-    //<!--
-            document.getElementById("loginname").focus();
-            document.getElementById("loginname").select();
-   //-->
-    </script>   
 
 
 </div>
+	
