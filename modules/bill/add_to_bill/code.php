@@ -19,13 +19,17 @@ $mybills->connection=($myconnection);
 
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
-if(isset($_SESSION['bill_number'])){
+if(isset($_SESSION['bill_number']) && $_SESSION['bill_number']>0 && isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
 $mybillitems->item_id=$_POST['item_id'];
 $mybillitems->bill_id=$_SESSION['bill_id'];
 $chk=$mybillitems->bill_item_check();
 if($chk==true){
 $mybillitems->get_detail();
+if(isset($_POST['qty']) && $_POST['qty']!=''){
+$mybillitems->quantity=$_POST['qty'];
+}else{
 $mybillitems->quantity=$mybillitems->quantity+1;
+}
 $mybillitems->rate=($item_rate[$mybillitems->item_id])*$mybillitems->quantity;
 $mybillitems->updated=CURRENT_DATE;
 $mybillitems->update();
@@ -45,9 +49,13 @@ exit();
 }else{
 $mybills->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $last_bill_number=$mybills->get_last_bill_number();
+
 $mybills->bill_number=$last_bill_number+1;
 $mybills->bill_date=CURRENT_DATE;
+$mybills->bill_status_id=BILL_STATUS_BILLED;
 $mybills->update();
+$mybills->last_bill_number=$mybills->bill_number;
+$mybills->update_last_bill_number();
 $_SESSION['bill_number']=$mybills->bill_number;
 $_SESSION['bill_id']=$mybills->id;
 $mybillitems->bill_id=$mybills->id;

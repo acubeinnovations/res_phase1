@@ -18,7 +18,8 @@ class Bills {
     var $bill_status_id		= "";
     var $payment_id			= "";
  	var $name			= "";
-    
+    var $last_bill_number="";
+	
     var $address	= "";
     var $email	= "";
     var $phone="" ; 
@@ -39,10 +40,6 @@ class Bills {
     var $total_records	= "";
 
 
-    function __construct()
-    {
-
-    }
 function set_defaults(){
 $this->amount=0;
 
@@ -248,24 +245,7 @@ function delete(){
         }
     }
 }
-function get_counts(){
-$strSQL = "SELECT count(id) as total_bills from bills";
-$rsRES = mysql_query($strSQL, $this->connection);
-if ( mysql_num_rows($rsRES) > 0 ){
-$this->total_bills=mysql_result($rsRES,0,'total_bills');
-}
-$strSQL = "SELECT count(id) as total_bills_active from bills WHERE bill_status_id=".STATUS_ACTIVE;
-$rsRES = mysql_query($strSQL, $this->connection);
-if ( mysql_num_rows($rsRES) > 0 ){
-$this->total_bills_active=mysql_result($rsRES,0,'total_bills_active');
-}
-$strSQL = "SELECT count(id) as total_bills_cancelled from bills WHERE status_id=".STATUS_INACTIVE;
-$rsRES = mysql_query($strSQL, $this->connection);
-if ( mysql_num_rows($rsRES) > 0 ){
-$this->total_bills_cancelled=mysql_result($rsRES,0,'total_bills_inactive');
-}
 
-}
 
 function get_array_statuses()
     {
@@ -302,7 +282,20 @@ function get_last_bill_number()
         return false;
         }
 	}
+function update_last_bill_number(){
+	$strSQL = "UPDATE counters SET last_bill_number = '".addslashes(trim($this->last_bill_number))."'";
+	$strSQL .= " WHERE id = ".$this->counter_id;
+	$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_affected_rows($this->connection) >= 0 ) {
+		                    
+		return true;
+            }
+        else{
+            
+             return false;
+            }
 
+}
 
 }
 ?>

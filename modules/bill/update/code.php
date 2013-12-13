@@ -15,6 +15,8 @@ $get_item=$item->get_list_array();
 if($get_item!=false){
 	$count = count($get_item);
 }
+$item->item_category_id=1;
+$get_item_sub=$item->get_items_by_category();
 //$array_item=$item->get_array();
 
 
