@@ -3,6 +3,7 @@
 if ( !defined('CHECK_INCLUDED') ){
     exit();
 }
+
 $item=new item($myconnection);
 $item->connection=$myconnection;
 
@@ -16,22 +17,30 @@ if($arr_item_category==false){
 
 $msg="";
 
-if(isset($_POST['submit']))
-{
-	$item->name= $_POST['itemname'];
-	$item->rate =  $_POST['rate'];
+if(isset($_POST['submit']) && $_POST['submit']=='submit'){
+		if(isset($_POST['chkmaster'])){
+		$chkvalue=$_POST['chkmaster'];
+		}else{
+		$chkvalue=0;
+		}
+	$item->name= $_POST['name'];
+	$item->rate = $_POST['rate'];
 	$item->tax =  $_POST['tax'];
 	$item->item_category_id=$_POST['listitem'];
-	$item->status_id= "";
+	$item->status_id= $_POST['status_id'];
+	$item->chkmaster= $chkvalue;
 	$item->update();
 	$msg="Item Updated";
 	}else{
 	$msg="Invalid Entry";
+
 }
+
 if(isset($_GET['id'])){
 	$item->id=$_GET['id'];
 	$item->get_details();
 }
+
 
 
 ?>

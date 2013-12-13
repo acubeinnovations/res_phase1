@@ -7,42 +7,57 @@
 
 <body>
 
- <form id="form1" name="form1" method="post" action="">
-<table width="295" height="68" align="center">
-	  <tr>
-      <td colspan="3" valign="top">Item List</td>
+<form id="form2" name="form2" method="post" action="">
+<fieldset>
+    <legend>Item List</legend>
+
+   <table width="295" height="68" align="center">
+
+
+    <tr>
+      <td colspan ="3" valign ="top">item</td>
     </tr>
-	 <tr>
+
+    <tr>
       <td>Id</td>
       <td>Item</td>
-      <td>Item category</td>
+      <td colspan="3">item Category</td>
       <td>Rate</td>
       <td>Tax</td>
     </tr>
-    <?php if($get_item==false)
-      { ?>
 
-    	<tr><td colspan="6"> No Records Found </td></tr>
+        <?php 
+            if($get_item==false)
+          { ?>
 
-    	<?php } else { 
-    	   $i=0;
-    	   while($i<$count){
+      <tr> 
+        <td> No Records Found</td>
+      </tr>
 
-      ?>
-    	<tr>
-        <td> <?php echo $get_item[$i]['id']; ?></td>
-         <td><a href="item.php?id=<?php echo $get_item[$i]['id']?>"><?php echo $get_item[$i]['name']?></a></td>
-         <td><?php if(isset($array_item_category[$get_item[$i]['item_category_id']])){echo $array_item_category[$get_item[$i]['item_category_id']] ;}?></td>
-         <td> <?php echo $get_item[$i]['rate'] ;?></td>
-          <td> <?php echo  $get_item[$i]['tax'];?> </td>
-       </tr>
+       <?php } else {
+        $i=0;
+        while($i<$count){
+         ?> 
 
-      <?php $i++; }
+    <tr>
+       <td><?php echo $get_item[$i]['id']; ?></td>
+       <td><a href="item.php?id=<?php echo $get_item[$i]['id'] ?>"><?php echo $get_item[$i]['name']?></a></td>
+       <td colspan="2"><?php if(isset($array_item_category[$get_item[$i]['item_category_id']])){echo $array_item_category[$get_item[$i]['item_category_id']] ;}?></td>
+       <td colspan="2"> <?php echo $get_item[$i]['rate'] ;?></td>
+       <td colspan="2"><?php echo $get_item[$i]['tax'] ;?></td>
+
+   </tr>
+
+    <?php $i++; 
           }
-           
-            ?>
+          }
+           ?>
+
+       
+
+</table>
+    </form>
+   </body>
+   </html>
 
    
-</table>
- 	</form>
- </body>

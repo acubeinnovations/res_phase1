@@ -5,40 +5,54 @@ if(!defined('CHECK_INCLUDED')){
 }
 ?>
 
-  <form id="form1" name="form1" method="post" action="">
-    <table >
-      
-      <tr>
-<td colspan="2" class="page_caption">Item Category<br /> <?php echo $msg;?></td>
-</tr>
-<tr>
-<td colspan="2" align="right"><a href="item_categories.php">List All</a> &nbsp;</td>
-</tr>
-<tr>
-<td valign="top">Category name <span style="color:red;">*</span> &nbsp;</td>
-<td><input type="text"  value="<?php echo $item_category->name;?>" name="name" id="name" /></td>
+    <form data-abide target="_self" method="post" action="<?php echo $current_url?>" name="frmlogin">
+       <fieldset>
+        <legend>Item Category</legend>
+            <div class="row">
+            <div class="large-4 columns">
+           <small><?php echo $msg;?></small>
+         <a href="item_categories.php">List All</a>
+    </div>
+  </div>
 
-<tr>
+  <div class="row">
+    <div class="large-4 columns">
+       <label for="Category Name">Category Name<small>required</small></label>
+      <input placeholder=""  required pattern="[a-zA-Z]+"  type="text" name="name" id="name" value="<?php echo $item_category->name;?>">
+       <small class="error">Enter Category</small>
+    </div>
 
-        
-      <tr>
-        <td>&nbsp;</td>
-        <td><label for="listitem"></label>
-        
-          <?php echo populate_list_array("lstitem_category", $arr_item_category, 'id', 'name', $item_category->parent_id,$disable=false);
+      <div class="row">
+      <div class="large-4 columns">
+       <label for="listitem"><small>required</small></label>
+         <small class="error">Select Item.</small>
+      <?php echo populate_list_array("lstitem_category", $arr_item_category, 'id', 'name', $item_category->parent_id,$disable=false);
 ?></td>
-       
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td><input type="submit" name="submit" id="submit" value="Submit" />
-        <input type="hidden" name="h_id" id="h_id" value="<?php echo $item_category->id ?>"  /></td>
-       
-      </tr>
-    </table>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
+    
+    </div>
+  </div>
+    <div class="row">
+    <div class="large-4 columns">
+      <label for ="status_id">Status</label>
+      <select name ="status_id">
+        <option value="1">Active</option>
+        <option value="0">Invactive</option>
+      </select>
+     </div>
+  </div>
+
+  <div class="row">
+    <div class="large-4 columns">  
+      <input class="small button" value="submit" type="submit" name="submit" id="submit" >
+    </div>
+  </div>
+
+</fieldset>
 </form>
 
-</body>
-</html>
+
+
+
+</div>
+
+
