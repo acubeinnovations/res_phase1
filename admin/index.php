@@ -10,7 +10,7 @@ $page = new Page;
 	$page->current_url = $current_url;	// current url for pages
 	$page->title = "Administrator - Login";	// page Title
 	$page->page_name = 'index';		// page name for menu and other purpose
-	$page->layout = 'default_login.html';		// layout name
+	$page->layout = 'restaurant.html';		// layout name
 
     
     $page->conf_list = array("conf.php");

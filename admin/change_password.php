@@ -11,7 +11,7 @@ $page = new Page;
 	$page->current_url = $current_url;	// current url for pages
 	$page->title = "Administrator - Chang Password";	// page Title
 	$page->page_name = 'index';		// page name for menu and other purpose
-	$page->layout = 'default.html';		// layout name
+	$page->layout = 'restaurant.html';		// layout name
 
     
     

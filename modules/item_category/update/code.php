@@ -3,32 +3,36 @@
 if ( !defined('CHECK_INCLUDED') ){
     exit();
 }
-$msg="";
-$item_category =new ItemCategory($myconnection);
-$item_category->connection=$myconnection;
-$arr_item_category=$item_category->get_list_array();
-if($arr_item_category==false){
+	$msg="";
+	$item_category =new ItemCategory($myconnection);
+	$item_category->connection=$myconnection;
+	$arr_item_category=$item_category->get_list_array();
+	if($arr_item_category==false){
 	$arr_item_category=array();
-}
-if(isset($_POST['submit']) && $_POST['submit']=="Submit" ){
- $chk=validate($myconnection);//echo $chk;
- if($chk==true){
-	$item_category->id=$_POST['h_id'];
+	}
+
+	if(isset($_POST['submit']) && $_POST['submit']=="Submit" ){
+ 	$chk=validate($myconnection);//echo $chk;
+ 	if($chk==true){
+	//$item_category->id=$_POST['h_id'];
 	$item_category->name=$_POST['name'];
-	$item_category->status_id=STATUS_ACTIVE;
+	$item_category->status_id=$_POST['status_id'];
 	$item_category->parent_id=$_POST['lstitem_category'];
 	$item_category->update();
 	$msg="Category Updated";
- }else{
+	 }else{
 	 $msg="Invalid Entry";
- }
+ 	}
 }
+
+
  
 if(isset($_GET['id'])){
-
 	$item_category->id=$_GET['id'];
 	$item_category->get_details();
 }
+ $status =array("Active","Inactive");
+echo $status;
 
 
 ?>

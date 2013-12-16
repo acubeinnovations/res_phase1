@@ -19,9 +19,10 @@ class ItemCategory{
 	function update()
 		{
 			
-		 
+		
 			if ( $this->id == "" || $this->id == gINVALID) {
 			$strSQL = "INSERT INTO item_categories (name,status_id,parent_id) VALUES ('";
+			//$strSQL .= addslashes(trim($this->h_id)) ."','";
 			$strSQL .= addslashes(trim($this->name)) ."','";
 			$strSQL .= addslashes(trim($this->status_id)) . "','";
 			$strSQL .= addslashes(trim($this->parent_id)) . "')";
