@@ -164,6 +164,51 @@ function get_items_by_category(){
     				}
 			}	
 
+function get_array_item_rate(){
+		$items = array();
+			$i=0;
+			$strSQL = "SELECT  id,rate FROM items";
+			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+			if ( mysql_num_rows($rsRES) > 0 )
+				 {
+					while ( list ($id,$rate) = mysql_fetch_row($rsRES) ){
+						$items[$id] =  $rate;
+						
+           		 	}
+            		return $items;
+       				}else{
+					$this->error_number = 4;
+					$this->error_description="Can't list item";
+					return false;
+    				}
+
+
+
+}
+
+function get_array_item_name(){
+		$names = array();
+			$i=0;
+			$strSQL = "SELECT  id,name FROM items";
+			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+			if ( mysql_num_rows($rsRES) > 0 )
+				 {
+					while ( list ($id,$name) = mysql_fetch_row($rsRES) ){
+						$names[$id] =  $name;
+						
+           		 	}
+            		return $names;
+       				}else{
+					$this->error_number = 4;
+					$this->error_description="Can't list item";
+					return false;
+    				}
+
+
+
+}
+
+
 }
 ?>
 

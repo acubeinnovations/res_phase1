@@ -9,6 +9,11 @@ define("MASTER_KITCHEN", 300);
 define("STATUS_ACTIVE", 1);
 define("STATUS_INACTIVE", 2);
 
+//timezone
+date_default_timezone_set('Asia/Kolkata');
+define("CURRENT_DATETIME",date('Y-m-d H:i:s'));
+define("CURRENT_DATE",date('Y-m-d'));
+define("CURRENT_TIME",date('H:i:s'));
 
 GLOBAL $g_msg_unauthorized_request;
 $g_msg_unauthorized_request = "<strong>Unauthorized Page Request</strong><br/> <br/> You are not authorized to access this page. This attempt will be reported to the system Administrator. ";

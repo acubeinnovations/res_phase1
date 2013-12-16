@@ -3,27 +3,26 @@
       <ul class="right">
         <li class="divider"></li>
         <li class="has-dropdown">
-          <a href="#" >Main Item 1</a>
+          <a href="#" >Bills & Bills</a>
           <ul class="dropdown">
-            <li><label>Section Name</label></li>
+            <li><label>Bills</label></li>
+			<li><a href="#">New Bill</a></li>
+			<li><a href="#">Bill on Hold</a></li>
             <li class="has-dropdown">
-              <a href="#" class="">Has Dropdown, Level 1</a>
+              <a href="#" class="">Daily & Mothly Bills</a>
               <ul class="dropdown">
-                <li><a href="#">Dropdown Options</a></li>
-                <li><a href="#">Dropdown Options</a></li>
-                <li><a href="#">Level 2</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
+                <li><a href="#">Daily Bills</a></li>
+                <li><a href="#">Daily Cancelled</a></li>
+                <li><a href="#">-------- Monthly -------</a></li>
+                <li><a href="#">Monthly Bills</a></li>
+                <li><a href="#">Monthly Cancelled</a></li>
               </ul>
             </li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
+
             <li class="divider"></li>
-            <li><label>Section Name</label></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
+            <li><label>Menu And Items</label></li>
+            <li><a href="#">Daily Available Items</a></li>
+            <li><a href="#">Items From Master Kitchen</a></li>
             <li class="divider"></li>
             <li><a href="#">See all →</a></li>
           </ul>
@@ -33,11 +32,9 @@
         <li class="divider"></li>
 
         <li class="has-dropdown">
-          <a href="#">Main Item 3</a>
+          <a href="#">Counter</a>
           <ul class="dropdown">
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
+            <li><a href="#">Change Password</a></li>
             <li class="divider"></li>
             <li><a href="#">See all →</a></li>
           </ul>
