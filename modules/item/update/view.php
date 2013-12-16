@@ -63,9 +63,15 @@ if(!defined('CHECK_INCLUDED')){
 
   <div class="row">
 	<div class="large-4 columns">
-   		<label for="chkmaster">Master </label><input id="chk" type="checkbox" value="1" name="chkmaster" >
-    </div>
-  </div>
+
+   			<label for="chkmaster">Master </label>
+   			<?php if($item->from_master_kitchen==1) {?>
+   			<input id="chk" type="checkbox" value="1" name="chkmaster" checked="checked">
+   			
+    		<?php } else { ?>
+   			  <input id="chk" type="checkbox" value="0" name="chkmaster">
+ 			 </div>
+			  <?php } ?>
 		<div class="row">
 		<div class="large-4 columns">
 			<input class="small button" value="submit" type="submit" name="submit" >

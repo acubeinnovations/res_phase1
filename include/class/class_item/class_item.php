@@ -73,7 +73,7 @@ function get_details()
 			$this->rate= $user['rate'];
 			$this->tax= $user['tax'];
 			$this->status_id= $user['status_id'];
-			//$this->chkmaster= $user['chkmaster'];
+			$this->from_master_kitchen= $user['from_master_kitchen'];
 			return true;
 			}else{
 			return false;

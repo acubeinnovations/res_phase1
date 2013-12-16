@@ -13,17 +13,12 @@
 
    <table width="295" height="68" align="center">
 
-
     <tr>
-      <td colspan ="3" valign ="top">item</td>
-    </tr>
-
-    <tr>
-      <td>Id</td>
-      <td>Item</td>
-      <td colspan="3">item Category</td>
-      <td>Rate</td>
-      <td>Tax</td>
+      <th>Id</th>
+      <th>Item</th>
+      <th colspan="3">item Category</th>
+      <th>Rate</th>
+      <th>Tax</th>
     </tr>
 
         <?php 

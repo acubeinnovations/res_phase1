@@ -18,7 +18,7 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 
 	$page->function_list = array("functions.php");
-	$page->class_list = array("class_kitchen_session.php");
+	$page->class_list = array("class_kitchen.php");
 
 	$page->access_list = array("MASTER_KITCHEN","KITCHEN");
 
@@ -33,6 +33,8 @@ $page = new Page;
 
 	$page->content_list = $content_list;
 
+	$page->module_path = 'modules/kitchen/'; 
+    $page->module = 'dashboard';
 
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>

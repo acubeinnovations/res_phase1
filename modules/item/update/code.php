@@ -23,6 +23,8 @@ if(isset($_POST['submit']) && $_POST['submit']=='submit'){
 		}else{
 		$chkvalue=0;
 		}
+		
+		
 	$item->name= $_POST['name'];
 	$item->rate = $_POST['rate'];
 	$item->tax =  $_POST['tax'];
@@ -35,6 +37,7 @@ if(isset($_POST['submit']) && $_POST['submit']=='submit'){
 	$msg="Invalid Entry";
 
 }
+
 
 if(isset($_GET['id'])){
 	$item->id=$_GET['id'];
