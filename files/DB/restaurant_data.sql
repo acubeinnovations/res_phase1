@@ -47,7 +47,8 @@ INSERT INTO `bill_statuses` (`id`, `name`) VALUES
 (1, 'Billed'),
 (2, 'Paid'),
 (3, 'Cancelled'),
-(4, 'Booked');
+(4, 'Booked'),
+(5, 'Hold');
 
 --
 -- Dumping data for table `contenttypes`
