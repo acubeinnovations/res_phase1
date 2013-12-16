@@ -267,20 +267,6 @@ $this->total_bill_items_used=mysql_result($rsRES,0,'total_bill_items_used');
 }
 
 
-
-
-function voucher_start_id(){
-$start_id="";
-$strSQL = "SELECT id  from bill_items WHERE status_id='".STATUS_INACTIVE."' AND used='".intval(false)."' ORDER BY id ASC";
-$rsRES = mysql_query($strSQL, $this->connection);
-if ( mysql_num_rows($rsRES) > 0 ){
-$start_id=mysql_result($rsRES,0,'id');
-return $start_id;
-}
-
-}
-
-
 function get_array_id(){
 $voucher_bill_id="";
 $i=0;
@@ -309,6 +295,23 @@ function bill_item_check(){
         if ( mysql_num_rows($rsRES) > 0 ){
 		$this->id = mysql_result($rsRES,0,'id');
         return true;
+        }
+        else{
+            return false;
+        }
+
+}
+function get_tot_bill_amount_array(){
+	$rate_array=0;
+	$i=0;
+	$strSQL = "SELECT rate FROM bill_items WHERE bill_id = '".$this->bill_id."'"; 
+  		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+          if ( mysql_num_rows($rsRES) > 0 ){
+        while ( list ($rate) = mysql_fetch_row($rsRES) ){
+          $rate_array=$rate_array+$rate;
+		
+        }
+        return $rate_array;
         }
         else{
             return false;

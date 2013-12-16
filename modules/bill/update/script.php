@@ -15,6 +15,20 @@ $(document).ready(function(){
 			$(".bill").html('&nbsp');
 		}
 		});
+	var total="total";
+	var success_post = $.post('total_bill_amount.php',
+		{
+			total:total,
+			
+		});
+	success_post.done(function(data){
+		if(data!='error'){
+			var val="Rs ."+data;
+			$('#tot_button_val').text(val);
+		}else{
+			$('#tot_button_val').text("Rs .0");
+		}
+	});
 	
 
 
@@ -55,6 +69,20 @@ $(document).ready(function(){
 			$(".bill").html("");
 		}
 		});
+		var total="total";
+	var success_post = $.post('total_bill_amount.php',
+		{
+			total:total,
+			
+		});
+	success_post.done(function(data){
+		if(data!='error'){
+			var val="Rs ."+data;
+			$('#tot_button_val').text(val);
+		}else{
+			$('#tot_button_val').text("Rs .0");
+		}
+	});
 	
 	});
 
@@ -83,7 +111,7 @@ $(document).ready(function(){
 	});
 	
 	$( document ).on("click", ".ok", function() {
-	item_id=$("#item_id_hidden").val();alert($('#item_quantity'+item_id).val());
+	item_id=$("#item_id_hidden").val();
 	if($('#item_quantity'+item_id).val()==''){
 	$('.myalert').html('Item quantity should not be null.<a href="#" class="close">&times;</a>');
 	$('.myalert').show();
@@ -104,7 +132,23 @@ $(document).ready(function(){
 	}
 	});
 	$(".calculater").hide();
+	var total="total";
+	var success_post = $.post('total_bill_amount.php',
+		{
+			total:total,
+			
+		});
+	success_post.done(function(data){
+		if(data!='error'){
+			var val="Rs ."+data;
+			$('#tot_button_val').text(val);
+		}else{
+			$('#tot_button_val').text("Rs .0");
+		}
+	});
+	
 	}
+	
 	});
 	
 	$( document ).on("click", ".close_button", function() {
@@ -126,7 +170,13 @@ $(document).ready(function(){
 		});
 	
 	});
+	/*
+	$( document ).on("click", "#tot_button", function() {
 	
+	$('#myModal').show();
+	alert("h");
+	});
+	*/
 	
 	
 });
