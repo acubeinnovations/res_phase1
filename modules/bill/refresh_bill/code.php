@@ -16,7 +16,7 @@ $mybills->connection=($myconnection);
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
 
-if(isset($_SESSION['bill_number']) && $_SESSION['bill_number']>0 && isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
+if(isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
 $mybillitems->bill_id=$_SESSION['bill_id'];
 $data_bill_items=$mybillitems->get_list_array_bylimit();
 $bill_item_index=0;

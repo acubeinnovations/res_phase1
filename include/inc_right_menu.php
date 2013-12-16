@@ -7,7 +7,7 @@
           <ul class="dropdown">
             <li><label>Bills</label></li>
 			<li><a href="#">New Bill</a></li>
-			<li><a href="#">Bill on Hold</a></li>
+			<li><a href="#" data-reveal-id="openedbills" id="opened_bills">Bill on Hold</a></li>
             <li class="has-dropdown">
               <a href="#" class="">Daily & Mothly Bills</a>
               <ul class="dropdown">

@@ -42,7 +42,7 @@ $mybillitems->rate=$item_rate[$mybillitems->item_id];
 $mybillitems->bill_item_status_id=STATUS_INACTIVE;
 $mybillitems->quantity=1;
 $mybillitems->update();
-$div_content='<div class="row"><div class="large-12 columns"><div class="large-4 columns"><a href="#" class="tiny button fixed bill_items" id="item_bill'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$item_name[$mybillitems->item_id].'</a></div><div class="large-4 columns"><input type="text" value="'.$mybillitems->quantity.'" class="item_quantity" id="item_quantity'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'" /></div><div class="large-4 columns"><a href="#" class="tiny button bill_items fixed" id="item_rate'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$mybillitems->rate.'</a></div></div/></div/>';
+$div_content='<div class="row row_bill_items"><div class="large-12 columns"><div class="large-4 columns" id="item_bill'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$item_name[$mybillitems->item_id].'</div><div class="large-4 columns"><input type="text" value="'.$mybillitems->quantity.'" class="item_quantity" id="item_quantity'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'" /></div><div class="large-4 columns" id="item_rate'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$mybillitems->rate.'</div></div></div>';
 print $div_content;
 exit();
 }
@@ -64,7 +64,7 @@ $mybillitems->rate=$item_rate[$mybillitems->item_id];
 $mybillitems->bill_item_status_id=STATUS_INACTIVE;
 $mybillitems->quantity=1;
 $mybillitems->update();
-$div_content='<div class="row"><div class="large-12 columns"><div class="large-4 columns"><a href="#" class="tiny button fixed bill_items" id="item_bill'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$item_name[$mybillitems->item_id].'</a></div><div class="large-4 columns"><input type="text" class="item_quantity" value="'.$mybillitems->quantity.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'" id="item_quantity'.$mybillitems->item_id.'" /></div><div class="large-4 columns"><a href="#" class="tiny button bill_items fixed" id="item_rate'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$mybillitems->rate.'</a></div></div/></div/>';
+$div_content='<div class="row row_bill_items"><div class="large-12 columns"><div class="large-4 columns" id="item_bill'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$item_name[$mybillitems->item_id].'</div><div class="large-4 columns"><input type="text" class="item_quantity" value="'.$mybillitems->quantity.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'" id="item_quantity'.$mybillitems->item_id.'" /></div><div class="large-4 columns" id="item_rate'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$mybillitems->rate.'</div></div></div>';
 print $div_content;
 exit();
 }

@@ -5,7 +5,7 @@ if(!defined('CHECK_INCLUDED')){
 		exit();
 }
 
-if(isset($_POST['total'])){
+if(isset($_POST['total']) && isset($_SESSION['bill_id'])){
 $bill_amount='';
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
@@ -16,7 +16,11 @@ print $bill_amount;
 exit();
 }else{
 print "error";
+exit();
 }
+}else{
+print "error";
+exit();
 }
 
 ?>

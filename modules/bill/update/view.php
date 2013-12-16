@@ -1,12 +1,13 @@
-<div id="openedbills" class="reveal-modal" data-reveal> <h2>Awesome. I have it.</h2> <p class="lead">Your couch. It is mine.</p> <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p> <a class="close-reveal-modal">&#215;</a> </div>
+<div id="openedbills" class="reveal-modal" data-reveal>  </div>
+<div id="print_bill" class="reveal-modal" data-reveal> </div>
 <div class="row parent">
 	
 		<div class="large-12 columns">
 			<br>
 			<div class="large-2 columns">
-			<?php $item_index=0; while($item_index<count($array_item_category)) {?>
+			<?php if(isset($array_item_category)){ $item_index=0; while($item_index<count($array_item_category)) {?>
 			<a href="#" class="small button fixed  item_category success" item_id="<?php echo $array_item_category[$item_index]['id'];?>"><?php echo $array_item_category[$item_index]['name']; ?></a>
-			<?php $item_index++; } ?>
+			<?php $item_index++; } } ?>
 			</div>
 			<div class="large-6 columns items">
 			<?php if($get_item_sub!=false){
@@ -80,8 +81,8 @@
 				</div>		
 				</div>
 				<div class="small-4 columns  small-block-grid-4 payment">
-				<a href="#" class="tiny button  paymeny_button" >PAY</a>
-				<a href="#" class="tiny button  new_bill_button" >NEW BILL</a>
+				<a href="#" data-reveal-id="print_bill" class="tiny button  payment_button" id="payment_button" >PAY</a>
+				<a href="#" data-reveal-id="print_bill" id="print_bill_button" class="tiny button  print_bill_button" >PRINT</a>
 				<a href="#" class="tiny button  hold_button" >HOLD</a>
 				<a href="#" class="tiny button  tot_button" id="tot_button" >TOTAL :</a>
 				<a href="#" class="tiny button  tot_button_val" id="tot_button_val" >Rs .0</a>

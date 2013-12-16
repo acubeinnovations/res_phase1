@@ -125,7 +125,24 @@ $this->amount=0;
 
     }
 
+	function get_ids_of_holded_bills(){
+		$holded_bills = array();
+		$i=0;
+        $strSQL = "SELECT  id FROM bills WHERE bill_status_id=".$this->bill_status_id;
+        $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_num_rows($rsRES) > 0 ){
+            while ( list($id) = mysql_fetch_row($rsRES) ){
+				$holded_bills[$i] = $id;
+               $i++;
+            }
+            return $holded_bills;
+        }else{
+        $this->error_number = 4;
+        $this->error_description="Can't list holded_bills";
+        return false;
+        }
 
+	}
 
 
     function exist(){
@@ -150,6 +167,7 @@ $this->amount=0;
                 $this->id = mysql_result($rsRES,0,'id');
 				$this->booking_date = mysql_result($rsRES,0,'booking_date');
 				$this->bill_date = mysql_result($rsRES,0,'bill_date');
+				$this->bill_number = mysql_result($rsRES,0,'bill_number');
 				$this->payment_date = mysql_result($rsRES,0,'payment_date');
                 $this->name = mysql_result($rsRES,0,'name');
 				$this->email = mysql_result($rsRES,0,'email');

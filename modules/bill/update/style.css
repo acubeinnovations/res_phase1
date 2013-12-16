@@ -12,13 +12,13 @@
 	border-radius:25px;
 	
 }
-.item_qty{
-    font-size:1em;
+#item_quantity{
+    font-size: 2px;
     text-align:center;
-   	height:10px;
-    width:40px;
+   	height:2px !important;
+    width:30px;
     border:1px solid black;
-    float:left;
+    
 	
 }
 .calculater{
@@ -35,4 +35,13 @@ width:40px;
 */
 .myalert{
 display:none;
+}
+
+.row_bill_items {
+    background:#D8D8D8;
+ 	vertical-align:middle;
+	text-align:center;
+    font-size: 10px;
+  	height:37px;
+    
 }
