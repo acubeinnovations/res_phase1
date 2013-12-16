@@ -22,7 +22,7 @@
             <li class="divider"></li>
             <li><label>Menu And Items</label></li>
             <li><a href="#">Daily Available Items</a></li>
-            <li><a href="#">Items From MAster Kitchen</a></li>
+            <li><a href="#">Items From Master Kitchen</a></li>
             <li class="divider"></li>
             <li><a href="#">See all →</a></li>
           </ul>
