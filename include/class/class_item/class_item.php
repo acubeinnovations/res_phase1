@@ -46,7 +46,7 @@ Class item{
 			$strSQL .= "rate = '".addslashes(trim($this->rate))."',";
 			$strSQL .= "tax = '".addslashes(trim($this->tax))."',";
 		 	$strSQL .= "status_id = '".addslashes(trim($this->status_id))."'";
-		 	$strSQL .= "chkmaster = '".addslashes(trim($this->chkmaster))."'";
+		 	$strSQL .= "from_master_kitchen = '".addslashes(trim($this->chkmaster))."'";
 			$strSQL .= " WHERE id = ".$this->id;
 			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
            
