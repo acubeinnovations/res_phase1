@@ -16,7 +16,7 @@
 
 
      <div class="row">
-         <div class="large-4 columns"><?php// echo $CAP_password ?>
+         <div class="large-4 columns"><?php // echo $CAP_password ?>
          <label for="passwd" >Password <small>required</small></label>
             <input placeholder="Asdf1234"  required pattern="password"  type="password" name="passwd" id="passwd" >
             <small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number.</small>
@@ -24,7 +24,7 @@
     </div>
 
      <div class="row">
-     <div class="large-4 columns"><?php// echo $CAP_new_password ?>
+     <div class="large-4 columns"><?php // echo $CAP_new_password ?>
             <label for="new_passwd">Current password <small>required</small></label>
             <input placeholder="Asdf1234"  required pattern="password" type="password" name="new_passwd" id="new_passwd" >
             <small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number..</small>
@@ -38,11 +38,11 @@
             <small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number..</small>
          </div>
     </div>
-      
+
     <div class="row">
         <div class="large-4 columns">
             <input class="small button" value="<?php echo $CAP_change ?>" type="submit" name="submit" onClick="return validate_change_passwd();">
-         
+
         </div>
     </div>
 
@@ -73,7 +73,7 @@
                 </tr>
 
                 <tr>
-                    <td>&nbsp;</td>    
+                    <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>

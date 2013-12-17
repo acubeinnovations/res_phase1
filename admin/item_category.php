@@ -12,7 +12,7 @@ $page = new Page;
 	$page->page_name = 'index';		// page name for menu and other purpose
 	$page->layout = 'restaurant.html';		// layout name
 
-    
+
     $page->conf_list = array("conf.php");
     $page->menuconf_list = array("menu_conf.php");
 	$page->connection_list = array("connection.php");
@@ -22,19 +22,15 @@ $page = new Page;
 
 	$page->access_list = array("ADMINISTRATOR");
 
-	$page->style_list_link =array("form_table.css");
-
-	
 
 
     $index=0;
-    $content_list[$index]['file_name']='inc_menu.php';
-    $content_list[$index]['var_name']='menu';
+    $content_list[$index]['file_name']='admin/inc_right_menu.php';
+    $content_list[$index]['var_name']='right_menu';
     $index++;
-
 	$page->content_list = $content_list;
 
-	$page->module_path = 'modules/item_category/'; 
+	$page->module_path = 'modules/item_category/';
     $page->module = 'update';
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>

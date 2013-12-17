@@ -23,14 +23,14 @@ if(isset($_POST['submit']) && $_POST['submit']=='submit'){
 		}else{
 		$chkvalue=0;
 		}
-		
-		
+
+
 	$item->name= $_POST['name'];
 	$item->rate = $_POST['rate'];
 	$item->tax =  $_POST['tax'];
 	$item->item_category_id=$_POST['listitem'];
 	$item->status_id= $_POST['status_id'];
-	$item->chkmaster= $chkvalue;
+	$item->from_master_kitchen= $chkvalue;
 	$item->update();
 	$msg="Item Updated";
 	}else{
