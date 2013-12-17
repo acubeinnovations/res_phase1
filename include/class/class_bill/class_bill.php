@@ -16,6 +16,7 @@ class Bills {
     var $amount		= "";
     var $discount 	= "";
     var $bill_status_id		= "";
+	var $bill_kitchen_status_id		= "";
     var $payment_id			= "";
  	var $name			= "";
     var $last_bill_number="";
@@ -52,13 +53,14 @@ $this->amount=0;
 		
 		
 		
-              $strSQL = "INSERT INTO bills (bill_number,bill_date,booking_date,payment_date,bill_status_id,amount,tax,discount,name,address,phone,email,counter_id,table_id,chair_number,created,updated) ";				
+              $strSQL = "INSERT INTO bills (bill_number,bill_date,booking_date,payment_date,bill_status_id,bill_kitchen_status_id,amount,tax,discount,name,address,phone,email,counter_id,table_id,chair_number,created,updated) ";				
 			 
               $strSQL .= "VALUES ('".addslashes(trim($this->bill_number))."','";
 			  $strSQL .= addslashes(trim($this->bill_date))."','";
 			  $strSQL .= addslashes(trim($this->booking_date))."','";
 			  $strSQL .= addslashes(trim($this->payment_date))."','";
 			  $strSQL .= addslashes(trim($this->bill_status_id))."','";
+			  $strSQL .= addslashes(trim($this->bill_kitchen_status_id))."','";
 			  $strSQL .= addslashes(trim($this->amount))."','";
               $strSQL .= addslashes(trim($this->tax))."','";
 			  $strSQL .= addslashes(trim($this->discount))."','";
@@ -105,10 +107,14 @@ $this->amount=0;
 		if($this->tax!='' && $this->tax!=gINVALID ){
             $strSQL .= "tax = '".addslashes(trim($this->tax))."',";
 		}
+		if($this->bill_kitchen_status_id!=''){
+	    $strSQL .= "bill_kitchen_status_id = '".addslashes(trim($this->bill_kitchen_status_id))."',";
+	    }
 		
 		 if($this->amount!=''){
 	    $strSQL .= "amount = '".addslashes(trim($this->amount))."'";
-	    }	
+	    }
+ 		
 					
 	    $strSQL .= " WHERE id = ".$this->id;
         $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
@@ -125,14 +131,16 @@ $this->amount=0;
 
     }
 
-	function get_ids_of_holded_bills(){
+	function get_details_of_holded_bills(){
 		$holded_bills = array();
 		$i=0;
-        $strSQL = "SELECT  id FROM bills WHERE bill_status_id=".$this->bill_status_id;
+        $strSQL = "SELECT  id,amount,bill_date FROM bills WHERE bill_status_id='".$this->bill_status_id."' AND counter_id='".$this->counter_id."' AND bill_date LIKE '%".$this->bill_date."%'";
         $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
         if ( mysql_num_rows($rsRES) > 0 ){
-            while ( list($id) = mysql_fetch_row($rsRES) ){
-				$holded_bills[$i] = $id;
+            while ( list($id,$amount,$bill_date) = mysql_fetch_row($rsRES) ){
+				$holded_bills[$i]['id'] = $id;
+				$holded_bills[$i]['amount'] = $amount;
+				$holded_bills[$i]['bill_time'] = date("H:i:s",strtotime($bill_date));
                $i++;
             }
             return $holded_bills;
@@ -181,6 +189,7 @@ $this->amount=0;
 				$this->chair_number= mysql_result($rsRES,0,'chair_number');
 				$this->created= mysql_result($rsRES,0,'created');
 				$this->bill_status_id= mysql_result($rsRES,0,'bill_status_id');
+				$this->bill_kitchen_status_id= mysql_result($rsRES,0,'bill_kitchen_status_id');
                 $this->updated= mysql_result($rsRES,0,'updated');
                 
                

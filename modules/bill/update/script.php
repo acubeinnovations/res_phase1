@@ -64,6 +64,7 @@ $(document).ready(function(){
 			$('#item_rate'+bill_items[0]).html(bill_items[2]);
 			}else{
 			$(".bill").append(data);
+			
 			}
 		}else{
 			$(".bill").html("");
@@ -235,6 +236,49 @@ $(document).ready(function(){
 	
 	
 	});
+$( document ).on("click", ".bill_item_cancel", function() {
+var  bill_item_id=$(this).attr('bill_item_id');
+	
+	var success_post = $.post('cancel.php',
+		{
+			bill_item_id:bill_item_id,
+		});
+	success_post.done(function(data){
+		if(data>0){
+var val="Rs ."+data;
+			$('#tot_button_val').text(val);
+		}else{
+			$('#tot_button_val').text("Rs .0");
+		}
+		});
+		$('#bill_item_row'+bill_item_id).remove();
+});
+
+
+$(".cancel_button").click(function() {
+var cancel='cancel';
+var success_post = $.post('cancel.php',
+		{
+			cancel:cancel,
+		});
+	success_post.done(function(data){
+		if(data==1){
+		location.reload();
+		}
+		});
+});
+$(".to_kitchen_button").click(function() {
+var to_kitchen='to_kitchen';
+var success_post = $.post('kitchen_statuses.php',
+		{
+			to_kitchen:to_kitchen,
+		});
+	success_post.done(function(data){
+		if(data==1){
+		location.reload();
+		}
+		});
+});
 
 
 	

@@ -26,12 +26,16 @@ $data_bill_items=$mybillitems->get_list_array_bylimit();
 if(isset($_POST['payment'])){
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
+
 $mybills->bill_status_id=BILL_STATUS_PAID;
 $mybillitems->bill_id=$_SESSION['bill_id'];
+$mybillitems->bill_item_status_id==BILL_ITEM_STATUS_ACTIVE;
+$mybillitems->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED;
 $bill_amount=$mybillitems->get_tot_bill_amount_array();
 $mybills->amount=$bill_amount;
-$mybills->payment_date=CURRENT_DATE;
+$mybills->payment_date=CURRENT_DATETIME;
 $mybills->update();
+
 }
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
@@ -79,5 +83,6 @@ exit();
 print 'No Bill Selected.<a class="close-reveal-modal">&#215;</a>';
 exit();
 }
+
 
 ?>
