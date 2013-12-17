@@ -146,7 +146,7 @@ function get_items_by_category(){
 			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
 			if ( mysql_num_rows($rsRES) > 0 )
 				 {
-					while ( list ($id,$name,$item_category_id,$rate,$tax) = mysql_fetch_row($rsRES) ){
+					while ( list ($id,$name,$item_category_id,$rate,$tax,$chkmaster) = mysql_fetch_row($rsRES) ){
 						$items[$i]['id'] =  $id;
 						$items[$i]['name'] =  $name;
 						$items[$i]['item_category_id'] =$item_category_id;
