@@ -8,7 +8,7 @@ require(ROOT_PATH.'include/class/class_page/class_page.php');	// new Page Class
 $page = new Page;
 	$page->root_path = ROOT_PATH;
 	$page->current_url = $current_url;	// current url for pages
-	$page->title = "Acube MVC";	// page Title
+	$page->title = "Restaurant";	// page Title
 	$page->page_name = 'index';		// page name for menu and other purpose
 	$page->layout = 'restaurant.html';		// layout name
 
@@ -26,7 +26,7 @@ $page = new Page;
 
     $index=0;
 
-	$content_list[$index]['file_name']='inc_right_menu.php';
+	$content_list[$index]['file_name']='kitchen/inc_right_menu.php';
     $content_list[$index]['var_name']='right_menu';
     $index++;
 
@@ -34,7 +34,7 @@ $page = new Page;
 	$page->content_list = $content_list;
 
 	$page->module_path = 'modules/kitchen/'; 
-    $page->module = 'dashboard';
+    $page->module = 'active_orders';
 
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>

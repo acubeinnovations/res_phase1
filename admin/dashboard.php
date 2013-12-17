@@ -10,7 +10,7 @@ $page = new Page;
 	$page->current_url = $current_url;	// current url for pages
 	$page->title = "Administrator - Dashboard";	// page Title
 	$page->page_name = 'index';		// page name for menu and other purpose
-	$page->layout = 'default.html';		// layout name
+	$page->layout = 'restaurant.html';		// layout name
 
     
     $page->conf_list = array("conf.php");
@@ -22,13 +22,13 @@ $page = new Page;
 	$page->access_list = array("ADMINISTRATOR");
 
     $index=0;
-    $content_list[$index]['file_name']='administrator/inc_menu.php';
-    $content_list[$index]['var_name']='menu';
+    $content_list[$index]['file_name']='admin/inc_right_menu.php';
+    $content_list[$index]['var_name']='right_menu';
     $index++;
 
-    $content_list[$index]['file_name']='administrator/inc_dashboard.php';
-    $content_list[$index]['var_name']='content';
-    $index++;
+   // $content_list[$index]['file_name']='admin/inc_right_menu.php';
+  //  $content_list[$index]['var_name']='right_menu';
+  //  $index++;
 
 
 	$page->content_list = $content_list;

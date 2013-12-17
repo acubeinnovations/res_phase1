@@ -34,12 +34,12 @@
         while($i<$count){
          ?> 
 
-    <tr>
-       <td><?php echo $get_item[$i]['id']; ?></td>
-       <td><a href="item.php?id=<?php echo $get_item[$i]['id'] ?>"><?php echo $get_item[$i]['name']?></a></td>
-       <td colspan="2"><?php if(isset($array_item_category[$get_item[$i]['item_category_id']])){echo $array_item_category[$get_item[$i]['item_category_id']] ;}?></td>
-       <td colspan="2"> <?php echo $get_item[$i]['rate'] ;?></td>
-       <td colspan="2"><?php echo $get_item[$i]['tax'] ;?></td>
+   <tr>
+     <td><?php echo $get_item[$i]['id']; ?></td>
+     <td><a href="item.php?id=<?php echo $get_item[$i]['id'] ?>"><?php echo $get_item[$i]['name']?></a></td>
+      <td colspan="2"><?php if(isset($array_item_category[$get_item[$i]['item_category_id']])){echo $array_item_category[$get_item[$i]['item_category_id']] ;}?></td>
+      <td colspan="2"> <?php echo $get_item[$i]['rate'] ;?></td>
+      <td colspan="2"><?php echo $get_item[$i]['tax'] ;?></td>
 
    </tr>
 

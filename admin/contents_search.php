@@ -16,9 +16,10 @@ $page = new Page;
     $page->conf_list = array("conf.php");
     $page->menuconf_list = array("menu_conf.php");
 	$page->connection_list = array("connection.php");
-
 	$page->function_list = array("functions.php");
 	$page->class_list = array("class_pagination.php");
+	
+	$page->access_list = array("ADMINISTRATOR");
 
 	$page->style_list = array("form_table.css","report_table.css");
 

@@ -7,11 +7,10 @@ if(!defined('CHECK_INCLUDED')){
 
     <form data-abide target="_self" method="post" action="<?php echo $current_url?>" name="frmlogin">
        <fieldset>
-        <legend>Item Category</legend>
+        <legend> Category</legend>
             <div class="row">
             <div class="large-4 columns">
            <small><?php echo $msg;?></small>
-         <a href="item_categories.php">List All</a>
     </div>
   </div>
 
@@ -21,14 +20,14 @@ if(!defined('CHECK_INCLUDED')){
       <input placeholder=""  required pattern="[a-zA-Z]+"  type="text" name="name" id="name" value="<?php echo $item_category->name;?>">
        <small class="error">Enter Category</small>
     </div>
-
+  </div>
       <div class="row">
       <div class="large-4 columns">
-       <label for="listitem"><small>required</small></label>
+       <label for="lstitem_category">Parent Category <small>required</small></label>
          <small class="error">Select Item.</small>
       <?php echo populate_list_array("lstitem_category", $arr_item_category, 'id', 'name', $item_category->parent_id,$disable=false);
-?></td>
-    
+?>
+
     </div>
   </div>
     <div class="row">
@@ -42,8 +41,9 @@ if(!defined('CHECK_INCLUDED')){
   </div>
 
   <div class="row">
-    <div class="large-4 columns">  
+    <div class="large-4 columns">
       <input class="small button" value="submit" type="submit" name="submit" id="submit" >
+     <input value="<?php echo $item_category->id;?>" type="hidden" name="h_id" >
     </div>
   </div>
 
@@ -54,5 +54,3 @@ if(!defined('CHECK_INCLUDED')){
 
 
 </div>
-
-

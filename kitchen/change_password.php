@@ -9,7 +9,7 @@ $page = new Page;
 
 	$page->root_path = ROOT_PATH;
 	$page->current_url = $current_url;	// current url for pages
-	$page->title = "Administrator - Chang Password";	// page Title
+	$page->title = "Administrator - Change Password";	// page Title
 	$page->page_name = 'index';		// page name for menu and other purpose
 	$page->layout = 'restaurant.html';		// layout name
 
@@ -24,10 +24,10 @@ $page = new Page;
 
 	$page->access_list = array("KITCHEN","MASTER_KITCHEN");
 
-	$page->style_list = array("form_table.css");
+	
 
     $index=0;
-    $content_list[$index]['file_name']='inc_right_menu.php';
+	$content_list[$index]['file_name']='kitchen/inc_right_menu.php';
     $content_list[$index]['var_name']='right_menu';
     $index++;
 
