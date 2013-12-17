@@ -11,18 +11,19 @@ if ( !defined('CHECK_INCLUDED') ){
 	$arr_item_category=array();
 	}
 
-	if(isset($_POST['submit']) && $_POST['submit']=="Submit" ){
+	if(isset($_POST['submit']) && $_POST['submit']=="submit" ){
  	$chk=validate($myconnection);//echo $chk;
  	if($chk==true){
-	//$item_category->id=$_POST['h_id'];
-	$item_category->name=$_POST['name'];
+ 	$item_category->id=$_POST['h_id'];	
+ 	$item_category->name=$_POST['name'];
 	$item_category->status_id=$_POST['status_id'];
 	$item_category->parent_id=$_POST['lstitem_category'];
 	$item_category->update();
 	$msg="Category Updated";
 	 }else{
 	 $msg="Invalid Entry";
- 	}
+ 
+ }
 }
 
 
@@ -31,8 +32,7 @@ if(isset($_GET['id'])){
 	$item_category->id=$_GET['id'];
 	$item_category->get_details();
 }
- $status =array("Active","Inactive");
-echo $status;
+
 
 
 ?>

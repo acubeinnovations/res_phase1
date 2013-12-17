@@ -1,7 +1,7 @@
 <?php
 
 function validate($myconnection)
-{
+{  
 	$msg="";
 	if(trim($_POST['name'])==""){
 		$msg.="Name field is empty";

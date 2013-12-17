@@ -18,9 +18,7 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 	$page->function_list = array("functions.php");
 	$page->class_list = array("class_administrator_session.php");
-
-	#$page->access_list = array("USERTYPE_ADMIN");
-
+	
     $index=0;
     $content_list[$index]['file_name']='admin/inc_right_menu.php';
     $content_list[$index]['var_name']='right_menu';

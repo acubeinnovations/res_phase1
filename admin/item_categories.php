@@ -11,7 +11,7 @@ $page = new Page;
 	$page->current_url = $current_url;	// current url for pages
 	$page->title = "Acube MVC";	// page Title
 	$page->page_name = 'index';		// page name for menu and other purpose
-	$page->layout = 'default.html';		// layout name
+	$page->layout = 'restaurant.html';		// layout name
 
     
     $page->conf_list = array("conf.php");
@@ -21,6 +21,8 @@ $page = new Page;
 	$page->function_list = array("functions.php");
 	$page->class_list = array("class_itemcategory.php");
 
+	$page->access_list = array("ADMINISTRATOR");
+	
 	$page->style_list_link =array("form_table.css");
 
 	

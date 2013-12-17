@@ -20,6 +20,8 @@ $page = new Page;
 	$page->function_list = array("functions.php");
 	$page->class_list = array("class_item.php","class_itemcategory.php");
 
+	//$page->access_list = array("ADMINISTRATOR");
+
 	$page->style_list_link =array("form_table.css");
 
 	
