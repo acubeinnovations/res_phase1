@@ -11,19 +11,18 @@
   <fieldset>
     <legend> Category</legend>
 
-  <table width="295" height="68" align="center">
-  
+  <table width="500" height="68" align="center">
+
 
     <tr>
-        <th>Id</th>
+        <th>Slno</th>
         <th>Category</th>
-        <th colspan ="4">Pattern Category</th>
-        <th>Status </th>
+
     </tr>
 
      <?php
       	if($get_detl==false)
-	       { 
+	       {
 	      ?>
 
     <tr>
@@ -31,19 +30,19 @@
     </tr>
 
        <?php } else {
-		   
+
 		    $i=0;
 			  while($i<$count){
-		
-		     ?> 
-   
+
+		     ?>
+
      <tr>
       <td><?php echo $get_detl[$i]['id']?></td>
       <td><a href="item_category.php?id=<?php echo $get_detl[$i]['id']?>"><?php echo $get_detl[$i]['name']?></a></td>
       <td><?php if(isset($array_category[$get_detl[$i]['parent_id']])){echo $array_category[$get_detl[$i]['parent_id']];}?></td>
-      <td><?php echo $get_detl[$i]['status_id']?></td>
-      
-      
+
+
+
     </tr>
 
      <?php

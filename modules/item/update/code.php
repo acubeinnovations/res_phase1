@@ -32,7 +32,8 @@ if(isset($_POST['submit']) && $_POST['submit']=='submit'){
 	$item->status_id= $_POST['status_id'];
 	$item->from_master_kitchen= $chkvalue;
 	$item->update();
-	$msg="Item Updated";
+	header("location: items.php");
+	exit();
 	}else{
 	$msg="Invalid Entry";
 

@@ -11,28 +11,28 @@
 <fieldset>
     <legend>Item List</legend>
 
-   <table width="295" height="68" align="center">
+   <table width="500" height="68" align="center">
 
     <tr>
-      <th>Id</th>
+      <th>Slno</th>
       <th>Item</th>
-      <th colspan="3">item Category</th>
+      <th colspan="3"> Category</th>
       <th>Rate</th>
       <th>Tax</th>
     </tr>
 
-        <?php 
+        <?php
             if($get_item==false)
           { ?>
 
-      <tr> 
+      <tr>
         <td> No Records Found</td>
       </tr>
 
        <?php } else {
         $i=0;
         while($i<$count){
-         ?> 
+         ?>
 
    <tr>
      <td><?php echo $get_item[$i]['id']; ?></td>
@@ -43,16 +43,14 @@
 
    </tr>
 
-    <?php $i++; 
+    <?php $i++;
           }
           }
            ?>
 
-       
+
 
 </table>
     </form>
    </body>
    </html>
-
-   

@@ -18,7 +18,7 @@ if ( !defined('CHECK_INCLUDED') ){
 	<div class="row">
 		<div class="large-4 columns">
 		   <label for="loginname">User Name <small>required</small></label>
-		  <input placeholder=""  required pattern="[a-zA-Z]+"  type="text" name="loginname"  >
+		  <input placeholder="counter"  required pattern="[a-zA-Z]+"  type="text" name="loginname"  >
 		  <small class="error">Please Enter Your User Name.</small>
 		</div>
 	</div>

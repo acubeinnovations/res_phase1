@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2013 at 10:16 AM
+-- Generation Time: Dec 17, 2013 at 06:49 PM
 -- Server version: 5.5.34
--- PHP Version: 5.3.10-1ubuntu3.8
+-- PHP Version: 5.3.10-1ubuntu3.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -54,10 +54,11 @@ CREATE TABLE IF NOT EXISTS `administrators` (
 CREATE TABLE IF NOT EXISTS `bills` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bill_number` int(11) NOT NULL,
-  `bill_date` date NOT NULL,
+  `bill_date` datetime NOT NULL,
   `booking_date` datetime NOT NULL,
   `payment_date` datetime DEFAULT NULL,
   `bill_status_id` int(11) NOT NULL,
+  `bill_kitchen_status_id` int(11) DEFAULT NULL,
   `amount` double NOT NULL,
   `tax` double NOT NULL,
   `discount` double NOT NULL,
@@ -88,6 +89,7 @@ CREATE TABLE IF NOT EXISTS `bill_items` (
   `tax` double NOT NULL,
   `discount` double NOT NULL,
   `bill_item_status_id` int(11) NOT NULL,
+  `bill_kitchen_status_id` int(11) DEFAULT NULL,
   `created` datetime NOT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -100,6 +102,18 @@ CREATE TABLE IF NOT EXISTS `bill_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `bill_item_statuses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill_kitchen_statuses`
+--
+
+CREATE TABLE IF NOT EXISTS `bill_kitchen_statuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
