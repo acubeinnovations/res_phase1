@@ -11,7 +11,7 @@ $page = new Page;
 	$page->title = "Acube MVC";	// page Title
 	$page->page_name = 'flash';		// page name for menu and other purpose
 
-	$page->layout = 'flash.html';		// layout name
+	$page->layout = 'restaurant.html';		// layout name
 
     $page->conf_list = array("conf.php");
     $page->menuconf_list = array("menu_conf.php");
@@ -19,11 +19,9 @@ $page = new Page;
 	$page->function_list = array("functions.php");
 
 	$index=0;
-	$content_list[$index]['file_name']='administrator/inc_menu.php';
-	$content_list[$index]['var_name']='menu';
-
-	$index++;
-
+	$content_list[$index]['file_name']='kitchen/inc_right_menu.php';
+    $content_list[$index]['var_name']='right_menu';
+    $index++;
 
 	$content_list[$index]['file_name']='inc_flash.php';
 	$content_list[$index]['var_name']='content';

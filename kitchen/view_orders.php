@@ -34,7 +34,7 @@ $page = new Page;
 	$page->content_list = $content_list;
 
 	$page->module_path = 'modules/kitchen/'; 
-    $page->module = 'active_orders';
+    $page->module = 'view_orders';
 
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>
