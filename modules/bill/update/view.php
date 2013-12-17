@@ -86,6 +86,8 @@
 				<a href="#" class="tiny button  hold_button" >HOLD</a>
 				<a href="#" class="tiny button  tot_button" id="tot_button" >TOTAL :</a>
 				<a href="#" class="tiny button  tot_button_val" id="tot_button_val" >Rs .0</a>
+				<a href="#" class="tiny button  cancel_button" id="cancel_button" >CANCEL</a>
+				<a href="#" class="tiny button  to_kitchen_button" id="to_kitchen_button" >TO  KITCHEN</a>
 				
 				</div>
 			

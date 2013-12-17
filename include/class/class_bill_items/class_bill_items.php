@@ -14,6 +14,7 @@ class BillItems {
     var $tax		= "";
     var $discount			= "";
     var $bill_item_status_id = "";
+	var $bill_kitchen_status_id		= "";
     var $created 	= "";
     var $updated	= "";
    	
@@ -37,7 +38,7 @@ $this->valid_from=gINVALID;
 $this->valid_to=gINVALID;
 $this->voucher_bill_item_status_id=gINVALID;
 $this->number_of_vouchers=gINVALID;
-
+$this->bill_kitchen_status_id= "";
 }
 
 
@@ -45,14 +46,15 @@ $this->number_of_vouchers=gINVALID;
         if ( $this->id == "" || $this->id == gINVALID) {
 		
 		
-              $strSQL = "INSERT INTO bill_items (bill_id,item_id, quantity,rate,tax,discount,bill_item_status_id,created,updated) ";
+              $strSQL = "INSERT INTO bill_items (bill_id,item_id, quantity,rate,tax,discount,bill_item_status_id,bill_kitchen_status_id,created,updated) ";
               $strSQL .= "VALUES ('".addslashes(trim($this->bill_id))."','";
 			  $strSQL .= addslashes(trim($this->item_id))."','";
               $strSQL .= addslashes(trim($this->quantity))."','";
               $strSQL .= addslashes(trim($this->rate))."','";
               $strSQL .= addslashes(trim($this->tax))."','";
 			  $strSQL .= addslashes(trim($this->discount))."','";
-				$strSQL .= addslashes(trim($this->bill_item_status_id))."','";
+			  $strSQL .= addslashes(trim($this->bill_item_status_id))."','";
+			  $strSQL .= addslashes(trim($this->bill_kitchen_status_id))."','";
 			  $strSQL .= addslashes(trim($this->created))."','";
 			  $strSQL .= addslashes(trim($this->updated))."')";
              
@@ -93,7 +95,9 @@ $this->number_of_vouchers=gINVALID;
 		if($this->bill_item_status_id!=''){
 	    $strSQL .= "bill_item_status_id = '".$this->bill_item_status_id."',";
 	    }
-
+		if($this->bill_kitchen_status_id!=''){
+	    $strSQL .= "bill_kitchen_status_id = '".addslashes(trim($this->bill_kitchen_status_id))."',";
+	    }
 		if($this->updated!=''){
             $strSQL .= "updated = '".addslashes(trim($this->updated))."'";
 		}
@@ -145,7 +149,7 @@ $this->number_of_vouchers=gINVALID;
                 $this->created = mysql_result($rsRES,0,'created');
 		        $this->updated = mysql_result($rsRES,0,'updated');
 				$this->bill_item_status_id = mysql_result($rsRES,0,'bill_item_status_id');
-				
+				$this->bill_kitchen_status_id= mysql_result($rsRES,0,'bill_kitchen_status_id');
                
                 return true;
         }
@@ -227,6 +231,25 @@ function get_array_bill_item_status_id(){
         }
     }
 
+function update_statuses(){
+    	
+        $strSQL = " UPDATE bill_items SET bill_item_status_id='".$this->bill_item_status_id."'";
+		if($this->bill_kitchen_status_id!=''){	
+		$strSQL.=", bill_kitchen_status_id='".$this->bill_kitchen_status_id."'";
+		}
+	
+	$strSQL.=" WHERE bill_id = '".$this->bill_id."'";echo  $strSQL;
+        $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_affected_rows($this->connection) > 0 ) {
+            return true;
+        }
+        else{
+            $this->error_number = 6;
+            $this->error_description="Can't update status";
+            return  false;
+        }
+    }
+
 
 
 function delete(){
@@ -267,27 +290,6 @@ $this->total_bill_items_used=mysql_result($rsRES,0,'total_bill_items_used');
 }
 
 
-function get_array_id(){
-$voucher_bill_id="";
-$i=0;
-$strSQL = "SELECT id  from bill_items WHERE voucher_bill_id='".addslashes(trim($this->voucher_bill_id))."'";
-$rsRES = mysql_query($strSQL, $this->connection);
-if ( mysql_num_rows($rsRES) > 0 ){
-        while ( list ($id) = mysql_fetch_row($rsRES) ){
-          $voucher_bill_id[$i] = $id;
-			$i++;
-        }
-        return $voucher_bill_id;
-        }
-        else{
-        $this->error_number = 4;
-        $this->error_description="Can't list voucher_bill_id";
-        return false;
-        }
-
-
-}
-
 
 function bill_item_check(){
 		$strSQL = "SELECT id FROM bill_items WHERE bill_id = '".$this->bill_id."' AND item_id =".$this->item_id; 
@@ -304,7 +306,14 @@ function bill_item_check(){
 function get_tot_bill_amount_array(){
 	$rate_array=0;
 	$i=0;
-	$strSQL = "SELECT rate FROM bill_items WHERE bill_id = '".$this->bill_id."'"; 
+	$Strcondition='';
+	$strSQL = "SELECT rate FROM bill_items WHERE bill_id = '".$this->bill_id."' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'"; 
+	if($this->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED ){
+	$Strcondition="' AND bill_kitchen_status_id=".$this->bill_kitchen_status_id;
+	}
+	if($Strcondition!=''){
+	$strSQL.=$Strcondition;
+	}
   		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
           if ( mysql_num_rows($rsRES) > 0 ){
         while ( list ($rate) = mysql_fetch_row($rsRES) ){
