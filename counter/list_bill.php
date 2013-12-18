@@ -23,8 +23,7 @@ $page = new Page;
 	$page->access_list = array("COUNTER");
 	$page->script_list = array("jquery.min.js");
 	
-	 
-	
+	  
 	
 	$page->module_path 	= '/modules/bill/';
 	$page->module		= 'list_bill';

@@ -7,6 +7,10 @@
          <a href="#" data-reveal-id="openedbills" id="opened_bills">Bill on Hold</a>
           
         </li>
+		<li>
+         <a href="bills.php">Bills</a>
+          
+        </li>
 
 
         <li class="divider"></li>
@@ -33,3 +37,6 @@
 
       </ul>
     </section>
+<!--
+
+ -->
