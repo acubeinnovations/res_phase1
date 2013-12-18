@@ -81,15 +81,23 @@
 				</div>		
 				</div>
 				<div class="small-4 columns  small-block-grid-4 payment">
-				<a href="#" data-reveal-id="print_bill" class="tiny button  payment_button" id="payment_button" >PAY</a>
-				<a href="#" data-reveal-id="print_bill" id="print_bill_button" class="tiny button  print_bill_button" >PRINT</a>
+				<a href="#" class="tiny button success bill_number" >BILL:<?php echo $_SESSION['bill_number'];?> </a>
+				<?php if($bill_status==BILL_STATUS_BILLED) {?>
+				<a href="#"  class="tiny button  payment_button" id="payment_button" >PAY</a>
 				<a href="#" class="tiny button  hold_button" >HOLD</a>
-				<a href="#" class="tiny button  tot_button" id="tot_button" >TOTAL :</a>
-				<a href="#" class="tiny button  tot_button_val" id="tot_button_val" >Rs .0</a>
 				<a href="#" class="tiny button  cancel_button" id="cancel_button" >CANCEL</a>
-				<a href="#" class="tiny button  to_kitchen_button" id="to_kitchen_button" >TO  KITCHEN</a>
-				
-				</div>
+				<a href="#" class="tiny button success tot_button_val" id="tot_button_val" >TOTAL : Rs .0</a>
+				<?php }else if($bill_status==BILL_STATUS_PAID){ ?>
+				<a href="#" data-reveal-id="print_bill" id="print_bill_button" class="tiny button  print_bill_button" >PRINT</a>
+				<a href="#" id="new_bill" class="tiny button  new_bill" >NEW BILL</a>
+				<a href="#" class="tiny button success tot_button_val" id="tot_button_val" >TOTAL : Rs .0</a>
+				<?php }else if($bill_status==''){?>
+				<a href="#"  class="tiny button  payment_button" id="payment_button" >PAY</a>
+				<a href="#" class="tiny button  hold_button" >HOLD</a>
+				<a href="#" class="tiny button  cancel_button" id="cancel_button" >CANCEL</a>
+				<a href="#" class="tiny button success tot_button_val" id="tot_button_val" >TOTAL : Rs .0</a>
+				<?php }?>
+			 </div>
 			
 				</div>
 		
