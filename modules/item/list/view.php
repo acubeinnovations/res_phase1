@@ -35,12 +35,13 @@
          ?>
 
    <tr>
-     <td><?php echo $get_item[$i]['id']; ?></td>
-     <td><a href="item.php?id=<?php echo $get_item[$i]['id'] ?>"><?php echo $get_item[$i]['name']?></a></td>
+      <td><?php echo $get_item[$i]['id'] ?></td>
+      <td><a href="item.php?id=<?php echo $get_item[$i]['id'] ?>"><?php echo $get_item[$i]['name']?></a></td>
       <td colspan="2"><?php if(isset($array_item_category[$get_item[$i]['item_category_id']])){echo $array_item_category[$get_item[$i]['item_category_id']] ;}?></td>
       <td colspan="2"> <?php echo $get_item[$i]['rate'] ;?></td>
       <td colspan="2"><?php echo $get_item[$i]['tax'] ;?></td>
-
+      <td colspan="2"><?php if(isset($g_ARRAY_STATUS[$get_item[$i]['status_id']])) { echo $g_ARRAY_STATUS[$get_item[$i]['status_id']]; }?></td>
+                    
    </tr>
 
     <?php $i++;

@@ -45,7 +45,7 @@ Class item{
 			$strSQL .= "item_category_id = '".addslashes(trim($this->item_category_id))."',";
 			$strSQL .= "rate = '".addslashes(trim($this->rate))."',";
 			$strSQL .= "tax = '".addslashes(trim($this->tax))."',";
-		 	$strSQL .= "status_id = '".addslashes(trim($this->status_id))."'";
+		 	$strSQL .= "status_id = '".addslashes(trim($this->status_id))."',";
 		 	$strSQL .= "from_master_kitchen = '".addslashes(trim($this->from_master_kitchen))."'";
 			$strSQL .= " WHERE id = ".$this->id;
 			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );

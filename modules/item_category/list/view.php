@@ -17,13 +17,14 @@
     <tr>
         <th>Slno</th>
         <th>Category</th>
-
+        <th>Parent Category</th>
+        <th>Status</th>
     </tr>
 
      <?php
-      	if($get_detl==false)
+      	if($array_item_categories==false)
 	       {
-	      ?>
+	   ?>
 
     <tr>
       <td colspan="7" >No records found </td>
@@ -33,17 +34,16 @@
 
 		    $i=0;
 			  while($i<$count){
-
 		     ?>
 
      <tr>
-      <td><?php echo $get_detl[$i]['id']?></td>
-      <td><a href="item_category.php?id=<?php echo $get_detl[$i]['id']?>"><?php echo $get_detl[$i]['name']?></a></td>
-      <td><?php if(isset($array_category[$get_detl[$i]['parent_id']])){echo $array_category[$get_detl[$i]['parent_id']];}?></td>
-
-
-
-    </tr>
+      <td><?php echo $array_item_categories[$i]['id']?></td>
+      <td><a href="item_category.php?id=<?php echo $array_item_categories[$i]['id']?>"><?php echo $array_item_categories[$i]['name']?></a></td>
+     <td><?php if(isset($array_category[$array_item_categories[$i]['parent_id']])){echo $array_category[$array_item_categories[$i]['parent_id']];}?></td>
+     <td color="" >
+      <?php if(isset($g_ARRAY_STATUS[$array_item_categories[$i]['status_id']])){ echo $g_ARRAY_STATUS[$array_item_categories[$i]['status_id']];}?>
+      </td>
+      </tr>
 
      <?php
 		  $i++;
