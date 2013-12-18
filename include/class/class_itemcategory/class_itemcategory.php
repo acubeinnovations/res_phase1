@@ -5,14 +5,14 @@ if ( !defined('CHECK_INCLUDED') ){
 }
 
 class ItemCategory{
-	var $connection;
+	var  $connection;
 	var  $id=gINVALID;
 	var  $name="";
 	var  $status_id="";
 	var  $parent_id="";
-	var $error = false;
-    var $error_number=gINVALID;
-    var $error_description="";
+	var  $error = false;
+    var  $error_number=gINVALID;
+    var  $error_description="";
 	
 
 	

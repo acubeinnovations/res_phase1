@@ -33,10 +33,8 @@ if(!defined('CHECK_INCLUDED')){
     <div class="row">
     <div class="large-4 columns">
       <label for ="status_id">Status</label>
-      <select name ="status_id">
-        <option value="1">Active</option>
-        <option value="0">Invactive</option>
-      </select>
+      <?php echo populate_list_array("lststatus", $g_ARRAY_LIST_STATUS, 'id', 'name', $item_category->status_id,$disable=false);?>
+
      </div>
   </div>
 
