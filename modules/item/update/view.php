@@ -14,19 +14,17 @@ if(!defined('CHECK_INCLUDED')){
 		</div>
 	</div>
 
-	
+
 	<div class="row">
 		<div class="large-4 columns">
-			<tr>
-				<td colspan="2" align="left"><a href="items.php">List All</a> </td>
-			</tr>
+
 		   <label for="Itemname">Item Name <small>required</small></label>
 		  <input placeholder=""  required pattern="[a-zA-Z]+"  type="text" name="name" value="<?php echo $item->name; ?>"/ >
 		  <small class="error">Please Enter Item Name.</small>
 		</div>
 	</div>
 
-	
+
 	<div class="row">
 		<div class="large-4 columns">
 		  <label for="listitemcat">Item Category <small>required</small></label>
@@ -37,13 +35,13 @@ if(!defined('CHECK_INCLUDED')){
 
 
 <div class="row">
-		<div class="large-4 columns">  
+		<div class="large-4 columns">
 			<label for="rate">Rate </label>
 		  <input placeholder=""  type="text" name="rate" value="<?php echo $item->rate; ?>" id= "name"/ >
 		  <small class="error">Please Enter Rate.</small>
 		</div>
 	</div>
-  
+
   <div class="row">
 		<div class="large-4 columns">
 		   <label for="Tax">Tax </label>
@@ -65,9 +63,9 @@ if(!defined('CHECK_INCLUDED')){
 	<div class="large-4 columns">
 
    			<label for="chkmaster">Master </label>
-   			<?php if($item->from_master_kitchen==1) {?>
+   			<?php if($item->from_master_kitchen == 1) {?>
    			<input id="chk" type="checkbox" value="1" name="chkmaster" checked="checked">
-   			
+
     		<?php } else { ?>
    			  <input id="chk" type="checkbox" value="0" name="chkmaster">
  			 </div>
@@ -77,14 +75,7 @@ if(!defined('CHECK_INCLUDED')){
 			<input class="small button" value="submit" type="submit" name="submit" >
 		</div>
 		</div>
-			
-	
+
+
 	</fieldset>
 </form>	
-
-
-
-
-	
-	
-     
