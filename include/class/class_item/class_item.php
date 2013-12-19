@@ -16,7 +16,7 @@ Class item{
 	var $error = false;
     var $error_number=gINVALID;
     var $error_description="";
-
+    var $total_records='';
 
  function update()
 		{
@@ -208,6 +208,51 @@ function get_array_item_name(){
 
 }
 
+
+  function get_list_array_bylimit($start_record = 0,$max_records = 25){
+        $items = array(); 
+		$i=0;
+		$str_condition = "";
+        $strSQL = "SELECT id,name,item_category_id,rate,tax,status_id,from_master_kitchen FROM items WHERE 1";
+		if($this->id!='' && $this->id!=gINVALID){
+           $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
+      	 }
+        if ($this->name!='') { 
+       	$strSQL .= " AND name LIKE '%".addslashes(trim($this->name))."%'";  
+        }
+		 if ($this->item_category_id!='') { 
+       	$strSQL .= " AND item_category_id LIKE '%".addslashes(trim($this->item_category_id))."%'";  
+        }	
+
+        $strSQL .= " ORDER BY id";
+		$strSQL_limit = sprintf("%s LIMIT %d, %d", $strSQL, $start_record, $max_records);
+		$rsRES = mysql_query($strSQL_limit, $this->connection) or die(mysql_error(). $strSQL_limit);
+
+        if ( mysql_num_rows($rsRES) > 0 ){
+
+            //without limit  , result of that in $all_rs
+            if (trim($this->total_records)!="" && $this->total_records > 0) {
+            } else {
+				
+                $all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit); 
+                $this->total_records = mysql_num_rows($all_rs);
+            }
+			while ( list ($id,$name,$item_category_id,$rate,$tax,$status_id,$from_master_kitchen) = mysql_fetch_row($rsRES) ){
+						$items[$i]["id"] =  $id;
+						$items[$i]["name"] = $name;
+						$items[$i]["item_category_id"] = $item_category_id;
+						$items[$i]["rate"] = $rate;
+						$items[$i]["tax"] = $tax;
+						$items[$i]["status_id"] = $status_id;
+						$items[$i]["from_master_kitchen"] = $from_master_kitchen;
+						$i++;
+           		 	
+		    }        	return $items;
+        }
+        else{
+        	return false;
+        }
+    }
 
 }
 ?>

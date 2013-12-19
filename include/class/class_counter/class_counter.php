@@ -83,4 +83,51 @@ function change_password($newpasswd,$oldpasswd){
                     
     	}
 
-}
+ function get_list_array_bylimit($start_record = 0,$max_records = 25){
+        $limited_data = array();
+        $i=0;
+        $str_condition = "";
+        $strSQL = "SELECT id,username,name,lastlogin,status_id FROM counters WHERE 1 ";
+         if($this->id!='' && $this->id!=gINVALID){
+           $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
+         }
+     
+      $strSQL .= "ORDER BY id";
+      $strSQL_limit = sprintf("%s LIMIT %d, %d", $strSQL, $start_record, $max_records);
+      $rsRES = mysql_query($strSQL_limit, $this->connection) or die(mysql_error(). $strSQL_limit);
+    if ( mysql_num_rows($rsRES) > 0 ){
+        while ( list ($id,$username,$name,$lastlogin,$status_id) = mysql_fetch_row($rsRES) ){
+              $limited_data[$i]["id"] = $id;
+              $limited_data[$i]["username"] = $username;
+              $limited_data[$i]["name"] = $name;
+              $limited_data[$i]["lastlogin"] = date('m/d/Y H:i:s', strtotime($lastlogin));
+               $limited_data[$i]["status_id"] = $status_id;
+              $i++;
+          }return $limited_data;
+          }else{
+          return false;
+           }
+       
+ }
+      
+function search(){
+   $strSQL = "SELECT username,name from counters WHERE Description Like '%.search%'";
+    $rsRES= mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+     if ( mysql_affected_rows($this->connection) > 0 ){
+                    return true;
+                }
+              else{
+                $this->error_description = "Invalid";
+                return false;
+                }
+      }
+
+        
+ 
+  }             
+
+   
+   
+          
+       
+    
