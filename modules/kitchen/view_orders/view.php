@@ -2,21 +2,23 @@
      	 <div class="medium-12 columns">
 			<h1>Orders</h1>
        		 <div class="row">
-			<hr /> 
+			<hr /> 	<?php
+				$slno=1;
+				$bill_index=0;
+				while($bill_index<count($bills)){ ?>
 			<div class="medium-10 column">
+		
+			<p><b> <?php echo $slno?>  </b> &nbsp;&nbsp;<a href="#" class="button tiny success">Accept</a>&nbsp;<a href="#" class="button tiny alert">Reject</a>&nbsp;<b> &nbsp;&nbsp;<u>Items Ordered</u>:<b><?php echo $item_name[$data_bill_items[$bill_index]['item_id']]?>&nbsp;&nbsp;
 			
-			<p>1) Order_1  &nbsp;&nbsp;<a href="#" class="button tiny success">Approve</a>&nbsp;<a href="#" class="button tiny alert">Reject</a>&nbsp;<b> &nbsp;&nbsp;<u>Items Ordered</u> :</b> Omlet (2), BDF (4), Kabab (4)
-			|| <b>Status : To Kitchen &nbsp;&nbsp;</b>  <b> 
+			Status : <?php //echo $item_name[$data_bill_items[$bill_index]['bill_kitchen_status_id']]?></b>  <b> 
 			</p>	<hr />
 			
-			
-			<p>2) Order_2  &nbsp;&nbsp;<a href="#" class="button tiny success">Approve</a>&nbsp;<a href="#" class="button tiny alert">Reject</a>&nbsp;<b> &nbsp;&nbsp;<u>Items Ordered</u> :</b> Omlet (2), BDF (4), Kabab (4)
-			|| <b>Status : To Kitchen &nbsp;&nbsp;</b> <br /><b> 
-			</p>	<hr />	
-	
-			
     		 </div>
-
+			 			
+				<?php
+				$bill_index++;
+				$slno++;
+				}?>
 			 
 			
 

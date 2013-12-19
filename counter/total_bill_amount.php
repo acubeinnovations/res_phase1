@@ -20,7 +20,7 @@ $page = new Page;
 	$page->function_list = array("functions.php");
 	$page->class_list = array("class_counter_session.php","class_item.php","class_bill_items.php","class_bill.php","class_itemcategory.php");
 
-	$page->access_list = array("MASTER_KITCHEN","KITCHEN");
+	$page->access_list = array("COUNTER");
 	$page->script_list = array("jquery.min.js");
 	
 	 
