@@ -4,57 +4,57 @@
 if(!defined('CHECK_INCLUDED')){
 		exit();
 }
-$mybills=new Bills($myconnection);
-$mybills->connection=($myconnection);
-$bill_statuses=$mybills->get_array_statuses();
-if(isset($_POST['opened'])){
-
-
-
-
-}
-$bills='';
-$mybills->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
-$bills=$mybills->get_list_array_bylimit();
-
-
-?>
-
-
-<?php
-
-//prevent execution direct call by browser
-
-
-
-$item_rate='';
-$item_name='';
-$bill_amount='0';
-$item=new Item($myconnection);
-$item->connection=($myconnection);
-$item_name=$item->get_array_item_name();
-$item_rate=$item->get_array_item_rate();
-$mybills=new Bills($myconnection);
-$mybills->connection=($myconnection);
-$bill_status=$mybills->get_array_statuses();
-$mybillitems=new BillItems($myconnection);
-$mybillitems->connection=($myconnection);
-
-//$mybillitems->bill_id=$_POST['bill_id'];
-
-$data_bill_items=$mybillitems->get_list_array_bylimit();
-
-//$mybills->id=$_POST['bill_id'];
-$mybills->get_detail();
-
-//$mybillitems->bill_id=$_POST['bill_id'];
-$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
-
-$bill_amount=$mybillitems->get_tot_bill_amount_array();
-if($bill_amount==false){
-$bill_amount=0;
-}
-$bill_item_index=0;
+//$mybills=new Bills($myconnection);
+//$mybills->connection=($myconnection);
+//$bill_statuses=$mybills->get_array_statuses();
+//if(isset($_POST['opened'])){
+//
+//
+//
+//
+//}
+//$bills='';
+//$mybills->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
+//$bills=$mybills->get_list_array_bylimit();
+//
+//
+//?>
+//
+//
+//<?php
+//
+////prevent execution direct call by browser
+//
+//
+//
+//$item_rate='';
+//$item_name='';
+//$bill_amount='0';
+//$item=new Item($myconnection);
+//$item->connection=($myconnection);
+//$item_name=$item->get_array_item_name();
+//$item_rate=$item->get_array_item_rate();
+//$mybills=new Bills($myconnection);
+//$mybills->connection=($myconnection);
+//$bill_status=$mybills->get_array_statuses();
+//$mybillitems=new BillItems($myconnection);
+//$mybillitems->connection=($myconnection);
+//
+////$mybillitems->bill_id=$_POST['bill_id'];
+//
+//$data_bill_items=$mybillitems->get_list_array_bylimit();
+//
+////$mybills->id=$_POST['bill_id'];
+//$mybills->get_detail();
+//
+////$mybillitems->bill_id=$_POST['bill_id'];
+//$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
+//
+//$bill_amount=$mybillitems->get_tot_bill_amount_array();
+//if($bill_amount==false){
+//$bill_amount=0;
+//}
+//$bill_item_index=0;
 
 //$div_content='<table>
 //  <thead>
@@ -95,3 +95,19 @@ $bill_item_index=0;
 
 
 ?>
+<?php
+//$mybills=new Bills($myconnection);
+//$mybills->connection=($myconnection);
+//$mybills->bills_kitchen_status_id=TO_KITCHEN;
+//$mybills->bills_status_id=PAID;
+//$mybills->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
+//
+//$mybillitems=new BillItems($myconnection);
+//$mybillitems->connection=($myconnection);
+//$mybillitems->bill_kitchen->TO_KITCHEN;
+//$mybillitems->bill_item_status->ACTIVE;
+//$mybillitems->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
+
+
+?>
+

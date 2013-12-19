@@ -1,0 +1,16 @@
+.pricing-table {
+width: 150px;
+margin-right:5px;
+margin-left:15px;
+float:left;
+
+}
+
+.pricing-table .title { 
+
+background-color:#C90;
+}
+
+.a{
+background-color:#3C0;
+}

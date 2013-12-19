@@ -28,9 +28,6 @@ $page = new Page;
 	
 	$page->module_path 	= '/modules/bill/';
 	$page->module		= 'total_bill_amount';
-
-
-
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>
     
