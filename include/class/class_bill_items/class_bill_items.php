@@ -233,12 +233,15 @@ function get_array_bill_item_status_id(){
 
 function update_statuses(){
     	
-        $strSQL = " UPDATE bill_items SET bill_item_status_id='".$this->bill_item_status_id."'";
+        $strSQL = " UPDATE bill_items SET updated='".CURRENT_DATETIME."'";
+		if($this->bill_item_status_id!=''){	
+		$strSQL.=", bill_item_status_id='".$this->bill_item_status_id."'";
+		}
 		if($this->bill_kitchen_status_id!=''){	
 		$strSQL.=", bill_kitchen_status_id='".$this->bill_kitchen_status_id."'";
 		}
 	
-	$strSQL.=" WHERE bill_id = '".$this->bill_id."'";echo  $strSQL;
+		$strSQL.=" WHERE bill_id = '".$this->bill_id."' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'";
         $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
         if ( mysql_affected_rows($this->connection) > 0 ) {
             return true;
@@ -309,7 +312,7 @@ function get_tot_bill_amount_array(){
 	$Strcondition='';
 	$strSQL = "SELECT rate FROM bill_items WHERE bill_id = '".$this->bill_id."' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'"; 
 	if($this->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED ){
-	$Strcondition="' AND bill_kitchen_status_id=".$this->bill_kitchen_status_id;
+	$Strcondition=" AND bill_kitchen_status_id=".$this->bill_kitchen_status_id;
 	}
 	if($Strcondition!=''){
 	$strSQL.=$Strcondition;

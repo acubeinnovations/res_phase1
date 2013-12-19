@@ -134,11 +134,12 @@ $this->amount=0;
 	function get_details_of_holded_bills(){
 		$holded_bills = array();
 		$i=0;
-        $strSQL = "SELECT  id,amount,bill_date FROM bills WHERE bill_status_id='".$this->bill_status_id."' AND counter_id='".$this->counter_id."' AND bill_date LIKE '%".$this->bill_date."%'";
+        $strSQL = "SELECT  id,bill_number,amount,bill_date FROM bills WHERE bill_status_id='".$this->bill_status_id."' AND counter_id='".$this->counter_id."' AND bill_date LIKE '%".$this->bill_date."%'";
         $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
         if ( mysql_num_rows($rsRES) > 0 ){
-            while ( list($id,$amount,$bill_date) = mysql_fetch_row($rsRES) ){
+            while ( list($id,$bill_number,$amount,$bill_date) = mysql_fetch_row($rsRES) ){
 				$holded_bills[$i]['id'] = $id;
+				$holded_bills[$i]['bill_number'] = $bill_number;
 				$holded_bills[$i]['amount'] = $amount;
 				$holded_bills[$i]['bill_time'] = date("H:i:s",strtotime($bill_date));
                $i++;
@@ -154,10 +155,11 @@ $this->amount=0;
 
 
     function exist(){
-        $strSQL = "SELECT id FROM bills WHERE id = '".$this->id."'"; 
+        $strSQL = "SELECT id,bill_status_id FROM bills WHERE id = '".$this->id."'"; 
   		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
         if ( mysql_num_rows($rsRES) > 0 ){
 		$this->id = mysql_result($rsRES,0,'id');
+		$this->bill_status_id=mysql_result($rsRES,0,'bill_status_id');
             return true;
         }
         else{
@@ -206,7 +208,7 @@ $this->amount=0;
         $limited_data = array(); 
 		$i=0;
 		$str_condition = "";
-        $strSQL = "SELECT id,booking_date,bill_date,payment_date,bill_status_id,name,amount FROM bills WHERE 1";
+        $strSQL = "SELECT id,bill_number,bill_date,payment_date,bill_status_id,amount FROM bills WHERE 1";
 		if($this->id!='' && $this->id!=gINVALID){
            $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
       	 }
@@ -222,6 +224,9 @@ $this->amount=0;
 		
 	 if ($this->bill_status_id!='' && $this->bill_status_id!=gINVALID) { 
         $strSQL .= " AND bill_status_id = '".addslashes(trim($this->bill_status_id))."'";  
+        }
+		if ($this->counter_id!='' && $this->counter_id!=gINVALID) { 
+        $strSQL .= " AND counter_id = '".addslashes(trim($this->counter_id))."'";  
         }
 		
          $strSQL .= " ORDER BY id";
@@ -239,13 +244,12 @@ $this->amount=0;
                 $all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit); 
                 $this->total_records = mysql_num_rows($all_rs);
             }
-			while (list ($id,$date,$bill_status_id,$payment_id,$agent_id,$name,$amount,$commision) = mysql_fetch_row($rsRES) ){
+			while (list ($id,$bill_number,$bill_date,$payment_date,$bill_status_id,$amount) = mysql_fetch_row($rsRES) ){
 		          $limited_data[$i]["id"] = $id;
-		          $limited_data[$i]["bill_date"] = $date;
-				  $limited_data[$i]["booking_date"] = $date;
-				  $limited_data[$i]["payment_date"] = $date;
+				  $limited_data[$i]["bill_number"] = $bill_number;
+		          $limited_data[$i]["bill_date"] = $bill_date;
+				  $limited_data[$i]["payment_date"] = $payment_date;
 		          $limited_data[$i]["bill_status_id"] = $bill_status_id;
-		          $limited_data[$i]["name"]=$name;
 		          $limited_data[$i]["amount"]=$amount;
 				  $i++;
 		    }

@@ -24,12 +24,13 @@ if(isset($_POST['submit']) && $_POST['submit']=='submit'){
 		$chkvalue=0;
 		}
 
-
+	$item->id= $_POST['h_id'];
 	$item->name= $_POST['name'];
 	$item->rate = $_POST['rate'];
 	$item->tax =  $_POST['tax'];
-	$item->item_category_id=$_POST['listitem'];
-	$item->status_id= $_POST['status_id'];
+
+	$item->item_category_id=$_POST['lisitemcategory'];
+	$item->status_id= $_POST['lststatus'];
 	$item->from_master_kitchen= $chkvalue;
 	$item->update();
 	header("location: items.php");
@@ -39,11 +40,10 @@ if(isset($_POST['submit']) && $_POST['submit']=='submit'){
 
 }
 
-
-if(isset($_GET['id'])){
-	$item->id=$_GET['id'];
-	$item->get_details();
-}
+	if(isset($_GET['id'])){
+		$item->id=$_GET['id'];
+		$item->get_details();
+	}
 
 
 

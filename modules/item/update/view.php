@@ -28,7 +28,7 @@ if(!defined('CHECK_INCLUDED')){
 	<div class="row">
 		<div class="large-4 columns">
 		  <label for="listitemcat">Item Category <small>required</small></label>
-		<td><?php echo populate_list_array("listitem", $arr_item_category, 'id','name', $item->item_category_id,$disable=false);?></td>
+		<td><?php echo populate_list_array("lisitemcategory", $arr_item_category, 'id','name', $item->item_category_id,$disable=false);?></td>
 			<small class="error"> Select Item category.</small></td>
 		</div>
 	</div>
@@ -49,13 +49,10 @@ if(!defined('CHECK_INCLUDED')){
 		</div>
 	</div>
 
-  <div class="row">
-	 <div class="large-4 columns">
-      <label for ="status_id">Status</label>
-      <select name ="status_id">
-        <option value="1">Active</option>
-        <option value="0">Invactive</option>
-      </select>
+ <div class="row">
+    <div class="large-4 columns">
+      <label for ="item_statusid">Status</label>
+      <?php echo populate_list_array("lststatus", $g_ARRAY_LIST_STATUS, 'id', 'name', $item->status_id,$disable=false);?>
      </div>
   </div>
 
@@ -63,16 +60,15 @@ if(!defined('CHECK_INCLUDED')){
 	<div class="large-4 columns">
 
    			<label for="chkmaster">Master </label>
-   			<?php if($item->from_master_kitchen == 1) {?>
-   			<input id="chk" type="checkbox" value="1" name="chkmaster" checked="checked">
-
-    		<?php } else { ?>
-   			  <input id="chk" type="checkbox" value="0" name="chkmaster">
+   			
+   			<input id="chk" type="checkbox" value="1" name="chkmaster"  <?php if($item->from_master_kitchen == 1) {?>checked="checked" <?php } ?>>
+    		
  			 </div>
-			  <?php } ?>
+			  
 		<div class="row">
 		<div class="large-4 columns">
 			<input class="small button" value="submit" type="submit" name="submit" >
+			<input type="hidden" name="h_id" value ="<?php echo $item->id;?>"
 		</div>
 		</div>
 

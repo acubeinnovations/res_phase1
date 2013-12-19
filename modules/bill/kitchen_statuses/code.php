@@ -15,7 +15,7 @@ $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
 $mybillitems->bill_id=$_SESSION['bill_id'];
 $bill_amount=$mybillitems->get_tot_bill_amount_array();
-$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
+$mybillitems->bill_item_status_id='';
 $mybillitems->bill_kitchen_status_id=BILL_KITCHEN_STATUS_TO_KITCHEN;
 $mybillitems->update_statuses();
 $mybills->get_detail();

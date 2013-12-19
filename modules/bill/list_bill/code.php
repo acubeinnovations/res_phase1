@@ -5,10 +5,10 @@ if(!defined('CHECK_INCLUDED')){
 		exit();
 }
 
-if(isset($_POST['print']) || isset($_POST['payment']) && isset($_SESSION['bill_id'])){
+if(isset($_POST['print'])  && isset($_POST['bill_id'])){
 $item_rate='';
 $item_name='';
-$bill_tot_amount='';
+$bill_amount='0';
 $item=new Item($myconnection);
 $item->connection=($myconnection);
 $item_name=$item->get_array_item_name();
@@ -19,25 +19,20 @@ $bill_status=$mybills->get_array_statuses();
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
 
-if(isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0 || isset($_POST['payment'])){
-$mybillitems->bill_id=$_SESSION['bill_id'];
-$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
+$mybillitems->bill_id=$_POST['bill_id'];
+
 $data_bill_items=$mybillitems->get_list_array_bylimit();
 
-$mybills->id=$_SESSION['bill_id'];
+$mybills->id=$_POST['bill_id'];
 $mybills->get_detail();
 
-$mybills->bill_status_id=BILL_STATUS_PAID;
-$mybillitems->bill_id=$_SESSION['bill_id'];
-$mybillitems->bill_item_status_id==BILL_ITEM_STATUS_ACTIVE;
-$mybillitems->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED;
+$mybillitems->bill_id=$_POST['bill_id'];
+$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
+
 $bill_amount=$mybillitems->get_tot_bill_amount_array();
-$mybills->amount=$bill_amount;
-$mybills->payment_date=CURRENT_DATETIME;
-$mybills->update();
-
-$mybills->id=$_SESSION['bill_id'];
-$mybills->get_detail();
+if($bill_amount==false){
+$bill_amount=0;
+}
 $bill_item_index=0;
 
 $div_content='<table>
@@ -60,7 +55,7 @@ $div_content.='<tr>
       <td>'.$item_rate[$data_bill_items[$bill_item_index]['item_id']].'</td>
       <td>'.$data_bill_items[$bill_item_index]['rate'].'</td>
     </tr>';
-$bill_tot_amount=$bill_tot_amount+$data_bill_items[$bill_item_index]['rate'];
+
 $bill_item_index++;
 $slno++;
 }
@@ -74,10 +69,7 @@ $div_content.='<tr>
 </table><a href="#" class="tiny button  print_div" id= "print_div">PRINT</a><a class="close-reveal-modal">&#215;</a>';
 print $div_content;
 exit();
-}else{
-print 'Some errors occured.please try after some time.<a class="close-reveal-modal">&#215;</a>';
-exit();
-}
+
 }else{
 print 'No Bill Selected.<a class="close-reveal-modal">&#215;</a>';
 exit();

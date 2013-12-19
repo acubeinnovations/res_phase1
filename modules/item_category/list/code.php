@@ -14,10 +14,10 @@ if(isset($_SESSION['id'])){
 }else{
 	//header("Location:test.php");
 }
-$get_detl=$itemcategory->get_list_array();
-if($get_detl!=false){
+$array_item_categories=$itemcategory->get_list_array();
+if($array_item_categories!=false){
 	
-	$count=count($get_detl);
+	$count=count($array_item_categories);
 }
 $array_category=$itemcategory->get_array();
 ?>
