@@ -20,7 +20,6 @@ $mybillitems->bill_id=$_SESSION['bill_id'];
 $bill_amount=$mybillitems->get_tot_bill_amount_array();
 $mybills->get_detail();
 $mybills->amount=$bill_amount;
-$mybills->bill_status_id=BILL_STATUS_HOLD;
 $mybills->update();
 print $mybills->amount;
 exit();
@@ -47,6 +46,10 @@ print '1';
 exit();
 }
 
-
-
+if(isset($_POST['new_bill']) && $_SESSION['bill_id']>0){
+$_SESSION['bill_id']='';
+$_SESSION['bill_number']='';
+print '1';
+exit();
+}
 ?>

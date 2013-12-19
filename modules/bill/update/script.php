@@ -3,6 +3,8 @@
 var current_url = "<?php echo $current_url; ?>";
 
 $(document).ready(function(){
+
+  
 	var refresh="refresh";
 	var success_post = $.post('page_refresh_bill.php',
 		{
@@ -23,13 +25,26 @@ $(document).ready(function(){
 		});
 	success_post.done(function(data){
 		if(data!='error'){
-			var val="Rs ."+data;
+			var val="TOTAL : Rs ."+data;
 			$('#tot_button_val').text(val);
 		}else{
-			$('#tot_button_val').text("Rs .0");
+			$('#tot_button_val').text("TOTAL : Rs .0");
 		}
 	});
-	
+	var bill_number="bill_number";
+	var success_post = $.post(current_url,
+			{
+				bill_number:bill_number,
+			});
+	success_post.done(function(data){
+			if(data!='1'){
+				var val='BILL :'+data;
+				$(".bill_number").text(val);
+				$(".bill_number").show();
+			}else{
+				$(".bill_number").hide();
+			}
+			});
 
 
 	$( document ).on( "click", ".item_category", function() {
@@ -64,7 +79,20 @@ $(document).ready(function(){
 			$('#item_rate'+bill_items[0]).html(bill_items[2]);
 			}else{
 			$(".bill").append(data);
-			
+			var bill_number="bill_number";
+			var success_post = $.post(current_url,
+				{
+					bill_number:bill_number,
+				});
+			success_post.done(function(data){
+				if(data!='1'){
+				var val='BILL :'+data;
+				$(".bill_number").text(val);
+				$(".bill_number").show();
+				}else{
+					$(".bill_number").hide();
+				}
+				});
 			}
 		}else{
 			$(".bill").html("");
@@ -78,10 +106,10 @@ $(document).ready(function(){
 		});
 	success_post.done(function(data){
 		if(data!='error'){
-			var val="Rs ."+data;
+			var val="TOTAL : Rs ."+data;
 			$('#tot_button_val').text(val);
 		}else{
-			$('#tot_button_val').text("Rs .0");
+			$('#tot_button_val').text("TOTAL : Rs .0");
 		}
 	});
 	
@@ -141,10 +169,10 @@ $(document).ready(function(){
 		});
 	success_post.done(function(data){
 		if(data!='error'){
-			var val="Rs ."+data;
+			var val="TOTAL : Rs ."+data;
 			$('#tot_button_val').text(val);
 		}else{
-			$('#tot_button_val').text("Rs .0");
+			$('#tot_button_val').text("TOTAL : Rs .0");
 		}
 	});
 	
@@ -164,8 +192,9 @@ $(document).ready(function(){
 	success_post.done(function(data){
 		if(data=='1'){
 			$(".bill").html('&nbsp');
-			$('#tot_button_val').text("Rs .0");
+			$('#tot_button_val').text("TOTAL : Rs .0");
 			alert("bill holded");
+			location.reload();
 		}else{
 			alert("bill cannot be holded");
 		}
@@ -226,13 +255,24 @@ $(document).ready(function(){
 	$("#payment_button").click(function() {
 	
 	var payment='payment';
-	var success_post = $.post('print_bill.php',
+	var success_post1 = $.post('print_bill.php',
 		{
 			payment:payment,
 		});
-	success_post.done(function(data){
-		$('#print_bill').html(data);
+	
+		var to_kitchen='to_kitchen';
+	var success_post = $.post('kitchen_statuses.php',
+		{
+			to_kitchen:to_kitchen,
 		});
+	success_post.done(function(data){
+		if(data==1){
+		location.reload();
+		}
+		});
+		/*success_post1.done(function(data){
+		$('#print_bill').html(data);
+		});*/
 	
 	
 	});
@@ -245,10 +285,10 @@ var  bill_item_id=$(this).attr('bill_item_id');
 		});
 	success_post.done(function(data){
 		if(data>0){
-var val="Rs ."+data;
+var val="TOTAL : Rs ."+data;
 			$('#tot_button_val').text(val);
 		}else{
-			$('#tot_button_val').text("Rs .0");
+			$('#tot_button_val').text("TOTAL : Rs .0");
 		}
 		});
 		$('#bill_item_row'+bill_item_id).remove();
@@ -267,11 +307,12 @@ var success_post = $.post('cancel.php',
 		}
 		});
 });
-$(".to_kitchen_button").click(function() {
-var to_kitchen='to_kitchen';
-var success_post = $.post('kitchen_statuses.php',
+
+$(".new_bill").click(function() {
+var new_bill='new_bill';
+var success_post = $.post('cancel.php',
 		{
-			to_kitchen:to_kitchen,
+			new_bill:new_bill,
 		});
 	success_post.done(function(data){
 		if(data==1){
@@ -279,7 +320,6 @@ var success_post = $.post('kitchen_statuses.php',
 		}
 		});
 });
-
 
 	
 	

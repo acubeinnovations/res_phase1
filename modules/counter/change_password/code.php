@@ -16,8 +16,8 @@ if ( $_POST['new_passwd'] != $_POST['retype_passwd'] ){
 if ( $passwd_error == "" ){
       $pass = md5(trim($_POST['passwd']));
       $new_pass = md5(trim($_POST['new_passwd']));
-      $myuser = new Administrator();
-      $myuser->id = $_SESSION[SESSION_TITLE.'admin_userid'];
+      $myuser = new Counter();
+      $myuser->id = $_SESSION[SESSION_TITLE.'counter_userid'];
       $myuser->connection = $myconnection;
       $chk = $myuser->change_password($new_pass,$pass);
         if ($chk == false){

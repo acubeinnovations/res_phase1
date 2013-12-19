@@ -9,6 +9,20 @@ define("MASTER_KITCHEN", 300);
 define("STATUS_ACTIVE", 1);
 define("STATUS_INACTIVE", 2);
 
+
+$g_ARRAY_LIST_STATUS = array();
+$g_ARRAY_LIST_STATUS[0]["id"] = 1;
+$g_ARRAY_LIST_STATUS[0]["name"] = "Active";
+$g_ARRAY_LIST_STATUS[1]["id"] = 2;
+$g_ARRAY_LIST_STATUS[1]["name"] = "Inactive";
+
+
+
+$g_ARRAY_STATUS = array();
+$g_ARRAY_STATUS[1] = "Active";
+$g_ARRAY_STATUS[2] = "Inactive";
+
+
 //timezone
 date_default_timezone_set('Asia/Kolkata');
 define("CURRENT_DATETIME",date('Y-m-d H:i:s'));

@@ -5,11 +5,11 @@
 
 .bill{
     overflow:auto;
-	height:300px;
-    width:400px;
-	border:2px solid #a1a1a1;
+	min-height:300px;
+    min-width:400px;
+	border:2px solid #81DAF5;
 	padding:10px 40px; 
-	border-radius:25px;
+	
 	
 }
 .item_quantity{
@@ -42,7 +42,13 @@ display:none;
  	vertical-align:middle;
 	text-align:center;
     
-    
+   
+}
+
+.bill_number{
+display:none;
+background-color: #CCC;   
+color: #000000; 
 }
 
 button.bill_item_cancel, .button.bill_item_cancel{
@@ -50,5 +56,10 @@ padding-top: 0.1rem;
 padding-bottom: 0.1rem;
 height:20px !important;
 width:10px !important;
+}
+.tot_button_val{
+color: #000000;
+background-color: #CCC;
+
 }
 
