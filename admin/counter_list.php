@@ -19,7 +19,7 @@ require(ROOT_PATH.'include/class/class_page/class_page.php');	// new Page Class
 	$page->connection_list = array("connection.php");
 
 	$page->function_list = array("functions.php");
-	$page->class_list = array("");
+	$page->class_list = array("class_counter.php");
 
 	$page->access_list = array("ADMINISTRATOR");
 
@@ -32,6 +32,6 @@ require(ROOT_PATH.'include/class/class_page/class_page.php');	// new Page Class
 	$page->content_list = $content_list;
 
 	$page->module_path = 'modules/counter/';
-    $page->module = 'counter_list';
+    $page->module = 'admin_counter_list';
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>
