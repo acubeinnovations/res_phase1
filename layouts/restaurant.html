@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php if (!empty($this->title)) echo $this->title ?></title>
     <link rel="stylesheet" href="/css/foundation.css" />
+    <link rel="stylesheet" href="/style/restaurant.css" />
     <script src="/js/modernizr.js"></script>
 
 
@@ -14,6 +15,73 @@
 	/* ]]> */
 	</style>
 		<?php if (!empty($this->script)) echo $this->script ?>
+<script>
+	function popup_alert(message, redirect_url, button_ok, button_cancel ){
+
+		if (button_ok == "" ){
+			button_ok = "OK";
+		}
+
+		if (button_cancel == "" ){
+			button_cancel = "Cancel";
+			$("#popup_alert_button_cancel").show();
+		}else if(button_cancel == "false"){
+			$("#popup_alert_button_cancel").hide();
+		}
+		else{
+			$("#popup_alert_button_cancel").show();
+		}
+
+
+		$("#popup_alert_message").html(message);
+		$("#popup_alert_redirect").attr('href',redirect_url);
+		$("#popup_alert_button_ok").attr('value',button_ok);
+
+		if (redirect_url == "" ){
+
+			$("#popup_alert_redirect").hide();
+		}else{
+			$("#popup_alert_redirect").show();
+		}
+		$("#popup_alert_button_cancel").attr('value',button_cancel);
+		docHeight = $(document).height();
+		docWidth = $(window).width();
+		$(".overlay, .overlay-panel").fadeIn(300);
+		$(".overlay").css({"height":docHeight,"width":docWidth});
+		return false;
+	}
+</script>
+<script>
+
+	function flash_alert(message,redirect_url){
+		$("#popup_alert_message").html(message);
+		$("#popup_alert_redirect").attr('href',redirect_url);
+			if (redirect_url == "#" ){
+				$("#popup_alert_redirect").hide();
+			}else{
+				$("#popup_alert_redirect").show();
+			}
+		docHeight = $(document).height();
+		docWidth = $(window).width();
+		$(".overlay, .overlay-panel").fadeIn(300);
+		$(".overlay").css({"height":docHeight,"width":docWidth});
+	}
+$(document).ready(function(){
+
+<?php if(isset($_SESSION[SESSION_TITLE.'flash_redirect_page']) && trim($_SESSION[SESSION_TITLE.'flash_redirect_page'])!=""){ ?>
+	alert_redirect = "<?php echo WEB_URL.'/'.$_SESSION[SESSION_TITLE.'flash_redirect_page']; ?>";
+<?php $_SESSION[SESSION_TITLE.'flash_redirect_page'] = "" ;}else{ ?>
+	alert_redirect  ="#";
+<?php } ?>
+
+
+<?php if(isset($_SESSION[SESSION_TITLE.'flash']) && trim($_SESSION[SESSION_TITLE.'flash'])!=""){ ?>
+alert_message = "<?php echo $_SESSION[SESSION_TITLE.'flash']; ?>";
+flash_alert(alert_message,alert_redirect);
+<?php  $_SESSION[SESSION_TITLE.'flash']="";	} ?>
+
+});
+</script>
 		<?php if (!empty($this->style)) echo $this->style ?>
 	</head>
   <body>
@@ -79,7 +147,22 @@
 
     </div>
   </div>
+<div class="overlay-panel">
+  	<p class="heading">
+		<span class="fleft">Notification</span>
+		<span class="fright"><a href="#" class="close-panel" onClick="$('.overlay, .overlay-panel').fadeOut(300); " id = "popup_alert_close" ></a></span>
+	</p>
+	<p class="content">
+		<span class="info"></span>
+		<span id ="popup_alert_message"> </span>
+	</p>
+	<p class="overlay-button">
 
+	<br><a id = "popup_alert_redirect" href="#" > <input id = "popup_alert_button_ok"  type="button" class="button" value="Go Back" />&nbsp;</a>
+	<input type="submit" id = "popup_alert_button_cancel" class="button gray close-panel" value="Close" onClick="$('.overlay, .overlay-panel').fadeOut(300); " />
+	</p>
+</div>
+<div class="overlay"></div>
 
  	<script src="/js/jquery.js"></script>
  	<script src="/js/foundation.min.js"></script>

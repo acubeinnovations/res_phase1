@@ -5,8 +5,11 @@
 	<?php if(isset($_SESSION[SESSION_TITLE.'kitchen_userid']) && $_SESSION[SESSION_TITLE.'kitchen_userid'] > 0){ ?>
 
         <li class="divider"></li>
-		<li class="active"><a href="dashboard.php" >Active Orders</a></li>
-		<li><a href="view_orders.php">All Orders</a></li>
+<?php if($this->page_name == "dashboard"){?> <li class="active"> <a href="dashboard.php" >Active Orders</a></li> <?php  }else{ ?> <li> <a href="dashboard.php" >Active Orders</a></li> <?php } ?>
+	
+<?php if($this->page_name == "vieworders"){?> <li class="active"> <a href="view_orders.php" >All Orders</a></li> <?php  }else{ ?> <li> <a href="view_orders.php" >All Orders</a></li> <?php } ?>	
+
+<?php if($this->page_name == "additems"){?> <li class="active"> <a href="add_items.php" >Add Items</a></li> <?php  }else{ ?> <li> <a href="add_items.php" >Add Items</a></li> <?php } ?>			
 
         <li class="divider"></li>
 

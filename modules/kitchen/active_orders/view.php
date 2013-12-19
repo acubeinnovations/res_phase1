@@ -6,7 +6,7 @@
   <li class="bullet-item">BDF (3)</li>
   <li class="bullet-item">Dosa (8)</li>
   <li class="bullet-item">Porotta (3)</li>
-  <li class="cta-button"><a href="view_order.php"  class="button tiny success alert">View</a>&nbsp;<a href="#" class="button tiny success">Approve</a>&nbsp;<a href="#" class="button tiny alert">Reject</a>&nbsp;<a href="#" class="button tiny">Finish</a></li>
+  <li class="cta-button">&nbsp;<a href="#" class="button tiny success">Approve</a>&nbsp;<a href="#" class="button tiny alert">Reject</a>&nbsp;<a href="#" class="button tiny">Finish</a></li>
   </ul>
   </li>
   
@@ -17,7 +17,7 @@
   <li class="bullet-item">BDF (3)</li>
   <li class="bullet-item">Dosa (8)</li>
   <li class="bullet-item">Porotta (3)</li>
-  <li class="cta-button"><a href="view_order.php"  class="button tiny success alert">View</a>&nbsp;<a href="#" class="button tiny success">Approve</a>&nbsp;<a href="#" class="button tiny alert">Reject</a>&nbsp;<a href="#" class="button tiny">Finish</a></li>
+  <li class="cta-button">&nbsp;<a href="#" class="button tiny success">Approve</a>&nbsp;<a href="#" class="button tiny alert">Reject</a>&nbsp;<a href="#" class="button tiny">Finish</a></li>
   </ul>
   </li>
   
@@ -29,7 +29,7 @@
   <li class="bullet-item">BDF (3)</li>
   <li class="bullet-item">Dosa (8)</li>
   <li class="bullet-item">Porotta (3)</li>
-  <li class="cta-button"><a href="view_order.php"  class="button tiny secondary success alert">View</a>&nbsp;<a href="#" class="button tiny success">Approve</a>&nbsp;<a href="#" class="button tiny alert">Reject</a>&nbsp;<a href="#" class="button tiny">Finish</a></li>
+  <li class="cta-button">&nbsp;<a href="#" class="button tiny success">Approve</a>&nbsp;<a href="#" class="button tiny alert">Reject</a>&nbsp;<a href="#" class="button tiny">Finish</a></li>
   </ul>
   </li>
   
