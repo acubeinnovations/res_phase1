@@ -306,6 +306,23 @@ function bill_item_check(){
         }
 
 }
+
+function update_kitchen_status(){
+    	
+        $strSQL = " UPDATE bill_items SET bill_kitchen_status_id='".BILL_KITCHEN_STATUS_FINISHED."' WHERE id='".$this->id."'";
+		//echo $strSQL; exit();
+        $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_affected_rows($this->connection) > 0 ) {
+            return true;
+        }
+        else{
+            $this->error_number = 6;
+            $this->error_description="Can't update status";
+            return  false;
+        }
+    }
+
+
 function get_tot_bill_amount_array(){
 	$rate_array=0;
 	$i=0;

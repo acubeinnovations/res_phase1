@@ -122,12 +122,7 @@ function get_array()
 				 {
 					while ( list ($id,$name,$item_category_id,$rate,$tax) = mysql_fetch_row($rsRES) ){
 						$items[$id] =  $name;
-						//$items[$name] =  $name;
-						$items[$item_category_id] =$item_category_id;
-						$items[$rate] =  $rate;
-						$items[$tax] =  $tax;
-
-						$i++;
+			
            		 	}
             		return $items;
        				}else{
