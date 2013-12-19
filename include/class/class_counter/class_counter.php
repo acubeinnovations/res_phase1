@@ -109,21 +109,7 @@ function change_password($newpasswd,$oldpasswd){
            }
        
  }
-      
-function search(){
-   $strSQL = "SELECT username,name from counters WHERE Description Like '%.search%'";
-    $rsRES= mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
-     if ( mysql_affected_rows($this->connection) > 0 ){
-                    return true;
-                }
-              else{
-                $this->error_description = "Invalid";
-                return false;
-                }
-      }
-
-        
- 
+    
   }             
 
    

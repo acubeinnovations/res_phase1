@@ -232,11 +232,11 @@ function get_array_item_name(){
 
             //without limit  , result of that in $all_rs
             if (trim($this->total_records)!="" && $this->total_records > 0) {
-            } else {
+            	} else {
 				
                 $all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit); 
                 $this->total_records = mysql_num_rows($all_rs);
-            }
+					}
 			while ( list ($id,$name,$item_category_id,$rate,$tax,$status_id,$from_master_kitchen) = mysql_fetch_row($rsRES) ){
 						$items[$i]["id"] =  $id;
 						$items[$i]["name"] = $name;
@@ -245,9 +245,8 @@ function get_array_item_name(){
 						$items[$i]["tax"] = $tax;
 						$items[$i]["status_id"] = $status_id;
 						$items[$i]["from_master_kitchen"] = $from_master_kitchen;
-						$i++;
-           		 	
-		    }        	return $items;
+						$i++;}       
+						 	return $items;
         }
         else{
         	return false;
