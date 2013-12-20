@@ -16,10 +16,19 @@ $item->get_all();
 }else{
 
 }
-$array_item_category=$item_category->get_array();
-$get_item=$item->get_list_array();
-if($get_item!=false){
+
+//$get_item=$item->get_list_array();
+	$item->total_records=25;
+	if(isset($_POST['submit'])){
+	$item->name=$_POST['search'];
+	}else{
+
+	}
+	$array_item_category=$item_category->get_array();
+	$get_item=$item->get_list_array_bylimit();
+	if($get_item!=false){
 	$count = count($get_item);
+
 }
 //$array_item=$item->get_array();
 ?>

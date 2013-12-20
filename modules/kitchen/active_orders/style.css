@@ -1,0 +1,17 @@
+.pricing-table {
+width: 150px;
+margin-right:5px;
+margin-left:15px;
+margin-top:15px;
+float:left;
+
+}
+
+.pricing-table .title { 
+
+background-color:#C90;
+}
+
+.pricing-table .bullet-item {
+background-color:#093;	
+}

@@ -222,9 +222,13 @@ $this->amount=0;
        	$strSQL .= " AND payment_date LIKE '%".addslashes(trim($this->payment_date))."%'";  
         }
 		
-	 if ($this->bill_status_id!='' && $this->bill_status_id!=gINVALID) { 
+	 	if ($this->bill_status_id!='' && $this->bill_status_id!=gINVALID) { 
         $strSQL .= " AND bill_status_id = '".addslashes(trim($this->bill_status_id))."'";  
         }
+		
+	 	if ($this->bill_kitchen_status_id!='' && $this->bill_kitchen_status_id!=gINVALID) { 
+        $strSQL .= " AND bill_kitchen_status_id = '".addslashes(trim($this->bill_kitchen_status_id))."'";  
+        }		
 		if ($this->counter_id!='' && $this->counter_id!=gINVALID) { 
         $strSQL .= " AND counter_id = '".addslashes(trim($this->counter_id))."'";  
         }
@@ -327,6 +331,21 @@ function update_last_bill_number(){
             }
 
 }
+
+function update_bill_kitchen_status(){
+    	
+        $strSQL = " UPDATE bills SET bill_kitchen_status_id='".BILL_KITCHEN_STATUS_FINISHED."' WHERE id= '".$this->id."'";
+		//echo $strSQL; exit();
+        $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+        if ( mysql_affected_rows($this->connection) > 0 ) {
+            return true;
+        }
+        else{
+            $this->error_number = 6;
+            $this->error_description="Can't update status";
+            return  false;
+        }
+    }
 
 }
 ?>

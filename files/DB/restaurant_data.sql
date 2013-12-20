@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 17, 2013 at 07:11 PM
+-- Generation Time: Dec 19, 2013 at 10:00 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.9
 
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `administrators` (`id`, `username`, `password`, `emailid`, `registrationdate`, `lastlogin`, `image`, `securityquestion_id`, `answer`, `created`, `updated`, `record_user_id`) VALUES
-(1, 'admin', '39bb37cf36d3b29a9280d8a70a0eed42', NULL, NULL, '2013-12-17 18:50:27', NULL, NULL, NULL, '2013-04-22 00:00:00', NULL, NULL);
+(1, 'admin', '39bb37cf36d3b29a9280d8a70a0eed42', NULL, NULL, '2013-12-17 19:15:25', NULL, NULL, NULL, '2013-04-22 00:00:00', NULL, NULL);
 
 --
 -- Dumping data for table `bill_item_statuses`
@@ -70,7 +70,7 @@ INSERT INTO `contenttypes` (`id`, `name`, `description`) VALUES
 --
 
 INSERT INTO `counters` (`id`, `username`, `password`, `name`, `image`, `securityquestion_id`, `answer`, `lastlogin`, `last_bill_number`, `status_id`, `created`, `updated`) VALUES
-(1, 'counter', '39bb37cf36d3b29a9280d8a70a0eed42', 'Counter 1', NULL, NULL, NULL, '2013-12-17 18:48:39', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
+(1, 'counter', '39bb37cf36d3b29a9280d8a70a0eed42', 'Counter 1', NULL, NULL, NULL, '2013-12-17 19:14:43', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Dumping data for table `items`
@@ -82,9 +82,7 @@ INSERT INTO `items` (`id`, `name`, `item_category_id`, `rate`, `tax`, `status_id
 (3, 'Fried Rice  (veg)', 3, 150, 25, 1, 0),
 (4, 'Fried Rice  (Chicken)', 3, 200, 30, 1, 0),
 (5, 'Fried Rice  (Mixed)', 3, 190, 25, 1, 0),
-(6, 'Fresh Lime', 1, 25, 5, 1, 0),
-(7, 'Fried Rice  (veg)', 3, 150, 25, 1, 0),
-(8, 'Fried Rice  (veg)', 3, 150, 25, 1, 0);
+(6, 'Fresh Lime', 1, 25, 5, 1, 0);
 
 --
 -- Dumping data for table `item_categories`

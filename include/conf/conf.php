@@ -45,10 +45,10 @@ define("EMAIL_INFO", "noreply@restaurant.local");
 define("EMAIL_SUPPORT", "noreply@restaurant.local");
 
 
-define("WEB_URL", "http://www.restaurant.local");
-define("ADMIN_URL", "http://www.restaurant.local/admin");
-define("COUNTER_URL", "http://www.restaurant.local/counter");
-define("KITCHEN_URL", "http://www.restaurant.local/kitchen");
+define("WEB_URL", "http://restaurant.local");
+define("ADMIN_URL", "http://restaurant.local/admin");
+define("COUNTER_URL", "http://restaurant.local/counter");
+define("KITCHEN_URL", "http://restaurant.local/kitchen");
 define("WEB_NAME", "restaurant.local");
 define("ORG_NAME", "restaurant");
 ?>

@@ -17,3 +17,5 @@ INSERT INTO `bill_kitchen_statuses` (`id`, `name`) VALUES
 
 ALTER TABLE `bills` ADD `bill_kitchen_status_id` INT NULL AFTER `bill_status_id` ;
 ALTER TABLE `bill_items` ADD `bill_kitchen_status_id` INT NULL AFTER `bill_item_status_id`;
+
+ALTER TABLE `bill_items` ADD `counter_id` INT NOT NULL AFTER `bill_id`

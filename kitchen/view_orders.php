@@ -9,7 +9,7 @@ $page = new Page;
 	$page->root_path = ROOT_PATH;
 	$page->current_url = $current_url;	// current url for pages
 	$page->title = "Restaurant";	// page Title
-	$page->page_name = 'index';		// page name for menu and other purpose
+	$page->page_name = 'vieworders';		// page name for menu and other purpose
 	$page->layout = 'restaurant.html';		// layout name
 
 
@@ -18,7 +18,7 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 
 	$page->function_list = array("functions.php");
-	$page->class_list = array("class_kitchen.php");
+	$page->class_list = array("class_counter_session.php","class_bill.php");
 
 	$page->access_list = array("MASTER_KITCHEN","KITCHEN");
 

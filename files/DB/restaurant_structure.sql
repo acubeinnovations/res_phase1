@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 17, 2013 at 06:49 PM
+-- Generation Time: Dec 19, 2013 at 11:00 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.9
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `created` datetime NOT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -83,6 +83,7 @@ CREATE TABLE IF NOT EXISTS `bills` (
 CREATE TABLE IF NOT EXISTS `bill_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bill_id` int(11) NOT NULL,
+  `counter_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `quantity` double NOT NULL,
   `rate` double NOT NULL,
@@ -93,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `bill_items` (
   `created` datetime NOT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -219,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `status_id` int(11) NOT NULL,
   `from_master_kitchen` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -233,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `item_categories` (
   `status_id` int(11) NOT NULL,
   `parent_id` int(11) DEFAULT NULL COMMENT 'Category may have valid parent category',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 

@@ -13,7 +13,7 @@ class ItemCategory{
 	var  $error = false;
     var  $error_number=gINVALID;
     var  $error_description="";
-	
+	var  $total_records='';
 
 	
 	function update()
@@ -71,30 +71,48 @@ function get_details(){
 		return false;
 	}
 }
-
 		
-		
-function get_list_array()
+function get_list_array($start_record = 0,$max_records = 25)
 
 	{
-        	$item_category = array();$i=0;
-			$strSQL = "SELECT  id,name,status_id,parent_id FROM item_categories";
+        	$item_category = array();
+        	$i=0;
+			$strSQL = "SELECT  id,name,status_id,parent_id FROM item_categories WHERE 1";
 			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
-			if ( mysql_num_rows($rsRES) > 0 )
-				 {
+				if($this->id!='' && $this->id!=gINVALID){
+          		 $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
+      	 			}
+       			 if ($this->name!='') { 
+       			$strSQL .= " AND name LIKE '%".addslashes(trim($this->name))."%'";  
+       			 }
+				 if ($this->status_id!='') { 
+       			$strSQL .= " AND status_id LIKE '%".addslashes(trim($this->status_id))."%'";  
+       			 }	
+
+       			$strSQL .= " ORDER BY id";
+				$strSQL_limit = sprintf("%s LIMIT %d, %d", $strSQL, $start_record, $max_records);
+				$rsRES = mysql_query($strSQL_limit, $this->connection) or die(mysql_error(). $strSQL_limit);
+
+ 				if ( mysql_num_rows($rsRES) > 0 ){
+       		 		if (trim($this->total_records)!="" && $this->total_records > 0) {
+            		} else {
+     				$all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit); 
+                	$this->total_records = mysql_num_rows($all_rs);
+ 						}
+		
 					while ( list ($id,$name,$status_id,$parent_id) = mysql_fetch_row($rsRES) ){
 						$item_category[$i]["id"] =  $id;
 						$item_category[$i]["name"] = $name;
 						$item_category[$i]["status_id"] = $status_id;
 						$item_category[$i]["parent_id"] = $parent_id;
-						$i++;
-           		 		}
-            		return $item_category;
-       			}else{
-					$this->error_number = 4;
+						$i++;}
+           		 		return $item_category;
+            			}else{
+       				$this->error_number = 4;
 					$this->error_description="Can't list item";
 					return false;
-    				}
+					}
+    				
 		}
 
 
@@ -105,14 +123,14 @@ function get_array()
 	{
         	$item_category = array();
 			$i=0;
-			$strSQL = "SELECT  id,name FROM item_categories";
+			$strSQL = "SELECT id,name,status_id,parent_id FROM item_categories";
 			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
 			if ( mysql_num_rows($rsRES) > 0 )
-				 {
-					while ( list ($id,$name) = mysql_fetch_row($rsRES) ){
+				 {while(list($id,$name) = mysql_fetch_row($rsRES) ){
 						$item_category[$id] =  $name;
-
+						
 						$i++;
+
            		 		}
             		return $item_category;
        			}else{
@@ -123,8 +141,9 @@ function get_array()
 		}		
 		
 
+	}
 
-}
+
 
 	
 		

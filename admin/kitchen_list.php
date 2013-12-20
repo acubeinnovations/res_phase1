@@ -19,7 +19,7 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 
 	$page->function_list = array("functions.php");
-	$page->class_list = array("");
+	$page->class_list = array("class_kitchen.php");
 
 	$page->access_list = array("ADMINISTRATOR");
 

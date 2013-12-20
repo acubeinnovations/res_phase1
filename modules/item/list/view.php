@@ -6,6 +6,14 @@
 </head>
 
 <body>
+  <form action="" method="post">
+    <table>
+   <tr>
+    <td> Search by Item:<input type="text" name="search" />
+      <input type="submit" name="submit" value="Submit" /></td>
+    </tr>
+  </table>
+      </form>
 
 <form id="form2" name="form2" method="post" action="">
 <fieldset>
