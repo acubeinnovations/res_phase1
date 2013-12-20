@@ -176,6 +176,7 @@ $(document).ready(function(){
 
 	$( document ).on("click", ".ok_discount", function() {
 	var discount=$('.bill_discount').val();
+    if(discount!=''){
 	var success_post = $.post('add_to_bill.php',
 		{
 			discount:discount,
@@ -188,7 +189,7 @@ $(document).ready(function(){
 		}else{
 			$('.discount').text("Discount : Rs .0");
 		}	
-			
+        			
 	});
 	$("#close_calc_modal").trigger('click');
 	var total="total";
@@ -205,6 +206,11 @@ $(document).ready(function(){
 			$('#tot_button_val').text("TOTAL : Rs .0");
 		}
 	});
+    
+    }else{
+    
+    $('.discount').text("Discount : Rs .0");
+    }
 	
 	});
 

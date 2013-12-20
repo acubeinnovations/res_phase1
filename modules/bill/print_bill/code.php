@@ -8,6 +8,7 @@ if(!defined('CHECK_INCLUDED')){
 if(isset($_POST['print']) || isset($_POST['payment']) && isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
 $item_rate='';
 $item_name='';
+$tot_amount='';
 $bill_tot_amount='';
 $item=new Item($myconnection);
 $item->connection=($myconnection);
@@ -30,7 +31,8 @@ $mybills->get_detail();
 $mybills->bill_status_id=BILL_STATUS_PAID;
 $mybillitems->bill_id=$_SESSION['bill_id'];
 $mybillitems->bill_item_status_id==BILL_ITEM_STATUS_ACTIVE;
-$mybillitems->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED;
+//$mybillitems->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED;
+$tot_amount=$mybillitems->get_tot_amount();
 $bill_amount=$mybillitems->get_tot_bill_amount_array();
 $mybills->amount=$bill_amount;
 $mybills->payment_date=CURRENT_DATETIME;
@@ -47,7 +49,7 @@ $div_content='<table>
       <th width="400">Item</th>
       <th width="200">Quantity</th>
       <th width="250">Rate</th>
-	 <th width="250">Tax</th>
+	 <th width="300">Tax</th>
       <th width="250">Total Amount</th>
     </tr>
   </thead>
@@ -71,7 +73,28 @@ $div_content.='<tr>
       <td></td>
       <td></td>
       <td>STATUS:'.$bill_status[$mybills->bill_status_id].'</td>
-      <td>Total :'.$bill_amount.'</td>
+      <td>Total :'.$tot_amount.'</td>
+    </tr>
+	<tr>
+	   <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Tax :'.$mybills->tax.'</td>
+    </tr>
+	<tr>
+	   <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Discount :'.$mybills->discount.'</td>
+    </tr>
+	<tr>
+	   <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Amount to be paid :'.$bill_amount.'</td>
     </tr></tbody>
 </table><a href="#" class="tiny button  print_div" id= "print_div">PRINT</a><a class="close-reveal-modal">&#215;</a>';
 print $div_content;
