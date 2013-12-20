@@ -27,6 +27,7 @@
       <th colspan="3"> Category</th>
       <th>Rate</th>
       <th>Tax</th>
+      <th colspan="3">Status</th>
     </tr>
 
         <?php
