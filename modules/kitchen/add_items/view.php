@@ -26,8 +26,8 @@
 
 				</div></div>
 			</div>
-			<div class="medium-4 columns">
-				<ul class="pricing-table">
+			<div class="medium-4 columns" id="counter_item_form" style="display:none;" >
+				<ul class="pricing-table" >
 				<li class="title">Counter Items </li>
 				</ul>
 				<div class="medium-4 columns">Item Name</div>
@@ -37,7 +37,10 @@
 				<hr />
 			  	<div class="medium-4 columns"><label id="lblitemname">Tea</label></div>
 				<div class="medium-2 columns"><input name="txtavailablequantity"  id="txtavailablequantity" type="text"  disabled="disabled" value="21"/></div>
-				<div class="medium-2 columns"><input name="txtquantity" type="text" id="txtquantity" /> <input type="hidden" name="h_item_id" value="" /><input type="hidden" name="h_counter_id" value="<?php echo $_SESSION[SESSION_TITLE.'counter_id'];  ?>" /></div>
+				<div class="medium-2 columns"><input name="txtquantity" type="text" id="txtquantity" /> 
+                <input type="hidden" name="h_item_id" id="h_item_id" value="" />
+                <input type="hidden" name="h_counter_id" id="h_counter_id" value="<?php echo $_SESSION[SESSION_TITLE.'counter_id'];  ?>" />
+                <input type="hidden" name="h_kitchen_id" id="h_kitchen_id" value="<?php echo $_SESSION[SESSION_TITLE.'kitchen_userid'];  ?>" /></div>
 				<div class="medium-4 columns"><a href="#" class="button tiny" id="buttonupdate">Update</a></div>
 				<hr />
 			</div>

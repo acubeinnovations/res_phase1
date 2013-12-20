@@ -49,44 +49,44 @@ $(document).ready(function(){
 	});
 	
 	$( document ).on("click", ".items", function() {
-	alert ("clicked");
-	var item_id='';
-	item_id=$(this).attr('item_id');
 	
-	var success_post = $.post('get_items.php',
-		{
-			item_id:item_id,
-		});
+	var item_id='';
+    var counter_id='';
+	item_id=$(this).attr('item_id');
+    counter_id = $("#h_counter_id").val();
+    
+	var success_post = $.post('get_items.php',{counter_id:counter_id, item_id:item_id});
 	success_post.done(function(data){
+ 
 		if(data!=''){
 			if (data.indexOf('!@#$%*') >= 0){
-			var bill_items=data.split('!@#$%*');
-			$('#item_quantity'+bill_items[0]).val(bill_items[1]);
-			$('#item_rate'+bill_items[0]).html(bill_items[2]);
+				var item =data.split('!@#$%*');
+				$('#lblitemname').html(item[1]);
+                $('#h_item_id').val(item_id);
+                $('#txtavailablequantity').val(item[2]);
+                $('#txtquantity').val("");
+                $('#counter_item_form').show();
 			}else{
-			$(".bill").append(data);
+			//alert("No Items Selected");
 			
 			}
 		}else{
-			$(".bill").html("");
+			//alert("No Items Selected");
 		}
 		});
-		var total="total";
-	var success_post = $.post('total_bill_amount.php',
-		{
-			total:total,
-			
-		});
-	success_post.done(function(data){
-		if(data!='error'){
-			var val="Rs ."+data;
-			$('#tot_button_val').text(val);
-		}else{
-			$('#tot_button_val').text("Rs .0");
-		}
 	});
-	
-	});
+
+	$( document ).on("click", "#buttonupdate", function() {
+		item_id = $("#h_item_id").val();
+    	counter_id = $("#h_counter_id").val();
+        kitchen_id = $("#h_kitchen_id").val();
+        quantity = $("#txtquantity").val();
+		var success_post = $.post('add_counter_item.php',{ item_id:item_id , counter_id:counter_id, kitchen_id:kitchen_id,quantity:quantity});
+		success_post.done(function(data){
+		popup_alert(data,"");
+        $('#counter_item_form').hide();
+		});	});
+
 
 	$( document ).on("focus", ".item_quantity", function() {
 	item_id=$(this).attr('item_id');
