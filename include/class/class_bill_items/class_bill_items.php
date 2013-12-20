@@ -336,14 +336,28 @@ $strSQL = "SELECT tax FROM bill_items WHERE bill_id = '".$this->bill_id."' AND b
 	 return $taxes;
 }
 }
+function get_tot_amount(){
+$rate_array='';
+$strSQL = "SELECT rate FROM bill_items WHERE bill_id = '".$this->bill_id."' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'"; 
+	
+  		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+          if ( mysql_num_rows($rsRES) > 0 ){
+        while ( list ($rate) = mysql_fetch_row($rsRES) ){
+          $rate_array=$rate_array+$rate;
+		
+        }
+        return $rate_array;
 
+}
+}
 function get_tot_bill_amount_array(){
 	$rate_array=0;
 	$i=0;
 	$tax=0;
 	$discount=0;
 	$Strcondition='';
-	$strSQL_bill = "SELECT tax,discount FROM bills WHERE id = '".$this->bill_id."' AND bill_status_id='".BILL_STATUS_BILLED."'  OR bill_status_id='".BILL_STATUS_PAID."'";
+	$strSQL='';
+	$strSQL_bill = "SELECT tax,discount FROM bills WHERE id = '".$this->bill_id."' AND (bill_status_id='".BILL_STATUS_BILLED."'  OR bill_status_id='".BILL_STATUS_PAID."')";
 	$rsRES_bill = mysql_query($strSQL_bill,$this->connection) or die(mysql_error(). $strSQL_bill );
           if ( mysql_num_rows($rsRES_bill) > 0 ){
         $tax=mysql_result($rsRES_bill,0,'tax');

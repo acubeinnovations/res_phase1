@@ -96,7 +96,7 @@
 
 	  
 		
-		<div class="medium-6 columns " id="item-container">
+		<div class="medium-5 columns " id="item-container">
 		  <div class="items" >
 			
 				<?php if($get_item_sub!=false){
