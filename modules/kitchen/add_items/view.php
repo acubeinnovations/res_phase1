@@ -2,21 +2,21 @@
 <div id="print_bill" class="reveal-modal" data-reveal> </div>
 <div class="row parent">
 	
-		<div class="large-12 columns">
+		<div class="medium-12 columns">
 			<br>
-			<div class="large-2 columns">
+			<div class="medium-2 columns">
 			<?php if(isset($array_item_category)){ $item_index=0; while($item_index<count($array_item_category)) {?>
-			<a href="#" class="small button fixed  item_category success" item_id="<?php echo $array_item_category[$item_index]['id'];?>"><?php echo $array_item_category[$item_index]['name']; ?></a>
+			<a href="#" class="small button   item_category success" item_id="<?php echo $array_item_category[$item_index]['id'];?>"><?php echo $array_item_category[$item_index]['name']; ?></a>
 			<?php $item_index++; } } ?>
 			</div>
-			<div class="large-6 columns items">
+			<div class="medium-6 columns items">
 			<?php if($get_item_sub!=false){
 			$count = count($get_item_sub);
 			$item_index=0;?>
-				<div class="row"><div class="large-12 columns">
+				<div class="row"><div class="medium-6 columns">
 			<?php
 				while($item_index<$count){ ?>
-		<div class="large-4 columns"><a href="#" class="tiny button items fixed" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><?php echo $get_item_sub[$item_index]["name"].'  Rs .'.$get_item_sub[$item_index]["rate"]; ?></a></div>
+		<div class="medium-4 columns"><a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><?php echo $get_item_sub[$item_index]["name"].'  Rs .'.$get_item_sub[$item_index]["rate"]; ?></a></div>
 	<?php
 	$item_index++;
 	 } 
@@ -26,27 +26,32 @@
 
 				</div></div>
 			</div>
-			<div class="large-4 columns">
-			<div data-alert class="alert-box warning round myalert">
-			 
-			  
-			</div>
-			<div class="large-4 columns bill">
-		
-			</div>
-			
+			<div class="medium-4 columns">
+				<ul class="pricing-table">
+				<li class="title">Counter Items </li>
+				</ul>
+				<div class="medium-4 columns">Item Name</div>
+				<div class="medium-2 columns">Avail Qty</div>
+				<div class="medium-2 columns">Qty</div>
+				<div class="medium-4 columns">Action</div>
+				<hr />
+			  	<div class="medium-4 columns"><label id="lblitemname">Tea</label></div>
+				<div class="medium-2 columns"><input name="txtavailablequantity"  id="txtavailablequantity" type="text"  disabled="disabled" value="21"/></div>
+				<div class="medium-2 columns"><input name="txtquantity" type="text" id="txtquantity" /> <input type="hidden" name="h_item_id" value="" /><input type="hidden" name="h_counter_id" value="<?php echo $_SESSION[SESSION_TITLE.'counter_id'];  ?>" /></div>
+				<div class="medium-4 columns"><a href="#" class="button tiny" id="buttonupdate">Update</a></div>
+				<hr />
 			</div>
 						
 
 
 		<div class="row">
 	
-			<div class="large-12 columns">
+			<div class="medium-12 columns">
 				<br>
-				<div class="large-4 columns">
+				<div class="medium-4 columns">
 				&nbsp;
 				</div>
-				<div class="large-4 columns">
+				<div class="medium-4 columns">
 				<div class="row calculater">
 						<div class="small-block-grid-3">
 																<a href="#" class="close close_button">&times;</a><br>

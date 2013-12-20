@@ -1,4 +1,4 @@
-<div class="row">
+<meta http-equiv="refresh" content="15">
 
 <?php
 	if($array_bills != false){
@@ -21,8 +21,10 @@ $slno=1;
 $bill_item_index = 0;
 
 while($bill_item_index<count($array_bill_items)){ 
+
 ?>
-<?php if($array_bill_items[$bill_item_index]['bill_kitchen_status_id']==4){?>
+<?php if($array_bill_items[$bill_item_index]['bill_kitchen_status_id']==BILL_KITCHEN_STATUS_FINISHED){?>
+
   		<a href="update_kitchen_item_status.php?id=<?php echo $array_bill_items[$bill_item_index]["id"] ?>"><li class="bullet-item"><?php if (isset( $array_item[$array_bill_items[$bill_item_index]['item_id']])) echo $array_item[$array_bill_items[$bill_item_index]['item_id']]?> (<?php echo $array_bill_items[$bill_item_index]['quantity']?>)</li></a>
 <?php } else {?>
   		<a href="update_kitchen_item_status.php?id=<?php echo $array_bill_items[$bill_item_index]["id"] ?>"><li class="bullet-items"><?php if (isset( $array_item[$array_bill_items[$bill_item_index]['item_id']])) echo $array_item[$array_bill_items[$bill_item_index]['item_id']]?> (<?php echo $array_bill_items[$bill_item_index]['quantity']?>)</li></a>
@@ -41,4 +43,4 @@ while($bill_item_index<count($array_bill_items)){
 	}
 	}
 	?>
-</div> 
+ 
