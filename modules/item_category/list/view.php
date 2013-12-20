@@ -46,7 +46,7 @@
 
      <tr>
       <td><?php echo $array_item_categories[$i]['id']?></td>
-      <td><a href="item_category.php?id=<?php echo $array_item_categories[$i]['id']?>"><?php echo $array_item_categories[$i]['name']?></a></td>
+      <td colspan="3"><a href="item_category.php?id=<?php echo $array_item_categories[$i]['id']?>"><?php echo $array_item_categories[$i]['name']?></a></td>
    <!--<td><?php if(isset($array_category[$array_item_categories[$i]['parent_id']])){echo $array_category[$array_item_categories[$i]['parent_id']];}?></td>-->
      <td >
       <?php if(isset($g_ARRAY_STATUS[$array_item_categories[$i]['status_id']])){ echo $g_ARRAY_STATUS[$array_item_categories[$i]['status_id']];}?>

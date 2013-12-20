@@ -21,15 +21,8 @@ if(!defined('CHECK_INCLUDED')){
        <small class="error">Enter Category</small>
     </div>
   </div>
-      <div class="row">
-      <div class="large-4 columns">
-       <label for="lstitem_category">Parent Category <small>required</small></label>
-         <small class="error">Select Item.</small>
-      <?php echo populate_list_array("lstitem_category", $arr_item_category, 'id', 'name', $item_category->parent_id,$disable=false);
-?>
 
-    </div>
-  </div>
+
     <div class="row">
     <div class="large-4 columns">
       <label for ="status_id">Status</label>
@@ -37,6 +30,17 @@ if(!defined('CHECK_INCLUDED')){
 
      </div>
   </div>
+     <!--  <div class="row">
+      <div class="large-4 columns">
+       <label for="lstitem_category">Parent Category <small>required</small></label>
+         <small class="error">Select Item.</small>
+     <?php echo populate_list_array("lstitem_category", $arr_item_category, 'id', 'name', $item_category->parent_id,$disable=false);
+?>
+  </div>
+  </div>-->
+
+
+   
 
   <div class="row">
     <div class="large-4 columns">
