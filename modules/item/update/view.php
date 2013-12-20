@@ -44,7 +44,7 @@ if(!defined('CHECK_INCLUDED')){
 
   <div class="row">
 		<div class="large-4 columns">
-		   <label for="Tax">Tax </label>
+		   <label for="Tax">Tax In Percentage</label>
 		  <input placeholder=""  type="text" name="tax" value="<?php echo $item->tax;?>" id= "name"/ >
 		</div>
 	</div>
