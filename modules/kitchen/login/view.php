@@ -20,7 +20,7 @@ if ( !defined('CHECK_INCLUDED') ){
 		<div class="row">
 		<div class="large-4 columns">
 		   <label for="loginname">User Name <small>required</small></label>
-		  <input placeholder="kitchen"  required pattern="[a-zA-Z]+"  type="text" name="loginname"  >
+		  <input placeholder=""  required pattern="[a-zA-Z]+"  type="text" name="loginname"  >
 		  <small class="error">Please Enter Your User Name.</small>
 		</div>
 	</div>
@@ -28,7 +28,7 @@ if ( !defined('CHECK_INCLUDED') ){
 	<div class="row">
 		<div class="large-4 columns">
 		  <label for="password">Password <small>required</small></label>
-		  <input placeholder="Asdf1234" required type="password" name="password"  >
+		  <input placeholder="" required type="password" name="password"  >
 			<small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number.</small>
 		</div>
 	</div>
