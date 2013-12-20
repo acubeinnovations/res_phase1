@@ -9,7 +9,7 @@
 	
 <?php if($this->page_name == "vieworders"){?> <li class="active"> <a href="view_orders.php" >All Orders</a></li> <?php  }else{ ?> <li> <a href="view_orders.php" >All Orders</a></li> <?php } ?>	
 
-<?php if($this->page_name == "additems"){?> <li class="active"> <a href="add_items.php" >Add Items</a></li> <?php  }else{ ?> <li> <a href="add_items.php" >Add Items</a></li> <?php } ?>			
+<?php if($this->page_name == "additems"){?> <li class="active"> <a href="add_items.php" >Add Stock </a></li> <?php  }else{ ?> <li> <a href="add_items.php" >Add Stock</a></li> <?php } ?>			
 
         <li class="divider"></li>
 

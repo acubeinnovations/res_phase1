@@ -27,7 +27,7 @@
       <th colspan="3"> Category</th>
       <th>Rate</th>
       <th>Tax</th>
-      <th colspan="3">Status</th>
+     <!-- <th colspan="3">Status</th>-->
     </tr>
 
         <?php
@@ -49,7 +49,7 @@
       <td colspan="2"><?php if(isset($array_item_category[$get_item[$i]['item_category_id']])){echo $array_item_category[$get_item[$i]['item_category_id']] ;}?></td>
       <td colspan="2"> <?php echo $get_item[$i]['rate'] ;?></td>
       <td colspan="2"><?php echo $get_item[$i]['tax'] ;?></td>
-      <td colspan="2"><?php if(isset($g_ARRAY_STATUS[$get_item[$i]['status_id']])) { echo $g_ARRAY_STATUS[$get_item[$i]['status_id']]; }?></td>
+      <!--  <td colspan="2"><?php if(isset($g_ARRAY_STATUS[$get_item[$i]['status_id']])) { echo $g_ARRAY_STATUS[$get_item[$i]['status_id']]; }?></td>-->
                     
    </tr>
 
