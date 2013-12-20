@@ -18,7 +18,7 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 	$page->function_list = array("functions.php");
 
-	$page->access_list = array("ADMINISTRATOR");
+	$page->access_list = array("COUNTER");
 
 	$index=0;
 	$content_list[$index]['file_name']='counter/inc_right_menu.php';
