@@ -5,7 +5,7 @@ if(!defined('CHECK_INCLUDED')){
 		exit();
 }
 
-if(isset($_POST['print']) || isset($_POST['payment']) && isset($_SESSION['bill_id'])){
+if(isset($_POST['print']) || isset($_POST['payment']) && isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
 $item_rate='';
 $item_name='';
 $bill_tot_amount='';

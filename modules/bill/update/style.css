@@ -1,15 +1,34 @@
 .parent {
-    width:6000px;
-	height:550px;
+    
+	min-height:550px;
 }
 
 .bill{
     overflow:auto;
-	min-height:300px;
-    min-width:400px;
-	border:2px solid #81DAF5;
-	padding:10px 40px; 
+	height:300px !important;
+   	width:340px;
+	border:1px solid #81DAF5;
 	
+	float:left;
+}
+
+.row_bill_items{
+	height:10px !important;
+	padding-top:5px;
+}
+.items-ajax{
+height:10px !important;
+}
+#bill_det{
+    float:left;
+	height:40px !important;
+   
+	
+	}
+#payment{
+	float:left;
+	min-height:24px;
+    
 	
 }
 .item_quantity{
@@ -41,7 +60,7 @@ display:none;
    font-size: 13px;
  	vertical-align:middle;
 	text-align:center;
-    
+    height:25px;
    
 }
 
@@ -62,4 +81,51 @@ color: #000000;
 background-color: #CCC;
 
 }
+
+.calc{
+
+width:400px !important;
+}
+
+.counter{
+background:#ccc;
+min-height:450px
+}
+
+.categories{
+background:#fff;
+min-height:400px;
+box-shadow:1px 1px 1px 1px gray;
+border:1px solid gray;
+
+}
+.categories .button{
+width:150px;
+margin:5px;
+}
+
+#item-container{
+background:#fff !important;
+height:400px !important;
+box-shadow:1px 1px 1px 1px gray;
+border:1px solid gray;
+padding:5px;
+}
+
+#item-container.button{
+width:150px;
+
+}
+#bill-container{
+background:#FAFAFA !important;
+height:400px !important;
+
+
+}
+.payment .button{
+width:110px;
+margin-top:5px;
+margin-bottom:5px;
+}
+
 
