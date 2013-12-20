@@ -22,9 +22,11 @@ $bill_item_index = 0;
 
 while($bill_item_index<count($array_bill_items)){ 
 ?>
-
-  		<a href="update_kitchen_item_status.php?id=<?php echo $array_bill_items[$bill_item_index]["id"] ?>"><li class="bullet-item"><?php if (isset( $array_item[$array_bill_items[$bill_item_index]['item_id']])) echo $array_item[$array_bill_items[$bill_item_index]['item_id']]?> (<?php echo $array_bill_items[$bill_item_index]['bill_item_status_id']?>)</li></a>
-
+<?php if($array_bill_items[$bill_item_index]['bill_kitchen_status_id']==4){?>
+  		<a href="update_kitchen_item_status.php?id=<?php echo $array_bill_items[$bill_item_index]["id"] ?>"><li class="bullet-item"><?php if (isset( $array_item[$array_bill_items[$bill_item_index]['item_id']])) echo $array_item[$array_bill_items[$bill_item_index]['item_id']]?> (<?php echo $array_bill_items[$bill_item_index]['quantity']?>)</li></a>
+<?php } else {?>
+  		<a href="update_kitchen_item_status.php?id=<?php echo $array_bill_items[$bill_item_index]["id"] ?>"><li class="bullet-items"><?php if (isset( $array_item[$array_bill_items[$bill_item_index]['item_id']])) echo $array_item[$array_bill_items[$bill_item_index]['item_id']]?> (<?php echo $array_bill_items[$bill_item_index]['quantity']?>)</li></a>
+<?php }?>
 <?php
 	$slno++;
 	$bill_item_index++;
