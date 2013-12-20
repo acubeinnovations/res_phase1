@@ -19,4 +19,8 @@ $myitems->connection=($myconnection);
 
 $array_item = $myitems->get_array();
 
+
+	$mybillitems=new BillItems($myconnection);
+	$mybillitems->connection=($myconnection);
+
 ?>
