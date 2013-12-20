@@ -1,5 +1,5 @@
 .pricing-table {
-width: 150px;
+width: 200px;
 margin-right:5px;
 margin-left:15px;
 margin-top:15px;
@@ -9,11 +9,11 @@ float:left;
 
 .pricing-table .title { 
 
-background-color:#C90;
+background-color:#CDA078;
 }
 
 .pricing-table .bullet-item {
-background-color:#093;	
+background-color:#A7E9D7;	
 }
 
 

@@ -49,10 +49,11 @@ $(document).ready(function(){
 	});
 	
 	$( document ).on("click", ".items", function() {
+	alert ("clicked");
 	var item_id='';
 	item_id=$(this).attr('item_id');
 	
-	var success_post = $.post('add_to_bill.php',
+	var success_post = $.post('get_items.php',
 		{
 			item_id:item_id,
 		});
@@ -173,117 +174,20 @@ $(document).ready(function(){
 	
 	});
 	
-	$("#opened_bills").click(function() {
-	
-	var opened='opened';
-	var success_post = $.post('opened_bills.php',
-		{
-			opened:opened,
-		});
-	success_post.done(function(data){
-		$('#openedbills').html(data);
-		});
-	
-	
-	});
-
-	$( document ).on("click", ".opened_bill_id", function() {
-	var bill_id=$(this).attr('bill_id');
-	var success_post = $.post('opened_bills.php',
-		{
-			bill_id:bill_id,
-		});
-	success_post.done(function(data){
-		if(data==0){
-		location.reload();
-		}
-		});
-	
-	
-	});
-
-	$("#print_bill_button").click(function() {
-	
-	var print='print';
-	var success_post = $.post('print_bill.php',
-		{
-			print:print,
-		});
-	success_post.done(function(data){
-		$('#print_bill').html(data);
-		});
-	
-	
-	});
-	
-	$( document ).on("click", "#print_div", function() {
-	('#print_bill').print();
-	return (false);
-	});
-	
 
 
-	$("#payment_button").click(function() {
 	
-	var payment='payment';
-	var success_post = $.post('print_bill.php',
-		{
-			payment:payment,
-		});
-	success_post.done(function(data){
-		$('#print_bill').html(data);
-		});
-	
-	
-	});
-$( document ).on("click", ".bill_item_cancel", function() {
-var  bill_item_id=$(this).attr('bill_item_id');
-	
-	var success_post = $.post('cancel.php',
-		{
-			bill_item_id:bill_item_id,
-		});
-	success_post.done(function(data){
-		if(data>0){
-var val="Rs ."+data;
-			$('#tot_button_val').text(val);
-		}else{
-			$('#tot_button_val').text("Rs .0");
-		}
-		});
-		$('#bill_item_row'+bill_item_id).remove();
-});
-
-
-$(".cancel_button").click(function() {
-var cancel='cancel';
-var success_post = $.post('cancel.php',
-		{
-			cancel:cancel,
-		});
-	success_post.done(function(data){
-		if(data==1){
-		location.reload();
-		}
-		});
-});
-$(".to_kitchen_button").click(function() {
-var to_kitchen='to_kitchen';
-var success_post = $.post('kitchen_statuses.php',
-		{
-			to_kitchen:to_kitchen,
-		});
-	success_post.done(function(data){
-		if(data==1){
-		location.reload();
-		}
-		});
-});
-
 
 	
 	
 	
+
+	
+
+
+
+
+
 	
 });
 

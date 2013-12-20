@@ -52,3 +52,7 @@ height:20px !important;
 width:10px !important;
 }
 
+input[type="text"]{
+width:50px;
+}
+

@@ -1,5 +1,5 @@
 <meta http-equiv="refresh" content="15">
-<div class="row">
+
 <?php
 	if($array_bills != false){
 	$bill_index=0;
@@ -43,4 +43,4 @@ while($bill_item_index<count($array_bill_items)){
 	}
 	}
 	?>
-</div> 
+ 
