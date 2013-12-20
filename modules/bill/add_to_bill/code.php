@@ -30,8 +30,9 @@ $mybillitems->quantity=1;
 $mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
 $mybillitems->rate=($item_rate[$mybillitems->item_id])*$mybillitems->quantity;
 $mybillitems->updated=CURRENT_DATETIME;
+$mybillitems->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $mybillitems->update();
-$div_content='<div class="row row_bill_items" id="bill_item_row'.$mybillitems->id.'"><div class="large-12 columns"><div class="large-4 columns"><a href="#" class="bill_items" id="item_bill'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$item_name[$mybillitems->item_id].'</a></div><div class="large-4 columns"><input type="text" value="'.$mybillitems->quantity.'" class="item_quantity" id="item_quantity'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'" /></div><div class="large-2 columns"><a href="#" class="bill_items" id="item_rate'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$mybillitems->rate.'</a></div><div class="large-2 columns"><a href="#" class="bill_item_cancel button tiny alert" id="item_cancel'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">X</a></div></div/><hr></div/>';
+$div_content='<div class="row row_bill_items" id="bill_item_row'.$mybillitems->id.'"><div class="medium-12 columns"><div class="medium-4 columns"><a href="#" class="bill_items" id="item_bill'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$item_name[$mybillitems->item_id].'</a></div><div class="medium-4 columns"><input type="text" value="'.$mybillitems->quantity.'" class="item_quantity" id="item_quantity'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'" /></div><div class="medium-2 columns"><a href="#" class="bill_items" id="item_rate'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$mybillitems->rate.'</a></div><div class="medium-2 columns"><a href="#" class="bill_item_cancel button tiny alert" id="item_cancel'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">X</a></div></div/></div/>';
 print $div_content;
 exit();
 }else{
@@ -53,8 +54,9 @@ $mybillitems->item_id=$_POST['item_id'];
 $mybillitems->rate=$item_rate[$mybillitems->item_id];
 $mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
 $mybillitems->quantity=1;
+$mybillitems->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $mybillitems->update();
-$div_content='<div class="row row_bill_items" id="bill_item_row'.$mybillitems->id.'"><div class="large-12 columns"><div class="large-4 columns"><a href="#" class="bill_items" id="item_bill'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$item_name[$mybillitems->item_id].'</a></div><div class="large-4 columns"><input type="text" value="'.$mybillitems->quantity.'" class="item_quantity" id="item_quantity'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'" /></div><div class="large-2 columns"><a href="#" class="bill_items" id="item_rate'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$mybillitems->rate.'</a></div><div class="large-2 columns"><a href="#" class="bill_item_cancel button tiny alert" id="item_cancel'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">X</a></div></div/><hr></div/>';
+$div_content='<div class="row row_bill_items" id="bill_item_row'.$mybillitems->id.'"><div class="medium-12 columns"><div class="medium-4 columns"><a href="#" class="bill_items" id="item_bill'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$item_name[$mybillitems->item_id].'</a></div><div class="medium-4 columns"><input type="text" value="'.$mybillitems->quantity.'" class="item_quantity" id="item_quantity'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'" /></div><div class="medium-2 columns"><a href="#" class="bill_items" id="item_rate'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$mybillitems->rate.'</a></div><div class="medium-2 columns"><a href="#" class="bill_item_cancel button tiny alert" id="item_cancel'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">X</a></div></div/></div/>';
 print $div_content;
 exit();
 }
@@ -70,13 +72,14 @@ $mybills->last_bill_number=$mybills->bill_number;
 $mybills->update_last_bill_number();
 $_SESSION['bill_number']=$mybills->bill_number;
 $_SESSION['bill_id']=$mybills->id;
+$mybillitems->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $mybillitems->bill_id=$mybills->id;
 $mybillitems->item_id=$_POST['item_id'];
 $mybillitems->rate=$item_rate[$mybillitems->item_id];
 $mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
 $mybillitems->quantity=1;
 $mybillitems->update();
-$div_content='<div class="row row_bill_items" id="bill_item_row'.$mybillitems->id.'"><div class="large-12 columns"><div class="large-4 columns"><a href="#" class="bill_items" id="item_bill'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$item_name[$mybillitems->item_id].'</a></div><div class="large-4 columns"><input type="text" class="item_quantity" value="'.$mybillitems->quantity.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'" id="item_quantity'.$mybillitems->item_id.'" /></div><div class="large-2 columns"><a href="#" class="bill_items" id="item_rate'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$mybillitems->rate.'</a></div><div class="large-2 columns"><a href="#" class="bill_item_cancel button tiny alert" id="item_cancel'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">X</a></div></div><hr></div>';
+$div_content='<div class="row row_bill_items" id="bill_item_row'.$mybillitems->id.'"><div class="medium-12 columns"><div class="medium-4 columns"><a href="#" class="bill_items" id="item_bill'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$item_name[$mybillitems->item_id].'</a></div><div class="medium-4 columns"><input type="text" class="item_quantity" value="'.$mybillitems->quantity.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'" id="item_quantity'.$mybillitems->item_id.'" /></div><div class="medium-2 columns"><a href="#" class="bill_items" id="item_rate'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">'.$mybillitems->rate.'</a></div><div class="medium-2 columns"><a href="#" class="bill_item_cancel button tiny alert" id="item_cancel'.$mybillitems->item_id.'" item_id="'.$mybillitems->item_id.'" bill_item_id="'.$mybillitems->id.'">X</a></div></div></div>';
 print $div_content;
 exit();
 }

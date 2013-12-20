@@ -117,7 +117,7 @@ $(document).ready(function(){
 
 	$( document ).on("focus", ".item_quantity", function() {
 	item_id=$(this).attr('item_id');
-	$(".calculater").show();
+	$("#calculater_modal").trigger('click');
 	$("#item_id_hidden").val(item_id);
 	});
 	
@@ -160,7 +160,7 @@ $(document).ready(function(){
 			}
 	}
 	});
-	$(".calculater").hide();
+	$("#close_calc_modal").trigger('click');
 	var total="total";
 	var success_post = $.post('total_bill_amount.php',
 		{
@@ -180,9 +180,7 @@ $(document).ready(function(){
 	
 	});
 	
-	$( document ).on("click", ".close_button", function() {
-	$(".calculater").hide();
-	});
+	
 	$( document ).on("click", ".hold_button", function() {
 	var hold='hold';
 	var success_post = $.post('hold_bill.php',
