@@ -18,10 +18,14 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 	$page->function_list = array("functions.php");
 
+	$page->access_list = array("MASTER_KITCHEN","KITCHEN");
+
 	$index=0;
 	$content_list[$index]['file_name']='kitchen/inc_right_menu.php';
     $content_list[$index]['var_name']='right_menu';
+
     $index++;
+
 
 	$content_list[$index]['file_name']='inc_flash.php';
 	$content_list[$index]['var_name']='content';
