@@ -8,6 +8,7 @@ class BillItems {
     var $connection;
     var $id 			= gINVALID;
     var $bill_id		= "";
+	 var $counter_id		= "";
     var $item_id 	= "";
     var $quantity		= "";
     var $rate 	= "";
@@ -46,9 +47,10 @@ $this->bill_kitchen_status_id= "";
         if ( $this->id == "" || $this->id == gINVALID) {
 		
 		
-              $strSQL = "INSERT INTO bill_items (bill_id,item_id, quantity,rate,tax,discount,bill_item_status_id,bill_kitchen_status_id,created,updated) ";
+              $strSQL = "INSERT INTO bill_items (bill_id,counter_id,item_id, quantity,rate,tax,discount,bill_item_status_id,bill_kitchen_status_id,created,updated) ";
               $strSQL .= "VALUES ('".addslashes(trim($this->bill_id))."','";
-			  $strSQL .= addslashes(trim($this->item_id))."','";
+			  $strSQL .= addslashes(trim($this->counter_id))."','";
+				$strSQL .= addslashes(trim($this->item_id))."','";
               $strSQL .= addslashes(trim($this->quantity))."','";
               $strSQL .= addslashes(trim($this->rate))."','";
               $strSQL .= addslashes(trim($this->tax))."','";
@@ -141,6 +143,7 @@ $this->bill_kitchen_status_id= "";
         if ( mysql_num_rows($rsRES) > 0 ){
                 $this->id = mysql_result($rsRES,0,'id');
                 $this->bill_id = mysql_result($rsRES,0,'bill_id');
+				$this->counter_id = mysql_result($rsRES,0,'counter_id');
                 $this->item_id= mysql_result($rsRES,0,'item_id');
 				$this->discount = mysql_result($rsRES,0,'discount');
                 $this->rate= mysql_result($rsRES,0,'rate');
@@ -186,7 +189,7 @@ function get_array_bill_item_status_id(){
         $limited_data = array(); 
 		$i=0;
 		$str_condition = "";
-        $strSQL = "SELECT id,item_id,bill_id,rate,tax,quantity,bill_item_status_id FROM bill_items WHERE 1";
+        $strSQL = "SELECT id,item_id,bill_id,rate,tax,quantity,bill_item_status_id,bill_kitchen_status_id FROM bill_items WHERE 1";
 		if($this->id!='' && $this->id!=gINVALID){
            $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
       	 }
@@ -213,11 +216,11 @@ function get_array_bill_item_status_id(){
                 $all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit); 
                 $this->total_records = mysql_num_rows($all_rs);
             }
-			while (list ($id,$item_id,$bill_id,$rate,$tax,$quantity,$bill_item_status_id) = mysql_fetch_row($rsRES) ){
+			while (list ($id,$item_id,$bill_id,$rate,$tax,$quantity,$bill_item_status_id,$bill_kitchen_status_id) = mysql_fetch_row($rsRES) ){
 		          $limited_data[$i]["id"] = $id;
 					$limited_data[$i]["item_id"]=$item_id;
 				  $limited_data[$i]["bill_id"]=$bill_id;
-				
+					$limited_data[$i]["bill_kitchen_status_id"]=$bill_kitchen_status_id;
 		          $limited_data[$i]["rate"] = $rate;
 		          $limited_data[$i]["tax"] = $tax;
 				  $limited_data[$i]["quantity"] = $quantity;
