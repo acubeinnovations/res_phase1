@@ -15,3 +15,14 @@ background-color:#C90;
 .pricing-table .bullet-item {
 background-color:#093;	
 }
+
+
+.pricing-table .bullet-items {
+
+padding: 0.9375rem;
+text-align: center;
+color: #333333;
+font-size: 0.875rem;
+font-weight: normal;
+border-bottom: dotted 1px #dddddd;
+}
