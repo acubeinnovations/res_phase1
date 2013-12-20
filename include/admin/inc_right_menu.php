@@ -16,8 +16,8 @@
  		<li class="has-dropdown">
         <a href="#" >Items & Category</a>
          <ul class="dropdown">
-			   <li><a href="item.php">items</a></li>
-			   <li><a href="items.php" data-reveal-id="item" id="item">item List</a></li>
+			   <li><a href="item.php">Items</a></li>
+			   <li><a href="items.php" data-reveal-id="item" id="item">Item List</a></li>
          <li class="divider"></li>
          <li class="has-dropdown">
          <a href="#">Category</a>

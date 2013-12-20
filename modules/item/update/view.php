@@ -49,12 +49,12 @@ if(!defined('CHECK_INCLUDED')){
 		</div>
 	</div>
 
- <div class="row">
+<!-- <div class="row">
     <div class="large-4 columns">
       <label for ="item_statusid">Status</label>
       <?php echo populate_list_array("lststatus", $g_ARRAY_LIST_STATUS, 'id', 'name', $item->status_id,$disable=false);?>
      </div>
-  </div>
+  </div>-->
 
   <div class="row">
 	<div class="large-4 columns">
