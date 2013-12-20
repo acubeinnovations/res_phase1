@@ -25,11 +25,26 @@ $(document).ready(function(){
 		});
 	success_post.done(function(data){
 		if(data!='error'){
-			var val="TOTAL : Rs ."+data;
+			var val="TOTAL : Rs ."+parseFloat(Math.round(data * 100) / 100).toFixed(2);
 			$('#tot_button_val').text(val);
 		}else{
 			$('#tot_button_val').text("TOTAL : Rs .0");
 		}
+	});
+	var discount_refresh='discount';
+	var success_post = $.post('add_to_bill.php',
+		{
+			discount_refresh:discount_refresh,
+			
+		});
+	success_post.done(function(data){
+		if(data>0){
+		var val="Discount : Rs ."+data;
+			$('.discount').text(val);
+		}else{
+			$('.discount').text("Discount : Rs .0");
+		}	
+			
 	});
 	var bill_number="bill_number";
 	var success_post = $.post(current_url,
@@ -37,7 +52,7 @@ $(document).ready(function(){
 				bill_number:bill_number,
 			});
 	success_post.done(function(data){
-			if(data!='1'){
+			if(data!='0'){
 				var val='BILL :'+data;
 				$(".bill_number").text(val);
 				$(".bill_number").show();
@@ -85,7 +100,7 @@ $(document).ready(function(){
 					bill_number:bill_number,
 				});
 			success_post.done(function(data){
-				if(data!='1'){
+				if(data!='0'){
 				var val='BILL :'+data;
 				$(".bill_number").text(val);
 				$(".bill_number").show();
@@ -106,7 +121,7 @@ $(document).ready(function(){
 		});
 	success_post.done(function(data){
 		if(data!='error'){
-			var val="TOTAL : Rs ."+data;
+			var val="TOTAL : Rs ."+parseFloat(Math.round(data * 100) / 100).toFixed(2);
 			$('#tot_button_val').text(val);
 		}else{
 			$('#tot_button_val').text("TOTAL : Rs .0");
@@ -117,8 +132,14 @@ $(document).ready(function(){
 
 	$( document ).on("focus", ".item_quantity", function() {
 	item_id=$(this).attr('item_id');
+	$('#item_quantity'+item_id).val('');
 	$("#calculater_modal").trigger('click');
 	$("#item_id_hidden").val(item_id);
+	});
+	$('.discount').click(function(){
+	$('.bill_discount').val('');
+	$("#discount_calculater_modal").trigger('click');
+	
 	});
 	
 	$( document ).on("click", ".calc_button", function() {
@@ -134,10 +155,60 @@ $(document).ready(function(){
 		$('#item_quantity'+item_id).val(qty);
 	});
 
+
+	$( document ).on("click", ".discount_calc_button", function() {
+	
+	button_value=$(this).attr('button_value');
+	var qty='';
+	if($('.bill_discount').val()!=''){
+	var old_qty=$('.bill_discount').val();
+	qty=(old_qty*10)+Number(button_value);
+	}else{
+	qty=qty+Number(button_value);
+	}
+		$('.bill_discount').val(qty);
+	});
+
 	$( document ).on("click", ".clear", function() {
 	item_id=$("#item_id_hidden").val();
 	$('#item_quantity'+item_id).val('');
 	});
+
+	$( document ).on("click", ".ok_discount", function() {
+	var discount=$('.bill_discount').val();
+	var success_post = $.post('add_to_bill.php',
+		{
+			discount:discount,
+			
+		});
+	success_post.done(function(data){
+		if(data!='0'){
+		var val="Discount : Rs ."+data;
+			$('.discount').text(val);
+		}else{
+			$('.discount').text("Discount : Rs .0");
+		}	
+			
+	});
+	$("#close_calc_modal").trigger('click');
+	var total="total";
+	var success_post = $.post('total_bill_amount.php',
+		{
+			total:total,
+			
+		});
+	success_post.done(function(data){
+		if(data!='error'){
+			var val="TOTAL : Rs ."+parseFloat(Math.round(data * 100) / 100).toFixed(2);
+			$('#tot_button_val').text(val);
+		}else{
+			$('#tot_button_val').text("TOTAL : Rs .0");
+		}
+	});
+	
+	});
+
+
 	
 	$( document ).on("click", ".ok", function() {
 	item_id=$("#item_id_hidden").val();
@@ -169,7 +240,7 @@ $(document).ready(function(){
 		});
 	success_post.done(function(data){
 		if(data!='error'){
-			var val="TOTAL : Rs ."+data;
+			var val="TOTAL : Rs ."+parseFloat(Math.round(data * 100) / 100).toFixed(2);
 			$('#tot_button_val').text(val);
 		}else{
 			$('#tot_button_val').text("TOTAL : Rs .0");
@@ -283,7 +354,7 @@ var  bill_item_id=$(this).attr('bill_item_id');
 		});
 	success_post.done(function(data){
 		if(data>0){
-var val="TOTAL : Rs ."+data;
+var val="TOTAL : Rs ."+parseFloat(Math.round(data * 100) / 100).toFixed(2);
 			$('#tot_button_val').text(val);
 		}else{
 			$('#tot_button_val').text("TOTAL : Rs .0");

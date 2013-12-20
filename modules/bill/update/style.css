@@ -22,9 +22,7 @@ height:10px !important;
 #bill_det{
     float:left;
 	height:40px !important;
-   
-	
-	}
+   }
 #payment{
 	float:left;
 	min-height:24px;
@@ -36,6 +34,16 @@ height:10px !important;
     text-align:center;
    	height:27px !important;
     width:40px !important;
+    border:1px solid black;
+    
+	
+}
+
+.bill_discount{
+    font-size: 6px;
+    text-align:center;
+   	height:20px !important;
+    width:25px !important;
     border:1px solid black;
     
 	
@@ -81,12 +89,21 @@ color: #000000;
 background-color: #CCC;
 
 }
+.discount{
+color: #000000;
+background-color: #CCC;
+
+}
 
 .calc{
 
 width:400px !important;
 }
 
+.discount_calc{
+
+width:400px !important;
+}
 .counter{
 background:#ccc;
 min-height:450px
@@ -119,7 +136,8 @@ width:150px;
 #bill-container{
 background:#FAFAFA !important;
 height:400px !important;
-
+box-shadow:1px 1px 1px 1px gray;
+border:1px solid gray;
 
 }
 .payment .button{

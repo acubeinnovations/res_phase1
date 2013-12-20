@@ -324,12 +324,31 @@ function update_kitchen_status(){
             return  false;
         }
     }
-
+function get_tot_tax(){
+$taxes=0;
+$strSQL = "SELECT tax FROM bill_items WHERE bill_id = '".$this->bill_id."' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'"; 
+	  		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+          if ( mysql_num_rows($rsRES) > 0 ){
+        while ( list ($tax) = mysql_fetch_row($rsRES) ){
+          $taxes=$taxes+$tax;
+		
+        }
+	 return $taxes;
+}
+}
 
 function get_tot_bill_amount_array(){
 	$rate_array=0;
 	$i=0;
+	$tax=0;
+	$discount=0;
 	$Strcondition='';
+	$strSQL_bill = "SELECT tax,discount FROM bills WHERE id = '".$this->bill_id."' AND bill_status_id='".BILL_STATUS_BILLED."'  OR bill_status_id='".BILL_STATUS_PAID."'";
+	$rsRES_bill = mysql_query($strSQL_bill,$this->connection) or die(mysql_error(). $strSQL_bill );
+          if ( mysql_num_rows($rsRES_bill) > 0 ){
+        $tax=mysql_result($rsRES_bill,0,'tax');
+		$discount=mysql_result($rsRES_bill,0,'discount');
+        }
 	$strSQL = "SELECT rate FROM bill_items WHERE bill_id = '".$this->bill_id."' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'"; 
 	if($this->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED ){
 	$Strcondition=" AND bill_kitchen_status_id=".$this->bill_kitchen_status_id;
@@ -343,6 +362,7 @@ function get_tot_bill_amount_array(){
           $rate_array=$rate_array+$rate;
 		
         }
+		$rate_array=($rate_array+$tax)-$discount;
         return $rate_array;
         }
         else{

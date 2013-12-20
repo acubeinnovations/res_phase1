@@ -29,7 +29,7 @@ if(isset($_SESSION['bill_number']) && $_SESSION['bill_number']>0){
 print $_SESSION['bill_number'];
 exit();
 }else{
-print '1';
+print '0';
 exit();
 }
 }

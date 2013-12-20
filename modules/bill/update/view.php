@@ -38,6 +38,44 @@
 					</div>
 				</div>	
  </div>
+<div id="discount_calculater_div" class="reveal-modal discount_calc" data-reveal>
+<a class="close-reveal-modal" id="close_calc_modal">&#215;</a>
+				<div class="row">
+					<div class="medium-12 columns">
+						<div class="medium-3 columns">&nbsp;
+						</div>
+						<div class="medium-8 columns">
+							
+								<div class="medium-block-grid-6">
+										<a href="#" class="tiny button  discount_calc_button" button_value="1">1</a>
+										<a href="#" class="tiny button  discount_calc_button" button_value="2">2</a>
+										<a href="#" class="tiny button  discount_calc_button" button_value="3">3</a>
+				
+								</div>
+								<div class="medium-block-grid-6">
+										<a href="#" class="tiny button  discount_calc_button" button_value="4">4</a>
+										<a href="#" class="tiny button  discount_calc_button" button_value="5">5</a>
+										<a href="#" class="tiny button  discount_calc_button" button_value="6">6</a>
+				
+								</div>
+								<div class="medium-block-grid-6">
+										<a href="#" class="tiny button  discount_calc_button" button_value="7">7</a>
+										<a href="#" class="tiny button  discount_calc_button" button_value="8">8</a>
+										<a href="#" class="tiny button  discount_calc_button" button_value="9">9</a>
+				
+								</div>
+								<div class="medium-block-grid-6">
+										<a href="#" class="tiny button  discount_calc_button" button_value="0">0</a>
+										<a href="#" class="tiny button   success ok_discount" >✓</a>
+										<a href="#" class="tiny button   alert clear_discount " >X</a>
+				
+								</div>
+							</div>
+						<div class="medium-2 columns">&nbsp;
+						</div>
+					</div>
+				</div>	
+ </div>
 
 
 
@@ -106,11 +144,13 @@
 				<div id="bill_det" >
 						<a href="#" class="tiny  button bill_number" >BILL:<?php echo $_SESSION['bill_number'];?> </a>
 						<a href="#" class="tiny  button tot_button_val" id="tot_button_val" >TOTAL : Rs .0</a>
+						<a href="#" class="tiny  button discount" id="discount" >Discount :Rs. 0</a>
 					
 				</div>
-			
+				<input type="hidden" class="bill_discount" id="bill_discount" />
 				<input type="hidden" id="item_id_hidden">
 				<a href="#" data-reveal-id="calculater_div" id="calculater_modal"></a>
+				<a href="#" data-reveal-id="discount_calculater_div" id="discount_calculater_modal"></a>
 	  </div>
 	 </div>
 

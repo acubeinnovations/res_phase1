@@ -202,6 +202,27 @@ function get_array_item_name(){
 
 
 }
+function get_array_item_tax(){
+		$taxes = array();
+			$i=0;
+			$strSQL = "SELECT  id,tax FROM items";
+			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+			if ( mysql_num_rows($rsRES) > 0 )
+				 {
+					while ( list ($id,$tax) = mysql_fetch_row($rsRES) ){
+						$taxes[$id] =  $tax;
+
+           		 	}
+            		return $taxes;
+       				}else{
+					$this->error_number = 4;
+					$this->error_description="Can't list tax";
+					return false;
+    				}
+
+
+
+}
 
 
   function get_list_array_bylimit($start_record = 0,$max_records = 25){

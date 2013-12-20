@@ -47,6 +47,7 @@ $div_content='<table>
       <th width="400">Item</th>
       <th width="200">Quantity</th>
       <th width="250">Rate</th>
+	 <th width="250">Tax</th>
       <th width="250">Total Amount</th>
     </tr>
   </thead>
@@ -58,6 +59,7 @@ $div_content.='<tr>
       <td>'.$item_name[$data_bill_items[$bill_item_index]['item_id']].'</td>
       <td>'.$data_bill_items[$bill_item_index]['quantity'].'</td>
       <td>'.$item_rate[$data_bill_items[$bill_item_index]['item_id']].'</td>
+	 <td>'.$data_bill_items[$bill_item_index]['tax'].'</td>
       <td>'.$data_bill_items[$bill_item_index]['rate'].'</td>
     </tr>';
 $bill_tot_amount=$bill_tot_amount+$data_bill_items[$bill_item_index]['rate'];
