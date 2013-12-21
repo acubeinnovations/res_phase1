@@ -10,6 +10,8 @@ $bill_amount='';
 $mybills=new Bills($myconnection);
 $mybills->connection=($myconnection);
 $mybills->id=$_SESSION['bill_id'];
+$mybills->get_detail();
+if($mybills->bill_status_id!=BILL_STATUS_PAID){
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
 $mybillitems->id=$_POST['bill_item_id'];
@@ -26,6 +28,11 @@ $mybills->amount=$bill_amount;
 $mybills->update();
 print $mybills->amount;
 exit();
+}else{
+print '-1';
+exit();
+
+}
 }
 
 if(isset($_POST['cancel']) && $_SESSION['bill_id']>0){
@@ -33,6 +40,8 @@ $bill_amount='';
 $mybills=new Bills($myconnection);
 $mybills->connection=($myconnection);
 $mybills->id=$_SESSION['bill_id'];
+$mybills->get_detail();
+if($mybills->bill_status_id!=BILL_STATUS_PAID){
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
 $mybillitems->bill_id=$_SESSION['bill_id'];
@@ -47,6 +56,7 @@ $_SESSION['bill_id']='';
 $_SESSION['bill_number']='';
 print '1';
 exit();
+}
 }
 
 if(isset($_POST['new_bill']) && $_SESSION['bill_id']>0){

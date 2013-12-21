@@ -410,14 +410,19 @@ var  bill_item_id=$(this).attr('bill_item_id');
 			bill_item_id:bill_item_id,
 		});
 	success_post.done(function(data){
+	if(data!=-1){
 		if(data>0){
 var val="TOTAL : Rs ."+parseFloat(Math.round(data * 100) / 100).toFixed(2);
 			$('#tot_button_val').text(val);
 		}else{
 			$('#tot_button_val').text("TOTAL : Rs .0");
 		}
-		});
 		$('#bill_item_row'+bill_item_id).remove();
+		}else{
+		
+		}
+		});
+		
 });
 
 
