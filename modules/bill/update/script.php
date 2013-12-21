@@ -2,7 +2,49 @@
 
 var current_url = "<?php echo $current_url; ?>";
 
-$(document).ready(function(){
+
+ var global_idle="";
+function refresh() {
+		global_idle="false";
+     location.reload(); 
+  	
+}
+
+var timer;
+function start() {
+ timer = setTimeout(function(){refresh()}, 240000);
+}
+
+$(document).ready(function() {
+ 
+start();
+       $("body").mousemove(function( event ) {
+               if(global_idle==""){
+		clearTimeout(timer);
+               start(); 
+	}
+     
+       });
+$(document).scroll(function() {
+ if(global_idle==""){
+clearTimeout(timer);
+ start();
+}
+});
+
+$(document).keypress(function(e) {
+	 if(global_idle==""){
+               clearTimeout(timer);
+               start();
+	}
+       });
+
+ $( document ).bind("touchmove", function (event) {
+        if(global_idle==""){
+               clearTimeout(timer);
+               start();
+    }
+    });
 
   
 	var refresh="refresh";
@@ -60,7 +102,8 @@ $(document).ready(function(){
 				$(".bill_number").hide();
 			}
 			});
-
+	
+    
 
 	$( document ).on( "click", ".item_category", function() {
 	var item_id=$(this).attr('item_id');
@@ -130,7 +173,7 @@ $(document).ready(function(){
 	
 	});
 
-	$( document ).on("focus", ".item_quantity", function() {
+	$( document ).on("focus click", ".item_quantity", function() {
 	item_id=$(this).attr('item_id');
 	$('#item_quantity'+item_id).val('');
 	$("#calculater_modal").trigger('click');
@@ -319,6 +362,8 @@ $(document).ready(function(){
 	
 	
 	});
+
+	
 	
 	$( document ).on("click", "#print_div", function() {
 	printDiv('printable-area');

@@ -19,7 +19,7 @@ $mybills->connection=($myconnection);
 $bill_status=$mybills->get_array_statuses();
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
-
+$last_bill_number='';
 if(isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0 || isset($_POST['payment'])){
 $mybillitems->bill_id=$_SESSION['bill_id'];
 $mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
@@ -27,7 +27,9 @@ $data_bill_items=$mybillitems->get_list_array_bylimit();
 
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
+$last_bill_number=$mybills->get_last_bill_number();
 
+$mybills->bill_number=$last_bill_number+1;
 $mybills->bill_status_id=BILL_STATUS_PAID;
 $mybillitems->bill_id=$_SESSION['bill_id'];
 $mybillitems->bill_item_status_id==BILL_ITEM_STATUS_ACTIVE;
@@ -37,7 +39,9 @@ $bill_amount=$mybillitems->get_tot_bill_amount_array();
 $mybills->amount=$bill_amount;
 $mybills->payment_date=CURRENT_DATETIME;
 $mybills->update();
-
+$mybills->last_bill_number=$mybills->bill_number;
+$mybills->update_last_bill_number();
+$_SESSION['bill_number']=$mybills->bill_number;
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
 $bill_item_index=0;

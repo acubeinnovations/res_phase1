@@ -55,12 +55,7 @@ float:right;
 height:10px;
 width:40px;
 }
-/*
-.items{
- height:350px;
- width:500px;
-}
-*/
+
 .myalert{
 display:none;
 }
@@ -124,7 +119,7 @@ margin:5px;
 
 #item-container{
 background:#fff !important;
-height:400px !important;
+min-height:400px !important;
 box-shadow:1px 1px 1px 1px gray;
 border:1px solid gray;
 padding:5px;

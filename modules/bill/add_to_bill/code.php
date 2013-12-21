@@ -49,11 +49,14 @@ $mybills->connection=($myconnection);
 
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
-if(isset($_SESSION['bill_number']) && $_SESSION['bill_number']>0 && isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
+if(isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
 $mybillitems->item_id=$_POST['item_id'];
 $mybillitems->bill_id=$_SESSION['bill_id'];
 $chk=$mybillitems->bill_item_check();
 if($chk==true){
+$mybills->id=$_SESSION['bill_id'];
+$mybills->get_detail();
+if($mybills->bill_status_id!=BILL_STATUS_PAID){
 $mybillitems->get_detail();
 if($mybillitems->bill_item_status_id==BILL_ITEM_STATUS_CANCELLED){
 $mybillitems->quantity=1;
@@ -63,8 +66,6 @@ $mybillitems->tax=$mybillitems->rate*($item_tax[$mybillitems->item_id])/100;
 $mybillitems->updated=CURRENT_DATETIME;
 $mybillitems->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $mybillitems->update();
-$mybills->id=$_SESSION['bill_id'];
-$mybills->get_detail();
 $mybillitems->bill_id=$_SESSION['bill_id'];
 $tax=$mybillitems->get_tot_tax();
 $mybills->tax=$tax;
@@ -92,7 +93,11 @@ $mybills->update();
 print $mybillitems->item_id.'!@#$%*'.$mybillitems->quantity.'!@#$%*'.$mybillitems->rate;
 exit();
 }
+}
 }else{
+$mybills->id=$_SESSION['bill_id'];
+$mybills->get_detail();
+if($mybills->bill_status_id!=BILL_STATUS_PAID){
 $mybillitems->bill_id=$_SESSION['bill_id'];
 $mybillitems->item_id=$_POST['item_id'];
 $mybillitems->rate=$item_rate[$mybillitems->item_id];
@@ -111,17 +116,14 @@ $div_content='<div class="row row_bill_items" id="bill_item_row'.$mybillitems->i
 print $div_content;
 exit();
 }
+}
 }else{
 $mybills->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
-$last_bill_number=$mybills->get_last_bill_number();
 
-$mybills->bill_number=$last_bill_number+1;
 $mybills->bill_date=CURRENT_DATETIME;
 $mybills->bill_status_id=BILL_STATUS_BILLED;
 $mybills->update();
-$mybills->last_bill_number=$mybills->bill_number;
-$mybills->update_last_bill_number();
-$_SESSION['bill_number']=$mybills->bill_number;
+
 $_SESSION['bill_id']=$mybills->id;
 $mybillitems->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $mybillitems->bill_id=$mybills->id;

@@ -90,6 +90,9 @@ $this->amount=0;
 		if($this->bill_date!=''){
             $strSQL .= "bill_date = '".addslashes(trim($this->bill_date))."',";
 	     }
+        if($this->bill_number!=''){
+            $strSQL .= "bill_number = '".addslashes(trim($this->bill_number))."',";
+         }
 		if($this->payment_date!=''){
 	    	$strSQL .= "payment_date = '".addslashes(trim($this->payment_date))."',";
 		}

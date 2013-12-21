@@ -18,7 +18,7 @@ if($holded_bills!=false){
 $div_content='<fieldset>
     <legend>Opened Bills</legend><div class="row"><div class="small-12 columns">';
 for($index_holded_bills=0;$index_holded_bills<count($holded_bills);$index_holded_bills++){
-$div_content.='<div class="small-2 columns"><a href="#" class="tiny button fixed success opened_bill_id" id="bill_id'.$holded_bills[$index_holded_bills]['id'].'" bill_id="'.$holded_bills[$index_holded_bills]['id'].'" >Bill Number :'.$holded_bills[$index_holded_bills]['bill_number'].'    Rate   : '.$holded_bills[$index_holded_bills]['amount'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Time : '.$holded_bills[$index_holded_bills]['bill_time'].'</a></div>';
+$div_content.='<div class="small-2 columns"><a href="#" class="tiny button fixed success opened_bill_id" id="bill_id'.$holded_bills[$index_holded_bills]['id'].'" bill_id="'.$holded_bills[$index_holded_bills]['id'].'" >Bill id :'.$holded_bills[$index_holded_bills]['id'].' <br>Rate   : '.$holded_bills[$index_holded_bills]['amount'].'<br>Time : '.$holded_bills[$index_holded_bills]['bill_time'].'</a></div>';
 }
 $div_content.='</div></div></fieldset><a class="close-reveal-modal">&#215;</a>';
 print $div_content;
@@ -45,7 +45,7 @@ $mybills->update();
 $_SESSION['bill_id']=$_POST['bill_id'];
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
-$_SESSION['bill_number']=$mybills->bill_number;
+
 $mybills->bill_status_id=BILL_STATUS_BILLED;
 $mybills->update();
 print '0';
