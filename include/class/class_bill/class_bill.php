@@ -207,20 +207,18 @@ $this->amount=0;
 
 
  
-    function get_list_array_bylimit($start_record = 0,$max_records = 25){
+    function get_list_array_bylimit($start_record = 0,$max_records = 100000){
         $limited_data = array(); 
 		$i=0;
 		$str_condition = "";
-        $strSQL = "SELECT id,bill_number,bill_date,payment_date,bill_status_id,amount FROM bills WHERE 1";
+        $strSQL = "SELECT id,bill_number,bill_date,payment_date,bill_status_id,amount FROM bills WHERE 1 AND bill_date LIKE '%".CURRENT_DATE."%'";
 		if($this->id!='' && $this->id!=gINVALID){
            $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
       	 }
         if ($this->booking_date!='') { 
        	$strSQL .= " AND booking_date LIKE '%".addslashes(trim($this->booking_date))."%'";  
         }
-		 if ($this->bill_date!='') { 
-       	$strSQL .= " AND bill_date LIKE '%".addslashes(trim($this->bill_date))."%'";  
-        }
+		
 		 if ($this->payment_date!='') { 
        	$strSQL .= " AND payment_date LIKE '%".addslashes(trim($this->payment_date))."%'";  
         }
@@ -236,7 +234,7 @@ $this->amount=0;
         $strSQL .= " AND counter_id = '".addslashes(trim($this->counter_id))."'";  
         }
 		
-         $strSQL .= " ORDER BY id";
+         $strSQL .= " ORDER BY bill_number DESC";
 		
 	
 		$strSQL_limit = sprintf("%s LIMIT %d, %d", $strSQL, $start_record, $max_records);

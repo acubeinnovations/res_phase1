@@ -45,6 +45,7 @@ $mybills->update();
 $_SESSION['bill_id']=$_POST['bill_id'];
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
+$_SESSION['bill_number']='';
 
 $mybills->bill_status_id=BILL_STATUS_BILLED;
 $mybills->update();
