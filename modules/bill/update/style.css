@@ -31,10 +31,10 @@ height:10px !important;
 }
 
 .item_quantity{
-    font-size: 6px;
+    font-size: 5px;
     text-align:center;
-   	height:27px !important;
-    width:40px !important;
+   	height:30px !important;
+    width:50px !important;
     border:1px solid black;
     
 	
@@ -83,7 +83,7 @@ width:10px !important;
 .tot_button_val{
 color: #000000;
 background-color: #CCC;
-
+font-weight:bold;
 }
 .discount{
 color: #000000;
@@ -149,6 +149,7 @@ table {
     background: none repeat scroll 0% 0% white;
     margin-bottom: 1.25rem;
     border: 0px solid rgb(221, 221, 221);
+	width:280px;
 }
 table tr:nth-of-type(2n) {
     background: none repeat scroll 0% 0% rgb(255, 255, 255);

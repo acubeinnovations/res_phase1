@@ -143,8 +143,9 @@
 				
 				<div id="bill_det" >
 						<a href="#" class="tiny  button bill_number" >BILL:<?php echo $_SESSION['bill_number'];?> </a>
-						<a href="#" class="tiny  button tot_button_val" id="tot_button_val" ><b>TOTAL : Rs .0</b></a>
-						<a href="#" class="tiny  button discount" id="discount" >Discount :Rs. 0</a>
+                        <a href="#" class="tiny  button discount" id="discount" >Discount :Rs. 0</a>
+						<a href="#" class="tiny  button tot_button_val" id="tot_button_val" ><strong>TOTAL : Rs .0</strong></a>
+
 					
 				</div>
 				<input type="hidden" class="bill_discount" id="bill_discount" />
