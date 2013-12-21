@@ -9,7 +9,7 @@ $page = new Page;
 	$page->root_path = ROOT_PATH;
 	$page->current_url = $current_url;	// current url for pages
 	$page->title = "Acube MVC";	// page Title
-	$page->page_name = 'getitems';		// page name for menu and other purpose
+	$page->page_name = 'add_counter_items';		// page name for menu and other purpose
 	$page->layout = 'null.html';		// layout name
 
 
@@ -18,7 +18,7 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 
 	$page->function_list = array("functions.php");
-	$page->class_list = array("class_item.php", "class_counter_item.php" );
+	$page->class_list = array( "class_counter_item.php" );
 
 	$page->access_list = array("MASTER_KITCHEN","KITCHEN");
 	$page->script_list = array("jquery.min.js");
@@ -27,7 +27,7 @@ $page = new Page;
 	
 	
 	$page->module_path 	= '/modules/kitchen/';
-	$page->module		= 'get_items';
+	$page->module		= 'add_counter_item';
 
 
 
