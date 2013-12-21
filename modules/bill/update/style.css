@@ -146,5 +146,18 @@ width:110px;
 margin-top:5px;
 margin-bottom:5px;
 }
-
-
+table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td {
+    display: table-cell;
+    line-height: 0.125rem;
+}
+table {
+    background: none repeat scroll 0% 0% white;
+    margin-bottom: 1.25rem;
+    border: 0px solid rgb(221, 221, 221);
+}
+table tr:nth-of-type(2n) {
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+}
+table th:nth-of-type(n) {
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+}

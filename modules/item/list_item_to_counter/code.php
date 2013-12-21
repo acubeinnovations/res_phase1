@@ -22,7 +22,7 @@ if($get_item!=false){
 	$item_index=0;
 	$div_content='';
 	while($item_index<$count){
-	$div_content.='<a href="#" class="tiny button items " item_id="'.$get_item[$item_index]["id"].'" item_details="'.$get_item[$item_index]["name"].'/'.$get_item[$item_index]["rate"].'/'.$get_item[$item_index]["tax"].'">'.$get_item[$item_index]["name"].'<br>  Rs .'.$get_item[$item_index]["rate"].'</a>&nbsp;';
+	$div_content.='<a href="#" class="tiny button items " item_id="'.$get_item[$item_index]["id"].'" item_details="'.$get_item[$item_index]["name"].'/'.$get_item[$item_index]["rate"].'/'.$get_item[$item_index]["tax"].'"><b>'.$get_item[$item_index]["name"].'<br>  Rs .'.$get_item[$item_index]["rate"].'</b></a>&nbsp;';
 	$item_index++;
 	 } 
 $div_content.='</div></div>';

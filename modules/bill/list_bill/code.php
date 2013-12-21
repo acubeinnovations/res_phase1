@@ -27,6 +27,7 @@ $mybills->id=$_POST['bill_id'];
 $mybills->get_detail();
 
 $mybillitems->bill_id=$_POST['bill_id'];
+$tot_amount=$mybillitems->get_tot_amount();
 $mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
 
 $bill_amount=$mybillitems->get_tot_bill_amount_array();
@@ -35,14 +36,29 @@ $bill_amount=0;
 }
 $bill_item_index=0;
 
-$div_content='<table>
+$div_content=' <table> <tr>
+    <td align="center"><font size="5">Company Name</font></td>
+	</tr>
+	<tr>
+    <td align="center">Company Address</td>
+	</tr>
+	<tr>
+    <td align="center">Telephone</td>
+	</tr>
+	<tr>
+    <td align="left">Bill Number '.$mybills->bill_number.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POST CODE, CITY</td>
+	
+	</tr>	
+	<tr><td>
+	<table width=150px>
   <thead>
     <tr>
-	  <th width="30">Slno</th>
-      <th width="400">Item</th>
-      <th width="200">Quantity</th>
-      <th width="250">Rate</th>
-      <th width="250">Total Amount</th>
+	  <th>Slno</th>
+      <th >Item</th>
+      <th>Quantity</th>
+      <th >Rate</th>
+	 <th >Tax</th>
+      <th>Amt</th>
     </tr>
   </thead>
  <tbody>';
@@ -53,6 +69,7 @@ $div_content.='<tr>
       <td>'.$item_name[$data_bill_items[$bill_item_index]['item_id']].'</td>
       <td>'.$data_bill_items[$bill_item_index]['quantity'].'</td>
       <td>'.$item_rate[$data_bill_items[$bill_item_index]['item_id']].'</td>
+	 <td>'.$data_bill_items[$bill_item_index]['tax'].'</td>
       <td>'.$data_bill_items[$bill_item_index]['rate'].'</td>
     </tr>';
 
@@ -60,13 +77,40 @@ $bill_item_index++;
 $slno++;
 }
 $div_content.='<tr>
-	   <td></td>
+	   <td>Grand Total :</td>
       <td></td>
       <td></td>
-      <td>STATUS:'.$bill_status[$mybills->bill_status_id].'</td>
-      <td>Total :'.$bill_amount.'</td>
+      <td></td>
+	  <td></td>
+      <td>'.$tot_amount.'</td>
+    </tr>
+	<tr>
+	   <td>Tax :</td>
+      <td></td>
+      <td></td>
+      <td></td>
+	  <td></td>
+      <td>'.$mybills->tax.'</td>
+    </tr>
+	<tr>
+	   <td>Discount :</td>
+      <td></td>
+      <td></td>
+      <td></td>
+	  <td></td>
+      <td>'.$mybills->discount.'</td>
+    </tr>
+	<tr>
+	   <td>To be paid :</td>
+      <td></td>
+      <td></td>
+      <td></td>
+	  <td></td>
+      <td>'.$bill_amount.'</td>
     </tr></tbody>
-</table><a href="#" class="tiny button  print_div" id= "print_div">PRINT</a><a class="close-reveal-modal">&#215;</a>';
+</table></td>
+  </tr>
+</table>';
 print $div_content;
 exit();
 

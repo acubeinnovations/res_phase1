@@ -1,5 +1,5 @@
 <div id="openedbills" class="reveal-modal" data-reveal>  </div>
-<div id="print_bill" class="reveal-modal" data-reveal> </div>
+<div id="print_bill" class="reveal-modal" data-reveal><a class="close-reveal-modal">&#215;</a><div id='printable-area'></div> <a href="#" class="tiny button  print_div" id= "print_div">PRINT</a></div>
 <div id="calculater_div" class="reveal-modal calc" data-reveal>
 <a class="close-reveal-modal" id="close_calc_modal">&#215;</a>
 				<div class="row">
@@ -86,9 +86,9 @@
 <br>
 	  <div class="medium-2 columns ">
 
-		<div class=" categories">
+		<div class=" categories" align="center" >
 			<?php if(isset($array_item_category)){ $item_index=0; while($item_index<count($array_item_category)) {?>
-				<a href="#" class="tiny button success  item_category " item_id="<?php echo $array_item_category[$item_index]['id'];?>"><?php echo $array_item_category[$item_index]['name']; ?></a>
+				<a href="#" class="tiny button success  item_category " item_id="<?php echo $array_item_category[$item_index]['id'];?>"><b><?php echo $array_item_category[$item_index]['name']; ?></b></a>
 				<?php $item_index++; } } ?>
 
 			 </div>
@@ -103,7 +103,7 @@
 			$count = count($get_item_sub);
 			$item_index=0;
 					while($item_index<$count){ ?>
-			<a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><?php echo $get_item_sub[$item_index]["name"].'<br>  Rs .'.$get_item_sub[$item_index]["rate"]; ?></a>
+			<a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><b><?php echo $get_item_sub[$item_index]["name"].'<br>  Rs .'.$get_item_sub[$item_index]["rate"]; ?></b></a>
 		<?php
 		$item_index++;
 		 } 
@@ -125,13 +125,13 @@
 					 <a href="#" class="tiny button  cancel_button" id="cancel_button" >CANCEL</a>
 				
 					<?php }else if($bill_status==BILL_STATUS_PAID){ ?>
-					<a href="#" data-reveal-id="print_bill" id="print_bill_button" class="tiny button  print_bill_button" >PRINT</a>
-					 <a href="#" id="new_bill" class="tiny button  new_bill" >NEW BILL</a>
+					<a href="#" data-reveal-id="print_bill" id="print_bill_button" class="tiny button  print_bill_button" ><b>PRINT</b></a>
+					 <a href="#" id="new_bill" class="tiny button  new_bill" ><b>NEW BILL</b></a>
 				
 					<?php }else if($bill_status==''){ ?>
-					<a href="#"  class="tiny button   payment_button " id="payment_button" >PAY</a>
-					 <a href="#" class="tiny button   hold_button " >HOLD</a>
-					<a href="#" class="tiny button   cancel_button " id="cancel_button" >CANCEL</a>
+					<a href="#"  class="tiny button success   payment_button " id="payment_button" ><b>PAY</b></a>
+					 <a href="#" class="tiny button   hold_button " ><b>HOLD</b></a>
+					<a href="#" class="tiny button alert   cancel_button " id="cancel_button" ><b>CANCEL</b></a>
 					<?php } ?>
 				</div>
 				
@@ -143,7 +143,7 @@
 				
 				<div id="bill_det" >
 						<a href="#" class="tiny  button bill_number" >BILL:<?php echo $_SESSION['bill_number'];?> </a>
-						<a href="#" class="tiny  button tot_button_val" id="tot_button_val" >TOTAL : Rs .0</a>
+						<a href="#" class="tiny  button tot_button_val" id="tot_button_val" ><b>TOTAL : Rs .0</b></a>
 						<a href="#" class="tiny  button discount" id="discount" >Discount :Rs. 0</a>
 					
 				</div>

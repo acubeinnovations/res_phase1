@@ -1,5 +1,5 @@
 <div id="openedbills" class="reveal-modal" data-reveal>  </div>
-<div id="print_bill" class="reveal-modal" data-reveal> </div>
+<div id="print_bill" class="reveal-modal" data-reveal><a class="close-reveal-modal">&#215;</a><div id='printable-area'></div> <a href="#" class="tiny button  print_div" id= "print_div">PRINT</a> </div>
 <div class="row parent">
 	
 		<div class="large-12 columns"><br><br>

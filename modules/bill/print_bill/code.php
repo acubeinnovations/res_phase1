@@ -41,16 +41,33 @@ $mybills->update();
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
 $bill_item_index=0;
+?>
 
-$div_content='<table>
-  <thead>
+
+<?php
+$div_content=' <table width=150px> <tr>
+    <td align="center"><font size="5">Company Name</font></td>
+	</tr>
+	<tr>
+    <td align="center">Company Address</td>
+	</tr>
+	<tr>
+    <td align="center">Telephone</td>
+	</tr>
+	<tr>
+    <td align="left">Bill Number : '.$mybills->bill_number.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '.$mybills->payment_date.'</td>
+	
+	</tr>	
+	<tr><td>
+	<table width=150px>
+    <thead>
     <tr>
-	  <th width="30">Slno</th>
-      <th width="400">Item</th>
-      <th width="200">Quantity</th>
-      <th width="250">Rate</th>
-	 <th width="300">Tax</th>
-      <th width="250">Total Amount</th>
+	  <th style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;">Slno</th>
+      <th style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;" >Item</th>
+      <th style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;">Qty</th>
+      <th style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;" >Rate</th>
+	 <th style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;" >Tax</th>
+      <th style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;">Amt</th>
     </tr>
   </thead>
  <tbody>';
@@ -69,42 +86,52 @@ $bill_item_index++;
 $slno++;
 }
 $div_content.='<tr>
-	   <td></td>
-      <td></td>
-      <td></td>
-      <td>STATUS:'.$bill_status[$mybills->bill_status_id].'</td>
-      <td>Total :'.$tot_amount.'</td>
+	   <td colspan="2" style="border-top:1px #000 dotted;">Grand Total :</td>
+	  
+      <td style="border-top:1px #000 dotted;"></td>
+      <td style="border-top:1px #000 dotted;"></td>
+      <td style="border-top:1px #000 dotted;"></td>
+	 
+      <td style="border-top:1px #000 dotted;">'.$tot_amount.'</td>
     </tr>
 	<tr>
-	   <td></td>
+	   <td>Tax :</td>
       <td></td>
       <td></td>
       <td></td>
-      <td>Tax :'.$mybills->tax.'</td>
+	  <td></td>
+      <td>'.$mybills->tax.'</td>
     </tr>
 	<tr>
-	   <td></td>
+	   <td>Discount :</td>
       <td></td>
       <td></td>
       <td></td>
-      <td>Discount :'.$mybills->discount.'</td>
+	  <td></td>
+      <td>'.$mybills->discount.'</td>
     </tr>
 	<tr>
-	   <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Amount to be paid :'.$bill_amount.'</td>
-    </tr></tbody>
-</table><a href="#" class="tiny button  print_div" id= "print_div">PRINT</a><a class="close-reveal-modal">&#215;</a>';
+	   <td colspan="2" style="border-top:1px #000 dotted;">To be paid :</td>
+      <td style="border-top:1px #000 dotted;"></td>
+      <td style="border-top:1px #000 dotted;"></td>
+	  <td style="border-top:1px #000 dotted;"></td>
+      <td style="border-top:1px #000 dotted;">'.$bill_amount.'</td>
+    </tr>
+	<tr>
+    <td colspan="6" align="center"><u>Thank You</u></td>
+	</tr>	
+	</tbody>
+</table></td>
+  </tr>
+</table>';
 print $div_content;
 exit();
 }else{
-print 'Some errors occured.please try after some time.<a class="close-reveal-modal">&#215;</a>';
+print 'Some errors occured.please try after some time.';
 exit();
 }
 }else{
-print 'No Bill Selected.<a class="close-reveal-modal">&#215;</a>';
+print 'No Bill Selected.';
 exit();
 }
 

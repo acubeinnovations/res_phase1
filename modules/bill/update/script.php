@@ -314,17 +314,23 @@ $(document).ready(function(){
 			print:print,
 		});
 	success_post.done(function(data){
-		$('#print_bill').html(data);
+		$('#printable-area').html(data);
 		});
 	
 	
 	});
 	
 	$( document ).on("click", "#print_div", function() {
-	('#print_bill').print();
-	return (false);
-	});
+	printDiv('printable-area');
 	
+	});
+	function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+	}
 
 
 	$("#payment_button").click(function() {
