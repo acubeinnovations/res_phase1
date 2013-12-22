@@ -91,7 +91,7 @@ $div_content.='<tr>
 	 <td><font size="1">'.$data_bill_items[$bill_item_index]['tax'].'</font></td>
       <td><font size="1">'.$data_bill_items[$bill_item_index]['rate'].'</font></td>
     </tr>';
-$bill_tot_amount=$bill_tot_amount+$data_bill_items[$bill_item_index]['rate'];
+$bill_tot_amount=$bill_tot_amount + $data_bill_items[$bill_item_index]['rate'];
 $bill_item_index++;
 $slno++;
 }

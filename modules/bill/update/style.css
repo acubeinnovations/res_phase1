@@ -5,11 +5,11 @@
 
 .bill{
     overflow:auto;
-	height:300px !important;
+	height:400px !important;
    	width:340px;
 	border:1px solid #81DAF5;
-	
 	float:left;
+	margin-bottom:10px;
 }
 
 .row_bill_items{
@@ -102,7 +102,8 @@ width:400px !important;
 }
 .counter{
 background:#ccc;
-min-height:450px
+min-height:450px;
+padding-bottom:20px;
 }
 
 .categories{
@@ -119,7 +120,7 @@ margin:5px;
 
 #item-container{
 background:#fff !important;
-min-height:400px !important;
+min-height:500px !important;
 box-shadow:1px 1px 1px 1px gray;
 border:1px solid gray;
 padding:5px;
@@ -131,7 +132,7 @@ width:150px;
 }
 #bill-container{
 background:#FAFAFA !important;
-height:400px !important;
+height:500px !important;
 box-shadow:1px 1px 1px 1px gray;
 border:1px solid gray;
 
