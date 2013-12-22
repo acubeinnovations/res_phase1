@@ -127,7 +127,7 @@
 					<?php }else if($bill_status==BILL_STATUS_PAID){ ?>
 					<a href="#" data-reveal-id="print_bill" id="print_bill_button" class="tiny button  print_bill_button" ><b>PRINT</b></a>
 					 <a href="#" id="new_bill" class="tiny button  new_bill" ><b>NEW BILL</b></a>
-				
+					<a href="#" class="tiny button  alert cancel_button" id="cancel_button" >CANCEL</a>
 					<?php }else if($bill_status==''){ ?>
 					<a href="#"  class="tiny button success   payment_button " id="payment_button" ><b>PAY</b></a>
 					 <a href="#" class="tiny button   hold_button " ><b>HOLD</b></a>
@@ -143,12 +143,17 @@
 				
 				<div id="bill_det" >
 						<a href="#" class="tiny  button bill_number" >BILL:<?php echo $_SESSION['bill_number'];?> </a>
-                        <a href="#" class="tiny  button discount" id="discount" >Discount :Rs. 0</a>
+                        <a href="#" class="tiny  button discount" select_id="bill_discount" id="discount" >Discount :Rs. 0</a>
+                        <a href="#" class="tiny  button paid" id="paid" select_id="bill_paid" >Paid</a>
+                        <a href="#" class="tiny  button change" id="change" >change</a>
+                        
 						<a href="#" class="tiny  button tot_button_val" id="tot_button_val" ><strong>TOTAL : Rs .0</strong></a>
 
 					
 				</div>
 				<input type="hidden" class="bill_discount" id="bill_discount" />
+				<input type="hidden" class="bill_paid" id="bill_paid" />
+				<input type="hidden" class="select_id">
 				<input type="hidden" id="item_id_hidden">
 				<a href="#" data-reveal-id="calculater_div" id="calculater_modal"></a>
 				<a href="#" data-reveal-id="discount_calculater_div" id="discount_calculater_modal"></a>

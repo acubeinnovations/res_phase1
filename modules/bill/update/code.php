@@ -38,5 +38,15 @@ $item->item_category_id=1;
 $get_item_sub=$item->get_items_by_category();
 //$array_item=$item->get_array();
 
+if(isset($_POST['session'])){
+if(isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
+print 1;
+exit();
+}else{
+print 0;
+
+exit();
+}
+}
 
 ?>

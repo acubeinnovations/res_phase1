@@ -85,6 +85,16 @@ color: #000000;
 background-color: #CCC;
 font-weight:bold;
 }
+.change{
+color: #000000;
+background-color: #CCC;
+font-weight:bold;
+}
+.paid{
+color: #000000;
+background-color: #CCC;
+font-weight:bold;
+}
 .discount{
 color: #000000;
 background-color: #CCC;
@@ -132,7 +142,7 @@ width:150px;
 }
 #bill-container{
 background:#FAFAFA !important;
-height:500px !important;
+min-height:550px !important;
 box-shadow:1px 1px 1px 1px gray;
 border:1px solid gray;
 

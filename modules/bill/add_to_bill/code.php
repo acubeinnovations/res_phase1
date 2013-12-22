@@ -12,6 +12,43 @@ $item_tax= $item->get_array_item_tax();
 $item_category=new ItemCategory($myconnection);
 $item_category->connection=($myconnection);
 
+if(isset($_POST['paid_change_refresh']) && isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
+$mybills=new Bills($myconnection);
+$mybills->connection=($myconnection);
+$mybills->id=$_SESSION['bill_id'];
+$mybills->get_detail();
+print $mybills->paid.'!@#$%*'.$mybills->balance;
+exit();
+}
+if(isset($_POST['paid']) && isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
+$bill_amount='';
+$mybills=new Bills($myconnection);
+$mybills->connection=($myconnection);
+$mybills->id=$_SESSION['bill_id'];
+$mybills->get_detail();
+$mybillitems=new BillItems($myconnection);
+$mybillitems->connection=($myconnection);
+$mybillitems->bill_id=$_SESSION['bill_id'];
+$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
+$bill_amount=$mybillitems->get_tot_bill_amount_array();
+$mybills->paid=$_POST['paid'];
+$mybills->balance=$mybills->paid-$bill_amount;
+if($mybills->bill_status_id==BILL_STATUS_BILLED){
+$chk=$mybills->update();
+if($chk==true){
+print $mybills->balance;
+exit();
+}else{
+print '-1';
+exit();
+}
+}else{
+print '-1';
+exit();
+}
+}
+
+
 if(isset($_POST['discount']) && isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
 $mybills=new Bills($myconnection);
 $mybills->connection=($myconnection);

@@ -34,7 +34,7 @@ $mybills->bill_number=$last_bill_number+1;
 
 $mybills->bill_status_id=BILL_STATUS_PAID;
 $mybillitems->bill_id=$_SESSION['bill_id'];
-$mybillitems->bill_item_status_id==BILL_ITEM_STATUS_ACTIVE;
+$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
 //$mybillitems->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED;
 $tot_amount=$mybillitems->get_tot_amount();
 $bill_amount=$mybillitems->get_tot_bill_amount_array();
@@ -128,6 +128,20 @@ $div_content.='<tr>
       <td style="border-top:1px #000 dotted;"></td>
 	
       <td style="border-top:1px #000 dotted;" colspan="2" align="right"<font size="1"><b>Rs.'.$bill_amount.'</b></font></td>
+    </tr>
+    <tr>
+	   <td colspan="2"><font size="1"><b>Paid :</b></font></td>
+      <td></td>
+      <td></td>
+	
+      <td  colspan="2" align="right"<font size="1">Rs.'.$mybills->paid.'</font></td>
+    </tr>
+    <tr>
+	   <td colspan="2" ><font size="1"><b>Change :</b></font></td>
+      <td ></td>
+      <td ></td>
+	
+      <td  colspan="2" align="right"<font size="1">Rs.'.$mybills->balance.'</font></td>
     </tr>
 	<tr>
     <td colspan="6" align="center"><font size="2">Thank You</font></td>

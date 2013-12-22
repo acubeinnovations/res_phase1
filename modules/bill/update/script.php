@@ -2,7 +2,6 @@
 
 var current_url = "<?php echo $current_url; ?>";
 
-
  var global_idle="";
 function refresh() {
 		global_idle="false";
@@ -85,6 +84,23 @@ $(document).keypress(function(e) {
 			$('.discount').text(val);
 		}else{
 			$('.discount').text("Discount : Rs .0");
+		}	
+			
+	});
+	var paid_change_refresh='paid_change_refresh';
+	var success_post = $.post('add_to_bill.php',
+		{
+			paid_change_refresh:paid_change_refresh,
+			
+		});
+	success_post.done(function(data){
+		if (data.indexOf('!@#$%*') >= 0){
+			var paid_change=data.split('!@#$%*');
+			$('.paid').text('Paid :'+paid_change[0]);
+			$('.change').text('Change:'+paid_change[1]);
+		}else{
+			$('.paid').text('Paid:Rs.0');
+			$('.change').text('Change:Rs.0');
 		}	
 			
 	});
@@ -180,10 +196,20 @@ $(document).keypress(function(e) {
 	$("#item_id_hidden").val(item_id);
 	});
 	$('.discount').click(function(){
+	select_id=$(this).attr('select_id');
+	$('.select_id').val(select_id);
 	$('.bill_discount').val('');
+	$("#discount_calculater_modal").trigger('click');
+	});
+
+	$('.paid').click(function(){
+	select_id=$(this).attr('select_id');
+	$('.select_id').val(select_id);
+	$('.bill_paid').val('');
 	$("#discount_calculater_modal").trigger('click');
 	
 	});
+
 	
 	$( document ).on("click", ".calc_button", function() {
 	item_id=$("#item_id_hidden").val();
@@ -203,13 +229,14 @@ $(document).keypress(function(e) {
 	
 	button_value=$(this).attr('button_value');
 	var qty='';
-	if($('.bill_discount').val()!=''){
-	var old_qty=$('.bill_discount').val();
+	select_id=$('.select_id').val();
+	if($('.'+select_id).val()!=''){
+	var old_qty=$('.'+select_id).val();
 	qty=(old_qty*10)+Number(button_value);
 	}else{
 	qty=qty+Number(button_value);
 	}
-		$('.bill_discount').val(qty);
+		$('.'+select_id).val(qty);
 	});
 
 	$( document ).on("click", ".clear", function() {
@@ -218,6 +245,8 @@ $(document).keypress(function(e) {
 	});
 
 	$( document ).on("click", ".ok_discount", function() {
+		select_id=$('.select_id').val();
+	if(select_id=='bill_discount'){
 	var discount=$('.bill_discount').val();
     if(discount!=''){
 	var success_post = $.post('add_to_bill.php',
@@ -254,10 +283,42 @@ $(document).keypress(function(e) {
     
     $('.discount').text("Discount : Rs .0");
     }
-	
-	});
+    }else{
+	    var paid='';
+	    var session='session';
+		    var success_post = $.post(current_url,
+				{
+					session:session,
+					
+				});
+			success_post.done(function(data){
+		    if(data>0){
+				var paid=$('.bill_paid').val();
+				 if(paid!=''){
+			var success_post = $.post('add_to_bill.php',
+				{
+					paid:paid,
+					
+				});
+			success_post.done(function(data){
+				if(data!='-1'){
+				var val="Change:"+data;
+					$('.change').text(val);
+					$('.paid').text('Paid :'+paid);
+				}else{
+					$('.change').text("Change:0");
+				}
+				});
+				$("#close_calc_modal").trigger('click');
+				}
+				}else{
+			
+			$("#close_calc_modal").trigger('click');
+				}
+				});
 
-
+}
+});
 	
 	$( document ).on("click", ".ok", function() {
 	item_id=$("#item_id_hidden").val();
