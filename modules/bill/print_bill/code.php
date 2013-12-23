@@ -1,3 +1,5 @@
+
+
 <?php
 
 //prevent execution direct call by browser
@@ -34,7 +36,7 @@ $mybills->bill_number=$last_bill_number+1;
 
 $mybills->bill_status_id=BILL_STATUS_PAID;
 $mybillitems->bill_id=$_SESSION['bill_id'];
-$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
+$mybillitems->bill_item_status_id==BILL_ITEM_STATUS_ACTIVE;
 //$mybillitems->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED;
 $tot_amount=$mybillitems->get_tot_amount();
 $bill_amount=$mybillitems->get_tot_bill_amount_array();
@@ -70,57 +72,57 @@ $div_content='
 	
 	<tr>
     	<td align="left" colspan="2">
-			<font size="1">Bill No: '.$mybills->bill_number.'</font>
+			<font size="1"><font size="3"><b>Bill No: '.$mybills->bill_number.'</b></font>
 		</td>
 		<td align="right" colspan="4">
-			<font size="1">Date: '.date("d-m-Y H:i:s",strtotime($mybills->payment_date)).'</font> 
+			<font size="1"><b>Date: '.date("d-m-Y H:i:s",strtotime($mybills->payment_date)).'</b></font> 
 		</td>
 	</tr>	
 	<tr>
-	  <td style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;" colspan="2" ><font size="1">Item</font></td>
-	  <td style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;"><font size="1">Qty</font></td>
-	  <td style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;" ><font size="1">Rate</font></td>
-	  <td style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;" ><font size="1">Tax</font></td>
-	  <td style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;"><font size="1">Amt</font></td>
+	  <td style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;" colspan="2" ><b><font size="1">Item</font></b></td>
+	  <td style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;"><b><font size="1">Qty</font></b></td>
+	  <td style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;" ><b><font size="1">Rate</font><b></td>
+	  <td style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;" ><b><font size="1">Tax</font></b></td>
+	  <td style="border-bottom:1px #000 dotted;border-top:1px #000 dotted;"><b><font size="1">Amt</font></b></td>
 	</tr>
  <tbody>';
 $slno=1;
 while($bill_item_index<count($data_bill_items)){
 $div_content.='<tr>
-      <td colspan="2"><font size="1">'.substr($item_name[$data_bill_items[$bill_item_index]['item_id']],0,12).'</font></td>
-      <td><font size="1">'.$data_bill_items[$bill_item_index]['quantity'].'</font></td>
-      <td><font size="1">'.$item_rate[$data_bill_items[$bill_item_index]['item_id']].'</font></td>
-	 <td><font size="1">'.$data_bill_items[$bill_item_index]['tax'].'</font></td>
-      <td><font size="1">'.$data_bill_items[$bill_item_index]['rate'].'</font></td>
+      <td colspan="2"><b><font size="1">'.substr($item_name[$data_bill_items[$bill_item_index]['item_id']],0,12).'</font></b></td>
+      <td><b><font size="1">'.$data_bill_items[$bill_item_index]['quantity'].'</font></b></td>
+      <td><b><font size="1">'.$item_rate[$data_bill_items[$bill_item_index]['item_id']].'</font></b></td>
+	 <td><b><font size="1">'.$data_bill_items[$bill_item_index]['tax'].'</font></b></td>
+      <td><b><font size="1">'.$data_bill_items[$bill_item_index]['rate'].'</font></b></td>
     </tr>';
-$bill_tot_amount=$bill_tot_amount + $data_bill_items[$bill_item_index]['rate'];
+$bill_tot_amount=$bill_tot_amount+$data_bill_items[$bill_item_index]['rate'];
 $bill_item_index++;
 $slno++;
 }
 $div_content.='<tr>
-	   <td colspan="2" style="border-top:1px #000 dotted;"><font size="1">Grand Total :</font></td>
+	   <td colspan="2" style="border-top:1px #000 dotted;"><b><font size="1">Grand Total :</font></b></td>
 	  
       <td style="border-top:1px #000 dotted;"></td>
       <td style="border-top:1px #000 dotted;"></td>
       <td style="border-top:1px #000 dotted;"></td>
 	 
-      <td style="border-top:1px #000 dotted;"><font size="1">'.$tot_amount.'</font></td>
+      <td style="border-top:1px #000 dotted;"><b><font size="1">'.$tot_amount.'</font></b></td>
     </tr>
 	<tr>
-	   <td><font size="1">Tax :</font></td>
+	   <td><b><font size="1">Tax :</font></b></td>
       <td></td>
       <td></td>
       <td></td>
 	  <td></td>
-      <td><font size="1">'.$mybills->tax.'</font></td>
+      <td><b><font size="1">'.$mybills->tax.'</font></b></td>
     </tr>
 	<tr>
-	   <td><font size="1">Discount :</font></td>
+	   <td><b><font size="1">Discount :</font></b></td>
       <td></td>
       <td></td>
       <td></td>
 	  <td></td>
-      <td><font size="1">'.$mybills->discount.'</font></td>
+      <td><b><font size="1">'.$mybills->discount.'</font></b></td>
     </tr>
 	<tr>
 	   <td colspan="2" style="border-top:1px #000 dotted;"><font size="1"><b>To be paid :</b></font></td>
@@ -128,20 +130,6 @@ $div_content.='<tr>
       <td style="border-top:1px #000 dotted;"></td>
 	
       <td style="border-top:1px #000 dotted;" colspan="2" align="right"<font size="1"><b>Rs.'.$bill_amount.'</b></font></td>
-    </tr>
-    <tr>
-	   <td colspan="2"><font size="1"><b>Paid :</b></font></td>
-      <td></td>
-      <td></td>
-	
-      <td  colspan="2" align="right"<font size="1">Rs.'.$mybills->paid.'</font></td>
-    </tr>
-    <tr>
-	   <td colspan="2" ><font size="1"><b>Change :</b></font></td>
-      <td ></td>
-      <td ></td>
-	
-      <td  colspan="2" align="right"<font size="1">Rs.'.$mybills->balance.'</font></td>
     </tr>
 	<tr>
     <td colspan="6" align="center"><font size="2">Thank You</font></td>

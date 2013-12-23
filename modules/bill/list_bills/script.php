@@ -58,6 +58,22 @@ $( document ).on("click", ".print_bill_button", function() {
 		});
 	
 });
+
+$( document ).on("click", ".print_summary_bill_button", function() {
+	
+	var  bill_id=$(this).attr('bill_id');
+	var print='print';
+	var success_post = $.post('list_summary_bill.php',
+		{
+			print:print,
+			bill_id:bill_id,
+		});
+
+	success_post.done(function(data){
+		$('#printable-area').html(data);
+		});
+	
+});
 	
 	$( document ).on("click", "#print_div", function() {
 	printDiv('printable-area');

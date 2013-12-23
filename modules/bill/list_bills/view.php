@@ -3,6 +3,7 @@
 <div class="row parent">
 	
 		<div class="large-12 columns"><br><br>
+	
 			<table>
 				  <thead>
 					<tr>
@@ -19,6 +20,7 @@
 				<?php
 				$slno=1;
 				$bill_index=0;
+				$bill_total_amount=0;
 				while($bill_index<count($bills)){  if(isset($bills[$bill_index]['id'])){ ?>
 				<tr>
 						<td><?php echo $slno?></td>
@@ -30,11 +32,31 @@
 						<td><a href="#" data-reveal-id="print_bill" id="print_bill_button<?php echo $bills[$bill_index]['id']?>" class="tiny button  print_bill_button" bill_id="<?php echo $bills[$bill_index]['id']?>" >PRINT</a></td>
 				</tr>
 				<?php
+				$bill_total_amount=$bill_total_amount+$bills[$bill_index]['amount'];
 			}
 				$bill_index++;
 				$slno++;
 				}?>
 				</tbody>
+				
+				
+				
+ <tbody bgcolor="#D6D6D6">
+				
+				<tr>
+						<td colspan="3"><font size="4">Total Number of Bills : <?php echo count($bills);?> </font> </td>
+							
+				
+				
+				
+						
+						<td colspan="3"><font size="4">Total Amount : <?php echo $bill_total_amount; ?></font> <input type="text"  name="txtdate" id="txtdate" value="txtdate"/></td>
+				
+						
+						<td><a href="#" data-reveal-id="print_bill" id="print_summary_bill_button<?php echo $bills[$bill_index]['id']?>" class="tiny button  print_summary_bill_button" bill_id="<?php echo $bills[$bill_index]['id']?>" >PRINT</a></td>
+				</tr>
+
+				</tbody>				
 				</table>
 	
 		</div>
