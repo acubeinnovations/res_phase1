@@ -129,7 +129,7 @@
 					<?php if($bill_status==BILL_STATUS_BILLED) {?>
 					<a href="#"  class="tiny button success   payment_button " id="payment_button" >PAY</a>
 					<a href="#" class="tiny button   hold_button" >HOLD</a>
-					 <a href="#" class="tiny button   cancel_button" id="cancel_button" >CANCEL</a>
+					 <a href="#" class="tiny button  alert cancel_button" id="cancel_button" >CANCEL</a>
 
 					<?php }else if($bill_status==BILL_STATUS_PAID){ ?>
 					<a href="#" data-reveal-id="print_bill" id="print_bill_button" class="tiny button  print_bill_button" ><b>PRINT</b></a>
