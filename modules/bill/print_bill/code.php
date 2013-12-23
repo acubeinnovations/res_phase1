@@ -65,7 +65,7 @@ $div_content='
 	
 	<tr>
     	<td align="left" colspan="2">
-			<font size="1"><b>Bill No: '.$mybills->bill_number.'</b></font>
+			<font size="1"><font size="3"><b>Bill No: '.$mybills->bill_number.'</b></font>
 		</td>
 		<td align="right" colspan="4">
 			<font size="1"><b>Date: '.date("d-m-Y H:i:s",strtotime($mybills->payment_date)).'</b></font> 
@@ -92,6 +92,11 @@ $bill_tot_amount=$bill_tot_amount + $data_bill_items[$bill_item_index]['rate'];
 $bill_item_index++;
 $slno++;
 }
+if($mybills->packing_charge > 0){
+	$my_packing_charge =$mybills->packing_charge; 
+}else{
+	$my_packing_charge = 0;
+}
 $div_content.='<tr>
 	   <td colspan="2" style="border-top:1px #000 dotted;"><b><font size="1">Grand Total :</font></b></td>
 	  
@@ -115,7 +120,7 @@ $div_content.='<tr>
       <td></td>
       <td></td>
 	  <td></td>
-      <td><font size="1"><b>'.$mybills->packing_charge.'</b></font></td>
+      <td><font size="1"><b>'.$my_packing_charge.'</b></font></td>
     </tr>
 	<tr>
 	   <td colspan="2" style="border-top:1px #000 dotted;"><font size="1"><b>To be paid :</b></font></td>
