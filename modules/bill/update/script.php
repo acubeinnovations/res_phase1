@@ -482,6 +482,7 @@ $(document).keypress(function(e) {
 
 	$( document ).on("click", "#print_div", function() {
 	printDiv('printable-area');
+	
 
 	});
 	function printDiv(divName) {
@@ -489,7 +490,19 @@ $(document).keypress(function(e) {
     var originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
     window.print();
+	window.print();
     document.body.innerHTML = originalContents;
+	var new_bill='new_bill';
+	var success_post = $.post('cancel.php',
+		{
+			new_bill:new_bill,
+		});
+	success_post.done(function(data){
+		if(data==1){
+		location.reload();
+		}
+		});
+
 	}
 
 
