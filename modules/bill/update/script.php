@@ -205,7 +205,17 @@ $(document).keypress(function(e) {
 	$('.paid').click(function(){
 	select_id=$(this).attr('select_id');
 	$('.select_id').val(select_id);
+	$('.bill_paid_div').show();
 	$('.bill_paid').val('');
+	$("#discount_calculater_modal").trigger('click');
+	
+	});
+
+	$('.parcel').click(function(){
+	select_id=$(this).attr('select_id');
+	$('.select_id').val(select_id);
+	$('.bill_parcel_div').show();
+	$('.bill_parcel').val('');
 	$("#discount_calculater_modal").trigger('click');
 	
 	});
@@ -243,6 +253,16 @@ $(document).keypress(function(e) {
 	item_id=$("#item_id_hidden").val();
 	$('#item_quantity'+item_id).val('');
 	});
+	
+	$(".clear_val").click(function() {
+		select_id=$('.select_id').val();
+		$('.'+select_id).val('');
+		});
+	
+	$(".parcel").click(function() {
+	
+		});
+
 
 	$( document ).on("click", ".ok_discount", function() {
 		select_id=$('.select_id').val();
@@ -283,7 +303,8 @@ $(document).keypress(function(e) {
     
     $('.discount').text("Discount : Rs .0");
     }
-    }else{
+    }else {
+    if(select_id=='bill_paid'){
 	    var paid='';
 	    var session='session';
 		    var success_post = $.post(current_url,
@@ -314,9 +335,40 @@ $(document).keypress(function(e) {
 				}else{
 			
 			$("#close_calc_modal").trigger('click');
+
 				}
+				$('.bill_paid_div').hide();
+			$('.bill_paid').val('');
 				});
 
+}else{
+	var parcel=$('.bill_parcel').val();
+		var success_post = $.post('add_to_bill.php',
+		{
+			parcel:parcel,
+			
+		});
+		
+		var total="total";
+	var success_post = $.post('total_bill_amount.php',
+		{
+
+			total:total,
+			
+		});
+	success_post.done(function(data){
+		if(data!='error'){
+			var val="TOTAL : Rs ."+parseFloat(Math.round(data * 100) / 100).toFixed(2);
+			$('#tot_button_val').text(val);
+		}else{
+			$('#tot_button_val').text("TOTAL : Rs .0");
+		}
+		$("#close_calc_modal").trigger('click');
+		$('.bill_parcel_div').hide();
+		});
+
+
+}
 }
 });
 	

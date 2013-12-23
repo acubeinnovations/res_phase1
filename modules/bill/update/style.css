@@ -19,6 +19,30 @@
 .items-ajax{
 height:10px !important;
 }
+
+.bill_parcel_div{
+display:none;
+
+}
+.bill_paid_div{
+display:none;
+}
+.bill_paid{
+
+font-size: 5px;
+    text-align:center;
+   height:30px !important;
+    width:150px !important;
+    border:1px solid black;
+}
+.bill_parcel{
+
+font-size: 5px;
+    text-align:center;
+   height:30px !important;
+    width:150px !important;
+    border:1px solid black;
+}
 #bill_det{
     float:left;
 	height:40px !important;
@@ -33,7 +57,7 @@ height:10px !important;
 .item_quantity{
     font-size: 5px;
     text-align:center;
-   	height:30px !important;
+   height:30px !important;
     width:50px !important;
     border:1px solid black;
     

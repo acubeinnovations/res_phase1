@@ -47,12 +47,7 @@ $_SESSION['bill_number']=$mybills->bill_number;
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
 $bill_item_index=0;
-////////////
 
-?>
-
-
-<?php
 $div_content='
 <table>
 	<tr>
@@ -114,13 +109,13 @@ $div_content.='<tr>
 	  <td></td>
       <td><font size="1">'.$mybills->tax.'</font></td>
     </tr>
-	<tr>
-	   <td><font size="1">Discount :</font></td>
+	 <tr>
+	   <td><font size="1">Packing charge :</font></td>
       <td></td>
       <td></td>
       <td></td>
 	  <td></td>
-      <td><font size="1">'.$mybills->discount.'</font></td>
+      <td><font size="1">'.$mybills->packing_charge.'</font></td>
     </tr>
 	<tr>
 	   <td colspan="2" style="border-top:1px #000 dotted;"><font size="1"><b>To be paid :</b></font></td>

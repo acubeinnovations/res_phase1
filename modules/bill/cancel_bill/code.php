@@ -41,7 +41,7 @@ $mybills=new Bills($myconnection);
 $mybills->connection=($myconnection);
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
-
+if($mybills->bill_kitchen_status_id!=BILL_KITCHEN_STATUS_FINISHED){
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
 $mybillitems->bill_id=$_SESSION['bill_id'];
@@ -56,6 +56,7 @@ $_SESSION['bill_id']='';
 $_SESSION['bill_number']='';
 print '1';
 exit();
+}
 }
 
 if(isset($_POST['new_bill']) && $_SESSION['bill_id']>0){

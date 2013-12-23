@@ -354,14 +354,16 @@ function get_tot_bill_amount_array(){
 	$rate_array=0;
 	$i=0;
 	$tax=0;
+    $packing_charge=0;
 	$discount=0;
 	$Strcondition='';
 	$strSQL='';
-	$strSQL_bill = "SELECT tax,discount FROM bills WHERE id = '".$this->bill_id."' AND (bill_status_id='".BILL_STATUS_BILLED."'  OR bill_status_id='".BILL_STATUS_PAID."')";
+	$strSQL_bill = "SELECT tax,discount,packing_charge FROM bills WHERE id = '".$this->bill_id."' AND (bill_status_id='".BILL_STATUS_BILLED."'  OR bill_status_id='".BILL_STATUS_PAID."')";
 	$rsRES_bill = mysql_query($strSQL_bill,$this->connection) or die(mysql_error(). $strSQL_bill );
           if ( mysql_num_rows($rsRES_bill) > 0 ){
         $tax=mysql_result($rsRES_bill,0,'tax');
 		$discount=mysql_result($rsRES_bill,0,'discount');
+        $packing_charge=mysql_result($rsRES_bill,0,'packing_charge');
         }
 	$strSQL = "SELECT rate FROM bill_items WHERE bill_id = '".$this->bill_id."' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'"; 
 	if($this->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED ){
@@ -376,7 +378,7 @@ function get_tot_bill_amount_array(){
           $rate_array=$rate_array+$rate;
 		
         }
-		$rate_array=($rate_array+$tax)-$discount;
+		$rate_array=($rate_array+$tax+$packing_charge)-$discount;
         return $rate_array;
         }
         else{
