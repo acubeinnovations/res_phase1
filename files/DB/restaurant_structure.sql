@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 19, 2013 at 11:00 AM
+-- Generation Time: Dec 23, 2013 at 10:58 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.9
 
@@ -60,6 +60,8 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `bill_status_id` int(11) NOT NULL,
   `bill_kitchen_status_id` int(11) DEFAULT NULL,
   `amount` double NOT NULL,
+  `paid` double NOT NULL,
+  `balance` double NOT NULL,
   `tax` double NOT NULL,
   `discount` double NOT NULL,
   `name` varchar(255) NOT NULL,
