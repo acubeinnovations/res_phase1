@@ -5,8 +5,8 @@ var current_url = "<?php echo $current_url; ?>";
  var global_idle="";
 function refresh() {
 		global_idle="false";
-     location.reload(); 
-  	
+     location.reload();
+
 }
 
 var timer;
@@ -15,14 +15,14 @@ function start() {
 }
 
 $(document).ready(function() {
- 
+
 start();
        $("body").mousemove(function( event ) {
                if(global_idle==""){
 		clearTimeout(timer);
-               start(); 
+               start();
 	}
-     
+
        });
 $(document).scroll(function() {
  if(global_idle==""){
@@ -45,7 +45,7 @@ $(document).keypress(function(e) {
     }
     });
 
-  
+
 	var refresh="refresh";
 	var success_post = $.post('page_refresh_bill.php',
 		{
@@ -62,7 +62,7 @@ $(document).keypress(function(e) {
 	var success_post = $.post('total_bill_amount.php',
 		{
 			total:total,
-			
+
 		});
 	success_post.done(function(data){
 		if(data!='error'){
@@ -76,7 +76,7 @@ $(document).keypress(function(e) {
 	var success_post = $.post('add_to_bill.php',
 		{
 			discount_refresh:discount_refresh,
-			
+
 		});
 	success_post.done(function(data){
 		if(data>0){
@@ -84,14 +84,14 @@ $(document).keypress(function(e) {
 			$('.discount').text(val);
 		}else{
 			$('.discount').text("Discount : Rs .0");
-		}	
-			
+		}
+
 	});
 	var paid_change_refresh='paid_change_refresh';
 	var success_post = $.post('add_to_bill.php',
 		{
 			paid_change_refresh:paid_change_refresh,
-			
+
 		});
 	success_post.done(function(data){
 		if (data.indexOf('!@#$%*') >= 0){
@@ -101,8 +101,8 @@ $(document).keypress(function(e) {
 		}else{
 			$('.paid').text('Paid:Rs.0');
 			$('.change').text('Change:Rs.0');
-		}	
-			
+		}
+
 	});
 	var bill_number="bill_number";
 	var success_post = $.post(current_url,
@@ -118,8 +118,8 @@ $(document).keypress(function(e) {
 				$(".bill_number").hide();
 			}
 			});
-	
-    
+
+
 
 	$( document ).on( "click", ".item_category", function() {
 	var item_id=$(this).attr('item_id');
@@ -134,13 +134,13 @@ $(document).keypress(function(e) {
 			$(".items").html("&nbsp;");
 		}
 		});
-	
+
 	});
-	
+
 	$( document ).on("click", ".items", function() {
 	var item_id='';
 	item_id=$(this).attr('item_id');
-	
+
 	var success_post = $.post('add_to_bill.php',
 		{
 			item_id:item_id,
@@ -176,7 +176,7 @@ $(document).keypress(function(e) {
 	var success_post = $.post('total_bill_amount.php',
 		{
 			total:total,
-			
+
 		});
 	success_post.done(function(data){
 		if(data!='error'){
@@ -186,7 +186,7 @@ $(document).keypress(function(e) {
 			$('#tot_button_val').text("TOTAL : Rs .0");
 		}
 	});
-	
+
 	});
 
 	$( document ).on("focus click", ".item_quantity", function() {
@@ -206,21 +206,23 @@ $(document).keypress(function(e) {
 	select_id=$(this).attr('select_id');
 	$('.select_id').val(select_id);
 	$('.bill_paid_div').show();
+	$('.bill_parcel_div').hide();
 	$('.bill_paid').val('');
 	$("#discount_calculater_modal").trigger('click');
-	
+
 	});
 
 	$('.parcel').click(function(){
 	select_id=$(this).attr('select_id');
 	$('.select_id').val(select_id);
 	$('.bill_parcel_div').show();
+	$('.bill_paid_div').hide();
 	$('.bill_parcel').val('');
 	$("#discount_calculater_modal").trigger('click');
-	
+
 	});
 
-	
+
 	$( document ).on("click", ".calc_button", function() {
 	item_id=$("#item_id_hidden").val();
 	button_value=$(this).attr('button_value');
@@ -236,7 +238,7 @@ $(document).keypress(function(e) {
 
 
 	$( document ).on("click", ".discount_calc_button", function() {
-	
+
 	button_value=$(this).attr('button_value');
 	var qty='';
 	select_id=$('.select_id').val();
@@ -253,14 +255,14 @@ $(document).keypress(function(e) {
 	item_id=$("#item_id_hidden").val();
 	$('#item_quantity'+item_id).val('');
 	});
-	
+
 	$(".clear_val").click(function() {
 		select_id=$('.select_id').val();
 		$('.'+select_id).val('');
 		});
-	
+
 	$(".parcel").click(function() {
-	
+
 		});
 
 
@@ -272,7 +274,7 @@ $(document).keypress(function(e) {
 	var success_post = $.post('add_to_bill.php',
 		{
 			discount:discount,
-			
+
 		});
 	success_post.done(function(data){
 		if(data!='0'){
@@ -280,15 +282,15 @@ $(document).keypress(function(e) {
 			$('.discount').text(val);
 		}else{
 			$('.discount').text("Discount : Rs .0");
-		}	
-        			
+		}
+
 	});
 	$("#close_calc_modal").trigger('click');
 	var total="total";
 	var success_post = $.post('total_bill_amount.php',
 		{
 			total:total,
-			
+
 		});
 	success_post.done(function(data){
 		if(data!='error'){
@@ -298,9 +300,9 @@ $(document).keypress(function(e) {
 			$('#tot_button_val').text("TOTAL : Rs .0");
 		}
 	});
-    
+
     }else{
-    
+
     $('.discount').text("Discount : Rs .0");
     }
     }else {
@@ -310,7 +312,7 @@ $(document).keypress(function(e) {
 		    var success_post = $.post(current_url,
 				{
 					session:session,
-					
+
 				});
 			success_post.done(function(data){
 		    if(data>0){
@@ -319,7 +321,7 @@ $(document).keypress(function(e) {
 			var success_post = $.post('add_to_bill.php',
 				{
 					paid:paid,
-					
+
 				});
 			success_post.done(function(data){
 				if(data!='-1'){
@@ -333,7 +335,7 @@ $(document).keypress(function(e) {
 				$("#close_calc_modal").trigger('click');
 				}
 				}else{
-			
+
 			$("#close_calc_modal").trigger('click');
 
 				}
@@ -346,15 +348,15 @@ $(document).keypress(function(e) {
 		var success_post = $.post('add_to_bill.php',
 		{
 			parcel:parcel,
-			
+
 		});
-		
+
 		var total="total";
 	var success_post = $.post('total_bill_amount.php',
 		{
 
 			total:total,
-			
+
 		});
 	success_post.done(function(data){
 		if(data!='error'){
@@ -371,7 +373,7 @@ $(document).keypress(function(e) {
 }
 }
 });
-	
+
 	$( document ).on("click", ".ok", function() {
 	item_id=$("#item_id_hidden").val();
 	if($('#item_quantity'+item_id).val()=='' || $('#item_quantity'+item_id).val()==0 ){
@@ -398,7 +400,7 @@ $(document).keypress(function(e) {
 	var success_post = $.post('total_bill_amount.php',
 		{
 			total:total,
-			
+
 		});
 	success_post.done(function(data){
 		if(data!='error'){
@@ -408,12 +410,12 @@ $(document).keypress(function(e) {
 			$('#tot_button_val').text("TOTAL : Rs .0");
 		}
 	});
-	
+
 	}
-	
+
 	});
-	
-	
+
+
 	$( document ).on("click", ".hold_button", function() {
 	var hold='hold';
 	var success_post = $.post('hold_bill.php',
@@ -430,11 +432,11 @@ $(document).keypress(function(e) {
 			alert("bill cannot be holded");
 		}
 		});
-	
+
 	});
-	
+
 	$("#opened_bills").click(function() {
-	
+
 	var opened='opened';
 	var success_post = $.post('opened_bills.php',
 		{
@@ -443,8 +445,8 @@ $(document).keypress(function(e) {
 	success_post.done(function(data){
 		$('#openedbills').html(data);
 		});
-	
-	
+
+
 	});
 
 	$( document ).on("click", ".opened_bill_id", function() {
@@ -458,12 +460,12 @@ $(document).keypress(function(e) {
 		location.reload();
 		}
 		});
-	
-	
+
+
 	});
 
 	$("#print_bill_button").click(function() {
-	
+
 	var print='print';
 	var success_post = $.post('print_bill.php',
 		{
@@ -472,15 +474,15 @@ $(document).keypress(function(e) {
 	success_post.done(function(data){
 		$('#printable-area').html(data);
 		});
-	
-	
+
+
 	});
 
-	
-	
+
+
 	$( document ).on("click", "#print_div", function() {
 	printDiv('printable-area');
-	
+
 	});
 	function printDiv(divName) {
     var printContents = document.getElementById(divName).innerHTML;
@@ -492,13 +494,13 @@ $(document).keypress(function(e) {
 
 
 	$("#payment_button").click(function() {
-	
+
 	var payment='payment';
 	var success_post1 = $.post('print_bill.php',
 		{
 			payment:payment,
 		});
-	
+
 		var to_kitchen='to_kitchen';
 	var success_post = $.post('kitchen_statuses.php',
 		{
@@ -512,12 +514,12 @@ $(document).keypress(function(e) {
 		/*success_post1.done(function(data){
 		$('#print_bill').html(data);
 		});*/
-	
-	
+
+
 	});
 $( document ).on("click", ".bill_item_cancel", function() {
 var  bill_item_id=$(this).attr('bill_item_id');
-	
+
 	var success_post = $.post('cancel.php',
 		{
 			bill_item_id:bill_item_id,
@@ -532,10 +534,10 @@ var val="TOTAL : Rs ."+parseFloat(Math.round(data * 100) / 100).toFixed(2);
 		}
 		$('#bill_item_row'+bill_item_id).remove();
 		}else{
-		
+
 		}
 		});
-		
+
 });
 
 
@@ -565,10 +567,10 @@ var success_post = $.post('cancel.php',
 		});
 });
 
-	
-	
-	
-	
+
+
+
+
 });
 
  -->
