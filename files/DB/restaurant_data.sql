@@ -108,6 +108,12 @@ INSERT INTO `kitchen` (`id`, `counter_id`, `username`, `password`, `name`, `imag
 INSERT INTO `languages` (`id`, `name`, `publish`) VALUES
 (1, 'English', 1);
 
+
+INSERT INTO `packing` (`id`, `name`, `rate`) VALUES
+(1, 'Small Container', 5),
+(2, 'Large Container', 10),
+(3, 'Juice Container', 3);
+
 --
 -- Dumping data for table `statuses`
 --

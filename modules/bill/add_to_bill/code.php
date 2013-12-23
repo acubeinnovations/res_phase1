@@ -69,6 +69,17 @@ print 0;
 exit();
 }
 }
+if(isset($_POST['parcel']) && isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
+$packing_charge=$_POST['parcel'];
+$mybills=new Bills($myconnection);
+$mybills->connection=($myconnection);
+$mybills->id=$_SESSION['bill_id'];
+$mybills->get_detail();
+if($mybills->bill_status_id!=BILL_STATUS_PAID){
+$mybills->packing_charge=$packing_charge;	
+$mybills->update();
+}
+}
 
 if(isset($_POST['discount_refresh']) && isset($_SESSION['bill_id']) && $_SESSION['bill_id']>0){
 $mybills=new Bills($myconnection);

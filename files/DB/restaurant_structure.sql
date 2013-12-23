@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 23, 2013 at 10:58 AM
+-- Generation Time: Dec 23, 2013 at 04:26 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.9
 
@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `amount` double NOT NULL,
   `paid` double NOT NULL,
   `balance` double NOT NULL,
+  `packing_charge` double DEFAULT NULL,
   `tax` double NOT NULL,
   `discount` double NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -93,9 +94,14 @@ CREATE TABLE IF NOT EXISTS `bill_items` (
   `discount` double NOT NULL,
   `bill_item_status_id` int(11) NOT NULL,
   `bill_kitchen_status_id` int(11) DEFAULT NULL,
+  `packing_id` int(11) DEFAULT NULL,
+  `packing_rate` double DEFAULT NULL,
+  `packing_quantity` int(11) DEFAULT NULL,
+  `packing_amount` double DEFAULT NULL,
   `created` datetime NOT NULL,
   `updated` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `packing_id` (`packing_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -221,7 +227,9 @@ CREATE TABLE IF NOT EXISTS `items` (
   `tax` double NOT NULL,
   `status_id` int(11) NOT NULL,
   `from_master_kitchen` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `packing_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `packing_id` (`packing_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -275,6 +283,20 @@ CREATE TABLE IF NOT EXISTS `languages` (
   `publish` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `packing`
+--
+
+CREATE TABLE IF NOT EXISTS `packing` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `rate` double NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 

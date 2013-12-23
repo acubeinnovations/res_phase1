@@ -22,7 +22,7 @@ class Bills {
     var $paid         = "";
     var $balance           = "";
     var $last_bill_number="";
-	
+	var $packing_charge='';
     var $address	= "";
     var $email	= "";
     var $phone="" ; 
@@ -106,6 +106,9 @@ $this->amount=0;
         }
         if($this->balance!=''){
             $strSQL .= "balance = '".addslashes(trim($this->balance))."',";
+        }
+        if($this->packing_charge!=''){
+            $strSQL .= "packing_charge = '".addslashes(trim($this->packing_charge))."',";
         }
 		if($this->name!=''){
             $strSQL .= "name = '".addslashes(trim($this->name))."',";
@@ -196,6 +199,7 @@ $this->amount=0;
                 $this->amount = mysql_result($rsRES,0,'amount');
                 $this->paid = mysql_result($rsRES,0,'paid');
                 $this->balance = mysql_result($rsRES,0,'balance');
+                $this->packing_charge = mysql_result($rsRES,0,'packing_charge');
 				$this->discount = mysql_result($rsRES,0,'discount');
                 $this->tax = mysql_result($rsRES,0,'tax');
                 $this->counter_id= mysql_result($rsRES,0,'counter_id');
