@@ -160,7 +160,8 @@ $mybills->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $mybills->bill_date=CURRENT_DATETIME;
 $mybills->bill_status_id=BILL_STATUS_BILLED;
 $mybills->update();
-
+$last_bill_number=$mybills->get_last_bill_number();
+$_SESSION['bill_number']=$last_bill_number+1;
 $_SESSION['bill_id']=$mybills->id;
 $mybillitems->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $mybillitems->bill_id=$mybills->id;

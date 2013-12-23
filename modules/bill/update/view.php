@@ -143,7 +143,7 @@
 				
 				<div id="bill_det" >
 						<a href="#" class="tiny  button bill_number" >BILL:<?php echo $_SESSION['bill_number'];?> </a>
-                        <a href="#" class="tiny  button discount" select_id="bill_discount" id="discount" >Discount :Rs. 0</a>
+                        <!--<a href="#" class="tiny  button discount" select_id="bill_discount" id="discount" >Discount :Rs. 0</a>-->
                         <a href="#" class="tiny  button paid" id="paid" select_id="bill_paid" >Paid</a>
                         <a href="#" class="tiny  button change" id="change" >change</a>
                         
