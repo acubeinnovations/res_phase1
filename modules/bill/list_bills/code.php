@@ -12,4 +12,6 @@ $bills='';
 $mybills->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $mybills->bill_status_id=BILL_STATUS_PAID;
 $bills=$mybills->get_list_array_bylimit();
+//echo $mybills->bill_date;
+$consolidated=$mybills->get_consoldated_items_datewise();
 ?>

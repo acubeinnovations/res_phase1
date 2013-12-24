@@ -15,6 +15,7 @@ $item_name=$item->get_array_item_name();
 $item_rate=$item->get_array_item_rate();
 $mybills=new Bills($myconnection);
 $mybills->connection=($myconnection);
+//$cbill=$mybills->get_consoldated_items_datewise();
 $bill_status=$mybills->get_array_statuses();
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);

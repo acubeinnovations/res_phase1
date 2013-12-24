@@ -13,6 +13,9 @@ function start() {
 }
 
 $(document).ready(function() {
+
+
+
  
 start();
        $("body").mousemove(function( event ) {

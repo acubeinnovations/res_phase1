@@ -166,10 +166,14 @@ flash_alert(alert_message,alert_redirect);
 
  	<script src="/js/jquery.js"></script>
  	<script src="/js/foundation.min.js"></script>
-
+	<script src="/js/foundation/foundation-datepicker.js"></script>
     <script>
             $(document).foundation();
+                                $('.mydatepicker').fdatepicker({
+                                        format: 'dd-mm-yyyy',
+                                        closeButton: true
+                                });
     </script>
- 	
+    <link rel="stylesheet" href="/css/foundation-datepicker.css" /> 	
   </body>
 </html>

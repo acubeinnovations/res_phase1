@@ -38,26 +38,14 @@
 				$slno++;
 				}?>
 				</tbody>
-				
-				
-				
- <tbody bgcolor="#D6D6D6">
-				
-				<tr>
+ 				<tbody bgcolor="#D6D6D6">
+					<tr>
 						<td colspan="3"><font size="4">Total Number of Bills : <?php echo count($bills);?> </font> </td>
-							
-				
-				
-				
-						
-						<td colspan="3"><font size="4">Total Amount : <?php echo $bill_total_amount; ?></font> <input type="text"  name="txtdate" id="txtdate" value="txtdate"/></td>
-				
-						
-						<td><a href="#" data-reveal-id="print_bill" id="print_summary_bill_button<?php echo $bills[$bill_index]['id']?>" class="tiny button  print_summary_bill_button" bill_id="<?php echo $bills[$bill_index]['id']?>" >PRINT</a></td>
-				</tr>
-
+						<td colspan="3"><font size="4">Total Amount : <?php echo $bill_total_amount; ?></font> </td>
+						<td><p><b>Select Date <input class="mydatepicker" readonly="readonly"></b></p><hr/><a href="#" data-reveal-id="print_bill" id="print_summary_bill_button<?php echo $bills[$bill_index]['id']?>" class="tiny button  print_summary_bill_button" bill_id="<?php echo $bills[$bill_index]['id']?>" >PRINT</a></td>
+					</tr>
 				</tbody>				
-				</table>
+			</table>
 	
 		</div>
 

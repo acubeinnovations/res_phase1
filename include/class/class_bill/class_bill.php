@@ -360,6 +360,17 @@ function update_bill_kitchen_status(){
             return  false;
         }
     }
+	
+function get_consoldated_items_datewise(){
+	
+	if ( $this->bill_date == "") {
+		echo $strSQL = "SELECT id,bill_number,bill_date,payment_date,bill_status_id,amount FROM bills WHERE  DATE_FORMAT(bill_date,'%d-%m-%Y') = '".$this->bill_date."'";	
+	}
+	else{
+		return false;
+	}
+	
+    }
 
 }
 ?>
