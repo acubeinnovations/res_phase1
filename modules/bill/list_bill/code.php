@@ -69,6 +69,12 @@ $div_content='
  <tbody>';
 $slno=1;
 $total_packing_charges=$mybills->packing_charge;
+if($total_packing_charges>0){
+	$total_packing_charges=$mybills->packing_charge;
+}
+else {
+	$total_packing_charges=0;
+	}
 while($bill_item_index<count($data_bill_items)){
 $div_content.='<tr>
       <td colspan="2"><font size="1">'.substr($item_name[$data_bill_items[$bill_item_index]['item_id']],0,12).'</font></td>
