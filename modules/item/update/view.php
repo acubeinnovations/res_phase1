@@ -34,6 +34,14 @@ if(!defined('CHECK_INCLUDED')){
 	</div>
 
 
+	<div class="row">
+		<div class="large-4 columns">
+		  <label for="lstpacking">Packing </label>
+		<td><?php echo populate_list_array("lstpacking", $arr_packing, 'id','name', $item->packing_id,$disable=false);?></td>
+		</div>
+	</div>
+
+
 <div class="row">
 		<div class="large-4 columns">
 			<label for="rate">Rate </label>
@@ -60,11 +68,11 @@ if(!defined('CHECK_INCLUDED')){
 	<div class="large-4 columns">
 
    			<label for="chkmaster">Master </label>
-   			
+
    			<input id="chk" type="checkbox" value="1" name="chkmaster"  <?php if($item->from_master_kitchen == 1) {?>checked="checked" <?php } ?>>
-    		
+
  			 </div>
-			  
+
 		<div class="row">
 		<div class="large-4 columns">
 			<input class="small button" value="submit" type="submit" name="submit" >
