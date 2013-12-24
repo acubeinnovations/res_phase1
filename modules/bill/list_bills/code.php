@@ -11,8 +11,11 @@ $bill_statuses=$mybills->get_array_statuses();
 $bills='';
 $mybills->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $mybills->bill_status_id=BILL_STATUS_PAID;
+if(isset($_POST["bill_date"])) {
+	$mybills->bill_date = $_POST["bill_date"];
+}else{
+	$mybills->bill_date = date("d-m-Y");
+}
 $bills=$mybills->get_list_array_bylimit();
-//echo $mybills->bill_date;
-//$date=$_POST['mydatepicker'];
-$consolidated=$mybills->get_consoldated_items_datewise();
+
 ?>
