@@ -3,7 +3,7 @@
 <div class="row parent">
 	
 		<div class="large-12 columns"><br><br>
-	
+
 			<table>
 				  <thead>
 					<tr>
@@ -42,11 +42,11 @@
 					<tr>
 						<td colspan="3"><font size="4">Total Number of Bills : <?php echo count($bills);?> </font> </td>
 						<td colspan="3"><font size="4">Total Amount : <?php echo $bill_total_amount; ?></font> </td>
-						<td><p><b>Select Date <input class="mydatepicker" readonly="readonly"></b></p><hr/><a href="#" data-reveal-id="print_bill" id="print_summary_bill_button<?php echo $bills[$bill_index]['id']?>" class="tiny button  print_summary_bill_button" bill_id="<?php echo $bills[$bill_index]['id']?>" >PRINT</a></td>
+						<td><p><b>Select Date <input class="mydatepicker" id="bill_date" readonly="readonly"></b></p><hr/><a href="#" data-reveal-id="print_bill" id="print_summary_bill_button" class="tiny button"  >PRINT</a></td>
 					</tr>
 				</tbody>				
 			</table>
-	
+
 		</div>
 
 	
