@@ -372,7 +372,7 @@ function get_consoldated_items_datewise(){
 	
 	if ( $this->bill_date != "") {
 //this has to removed, after implenting itemwise packing charge	
-		$strSQL = "SELECT SUM(B.packing_charge) AS total_packing_charge FROM bills B  WHERE DATE_FORMAT(B.bill_date,'%d-%m-%Y') = '".$this->bill_date."'";	
+		$strSQL = "SELECT SUM(B.packing_charge) AS total_packing_charge FROM bills B  WHERE B.bill_status_id='".BILL_STATUS_PAID."' AND   DATE_FORMAT(B.bill_date,'%d-%m-%Y') = '".$this->bill_date."'";	
 		$rsRES_PC = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL);
 
         if ( mysql_num_rows($rsRES_PC) == 1 ){
@@ -384,7 +384,7 @@ function get_consoldated_items_datewise(){
 		
 ///----------------------------------------------------------
 		
-		$strSQL = "SELECT I.name,BI.item_id,SUM(BI.quantity) AS total_quantity,I.rate, SUM(BI.tax) AS total_tax, SUM(BI.packing_amount) AS total_packing_amount  FROM bill_items BI,bills B, items I WHERE BI.bill_id=B.id AND BI.item_id=I.id AND  DATE_FORMAT(B.bill_date,'%d-%m-%Y') = '".$this->bill_date."' GROUP BY BI.item_id";	
+		$strSQL = "SELECT I.name,BI.item_id,SUM(BI.quantity) AS total_quantity,I.rate, SUM(BI.tax) AS total_tax, SUM(BI.packing_amount) AS total_packing_amount  FROM bill_items BI,bills B, items I WHERE B.bill_status_id='".BILL_STATUS_PAID."' AND BI.bill_item_status_id = '".STATUS_ACTIVE."' AND BI.bill_id=B.id AND BI.item_id=I.id AND  DATE_FORMAT(B.bill_date,'%d-%m-%Y') = '".$this->bill_date."' GROUP BY BI.item_id";	
 		$rsRES = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL);
 
         if ( mysql_num_rows($rsRES) > 0 ){

@@ -35,7 +35,7 @@ if($bill_amount==false){
 $bill_amount=0;
 }
 $bill_item_index=0;
-
+	$total_packing_charges=0;
 $div_content='
 <table>
 	<tr>
@@ -68,6 +68,7 @@ $div_content='
 	</tr>
  <tbody>';
 $slno=1;
+$total_packing_charges=$mybills->packing_charge;
 while($bill_item_index<count($data_bill_items)){
 $div_content.='<tr>
       <td colspan="2"><font size="1">'.substr($item_name[$data_bill_items[$bill_item_index]['item_id']],0,12).'</font></td>
@@ -98,12 +99,12 @@ $div_content.='<tr>
       <td><font size="1">'.$mybills->tax.'</font></td>
     </tr>
 	<tr>
-	   <td><font size="1">Discount :</font></td>
+	   <td><font size="1">Packing Charge:</font></td>
       <td></td>
       <td></td>
       <td></td>
 	  <td></td>
-      <td><font size="1">'.$mybills->discount.'</font></td>
+      <td><font size="1">'.$total_packing_charges.'</font></td>
     </tr>
 	<tr>
 	   <td colspan="2" style="border-top:1px #000 dotted;"><font size="1"><b>To be paid :</b></font></td>

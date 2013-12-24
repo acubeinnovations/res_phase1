@@ -44,7 +44,7 @@
 				$slno++;
 				}?>
 				</tbody>
- 				<tbody bgcolor="#f9f9f9" style="height:8px;">
+ 				<tbody bgcolor="#f9f9f9" >
 					<tr height="5">
 						<td colspan="3"><font size="4">Total Number of Bills : <?php echo count($bills);?> </font> </td>
 						<td></td>

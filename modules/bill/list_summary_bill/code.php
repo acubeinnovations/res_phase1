@@ -43,11 +43,13 @@ $div_content='
 	</tr>
  <tbody>';
 $slno=1;
+$total_packing_charges=$mybills->packing_charge;
 while($bill_item_index<count($data_bill_items)){
 	$amount = $data_bill_items[$bill_item_index]['rate']*$data_bill_items[$bill_item_index]['total_quantity'];
 	$total_amount = $total_amount + $amount;
 	$total_tax=$total_tax + $data_bill_items[$bill_item_index]['total_tax'];
 	//$total_packing_charges=$total_packing_charges+$data_bill_items[$bill_item_index]['total_packing_amount'];
+	
 $div_content.='<tr>
       <td colspan="2"><font size="1">'.substr($data_bill_items[$bill_item_index]['name'],0,12).'</font></td>
       <td><font size="1">'.$data_bill_items[$bill_item_index]['total_quantity'].'</font></td>
@@ -77,19 +79,22 @@ $div_content.='<tr>
       <td><font size="1">'.$total_tax.'</font></td>
     </tr>
 	<tr>
-	   <td><font size="1">Total PC:</font></td>
+	   <td><font size="1">Pkg Chgs:</font></td>
       <td></td>
       <td></td>
       <td></td>
 	  <td></td>
-      <td><font size="1">'.$mybills->packing_charge.'</font></td>
+      <td><font size="1">'.$total_packing_charges.'</font></td>
     </tr>	
 	<tr>
-	   <td colspan="3"><b><font size="2">Grand Total :</font></b></td>
+	   <td colspan="4"><b><font size="2">Grand Total :</font></b></td>
      
       
 
-      <td colspan="3"><b><font size="2">'.($total_tax+$total_amount+$total_packing_charges).'</font></b></td>
+      <td colspan="2" align="right"><b><font size="2">Rs. '.($total_tax+$total_amount+$total_packing_charges).'</font></b></td>
+    </tr>
+	<tr>
+	   <td colspan="6">&nbsp;</td>
     </tr>
 
 	
