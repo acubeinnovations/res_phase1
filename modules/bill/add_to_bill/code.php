@@ -76,8 +76,22 @@ $mybills->connection=($myconnection);
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
 if($mybills->bill_status_id!=BILL_STATUS_PAID){
-$mybills->packing_charge=$packing_charge;	
+$mybills->packing_charge=$packing_charge;
+//added by rajesh
 $mybills->update();
+$mybills->id=$_SESSION['bill_id'];
+$mybills->get_detail();
+if($mybills->paid>0){
+	$mybillitems=new BillItems($myconnection);
+	$mybillitems->connection=($myconnection);
+	$mybillitems->bill_id=$_SESSION['bill_id'];
+	$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
+	$bill_amount=$mybillitems->get_tot_bill_amount_array();
+	$mybills->balance=($mybills->paid-$bill_amount);
+}
+//
+$mybills->update();
+exit();
 }
 }
 
