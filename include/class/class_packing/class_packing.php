@@ -109,6 +109,24 @@ function get_list_array(){
     }
 }
 
+function get_array_rates(){
+    $cities = array();$i=0;
+
+    $strSQL = "SELECT id,rate FROM packing";
+    $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+    if ( mysql_num_rows($rsRES) > 0 ){
+        while ( list ($id,$rate) = mysql_fetch_row($rsRES) ){
+            $packing[$id] =  $rate;
+
+            $i++;
+        }
+        return $packing;
+    }else{
+    $this->error_number = 4;
+    $this->error_description="Can't list packing";
+    return false;
+    }
+}
 
 
 function get_array(){

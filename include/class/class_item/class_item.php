@@ -186,6 +186,28 @@ function get_array_item_rate(){
 
 }
 
+function get_array_item_packing_id(){
+		$items_packing_id = array();
+			$i=0;
+			$strSQL = "SELECT  id,packing_id FROM items";
+			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+			if ( mysql_num_rows($rsRES) > 0 )
+				 {
+					while ( list ($id,$packing_id) = mysql_fetch_row($rsRES) ){
+						$items_packing_id[$id] =  $packing_id;
+
+           		 	}
+            		return $items_packing_id;
+       				}else{
+					$this->error_number = 4;
+					$this->error_description="Can't list item";
+					return false;
+    				}
+
+
+
+}
+
 function get_array_item_name(){
 		$names = array();
 			$i=0;
