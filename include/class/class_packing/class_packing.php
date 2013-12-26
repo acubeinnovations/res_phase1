@@ -39,7 +39,7 @@ function get_detail(){
         $this->id = mysql_result($rsRES,0,'id');
         $this->name = mysql_result($rsRES,0,'name');
         $this->rate = mysql_result($rsRES,0,'rate');
-        return $packing ;
+        return true;
     }else{
         $this->error_number = 2;
         $this->error_description="This Packing doesn't exist";
@@ -129,13 +129,6 @@ function get_array(){
     return false;
     }
 }
-
-
-
-
-
-
-
 
 
 function get_list_array_bylimit($start_record = 0,$max_records = 25){
