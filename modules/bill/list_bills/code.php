@@ -17,5 +17,4 @@ if(isset($_POST["bill_date"])) {
 	$mybills->bill_date = date("d-m-Y");
 }
 $bills=$mybills->get_list_array_bylimit();
-
 ?>
