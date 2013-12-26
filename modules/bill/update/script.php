@@ -349,7 +349,7 @@ $(document).keypress(function(e) {
 	var item_id=$("#item_id_hidden").val();
 	var bill_item_id=$("#bill_item_id_hidden").val();
 	var parcel=$('.bill_parcel').val();
-	var item_qty=$('#item_quantity'+item_id).val();alert(item_qty);alert(parcel);
+	var item_qty=$('#item_quantity'+item_id).val();
 	if(item_qty==''){
 		popup_alert("item quantity is null","");
 	}else if(Number(item_qty) < Number(parcel)){
@@ -362,8 +362,7 @@ $(document).keypress(function(e) {
 				bill_item_id:bill_item_id,
 
 		});
-	success_post.done(function(data){alert(data);
-});
+
 		var total="total";
 	var success_post = $.post('total_bill_amount.php',
 		{
