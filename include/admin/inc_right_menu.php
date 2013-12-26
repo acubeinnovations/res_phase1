@@ -25,6 +25,16 @@
           <li><a href="item_categories.php">Category List</a></li>
       </ul>
       </li>
+      <li class="has-dropdown">
+        <a href="#" >packing</a>
+         <ul class="dropdown">
+         <li><a href="packing.php">Packing</a></li>
+         <li class="divider"></li>
+          <li class="has-dropdown">
+           <a href="packing_list.php">Packing List</a>
+        
+      </ul>
+      </li>
 
         <li class="has-dropdown">
           <a href="#" >Counter &  kitchen</a>
