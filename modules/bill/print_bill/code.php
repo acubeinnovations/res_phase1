@@ -40,9 +40,11 @@ $tot_amount=$mybillitems->get_tot_amount();
 $bill_amount=$mybillitems->get_tot_bill_amount_array();
 $mybills->amount=$bill_amount;
 $mybills->payment_date=CURRENT_DATETIME;
-if($mybills->paid==0){
-$mybills->paid=$bill_amount;
-}
+		if($mybills->paid==0){
+			$mybills->paid=$bill_amount;
+		}else{
+			$mybills->balance=($mybills->paid-$bill_amount);
+		}
 $mybills->update();
 $mybills->last_bill_number=$mybills->bill_number;
 $mybills->update_last_bill_number();
@@ -144,14 +146,14 @@ $div_content.='<tr>
       <td></td>
       <td></td>
 	
-      <td  colspan="2" align="right"<font size="1">Rs.'.$mybills->paid.'</font></td>
+      <td  colspan="2" align="right"><b><font size="1">Rs.'.$mybills->paid.'</font></b></td>
     </tr>
     <tr>
 	   <td colspan="2" ><font size="1"><b>Change :</b></font></td>
       <td ></td>
       <td ></td>
 	
-      <td  colspan="2" align="right"<font size="1">Rs.'.$mybills->balance.'</font></td>
+      <td  colspan="2" align="right"><b><font size="1">Rs.'.$mybills->balance.'</font></b></td>
     </tr>
 	<tr>
     <td colspan="6" align="center"><font size="2">Thank You</font></td>

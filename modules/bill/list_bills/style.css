@@ -6,3 +6,9 @@ padding:0 !important;
 td a{
 margin:0px !important;	
 }
+
+table {
+background: white;
+margin-bottom: 1.25rem;
+border: 0px ;
+}

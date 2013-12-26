@@ -53,7 +53,7 @@ $div_content='
 	
 	<tr>
     	<td align="left" colspan="2">
-			<font size="3"><b>Bill No: '.$mybills->bill_number.'</b></font>
+			<font size="2"><b>Bill No: '.$mybills->bill_number.'</b></font>
 		</td>
 		<td align="right" colspan="4">
 			<font size="1"><b>Date: '.date("d-m-Y H:i:s",strtotime($mybills->payment_date)).'</b></font> 
@@ -110,7 +110,7 @@ $div_content.='<tr>
       <td></td>
       <td></td>
 	  <td></td>
-      <td><b><font size="1">'.$total_packing_charges.'</font></b></td>
+      <td><b><font size="1">'.$total_packing_charges.'</font><b></td>
     </tr>
 	<tr>
 	   <td colspan="2" style="border-top:1px #000 dotted;"><font size="1"><b>To be paid :</b></font></td>
@@ -124,14 +124,14 @@ $div_content.='<tr>
       <td></td>
       <td></td>
 	
-      <td  colspan="2" align="right"<font size="1">Rs.'.$mybills->paid.'</font></td>
+      <td  colspan="2" align="right"><b><font size="1">Rs.'.$mybills->paid.'</font></b></td>
     </tr>
     <tr>
 	   <td colspan="2" ><font size="1"><b>Change :</b></font></td>
       <td ></td>
       <td ></td>
 	
-      <td  colspan="2" align="right"<font size="1">Rs.'.$mybills->balance.'</font></td>
+      <td  colspan="2" align="right"><b><font size="1">Rs.'.$mybills->balance.'</font></b></td>
     </tr>
 	<tr>
     <td colspan="6" align="center"><font size="2">Thank You</font></td>
