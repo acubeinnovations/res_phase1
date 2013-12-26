@@ -3,23 +3,20 @@
 <div class="row parent">
 	
 		<div class="large-12 columns"><br><br>
-
+<form action="" method="post"><b>Select Date <input name="bill_date" class="mydatepicker" id="bill_date" readonly="readonly" value="<?php echo $mybills->bill_date; ?>"></b> &nbsp; <input class = "tiny button" type="submit" value="search"/></form>
 			<table>
 			<tbody bgcolor="#D6D6D6">
-					<tr>
 
-						<td colspan="6"><form action="" method="post"><p><b>Select Date <input name="bill_date" class="mydatepicker" id="bill_date" readonly="readonly" value="<?php echo $mybills->bill_date; ?>"></b> &nbsp; <input class = "tiny button" type="submit" value="search"/></p></form></td> <td></td>
-					</tr>
 				</tbody>
-				  <thead>
+				  <thead >
 					<tr>
-					  <th width="30">Slno</th>
-					 <th width="150">Bill Number</th>
-					  <th width="250">Bill Date</th>
-					  <th width="250">Payment Date</th>
-					  <th width="250">Bill status</th>
-						<th width="250">Amount</th>
-						<th width="250">Print</th>
+					  <th width="30"  bgcolor="#89CAE2"><font color="#FFFFFF">Slno</font></th>
+					 <th width="150"  bgcolor="#89CAE2"><font color="#FFFFFF">Bill Number</font></th>
+					  <th width="250"  bgcolor="#89CAE2"><font color="#FFFFFF">Bill Date</font></th>
+					  <th width="250"  bgcolor="#89CAE2"><font color="#FFFFFF">Payment Date</font></th>
+					  <th width="250"  bgcolor="#89CAE2"><font color="#FFFFFF">Bill status</font></th>
+						<th width="250"  bgcolor="#89CAE2"><font color="#FFFFFF">Amount</font></th>
+						<th width="100" align="center"   bgcolor="#89CAE2"><font color="#FFFFFF">Print</font></th>
 					</tr>
 				  </thead>
 				 <tbody>
@@ -29,13 +26,13 @@
 				$bill_total_amount=0;
 				while($bill_index<count($bills)){  if(isset($bills[$bill_index]['id'])){ ?>
 				<tr>
-						<td><?php echo $slno?></td>
-						<td><?php echo $bills[$bill_index]['bill_number']?></td>
+						<td align="center"><?php echo $slno?></td>
+						<td align="center"><?php echo $bills[$bill_index]['bill_number']?></td>
 						<td><?php echo $bills[$bill_index]['bill_date']?></td>
 						<td><?php echo $bills[$bill_index]['payment_date']?></td>
 						<td><?php echo $bill_statuses[$bills[$bill_index]['bill_status_id']]?></td>
 						<td><?php echo $bills[$bill_index]['amount']?></td>
-						<td><a href="#" data-reveal-id="print_bill" id="print_bill_button<?php echo $bills[$bill_index]['id']?>" class="tiny button  print_bill_button" bill_id="<?php echo $bills[$bill_index]['id']?>" >PRINT</a></td>
+						<td align="center"><a href="#" data-reveal-id="print_bill" id="print_bill_button<?php echo $bills[$bill_index]['id']?>" class="tiny button  print_bill_button" bill_id="<?php echo $bills[$bill_index]['id']?>" >PRINT</a></td>
 				</tr>
 				<?php
 				$bill_total_amount=$bill_total_amount+$bills[$bill_index]['amount'];
@@ -45,14 +42,13 @@
 				}?>
 				</tbody>
  				<tbody>
-					<tr height="1" bgcolor="#F2F2F2">
 
-						<td colspan="3"><font size="4">Total Number of Bills : <?php echo $billcount;?> </font> </td>
+					<tr height="1" bgcolor="#89CAE2">
+						<td colspan="3"><font size="4" color="#FFFFFF">&nbsp;Total Number of Bills : <?php echo $billcount;?> </font> </td>
 						<td></td>
-						
 						<td colspan="1"></td>
-						<td><font size="4">Total Amount : <?php echo $bill_total_amount; ?></font> </td>
-						<td><a style="vertical-align:middle" href="#" data-reveal-id="print_bill" id="print_summary_bill_button" class="tiny button">PRINT</a></td>
+						<td><font size="4" color="#FFFFFF">&nbsp;Total Amount : <?php echo $bill_total_amount; ?></font> </td>
+						<td align="center" ><a style="vertical-align:middle" href="#" data-reveal-id="print_bill" id="print_summary_bill_button" class="tiny button alert">PRINT</a></td>
 					</tr>
 				</tbody>				
 			</table>
