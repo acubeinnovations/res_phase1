@@ -443,7 +443,7 @@ $(document).keypress(function(e) {
 			alert("bill holded");
 			location.reload();
 		}else{
-			alert("bill cannot be holded");
+			alert("Bill cannot be holded");
 		}
 		});
 
