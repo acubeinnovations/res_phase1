@@ -205,13 +205,15 @@ function get_array_bill_item_status_id(){
         $limited_data = array(); 
 		$i=0;
 		$str_condition = "";
-        $strSQL = "SELECT id,item_id,bill_id,rate,tax,quantity,bill_item_status_id,bill_kitchen_status_id FROM bill_items WHERE 1";
+        $strSQL = "SELECT id,item_id,bill_id,rate,tax,quantity,bill_item_status_id,bill_kitchen_status_id,packing_quantity FROM bill_items WHERE 1";
 		if($this->id!='' && $this->id!=gINVALID){
            $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
       	 }
         if ($this->bill_id!='') { 
        	$strSQL .= " AND bill_id = '".addslashes(trim($this->bill_id))."'";  
         }
+		
+	
 				
 	 if ($this->bill_item_status_id!='') { 
         $strSQL .= " AND bill_item_status_id = '".addslashes(trim($this->bill_item_status_id))."'";  
@@ -232,7 +234,7 @@ function get_array_bill_item_status_id(){
                 $all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit); 
                 $this->total_records = mysql_num_rows($all_rs);
             }
-			while (list ($id,$item_id,$bill_id,$rate,$tax,$quantity,$bill_item_status_id,$bill_kitchen_status_id) = mysql_fetch_row($rsRES) ){
+			while (list ($id,$item_id,$bill_id,$rate,$tax,$quantity,$bill_item_status_id,$bill_kitchen_status_id,$packing_quantity) = mysql_fetch_row($rsRES) ){
 		          $limited_data[$i]["id"] = $id;
 					$limited_data[$i]["item_id"]=$item_id;
 				  $limited_data[$i]["bill_id"]=$bill_id;
@@ -241,6 +243,7 @@ function get_array_bill_item_status_id(){
 		          $limited_data[$i]["tax"] = $tax;
 				  $limited_data[$i]["quantity"] = $quantity;
 				  $limited_data[$i]["bill_item_status_id"]=$bill_item_status_id;
+				  $limited_data[$i]["packing_quantity"]=$packing_quantity;
 				  $i++;
 		    }
         	return $limited_data;
