@@ -4,7 +4,8 @@
 	
 		<div class="large-12 columns"><br><br>
 <form action="" method="post"><b>Select Date <input name="bill_date" class="mydatepicker" id="bill_date" readonly="readonly" value="<?php echo $mybills->bill_date; ?>"></b> &nbsp; <input class = "tiny button" type="submit" value="search"/>
-<a class = "tiny button alert" type="button"  style="float:right;  margin-right:10px;"  href="cancelledbills.php"/>View Cancelled Bills</a></form>
+
+<a class = "tiny button success" type="button"  style="float:right; margin-right:20px;"  href="bills.php"/>View  Bills</a></form>
 
 
 			<table>
@@ -18,8 +19,7 @@
 					  <th width="250"  bgcolor="#89CAE2"><font color="#FFFFFF">Bill Date</font></th>
 					  <th width="250"  bgcolor="#89CAE2"><font color="#FFFFFF">Payment Date</font></th>
 					  <th width="250"  bgcolor="#89CAE2"><font color="#FFFFFF">Bill status</font></th>
-						<th width="250"  bgcolor="#89CAE2"><font color="#FFFFFF">Amount</font></th>
-						<th width="100" align="center"   bgcolor="#89CAE2"><font color="#FFFFFF">Print</font></th>
+						<th width="350"  bgcolor="#89CAE2"><font color="#FFFFFF">Amount</font></th>
 					</tr>
 				  </thead>
 				 <tbody>
@@ -35,7 +35,7 @@
 						<td><?php echo $bills[$bill_index]['payment_date']?></td>
 						<td><?php echo $bill_statuses[$bills[$bill_index]['bill_status_id']]?></td>
 						<td><?php echo $bills[$bill_index]['amount']?></td>
-						<td align="center"><a href="#" data-reveal-id="print_bill" id="print_bill_button<?php echo $bills[$bill_index]['id']?>" class="tiny button  print_bill_button" bill_id="<?php echo $bills[$bill_index]['id']?>" >PRINT</a></td>
+
 				</tr>
 				<?php
 				$bill_total_amount=$bill_total_amount+$bills[$bill_index]['amount'];
@@ -51,7 +51,7 @@
 						<td></td>
 						<td colspan="1"></td>
 						<td><font size="4" color="#FFFFFF">&nbsp;Total Amount : <?php echo $bill_total_amount; ?></font> </td>
-						<td align="center" ><a style="vertical-align:middle" href="#" data-reveal-id="print_bill" id="print_summary_bill_button" class="tiny button alert">PRINT</a></td>
+
 					</tr>
 				</tbody>				
 			</table>
