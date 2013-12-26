@@ -258,7 +258,7 @@ function get_array_item_tax(){
                 $all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit);
                 $this->total_records = mysql_num_rows($all_rs);
 					}
-			while ( list ($id,$name,$item_category_id,$rate,$tax,$status_id,$from_master_kitchen) = mysql_fetch_row($rsRES) ){
+			while ( list ($id,$name,$item_category_id,$rate,$tax,$status_id,$packing_id,$from_master_kitchen) = mysql_fetch_row($rsRES) ){
 						$items[$i]["id"] =  $id;
 						$items[$i]["name"] = $name;
 						$items[$i]["item_category_id"] = $item_category_id;
