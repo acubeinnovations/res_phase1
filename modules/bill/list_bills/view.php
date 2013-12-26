@@ -46,7 +46,8 @@
 				</tbody>
  				<tbody bgcolor="#f9f9f9" >
 					<tr height="3">
-						<td colspan="3"><font size="4">Total Number of Bills : <?php echo count($bills);?> </font> </td>
+
+						<td colspan="3"><font size="4">Total Number of Bills : <?php echo $billcount;?> </font> </td>
 						<td></td>
 						
 						<td colspan="1"></td>

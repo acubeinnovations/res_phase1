@@ -18,4 +18,10 @@ if(isset($_POST["bill_date"])) {
 }
 $bills=$mybills->get_list_array_bylimit();
 
+	if($bills==false) {
+		$billcount=0;
+	}else{
+		$billcount=count($bills);
+	}
+					
 ?>
