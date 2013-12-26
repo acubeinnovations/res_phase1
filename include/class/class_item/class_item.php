@@ -13,6 +13,7 @@ Class item{
 	var $tax= "";
 	var $status_id="";
 	var $from_master_kitchen="";
+	var $packing_id = gINVALID;
 	var $error = false;
     var $error_number=gINVALID;
     var $error_description="";
@@ -21,12 +22,13 @@ Class item{
  function update()
 		{
 			if ( $this->id == "" || $this->id == gINVALID) {
-			$strSQL = "INSERT INTO items (name,item_category_id,rate,tax,status_id,from_master_kitchen) VALUES ('";
+			$strSQL = "INSERT INTO items (name,item_category_id,rate,tax,status_id,packing_id,from_master_kitchen) VALUES ('";
 			$strSQL .= addslashes(trim($this->name)) ."','";
 			$strSQL .= addslashes(trim($this->item_category_id)) . "','";
 			$strSQL .= addslashes(trim($this->rate)) . "','";
 			$strSQL .= addslashes(trim($this->tax)) . "','";
 			$strSQL .= addslashes(trim($this->status_id)) . "','";
+			$strSQL .= addslashes(trim($this->packing_id)) . "','";
 			$strSQL .= addslashes(trim($this->from_master_kitchen)) . "')";
 			$rsRES = mysql_query($strSQL,$this->connection) or die ( mysql_error() . $strSQL );
 
@@ -46,6 +48,7 @@ Class item{
 			$strSQL .= "rate = '".addslashes(trim($this->rate))."',";
 			$strSQL .= "tax = '".addslashes(trim($this->tax))."',";
 		 	$strSQL .= "status_id = '".addslashes(trim($this->status_id))."',";
+			$strSQL .= "packing_id = '".addslashes(trim($this->packing_id))."',";
 		 	$strSQL .= "from_master_kitchen = '".addslashes(trim($this->from_master_kitchen))."'";
 			$strSQL .= " WHERE id = ".$this->id;
 			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
@@ -63,7 +66,7 @@ Class item{
 function get_details()
 {
 	if($this->id >0){
-		$strSQL = "SELECT id,name,item_category_id,rate,tax,status_id,from_master_kitchen FROM items WHERE id = '".$this->id."'";
+		$strSQL = "SELECT id,name,item_category_id,rate,tax,status_id,packing_id, from_master_kitchen FROM items WHERE id = '".$this->id."'";
 		$rsRES	= mysql_query($strSQL,$this->connection) or die(mysql_error().$strSQL);
 		 if(mysql_num_rows($rsRES) > 0){
 			$user 	= mysql_fetch_assoc($rsRES);
@@ -72,7 +75,8 @@ function get_details()
 			$this->item_category_id= $user['item_category_id'];
 			$this->rate= $user['rate'];
 			$this->tax= $user['tax'];
-			$this->status_id= $user['status_id'];
+			$this->status_id = $user['status_id'];
+			$this->packing_id = $user['packing_id'];
 			$this->from_master_kitchen= $user['from_master_kitchen'];
 			return true;
 			}else{
@@ -86,17 +90,18 @@ function get_details()
 function get_list_array()
 	{
 		$items = array();$i=0;
-		$strSQL = "SELECT  id,name,item_category_id,rate,tax,status_id,from_master_kitchen FROM items";
+		$strSQL = "SELECT  id,name,item_category_id,rate,tax,status_id, packing_id, from_master_kitchen FROM items";
 		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
 		if ( mysql_num_rows($rsRES) > 0 )
 					{
-					while ( list ($id,$name,$item_category_id,$rate,$tax,$status_id,$from_master_kitchen) = mysql_fetch_row($rsRES) ){
+					while ( list ($id,$name,$item_category_id,$rate,$tax,$status_id,$packing_id,$from_master_kitchen) = mysql_fetch_row($rsRES) ){
 						$items[$i]["id"] =  $id;
 						$items[$i]["name"] = $name;
 						$items[$i]["item_category_id"] = $item_category_id;
 						$items[$i]["rate"] = $rate;
 						$items[$i]["tax"] = $tax;
 						$items[$i]["status_id"] = $status_id;
+						$items[$i]["packing_id"] = $packing_id;
 						$items[$i]["from_master_kitchen"] = $from_master_kitchen;
 						$i++;
            		 	}
@@ -122,7 +127,7 @@ function get_array()
 				 {
 					while ( list ($id,$name,$item_category_id,$rate,$tax) = mysql_fetch_row($rsRES) ){
 						$items[$id] =  $name;
-			
+
            		 	}
             		return $items;
        				}else{
@@ -137,7 +142,7 @@ function get_array()
 function get_items_by_category(){
 		$items = array();
 			$i=0;
-			$strSQL = "SELECT  id,name,item_category_id,rate,tax ,from_master_kitchen FROM items WHERE item_category_id=".$this->item_category_id;
+			$strSQL = "SELECT  id,name,item_category_id,rate,tax,from_master_kitchen FROM items WHERE item_category_id=".$this->item_category_id;
 			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
 			if ( mysql_num_rows($rsRES) > 0 )
 				 {
@@ -226,19 +231,19 @@ function get_array_item_tax(){
 
 
   function get_list_array_bylimit($start_record = 0,$max_records = 25){
-        $items = array(); 
+        $items = array();
 		$i=0;
 		$str_condition = "";
-        $strSQL = "SELECT id,name,item_category_id,rate,tax,status_id,from_master_kitchen FROM items WHERE 1";
+        $strSQL = "SELECT id,name,item_category_id,rate,tax,status_id,packing_id, from_master_kitchen FROM items WHERE 1";
 		if($this->id!='' && $this->id!=gINVALID){
            $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
       	 }
-        if ($this->name!='') { 
-       	$strSQL .= " AND name LIKE '%".addslashes(trim($this->name))."%'";  
+        if ($this->name!='') {
+       	$strSQL .= " AND name LIKE '%".addslashes(trim($this->name))."%'";
         }
-		 if ($this->item_category_id!='') { 
-       	$strSQL .= " AND item_category_id LIKE '%".addslashes(trim($this->item_category_id))."%'";  
-        }	
+		 if ($this->item_category_id!='') {
+       	$strSQL .= " AND item_category_id LIKE '%".addslashes(trim($this->item_category_id))."%'";
+        }
 
         $strSQL .= " ORDER BY id";
 		$strSQL_limit = sprintf("%s LIMIT %d, %d", $strSQL, $start_record, $max_records);
@@ -249,8 +254,8 @@ function get_array_item_tax(){
             //without limit  , result of that in $all_rs
             if (trim($this->total_records)!="" && $this->total_records > 0) {
             	} else {
-				
-                $all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit); 
+
+                $all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit);
                 $this->total_records = mysql_num_rows($all_rs);
 					}
 			while ( list ($id,$name,$item_category_id,$rate,$tax,$status_id,$from_master_kitchen) = mysql_fetch_row($rsRES) ){
@@ -260,8 +265,9 @@ function get_array_item_tax(){
 						$items[$i]["rate"] = $rate;
 						$items[$i]["tax"] = $tax;
 						$items[$i]["status_id"] = $status_id;
+						$items[$i]["packing_id"] = $packing_id;
 						$items[$i]["from_master_kitchen"] = $from_master_kitchen;
-						$i++;}       
+						$i++;}
 						 	return $items;
         }
         else{

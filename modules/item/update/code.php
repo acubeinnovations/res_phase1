@@ -15,6 +15,16 @@ if($arr_item_category==false){
 	$arr_item_category=array();
 }
 
+
+$packing=new Packing($myconnection);
+$packing->connection=$myconnection;
+
+$arr_packing=$packing->get_list_array();
+if($arr_packing==false){
+	$arr_packing=array();
+}
+
+
 $msg="";
 
 if(isset($_POST['submit']) && $_POST['submit']=='submit'){
@@ -31,6 +41,8 @@ if(isset($_POST['submit']) && $_POST['submit']=='submit'){
 
 	$item->item_category_id=$_POST['lisitemcategory'];
 	$item->status_id= $_POST['lststatus'];
+	$item->packing_id= $_POST['lstpacking'];
+
 	$item->from_master_kitchen= $chkvalue;
 	$item->update();
 	header("location: items.php");
