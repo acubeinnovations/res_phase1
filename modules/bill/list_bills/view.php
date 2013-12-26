@@ -44,15 +44,15 @@
 				$slno++;
 				}?>
 				</tbody>
- 				<tbody bgcolor="#f9f9f9" >
-					<tr height="3">
+ 				<tbody>
+					<tr height="1" bgcolor="#F2F2F2">
 
 						<td colspan="3"><font size="4">Total Number of Bills : <?php echo $billcount;?> </font> </td>
 						<td></td>
 						
 						<td colspan="1"></td>
 						<td><font size="4">Total Amount : <?php echo $bill_total_amount; ?></font> </td>
-						<td><a href="#" data-reveal-id="print_bill" id="print_summary_bill_button" class="tiny button"  >PRINT</a></td>
+						<td><a style="vertical-align:middle" href="#" data-reveal-id="print_bill" id="print_summary_bill_button" class="tiny button">PRINT</a></td>
 					</tr>
 				</tbody>				
 			</table>
