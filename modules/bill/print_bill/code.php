@@ -53,6 +53,7 @@ $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
 $bill_item_index=0;
 
+
 $div_content='
 <style>
 td{
@@ -93,8 +94,13 @@ td{
  <tbody>';
 $slno=1;
 while($bill_item_index<count($data_bill_items)){
+		if ($data_bill_items[$bill_item_index]['packing_quantity']>0){
+		$temp_item_name=substr($item_name[$data_bill_items[$bill_item_index]['item_id']],0,17).'-P'.$data_bill_items[$bill_item_index]['packing_quantity'];
+		}else{
+			$temp_item_name=substr($item_name[$data_bill_items[$bill_item_index]['item_id']],0,21);
+			}
 $div_content.='<tr>
-      <td align="left" colspan="2"><b><font size="1">'.substr($item_name[$data_bill_items[$bill_item_index]['item_id']],0,17).'-P'.$data_bill_items[$bill_item_index]['id'].'</font></b></td>
+      <td align="left" colspan="2"><b><font size="1">'.$temp_item_name.'</font></b></td>
       <td align="right"><b><font size="1">'.$data_bill_items[$bill_item_index]['quantity'].'</font></b></td>
       <td align="right"><b><font size="1">'.$item_rate[$data_bill_items[$bill_item_index]['item_id']].'</font></b></td>
 	 <td align="right"><b><font size="1">'.$data_bill_items[$bill_item_index]['tax'].'</font></b></td>
