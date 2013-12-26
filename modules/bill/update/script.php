@@ -439,8 +439,9 @@ $(document).keypress(function(e) {
 		if(data=='1'){
 			$(".bill").html('&nbsp');
 			$('#tot_button_val').text("TOTAL : Rs .0");
-			alert("bill holded");
-			location.reload();
+			popup_alert("Bill holded","dashboard.php","Ok","false");
+			//location.reload();
+			
 		}else{
 			popup_alert("Bill cannot be holded","");
 		}
