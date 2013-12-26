@@ -7,7 +7,7 @@
 						<div class="medium-3 columns">&nbsp;
 						</div>
 						<div class="medium-8 columns">
-
+								
 								<div class="medium-block-grid-6">
 										<a href="#" class="tiny button  calc_button" button_value="1">1</a>
 										<a href="#" class="tiny button  calc_button" button_value="2">2</a>
@@ -47,7 +47,7 @@
 						<div class="medium-8 columns">
 							<div class="medium-block-grid-6">
 										<a href="#" >&nbsp;</a>
-										<div class="bill_parcel_div">Qty :<input type="text" class="bill_parcel" id="bill_parcel" /></div>
+										<div class="bill_parcel_div">Packing Qty :<input type="text" class="bill_parcel" id="bill_parcel" /></div>
 										<div class="bill_paid_div">Paid :<input type="text" class="bill_paid" id="bill_paid" /></div>
 										<a href="#">&nbsp;</a>
 

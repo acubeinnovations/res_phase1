@@ -96,10 +96,10 @@ $(document).keypress(function(e) {
 	success_post.done(function(data){
 		if (data.indexOf('!@#$%*') >= 0){
 			var paid_change=data.split('!@#$%*');
-			$('.paid').text('Paid :'+paid_change[0]);
+			$('.paid').text('Paid : Rs.'+paid_change[0]);
 			$('.change').text('Change:'+paid_change[1]);
 		}else{
-			$('.paid').text('Paid:Rs.0');
+			$('.paid').text('Paid : Rs.0');
 			$('.change').text('Change:Rs.0');
 		}
 
@@ -329,7 +329,7 @@ $(document).keypress(function(e) {
 				if(data!='-1'){
 				var val="Change:"+data;
 					$('.change').text(val);
-					$('.paid').text('Paid :'+paid);
+					$('.paid').text('Paid : Rs.'+paid);
 				}else{
 					$('.change').text("Change:0");
 				}

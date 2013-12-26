@@ -94,8 +94,12 @@ display:none;
 
 .bill_number{
 display:none;
-background-color: #CCC;
-color: #000000;
+color: #000000 !important;
+background-color: #fff !important;
+font-weight:bold;
+border:1px solid black;
+cursor:default !important;
+
 }
 
 button.bill_item_cancel, .button.bill_item_cancel{
@@ -120,6 +124,7 @@ background-color: #fff !important;
 font-weight:bold;
 border:1px solid black;
 cursor:default !important;
+
 }
 .change{
 color: #000000;
