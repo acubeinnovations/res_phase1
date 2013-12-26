@@ -40,6 +40,9 @@ $tot_amount=$mybillitems->get_tot_amount();
 $bill_amount=$mybillitems->get_tot_bill_amount_array();
 $mybills->amount=$bill_amount;
 $mybills->payment_date=CURRENT_DATETIME;
+if($mybills->paid==0){
+$mybills->paid=$bill_amount;
+}
 $mybills->update();
 $mybills->last_bill_number=$mybills->bill_number;
 $mybills->update_last_bill_number();
