@@ -1,4 +1,8 @@
-table tr th, table tr td {
-padding: 0.1625rem 0.125rem;
-font-size: 0.875rem;
+
+td{
+height:20px !important;
+padding:0 !important;
+}
+td a{
+margin:0px !important;	
 }
