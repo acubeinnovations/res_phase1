@@ -212,14 +212,18 @@ $(document).keypress(function(e) {
 
 	});
 
-	$('.parcel').click(function(){
+	$( document ).on("focus click", ".parcel", function() {
+	
 	select_id=$(this).attr('select_id');
+	item_id=$(this).attr('item_id');
+	bill_item_id=$(this).attr('bill_item_id');
 	$('.select_id').val(select_id);
 	$('.bill_parcel_div').show();
 	$('.bill_paid_div').hide();
 	$('.bill_parcel').val('');
 	$("#discount_calculater_modal").trigger('click');
-
+	$("#item_id_hidden").val(item_id);
+	$("#bill_item_id_hidden").val(bill_item_id);
 	});
 
 
@@ -261,13 +265,11 @@ $(document).keypress(function(e) {
 		$('.'+select_id).val('');
 		});
 
-	$(".parcel").click(function() {
-
-		});
+	
 
 
 	$( document ).on("click", ".ok_discount", function() {
-		select_id=$('.select_id').val();
+	select_id=$('.select_id').val();
 	if(select_id=='bill_discount'){
 	var discount=$('.bill_discount').val();
     if(discount!=''){
@@ -344,13 +346,24 @@ $(document).keypress(function(e) {
 				});
 
 }else{
+	var item_id=$("#item_id_hidden").val();
+	var bill_item_id=$("#bill_item_id_hidden").val();
 	var parcel=$('.bill_parcel').val();
+	var item_qty=$('#item_quantity'+item_id).val();alert(item_qty);alert(parcel);
+	if(item_qty==''){
+		popup_alert("item quantity is null","");
+	}else if(Number(item_qty) < Number(parcel)){
+			popup_alert("selected item quatity is less than of parcel quantity","");
+	}else{
 		var success_post = $.post('add_to_bill.php',
 		{
-			parcel:parcel,
+				item_id:item_id,			
+				parcel:parcel,
+				bill_item_id:bill_item_id,
 
 		});
-
+	success_post.done(function(data){alert(data);
+});
 		var total="total";
 	var success_post = $.post('total_bill_amount.php',
 		{
@@ -370,6 +383,7 @@ $(document).keypress(function(e) {
 		});
 
 
+}
 }
 }
 });

@@ -104,6 +104,12 @@ padding-bottom: 0.1rem;
 height:20px !important;
 width:10px !important;
 }
+button.parcel, .button.parcel{
+padding-top: 0.1rem;
+padding-bottom: 0.1rem;
+height:20px !important;
+width:10px !important;
+}
 .tot_button_val{
 color: #000000;
 background-color: #CCC;

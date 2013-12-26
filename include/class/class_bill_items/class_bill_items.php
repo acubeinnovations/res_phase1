@@ -97,6 +97,18 @@ $this->bill_kitchen_status_id= "";
 		if($this->bill_item_status_id!=''){
 	    $strSQL .= "bill_item_status_id = '".$this->bill_item_status_id."',";
 	    }
+		if($this->packing_rate!=''){
+	    $strSQL .= "packing_rate = '".$this->packing_rate."',";
+	    }
+		if($this->packing_quantity!=''){
+	    $strSQL .= "packing_quantity = '".$this->packing_quantity."',";
+	    }
+		if($this->packing_amount!=''){
+	    $strSQL .= "packing_amount = '".$this->packing_amount."',";
+	    }
+		if($this->packing_id!=''){
+	    $strSQL .= "packing_id = '".$this->packing_id."',";
+	    }
 		if($this->bill_kitchen_status_id!=''){
 	    $strSQL .= "bill_kitchen_status_id = '".addslashes(trim($this->bill_kitchen_status_id))."',";
 	    }
@@ -146,6 +158,10 @@ $this->bill_kitchen_status_id= "";
 				$this->counter_id = mysql_result($rsRES,0,'counter_id');
                 $this->item_id= mysql_result($rsRES,0,'item_id');
 				$this->discount = mysql_result($rsRES,0,'discount');
+				$this->packing_rate = mysql_result($rsRES,0,'packing_rate');
+				$this->packing_quantity = mysql_result($rsRES,0,'packing_quantity');
+				$this->packing_amount = mysql_result($rsRES,0,'packing_amount');
+				$this->packing_id = mysql_result($rsRES,0,'packing_id');
                 $this->rate= mysql_result($rsRES,0,'rate');
 				$this->quantity = mysql_result($rsRES,0,'quantity');
                 $this->tax = mysql_result($rsRES,0,'tax');
@@ -272,27 +288,18 @@ function delete(){
         }
     }
 }
-function get_counts(){
-$strSQL = "SELECT count(id) as total_bill_items from bill_items";
-$rsRES = mysql_query($strSQL, $this->connection);
-if ( mysql_num_rows($rsRES) > 0 ){
-$this->total_bill_items=mysql_result($rsRES,0,'total_bill_items');
+function get_tot_packing_amount(){
+$packing_amounts=0;
+$strSQL = "SELECT packing_amount FROM bill_items WHERE bill_id = '".$this->bill_id."' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'"; 
+	  		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+          if ( mysql_num_rows($rsRES) > 0 ){
+        while ( list ($packing_amount) = mysql_fetch_row($rsRES) ){
+          $packing_amounts=$packing_amounts+$packing_amount;
+		
+        }
+	 return $packing_amounts;
 }
-$strSQL = "SELECT count(id) as total_bill_items_active from bill_items WHERE status_id=".STATUS_ACTIVE;
-$rsRES = mysql_query($strSQL, $this->connection);
-if ( mysql_num_rows($rsRES) > 0 ){
-$this->total_bill_items_active=mysql_result($rsRES,0,'total_bill_items_active');
-}
-$strSQL = "SELECT count(id) as total_bill_items_inactive from bill_items WHERE status_id=".STATUS_INACTIVE;
-$rsRES = mysql_query($strSQL, $this->connection);
-if ( mysql_num_rows($rsRES) > 0 ){
-$this->total_bill_items_inactive=mysql_result($rsRES,0,'total_bill_items_inactive');
-}
-$strSQL ="SELECT count(id) as total_bill_items_used from bill_items  WHERE used=".intval(true);
-$rsRES = mysql_query($strSQL, $this->connection);
-if ( mysql_num_rows($rsRES) > 0 ){
-$this->total_bill_items_used=mysql_result($rsRES,0,'total_bill_items_used');
-}
+
 }
 
 
@@ -358,14 +365,14 @@ function get_tot_bill_amount_array(){
 	$discount=0;
 	$Strcondition='';
 	$strSQL='';
-	$strSQL_bill = "SELECT tax,discount,packing_charge FROM bills WHERE id = '".$this->bill_id."' AND (bill_status_id='".BILL_STATUS_BILLED."'  OR bill_status_id='".BILL_STATUS_PAID."')";
+	$strSQL_bill = "SELECT tax,discount FROM bills WHERE id = '".$this->bill_id."' AND (bill_status_id='".BILL_STATUS_BILLED."'  OR bill_status_id='".BILL_STATUS_PAID."')";
 	$rsRES_bill = mysql_query($strSQL_bill,$this->connection) or die(mysql_error(). $strSQL_bill );
           if ( mysql_num_rows($rsRES_bill) > 0 ){
         $tax=mysql_result($rsRES_bill,0,'tax');
 		$discount=mysql_result($rsRES_bill,0,'discount');
-        $packing_charge=mysql_result($rsRES_bill,0,'packing_charge');
+        
         }
-	$strSQL = "SELECT rate FROM bill_items WHERE bill_id = '".$this->bill_id."' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'"; 
+	$strSQL = "SELECT rate,packing_amount FROM bill_items WHERE bill_id = '".$this->bill_id."' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'"; 
 	if($this->bill_kitchen_status_id==BILL_KITCHEN_STATUS_FINISHED ){
 	$Strcondition=" AND bill_kitchen_status_id=".$this->bill_kitchen_status_id;
 	}
@@ -374,9 +381,9 @@ function get_tot_bill_amount_array(){
 	}
   		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
           if ( mysql_num_rows($rsRES) > 0 ){
-        while ( list ($rate) = mysql_fetch_row($rsRES) ){
+        while ( list ($rate,$packing_rate) = mysql_fetch_row($rsRES) ){
           $rate_array=$rate_array+$rate;
-		
+			$packing_charge=$packing_charge+$packing_rate;
         }
 		$rate_array=($rate_array+$tax+$packing_charge)-$discount;
         return $rate_array;
