@@ -13,6 +13,9 @@ function start() {
 }
 
 $(document).ready(function() {
+
+
+
  
 start();
        $("body").mousemove(function( event ) {
@@ -59,20 +62,20 @@ $( document ).on("click", ".print_bill_button", function() {
 	
 });
 
-$( document ).on("click", ".print_summary_bill_button", function() {
-	
-	var  bill_id=$(this).attr('bill_id');
-	var print='print';
-	var success_post = $.post('list_summary_bill.php',
+$( document ).on("click", "#print_summary_bill_button", function() {
+	var bill_date = $("#bill_date").val();
+
+		var success_post = $.post('list_summary_bill.php',
 		{
-			print:print,
-			bill_id:bill_id,
+			bill_date:bill_date,
+			
 		});
 
 	success_post.done(function(data){
 		$('#printable-area').html(data);
+		$("print_bill").foundation('reveal','open','#');
 		});
-	
+
 });
 	
 	$( document ).on("click", "#print_div", function() {

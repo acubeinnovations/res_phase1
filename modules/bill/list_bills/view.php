@@ -3,8 +3,14 @@
 <div class="row parent">
 	
 		<div class="large-12 columns"><br><br>
-	
+
 			<table>
+			<tbody bgcolor="#D6D6D6">
+					<tr>
+
+						<td colspan="6"><form action="" method="post"><p><b>Select Date <input name="bill_date" class="mydatepicker" id="bill_date" readonly="readonly" value="<?php echo $mybills->bill_date; ?>"></b> &nbsp; <input class = "tiny button" type="submit" value="search"/></p></form></td> <td></td>
+					</tr>
+				</tbody>
 				  <thead>
 					<tr>
 					  <th width="30">Slno</th>
@@ -38,27 +44,18 @@
 				$slno++;
 				}?>
 				</tbody>
-				
-				
-				
- <tbody bgcolor="#D6D6D6">
-				
-				<tr>
+ 				<tbody bgcolor="#f9f9f9" >
+					<tr height="5">
 						<td colspan="3"><font size="4">Total Number of Bills : <?php echo count($bills);?> </font> </td>
-							
-				
-				
-				
+						<td></td>
 						
-						<td colspan="3"><font size="4">Total Amount : <?php echo $bill_total_amount; ?></font> <input type="text"  name="txtdate" id="txtdate" value="txtdate"/></td>
-				
-						
-						<td><a href="#" data-reveal-id="print_bill" id="print_summary_bill_button<?php echo $bills[$bill_index]['id']?>" class="tiny button  print_summary_bill_button" bill_id="<?php echo $bills[$bill_index]['id']?>" >PRINT</a></td>
-				</tr>
-
+						<td colspan="1"></td>
+						<td><font size="4">Total Amount : <?php echo $bill_total_amount; ?></font> </td>
+						<td><a href="#" data-reveal-id="print_bill" id="print_summary_bill_button" class="tiny button"  >PRINT</a></td>
+					</tr>
 				</tbody>				
-				</table>
-	
+			</table>
+
 		</div>
 
 	

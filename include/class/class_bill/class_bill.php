@@ -224,13 +224,20 @@ $this->amount=0;
         $limited_data = array(); 
 		$i=0;
 		$str_condition = "";
-        $strSQL = "SELECT id,bill_number,bill_date,payment_date,bill_status_id,amount FROM bills WHERE 1 AND bill_date LIKE '%".CURRENT_DATE."%'";
+        $strSQL = "SELECT id,bill_number,bill_date,payment_date,bill_status_id,amount FROM bills WHERE 1 ";
 		if($this->id!='' && $this->id!=gINVALID){
            $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
       	 }
+		 
         if ($this->booking_date!='') { 
        	$strSQL .= " AND booking_date LIKE '%".addslashes(trim($this->booking_date))."%'";  
         }
+		
+        if (trim($this->bill_date)!='') { 
+       		$strSQL .= " AND DATE_FORMAT(bill_date,'%d-%m-%Y') = '".addslashes(trim($this->bill_date))."'";  
+        }else{
+			$strSQL .= " AND bill_date LIKE '%".CURRENT_DATE."%'";
+		}
 		
 		 if ($this->payment_date!='') { 
        	$strSQL .= " AND payment_date LIKE '%".addslashes(trim($this->payment_date))."%'";  
@@ -359,6 +366,51 @@ function update_bill_kitchen_status(){
             $this->error_description="Can't update status";
             return  false;
         }
+    }
+	
+function get_consoldated_items_datewise(){
+	
+	if ( $this->bill_date != "") {
+//this has to removed, after implenting itemwise packing charge	
+		$strSQL = "SELECT SUM(B.packing_charge) AS total_packing_charge FROM bills B  WHERE B.bill_status_id='".BILL_STATUS_PAID."' AND   DATE_FORMAT(B.bill_date,'%d-%m-%Y') = '".$this->bill_date."'";	
+		$rsRES_PC = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL);
+
+        if ( mysql_num_rows($rsRES_PC) == 1 ){
+			$row_pc = mysql_fetch_assoc($rsRES_PC);
+			$this->packing_charge = $row_pc["total_packing_charge"];
+		}else{
+			$this->packing_charge = 0;
+		}
+		
+///----------------------------------------------------------
+		
+		$strSQL = "SELECT I.name,BI.item_id,SUM(BI.quantity) AS total_quantity,I.rate, SUM(BI.tax) AS total_tax, SUM(BI.packing_amount) AS total_packing_amount  FROM bill_items BI,bills B, items I WHERE B.bill_status_id='".BILL_STATUS_PAID."' AND BI.bill_item_status_id = '".STATUS_ACTIVE."' AND BI.bill_id=B.id AND BI.item_id=I.id AND  DATE_FORMAT(B.bill_date,'%d-%m-%Y') = '".$this->bill_date."' GROUP BY BI.item_id";	
+		$rsRES = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL);
+
+        if ( mysql_num_rows($rsRES) > 0 ){
+
+           $i=0;
+			while ($row = mysql_fetch_assoc($rsRES) ){
+		          $limited_data[$i]["item_id"] = $row["item_id"];
+				  $limited_data[$i]["total_quantity"] = $row["total_quantity"];
+		          $limited_data[$i]["name"] = $row["name"];
+				  $limited_data[$i]["rate"] = $row["rate"];
+		          $limited_data[$i]["total_tax"] = $row["total_tax"];
+				  if($row["total_packing_amount"]>0){
+		          $limited_data[$i]["total_packing_amount"]=$row["total_packing_amount"]; }
+				  else {
+				   $limited_data[$i]["total_packing_amount"]=0;
+				  }
+				  $i++;
+		    }
+        	return $limited_data;
+        }
+        else{
+        	return false;
+        }
+		
+	}
+
     }
 
 }
