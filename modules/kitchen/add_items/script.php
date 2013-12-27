@@ -63,8 +63,8 @@ $(document).ready(function(){
 				var item =data.split('!@#$%*');
 				$('#lblitemname').html(item[1]);
                 $('#h_item_id').val(item_id);
-                $('#txtavailablequantity').val(item[2]);
-                $('#txtquantity').val("");
+                $('#txtavailablequantity').val(item[3]);
+                $('#txtquantity').val(item[2]);
                 $('#counter_item_form').show();
 			}else{
 			//alert("No Items Selected");
@@ -83,7 +83,8 @@ $(document).ready(function(){
         quantity = $("#txtquantity").val();
 		var success_post = $.post('add_counter_item.php',{ item_id:item_id , counter_id:counter_id, kitchen_id:kitchen_id,quantity:quantity});
 		success_post.done(function(data){
-		popup_alert(data,"");
+	    popup_alert(data,"add_items.php","Ok","false");	
+		
         $('#counter_item_form').hide();
 		});	});
 
