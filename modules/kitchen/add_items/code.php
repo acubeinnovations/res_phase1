@@ -21,9 +21,9 @@ $item->item_category_id=1;
 $get_item_sub=$item->get_items_by_category();
 //$array_item=$item->get_array();
 
-$counteritem->counter_id=1;	
-$counteritem->item_id=4;	
-$get_quantity=$counteritem->get_item_quantity_today();
+//$counteritem->counter_id=1;	
+//$counteritem->item_id=4;	
+//$get_quantity=$counteritem->get_item_quantity_today();
 //print_r($get_quantity);
 
 ?>
