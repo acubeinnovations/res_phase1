@@ -42,6 +42,7 @@ function get_item_quantity_today()
 {
 
 	$strSQL = "SELECT sum(quantity) as total_quantity FROM counter_items WHERE  DATE_FORMAT(date,'%Y-%m-%d') = '".date("Y-m-d")."' AND counter_id = '".$this->counter_id."'"." AND item_id = '".$this->item_id."'";
+	echo $strSQL;
 	$rsRES	= mysql_query($strSQL,$this->connection) or die(mysql_error().$strSQL);
 	 if(mysql_num_rows($rsRES) > 0){
 		$item 	= mysql_fetch_assoc($rsRES);
