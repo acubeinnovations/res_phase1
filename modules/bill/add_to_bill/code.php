@@ -217,7 +217,7 @@ $mybillitems->rate=$item_rate[$mybillitems->item_id];
 $mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
 $mybillitems->quantity=1;
 $mybillitems->tax=$mybillitems->rate*$item_tax[$mybillitems->item_id]/100;
-$mybillitems->created=CURRENT_DATETIME;
+
 $mybillitems->update();
 $mybills->get_detail();
 $mybills->tax=$mybillitems->tax;
