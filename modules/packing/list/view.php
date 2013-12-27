@@ -14,7 +14,7 @@
     <tr>
       <th>Slno</th>
       <th>Item</th>
-      <th colspan="3">Rate</th>
+      <th colspan="2">Rate</th>
     </tr>
 
 	<?php
@@ -29,12 +29,11 @@
 		$i = 0;
 		while($i<$count){
 	?>
-	
 
 	<tr> 
 	<td><?php echo $array_packing_list[$i]['id'] ?></td>
-	<td colspan=""><a href="packing.php?id=<?php echo $array_packing_list[$i]['id'] ?>"><?php echo $array_packing_list[$i]['name']?></a></td>
-    <td colspan=""> <?php echo $array_packing_list[$i]['rate'] ?></td>
+	<td colspan="2"><a href="packing.php?id=<?php echo $array_packing_list[$i]['id'] ?>"><?php echo $array_packing_list[$i]['name']?></a></td>
+    <td colspan="2"> <?php echo $array_packing_list[$i]['rate'] ?></td>
 	</tr>
 
     <?php $i++;
