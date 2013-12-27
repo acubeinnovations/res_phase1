@@ -1,12 +1,3 @@
-
-
-
-    ::-webkit-scrollbar-thumb:vertical {background-color:#edd6b8;height:100px;}
-
-    ::-webkit-scrollbar-thumb:horizontal {background-color:#b79467;height:10px !important;}
-
-    ::-webkit-scrollbar { height:10px;width:15px; background-color:#fff;}
-
 .parent {
 
 	min-height:550px;
@@ -168,11 +159,12 @@ padding-bottom:20px;
 
 .categories{
 background:#fff;
-height:500px;
+height:400px;
 box-shadow:1px 1px 1px 1px gray;
 border:1px solid gray;
 display:block;
 overflow-y:scroll;
+margin-bottom:15px;
 }
 .categories .button{
 width:150px;
