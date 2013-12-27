@@ -16,7 +16,7 @@
 				<div class="row"><div class="medium-6 columns">
 			<?php
 				while($item_index<$count){ ?>
-		<div class="medium-4 columns"><a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><?php echo $get_item_sub[$item_index]["name"].'  Rs .'.$get_item_sub[$item_index]["rate"]; ?></a></div>
+		<div class="medium-4 columns"><a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><?php echo $get_item_sub[$item_index]["name"].' Q.'.$get_quantity[$item_index]["quantity"]; ?></a></div>
 	<?php
 	$item_index++;
 	 } 
@@ -36,7 +36,7 @@
 				<div class="medium-4 columns">Action</div>
 				<hr />
 			  	<div class="medium-4 columns"><label id="lblitemname">Tea</label></div>
-				<div class="medium-2 columns"><input name="txtavailablequantity"  id="txtavailablequantity" type="text"  disabled="disabled" value="21"/></div>
+				<div class="medium-2 columns"><input name="txtavailablequantity"  id="txtavailablequantity" type="text"  disabled="disabled"/></div>
 				<div class="medium-2 columns"><input name="txtquantity" type="text" id="txtquantity" /> 
                 <input type="hidden" name="h_item_id" id="h_item_id" value="" />
                 <input type="hidden" name="h_counter_id" id="h_counter_id" value="<?php echo $_SESSION[SESSION_TITLE.'counter_id'];  ?>" />
