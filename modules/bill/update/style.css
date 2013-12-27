@@ -94,8 +94,12 @@ display:none;
 
 .bill_number{
 display:none;
-background-color: #CCC;
-color: #000000;
+color: #000000 !important;
+background-color: #fff !important;
+font-weight:bold;
+border:1px solid black;
+cursor:default !important;
+
 }
 
 button.bill_item_cancel, .button.bill_item_cancel{
@@ -104,10 +108,23 @@ padding-bottom: 0.1rem;
 height:20px !important;
 width:10px !important;
 }
+button.parcel, .button.parcel{
+padding-top: 0.1rem;
+background-color:#0070FF;
+padding-bottom: 0.1rem;
+height:20px !important;
+width:10px !important;
+color:#fff;
+}
+
+
 .tot_button_val{
-color: #000000;
-background-color: #CCC;
+color: #000000 !important;
+background-color: #fff !important;
 font-weight:bold;
+border:1px solid black;
+cursor:default !important;
+
 }
 .change{
 color: #000000;

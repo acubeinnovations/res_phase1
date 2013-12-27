@@ -11,7 +11,7 @@
 </div>
 
 <div class="panel">
-	<h5>Administartion</h5>
+	<h5>Administration</h5>
 	<p>Manage Everything ....</p>
 	<a href="/admin/" class="large button">Go to Administration</a>
 </div>

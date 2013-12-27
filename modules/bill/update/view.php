@@ -7,7 +7,7 @@
 						<div class="medium-3 columns">&nbsp;
 						</div>
 						<div class="medium-8 columns">
-
+								
 								<div class="medium-block-grid-6">
 										<a href="#" class="tiny button  calc_button" button_value="1">1</a>
 										<a href="#" class="tiny button  calc_button" button_value="2">2</a>
@@ -47,8 +47,8 @@
 						<div class="medium-8 columns">
 							<div class="medium-block-grid-6">
 										<a href="#" >&nbsp;</a>
-										<div class="bill_parcel_div"><input type="text" class="bill_parcel" id="bill_parcel" /></div>
-										<div class="bill_paid_div"><input type="text" class="bill_paid" id="bill_paid" /></div>
+										<div class="bill_parcel_div">Packing Qty :<input type="text" class="bill_parcel" id="bill_parcel" /></div>
+										<div class="bill_paid_div">Paid :<input type="text" class="bill_paid" id="bill_paid" /></div>
 										<a href="#">&nbsp;</a>
 
 								</div>
@@ -154,7 +154,7 @@
                         <a href="#" class="tiny  button paid" id="paid" select_id="bill_paid" >Paid</a>
                         <!--<a href="#" class="tiny  button change" id="change" >change</a>-->
                         <a href="#" class="tiny  button tot_button_val" id="tot_button_val" ><strong>TOTAL : Rs .0</strong></a>
-                        <a href="#" class="tiny  button parcel" id="parcel" select_id="bill_parcel"><strong>PARCEL</strong></a>
+                        
 
 
 				</div>
@@ -162,6 +162,7 @@
 
 				<input type="hidden" class="select_id">
 				<input type="hidden" id="item_id_hidden">
+				<input type="hidden" id="bill_item_id_hidden">
 				<a href="#" data-reveal-id="calculater_div" id="calculater_modal"></a>
 				<a href="#" data-reveal-id="discount_calculater_div" id="discount_calculater_modal"></a>
 	  </div>

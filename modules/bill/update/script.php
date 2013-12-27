@@ -96,10 +96,10 @@ $(document).keypress(function(e) {
 	success_post.done(function(data){
 		if (data.indexOf('!@#$%*') >= 0){
 			var paid_change=data.split('!@#$%*');
-			$('.paid').text('Paid :'+paid_change[0]);
+			$('.paid').text('Paid : Rs.'+paid_change[0]);
 			$('.change').text('Change:'+paid_change[1]);
 		}else{
-			$('.paid').text('Paid:Rs.0');
+			$('.paid').text('Paid : Rs.0');
 			$('.change').text('Change:Rs.0');
 		}
 
@@ -212,14 +212,18 @@ $(document).keypress(function(e) {
 
 	});
 
-	$('.parcel').click(function(){
+	$( document ).on("focus click", ".parcel", function() {
+	
 	select_id=$(this).attr('select_id');
+	item_id=$(this).attr('item_id');
+	bill_item_id=$(this).attr('bill_item_id');
 	$('.select_id').val(select_id);
 	$('.bill_parcel_div').show();
 	$('.bill_paid_div').hide();
 	$('.bill_parcel').val('');
 	$("#discount_calculater_modal").trigger('click');
-
+	$("#item_id_hidden").val(item_id);
+	$("#bill_item_id_hidden").val(bill_item_id);
 	});
 
 
@@ -261,13 +265,11 @@ $(document).keypress(function(e) {
 		$('.'+select_id).val('');
 		});
 
-	$(".parcel").click(function() {
-
-		});
+	
 
 
 	$( document ).on("click", ".ok_discount", function() {
-		select_id=$('.select_id').val();
+	select_id=$('.select_id').val();
 	if(select_id=='bill_discount'){
 	var discount=$('.bill_discount').val();
     if(discount!=''){
@@ -327,7 +329,7 @@ $(document).keypress(function(e) {
 				if(data!='-1'){
 				var val="Change:"+data;
 					$('.change').text(val);
-					$('.paid').text('Paid :'+paid);
+					$('.paid').text('Paid : Rs.'+paid);
 				}else{
 					$('.change').text("Change:0");
 				}
@@ -344,10 +346,20 @@ $(document).keypress(function(e) {
 				});
 
 }else{
+	var item_id=$("#item_id_hidden").val();
+	var bill_item_id=$("#bill_item_id_hidden").val();
 	var parcel=$('.bill_parcel').val();
+	var item_qty=$('#item_quantity'+item_id).val();
+	if(item_qty==''){
+		popup_alert("item quantity is null","");
+	}else if(Number(item_qty) < Number(parcel)){
+			popup_alert("selected item quatity is less than of parcel quantity","");
+	}else{
 		var success_post = $.post('add_to_bill.php',
 		{
-			parcel:parcel,
+				item_id:item_id,			
+				parcel:parcel,
+				bill_item_id:bill_item_id,
 
 		});
 
@@ -370,6 +382,7 @@ $(document).keypress(function(e) {
 		});
 
 
+}
 }
 }
 });
@@ -426,10 +439,11 @@ $(document).keypress(function(e) {
 		if(data=='1'){
 			$(".bill").html('&nbsp');
 			$('#tot_button_val').text("TOTAL : Rs .0");
-			alert("bill holded");
-			location.reload();
+			popup_alert("Bill holded","dashboard.php","Ok","false");
+			//location.reload();
+			
 		}else{
-			alert("bill cannot be holded");
+			popup_alert("Bill cannot be holded","");
 		}
 		});
 
