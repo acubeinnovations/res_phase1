@@ -3,8 +3,14 @@
 if ( !defined('CHECK_INCLUDED') ){
     exit();
 }
-  if(isset($_SESSION[SESSION_TITLE.'kitchen_userid']) && $_SESSION[SESSION_TITLE.'kitchen_userid'] > 0 && isset($_SESSION[SESSION_TITLE.'kitchen_userid']) && $_SESSION[SESSION_TITLE.'user_type'] == KITCHEN){
-  header ("Location: dashboard.php");
+  if(isset($_SESSION[SESSION_TITLE.'kitchen_userid']) && $_SESSION[SESSION_TITLE.'kitchen_userid'] > 0 && isset($_SESSION[SESSION_TITLE.'kitchen_userid']) ) {
+	if($_SESSION[SESSION_TITLE.'user_type'] == KITCHEN){
+		header ("Location: dashboard.php");
+	}elseif($_SESSION[SESSION_TITLE.'user_type'] == MASTER_KITCHEN){ 
+		header ("Location: master_dashboard.php");
+	}else{
+		header ("Location: logout.php");
+	}
 	exit();
 }
 
@@ -23,7 +29,14 @@ if ( $login_error == "" ){
           $chk = $myuser->login();
             if ($chk == true){
               $chk = $myuser->register_login();
-             header ("Location: dashboard.php");
+			   //print_r($_SESSION);  exit();
+			if($_SESSION[SESSION_TITLE.'user_type'] == KITCHEN){
+				header ("Location: dashboard.php");
+			}elseif($_SESSION[SESSION_TITLE.'user_type'] == MASTER_KITCHEN){ 
+				header ("Location: master_dashboard.php");
+			}else{
+				header ("Location: logout.php");
+			}
               exit();
             }else{
 	         $login_error .= "Invalid Login name/Password.";

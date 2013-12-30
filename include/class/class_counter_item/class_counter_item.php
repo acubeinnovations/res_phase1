@@ -64,6 +64,56 @@ function get_item_quantity_today()
 		
 	
 	}	
+    function get_list_array_bylimit($start_record = 0,$max_records = 25){
+        $limited_data = array(); 
+		$i=0;
+		$str_condition = "";
+        $strSQL = "SELECT id,counter_id,kitchen_id,item_id,date FROM counter_items WHERE 1";
+		if($this->id!='' && $this->id!=gINVALID){
+           $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
+      	 }
+        if ($this->counter_id!='') { 
+       	$strSQL .= " AND counter_id = '".addslashes(trim($this->counter_id))."'";  
+        }
+		
+	
+				
+	 if ($this->kitchen_id!='') { 
+        $strSQL .= " AND kitchen_id = '".addslashes(trim($this->kitchen_id))."'";  
+        }
+		
+         $strSQL .= " GROUP BY counter_id ORDER BY id";
+		
+
+		$strSQL_limit = sprintf("%s LIMIT %d, %d", $strSQL, $start_record, $max_records);
+		$rsRES = mysql_query($strSQL_limit, $this->connection) or die(mysql_error(). $strSQL_limit);
+
+        if ( mysql_num_rows($rsRES) > 0 ){
+
+            //without limit  , result of that in $all_rs
+            if (trim($this->total_records)!="" && $this->total_records > 0) {
+            } else {
+				
+                $all_rs = mysql_query($strSQL, $this->connection) or die(mysql_error(). $strSQL_limit); 
+                $this->total_records = mysql_num_rows($all_rs);
+            }
+			while (list ($id,$counter_id,$kitchen_id,$item_id,$date) = mysql_fetch_row($rsRES) ){
+		          $limited_data[$i]["id"] = $id;
+				  $limited_data[$i]["counter_id"]=$counter_id;
+				  $limited_data[$i]["kitchen_id"]=$kitchen_id;
+				  $limited_data[$i]["item_id"]=$item_id;
+		          $limited_data[$i]["date"] = $date;
+				  $i++;
+		    }
+        	return $limited_data; 
+        }
+        else{
+        	return false;
+        }
+    }
+	
+	
+	
 	
 	
 	   
