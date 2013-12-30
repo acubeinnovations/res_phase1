@@ -79,6 +79,7 @@ function get_list_array($start_record = 0,$max_records = 25)
         	$i=0;
 			$strSQL = "SELECT  id,name,status_id,parent_id FROM item_categories WHERE 1";
 			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+
 				if($this->id!='' && $this->id!=gINVALID){
           		 $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
       	 			}
@@ -128,9 +129,7 @@ function get_array()
 			if ( mysql_num_rows($rsRES) > 0 )
 				 {while(list($id,$name) = mysql_fetch_row($rsRES) ){
 						$item_category[$id] =  $name;
-						
 						$i++;
-
            		 		}
             		return $item_category;
        			}else{
