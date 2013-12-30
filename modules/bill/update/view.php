@@ -92,13 +92,15 @@
 <div class="medium-12 columns counter">
 <br>
 	  <div class="medium-2 columns ">
-
+			<a href="#" class="tiny fixed button   alert" id="scroll_up" ><b>&#x25B2; UP &#x25B2;</b></a>
 		<div class=" categories" align="center" >
+				<a href="#" id="scroll_to_top"></a>
 			<?php if(isset($array_item_category)){ $item_index=0; while($item_index<count($array_item_category)) {?>
 				<a href="#" class="tiny button success  item_category " item_id="<?php echo $array_item_category[$item_index]['id'];?>"><b><?php echo $array_item_category[$item_index]['name']; ?></b></a>
 				<?php $item_index++; } } ?>
-
+			<a href="#" id="scroll_to_bottom"></a>
 			 </div>
+			<a href="#" class="tiny button fixed   alert" id="scroll_down" ><strong>&#x25BC; DOWN &#x25BC;</strong></a>
 	  </div>
 
 

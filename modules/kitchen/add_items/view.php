@@ -15,8 +15,12 @@
 			$item_index=0;?>
 				<div class="row"><div class="medium-6 columns">
 			<?php
-				while($item_index<$count){ ?>
-		<div class="medium-4 columns"><a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><?php echo $get_item_sub[$item_index]["name"].'  Rs .'.$get_item_sub[$item_index]["rate"]; ?></a></div>
+				while($item_index<$count){ 
+					$counteritem->counter_id=$_SESSION[SESSION_TITLE.'counter_id'];	
+					$counteritem->item_id=$get_item[$item_index]["id"];	
+					$available_quantity=$counteritem->get_item_quantity_today();
+				?>
+		<div class="medium-4 columns"><a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><?php echo $get_item_sub[$item_index]["name"].' Q.'.$available_quantity; ?></a></div>
 	<?php
 	$item_index++;
 	 } 

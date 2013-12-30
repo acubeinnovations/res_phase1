@@ -45,7 +45,7 @@ $this->bill_kitchen_status_id= "";
 
     function update(){
         if ( $this->id == "" || $this->id == gINVALID) {
-		
+			$created=CURRENT_DATETIME;
 		
               $strSQL = "INSERT INTO bill_items (bill_id,counter_id,item_id, quantity,rate,tax,discount,bill_item_status_id,bill_kitchen_status_id,created,updated) ";
               $strSQL .= "VALUES ('".addslashes(trim($this->bill_id))."','";
@@ -57,7 +57,7 @@ $this->bill_kitchen_status_id= "";
 			  $strSQL .= addslashes(trim($this->discount))."','";
 			  $strSQL .= addslashes(trim($this->bill_item_status_id))."','";
 			  $strSQL .= addslashes(trim($this->bill_kitchen_status_id))."','";
-			  $strSQL .= addslashes(trim($this->created))."','";
+			  $strSQL .= addslashes(trim($created))."','";
 			  $strSQL .= addslashes(trim($this->updated))."')";
              
 			 //try{

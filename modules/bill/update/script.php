@@ -504,6 +504,7 @@ $(document).keypress(function(e) {
     var originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
     window.print();
+	document.body.innerHTML = printContents;
 	window.print();
     document.body.innerHTML = originalContents;
 	var new_bill='new_bill';
@@ -594,6 +595,27 @@ var success_post = $.post('cancel.php',
 		});
 });
 
+
+$(function()
+{
+    var api = $('.categories').jScrollPane().data('jsp');
+    $('#scroll_up').bind(
+        'click',
+        function()
+        {
+            api.scrollByY(-300);
+            return false;
+        }
+    );
+    $('#scroll_down').bind(
+        'click',
+        function()
+        {
+            api.scrollByY(300);
+            return false;
+        }
+    );
+});
 
 
 
