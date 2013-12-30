@@ -4,31 +4,32 @@
 if(!defined('CHECK_INCLUDED')){
 		exit();
 }
-$item=new Item($myconnection);
-$item->connection=($myconnection);
+
 
 $item_category=new ItemCategory($myconnection);
 $item_category->connection=($myconnection);
+$array_item_category=$item_category->get_array();
 
-if(isset($_SESSION['id'])){
-$item->id=$_SESSION['id'];
-$item->get_all();
+$pagination = new Pagination(10);
+
+
+$item=new Item($myconnection);
+$item->connection=($myconnection);
+$item->total_records = $pagination->total_records;
+if(isset($_GET['submit'])){
+	$item->name=$_GET['search'];
 }else{
 
 }
 
-//$get_item=$item->get_list_array();
-	$item->total_records=25;
-	if(isset($_POST['submit'])){
-	$item->name=$_POST['search'];
-	}else{
 
-	}
-	$array_item_category=$item_category->get_array();
-	$get_item=$item->get_list_array_bylimit();
-	if($get_item!=false){
-	$count = count($get_item);
-
+$array_items=$item->get_list_array_bylimit($pagination->start_record,$pagination->max_records);
+if($array_items!=false){
+	$count_items = count($array_items);
+}else{
+	$count_items=0;
 }
+$pagination->total_records = $item->total_records;
+$pagination->paginate();
 //$array_item=$item->get_array();
 ?>

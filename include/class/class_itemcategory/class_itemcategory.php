@@ -64,15 +64,41 @@ function get_details(){
 			$this->status_id= $user['status_id'];
 			$this->parent_id= $user['parent_id'];
 			return true;
-		}else{
-			return false;
-		}			
-	}else{
-		return false;
+			}else{
+			}return false;
+			}else{		
+	return false;
+		
 	}
 }
-		
-function get_list_array($start_record = 0,$max_records = 25)
+	
+
+function get_list_array($start_record = 0,$max_records = 25){
+
+	$item_category = array();$i=0;
+		$strSQL = "SELECT id,name,status_id,parent_id FROM item_categories";
+		$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+		if ( mysql_num_rows($rsRES) > 0 )
+					{
+					while ( list ($id,$name,$status_id,$parent_id) = mysql_fetch_row($rsRES) ){
+						$item_category[$i]["id"] =  $id;
+						$item_category[$i]["name"] = $name;
+						$item_category[$i]["status_id"] = $status_id;
+						$item_category[$i]["parent_id"] = $parent_id;
+						$i++;
+           		 	}
+            return $item_category;
+       		}else{
+			$this->error_number = 4;
+			$this->error_description="Can't list item";
+			return false;
+    			}
+
+}
+
+
+
+function get_list_array_bylimit($start_record = 0,$max_records = 25)
 
 	{
         	$item_category = array();

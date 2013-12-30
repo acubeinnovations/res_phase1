@@ -6,10 +6,10 @@
 </head>
 
 <body>
-<form action="" method="post">
+<form action="" method="get">
   <table>
    <tr>
-    <td> Search By Category :<input type="text" name="search" />
+    <td> Search By Category :<input type="text" name="search"  value="<?php if(isset($_GET['search'])) {echo $_GET['search']; }?>"/>
       <input type="submit" name="submit" value="Submit" /></td>
     </tr>
       </table>
@@ -57,6 +57,7 @@
 		  $i++;
 		  }
 		   } ?>
+       <?php  $category_pagination->pagination_style1();?>
     </table>
     </form>
    </body>

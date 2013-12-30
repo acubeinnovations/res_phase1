@@ -22,6 +22,8 @@ if($array_category!=false){
 	$i++;
 	}
 
+}else {
+	$count_category=0;
 }
 
 
