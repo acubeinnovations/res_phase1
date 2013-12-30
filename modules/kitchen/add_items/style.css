@@ -56,3 +56,27 @@ input[type="text"]{
 width:50px;
 }
 
+#item-container{
+background:#fff !important;
+min-height:500px !important;
+box-shadow:4px 1px 1px 1px gray;
+border:1px solid gray;
+padding:5px;
+}
+#item-container.button{
+width:150px;
+
+}
+.categories{
+background:#fff;
+height:400px;
+box-shadow:1px 1px 1px 1px gray;
+border:1px solid gray;
+display:block;
+overflow-y:scroll;
+margin-bottom:15px;
+}
+.categories .button{
+width:150px;
+margin:5px;
+}

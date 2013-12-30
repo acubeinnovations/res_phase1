@@ -1,35 +1,46 @@
 <div id="openedbills" class="reveal-modal" data-reveal>  </div>
 <div id="print_bill" class="reveal-modal" data-reveal> </div>
-<div class="row parent">
-	
-		<div class="medium-12 columns">
-			<br>
-			<div class="medium-2 columns">
+<div class="row">
+
+<div class="medium-12 columns counter">
+<br>
+	  <div class="medium-2 columns ">
+			<a href="#" class="tiny fixed button   alert" id="scroll_up" ><b>&#x25B2; UP &#x25B2;</b></a>
+		<div class="categories" align="center" id="item-container" >
+				<a href="#" id="scroll_to_top"></a>
 			<?php if(isset($array_item_category)){ $item_index=0; while($item_index<count($array_item_category)) {?>
-			<a href="#" class="small button   item_category success" item_id="<?php echo $array_item_category[$item_index]['id'];?>"><?php echo $array_item_category[$item_index]['name']; ?></a>
-			<?php $item_index++; } } ?>
-			</div>
-			<div class="medium-6 columns items">
-			<?php if($get_item_sub!=false){
+				<a href="#" class="tiny button success  item_category " item_id="<?php echo $array_item_category[$item_index]['id'];?>"><b><?php echo $array_item_category[$item_index]['name']; ?></b></a>
+				<?php $item_index++; } } ?>
+			<a href="#" id="scroll_to_bottom"></a>
+			 </div>
+			<a href="#" class="tiny button fixed   alert" id="scroll_down" ><strong>&#x25BC; DOWN &#x25BC;</strong></a>
+	  </div>
+	  
+	  
+	  
+	  
+		<div class="medium-6 columns " id="item-container">
+		  <div class="items" id="item-inner-container" >
+
+				<?php if($get_item_sub!=false){
 			$count = count($get_item_sub);
-			$item_index=0;?>
-				<div class="row"><div class="medium-6 columns">
-			<?php
-				while($item_index<$count){ 
-					$counteritem->counter_id=$_SESSION[SESSION_TITLE.'counter_id'];	
-					$counteritem->item_id=$get_item[$item_index]["id"];	
-					$available_quantity=$counteritem->get_item_quantity_today();
+			$item_index=0;
+					while($item_index<$count){
+			$counteritem->counter_id=$_SESSION[SESSION_TITLE.'counter_id'];	
+			$counteritem->item_id=$get_item[$item_index]["id"];	
+			$available_quantity=$counteritem->get_item_quantity_today();
+						 ?>
+			<a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><b><?php echo $get_item_sub[$item_index]["name"].'<br>  Q .'.$available_quantity; ?></b></a>
+		<?php
+		$item_index++;
+		 }
+		}
 				?>
-		<div class="medium-4 columns"><a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><?php echo $get_item_sub[$item_index]["name"].' Q.'.$available_quantity; ?></a></div>
-	<?php
-	$item_index++;
-	 } 
-	}
-			?>
 
 
-				</div></div>
-			</div>
+		 </div>
+		</div>
+			
 			<div class="medium-4 columns" id="counter_item_form" style="display:none;" >
 				<ul class="pricing-table" >
 				<li class="title">Counter Items </li>

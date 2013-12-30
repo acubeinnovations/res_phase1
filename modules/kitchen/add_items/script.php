@@ -176,6 +176,26 @@ $(document).ready(function(){
 	});
 	
 
+$(function()
+{
+    var api = $('.categories').jScrollPane().data('jsp');
+    $('#scroll_up').bind(
+        'click',
+        function()
+        {
+            api.scrollByY(-300);
+            return false;
+        }
+    );
+    $('#scroll_down').bind(
+        'click',
+        function()
+        {
+            api.scrollByY(300);
+            return false;
+        }
+    );
+});
 
 	
 
