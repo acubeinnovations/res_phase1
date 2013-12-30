@@ -10,25 +10,25 @@ $item->connection=($myconnection);
 $item_category=new ItemCategory($myconnection);
 $item_category->connection=($myconnection);
 
-if(isset($_SESSION['id'])){
-$item->id=$_SESSION['id'];
-$item->get_all();
-}else{
+$array_category=$item_category->get_list_array();
+//$array_item=$item->get_items_by_category();
 
-}
-
-//$get_item=$item->get_list_array();
-	$item->total_records=25;
-	if(isset($_POST['submit'])){
-	$item->name=$_POST['search'];
-	}else{
-
+if($array_category!=false){
+	$count_category=count($array_category);
+	$i=0;
+	while($i<$count_category){
+		$item->item_category_id=$array_category[$i]["id"];
+		$array_category[$i]["items"]=$item->get_items_by_category();
+	$i++;
 	}
-	$array_item_category=$item_category->get_array();
-	$get_item=$item->get_list_array_bylimit();
-	if($get_item!=false){
-	$count = count($get_item);
 
+}else {
+	$count_category=0;
 }
+
+
+
+
+
 //$array_item=$item->get_array();
 ?>

@@ -6,16 +6,16 @@
 </head>
 
 <body>
-  <form action="" method="post">
+  <form action="" method="get">
     <table>
    <tr>
-    <td> Search by Item:<input type="text" name="search" />
+    <td> Search by Item:<input type="text" name="search"  value="<?php if(isset($_GET['search'])) { echo $_GET['search'];}?>"/>
       <input type="submit" name="submit" value="Submit" /></td>
     </tr>
   </table>
       </form>
 
-<form id="form2" name="form2" method="post" action="">
+
 <fieldset>
     <legend>Item List</legend>
 
@@ -31,7 +31,7 @@
     </tr>
 
         <?php
-            if($get_item==false)
+            if($array_items==false)
           { ?>
 
       <tr>
@@ -40,16 +40,16 @@
 
        <?php } else {
         $i=0;
-        while($i<$count){
+        while($i<$count_items){
          ?>
 
    <tr>
-      <td><?php echo $get_item[$i]['id'] ?></td>
-      <td><a href="item.php?id=<?php echo $get_item[$i]['id'] ?>"><?php echo $get_item[$i]['name']?></a></td>
-      <td colspan="2"><?php if(isset($array_item_category[$get_item[$i]['item_category_id']])){echo $array_item_category[$get_item[$i]['item_category_id']] ;}?></td>
-      <td colspan="2"> <?php echo $get_item[$i]['rate'] ;?></td>
-      <td colspan="2"><?php echo $get_item[$i]['tax'] ;?></td>
-      <!--  <td colspan="2"><?php if(isset($g_ARRAY_STATUS[$get_item[$i]['status_id']])) { echo $g_ARRAY_STATUS[$get_item[$i]['status_id']]; }?></td>-->
+      <td><?php echo $array_items[$i]['id'] ?></td>
+      <td><a href="item.php?id=<?php echo $array_items[$i]['id'] ?>"><?php echo $array_items[$i]['name']?></a></td>
+      <td colspan="2"><?php if(isset($array_item_category[$array_items[$i]['item_category_id']])){echo $array_item_category[$array_items[$i]['item_category_id']] ;}?></td>
+      <td colspan="2"> <?php echo $array_items[$i]['rate'] ;?></td>
+      <td colspan="2"><?php echo $array_items[$i]['tax'] ;?></td>
+      <!--  <td colspan="2"><?php if(isset($g_ARRAY_STATUS[$array_items[$i]['status_id']])) { echo $g_ARRAY_STATUS[$array_items[$i]['status_id']]; }?></td>-->
                     
    </tr>
 
@@ -58,9 +58,9 @@
           }
            ?>
 
-
+<?php  $pagination->pagination_style1();?>
 
 </table>
-    </form>
+   
    </body>
    </html>

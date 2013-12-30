@@ -1,4 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php session_start();
 define('CHECK_INCLUDED', true);
 define('ROOT_PATH', '../');
@@ -19,18 +18,20 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 
 	$page->function_list = array("functions.php");
-	$page->class_list = array("class_itemcategory.php","class_pagination.php");
+	$page->class_list = array("class_item.php","class_itemcategory.php");
 
 	$page->access_list = array("ADMINISTRATOR");
+
 
 
     $index=0;
     $content_list[$index]['file_name']='admin/inc_right_menu.php';
     $content_list[$index]['var_name']='right_menu';
     $index++;
+
 	$page->content_list = $content_list;
 
-	$page->module_path = 'modules/item_category/';
-    $page->module = 'list';
+	$page->module_path = 'modules/item/';
+    $page->module = 'newlist';
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>
