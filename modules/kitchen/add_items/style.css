@@ -54,7 +54,15 @@ width:10px !important;
 
 input[type="text"]{
 width:50px;
+background-color: #F8F8F8;
 }
+input[type="text"][disabled]{
+	background-color: #FFF;
+	border:none;
+	border-bottom:none;
+	border-top:none;
+	border-left:none;
+	}
 
 #item-container{
 background:#fff !important;
@@ -79,4 +87,8 @@ margin-bottom:15px;
 .categories .button{
 width:150px;
 margin:5px;
+}
+
+.pricing-table .title {
+background-color: #2ba6cb;
 }

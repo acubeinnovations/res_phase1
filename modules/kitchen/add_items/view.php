@@ -42,17 +42,20 @@
 		</div>
 			
 			<div class="medium-4 columns" id="counter_item_form" style="display:none;" >
-				<ul class="pricing-table" >
+				<ul class="pricing-table">
 				<li class="title">Counter Items </li>
 				</ul>
-				<div class="medium-4 columns">Item Name</div>
-				<div class="medium-2 columns">Avail Qty</div>
-				<div class="medium-2 columns">Qty</div>
-				<div class="medium-4 columns">Action</div>
+				<div class="medium-2 columns"><font size="2">Item Name</font></div>
+				<div class="medium-2 columns"><font size="2">Todays Total Qty</font></div>
+				<div class="medium-2 columns"><font size="2">Balance Qty</font></div>
+				<div class="medium-2 columns"><font size="2">Add Qty</font></div>
+				<div class="medium-2 columns" ><font size="2">Action</font></div>
 				<hr />
-			  	<div class="medium-4 columns"><label id="lblitemname">Tea</label></div>
-				<div class="medium-2 columns"><input name="txtavailablequantity"  id="txtavailablequantity" type="text"  disabled="disabled" value="21"/></div>
-				<div class="medium-2 columns"><input name="txtquantity" type="text" id="txtquantity" /> 
+			  	<div class="medium-2 columns"><label id="lblitemname"></label></div>
+				<div class="medium-2 columns"><input name="txtquantity" type="text" id="txtquantity" border="0" disabled="disabled" /> </div>
+				<div class="medium-2 columns"><input name="txtavailablequantity"  id="txtavailablequantity" type="text"  disabled="disabled" /></div>
+				
+				<div class="medium-2 columns"><input name="txtquantity" type="text"  id="txtaddquantity" /> 
                 <input type="hidden" name="h_item_id" id="h_item_id" value="" />
                 <input type="hidden" name="h_counter_id" id="h_counter_id" value="<?php echo $_SESSION[SESSION_TITLE.'counter_id'];  ?>" />
                 <input type="hidden" name="h_kitchen_id" id="h_kitchen_id" value="<?php echo $_SESSION[SESSION_TITLE.'kitchen_userid'];  ?>" /></div>
