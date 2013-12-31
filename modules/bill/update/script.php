@@ -512,7 +512,7 @@ $(document).keypress(function(e) {
     //Choose printer using one or more of the following functions
     //jsPrintSetup.getPrintersList...
     //jsPrintSetup.setPrinter...
- 
+	jsPrintSetup.setPrinter('\\SWAPNA-PC\\HP LaserJet M1319f MFP'); 
     //Set Header and footer...
     jsPrintSetup.setOption('headerStrLeft', '');
     jsPrintSetup.setOption('headerStrCenter', '');
@@ -522,7 +522,7 @@ $(document).keypress(function(e) {
     jsPrintSetup.setOption('footerStrRight', '');
  	var printContents = document.getElementById(divName).innerHTML;
     var originalContents = document.body.innerHTML;
-    //document.body.innerHTML = printContents;
+    document.body.innerHTML = printContents;
     jsPrintSetup.print();     
     window.close();
 	var new_bill='new_bill';
@@ -547,7 +547,7 @@ location.reload();
     document.body.innerHTML = originalContents;
     window.close();
  }	
-	
+
 	}
 
 
