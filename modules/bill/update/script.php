@@ -487,6 +487,9 @@ $(document).keypress(function(e) {
 		});
 	success_post.done(function(data){
 		$('#printable-area').html(data);
+		$('#printable-area-duplicate').append(data);
+		$('#printable-area-duplicate').append(data);
+		
 		});
 
 
@@ -495,10 +498,17 @@ $(document).keypress(function(e) {
 
 
 	$( document ).on("click", "#print_div", function() {
-	printDiv('printable-area');
-	
+	jsPrintSetup.setPrinter('HP LaserJet M1319f MFP on SWAPNA-PC');
+ 
+   // sets silent printing (skip the print settings dialog box)
+   jsPrintSetup.setSilentPrint(true);
+ 
+   // print the page
+   jsPrintSetup.print();
 
+	printDiv('printable-area-duplicate');
 	});
+
 	function printDiv(divName) {
     var printContents = document.getElementById(divName).innerHTML;
     var originalContents = document.body.innerHTML;
