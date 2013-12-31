@@ -498,22 +498,33 @@ $(document).keypress(function(e) {
 
 
 	$( document ).on("click", "#print_div", function() {
-	jsPrintSetup.setPrinter('HP LaserJet M1319f MFP on SWAPNA-PC');
- 
-   // sets silent printing (skip the print settings dialog box)
-   jsPrintSetup.setSilentPrint(true);
- 
- 
-
-	printDiv('printable-area-duplicate');
+		printDiv('printable-area-duplicate');
 	});
 
 	function printDiv(divName) {
-    var printContents = document.getElementById(divName).innerHTML;
+	try
+ {
+    //Try to print using jsPrintSetup Plug-In in Firefox
+    //If it is not installed fall back to default printing
+    jsPrintSetup.clearSilentPrint();   
+    jsPrintSetup.setOption('printSilent', 1);
+ 
+    //Choose printer using one or more of the following functions
+    //jsPrintSetup.getPrintersList...
+    //jsPrintSetup.setPrinter...
+ 
+    //Set Header and footer...
+    jsPrintSetup.setOption('headerStrLeft', '');
+    jsPrintSetup.setOption('headerStrCenter', '');
+    jsPrintSetup.setOption('headerStrRight', '');
+    jsPrintSetup.setOption('footerStrLeft', '');
+    jsPrintSetup.setOption('footerStrCenter', '');
+    jsPrintSetup.setOption('footerStrRight', '');
+ 	var printContents = document.getElementById(divName).innerHTML;
     var originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
-    window.print();
-    document.body.innerHTML = originalContents;
+    //document.body.innerHTML = printContents;
+    jsPrintSetup.print();     
+    window.close();
 	var new_bill='new_bill';
 	var success_post = $.post('cancel.php',
 		{
@@ -521,10 +532,22 @@ $(document).keypress(function(e) {
 		});
 	success_post.done(function(data){
 		if(data==1){
-		location.reload();
+		
 		}
 		});
-
+location.reload();
+ }
+ catch(err)
+ {   
+    //Default printing if jsPrintsetup is not available
+     var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    window.close();
+ }	
+	
 	}
 
 
