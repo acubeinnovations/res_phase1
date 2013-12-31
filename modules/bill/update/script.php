@@ -503,8 +503,7 @@ $(document).keypress(function(e) {
    // sets silent printing (skip the print settings dialog box)
    jsPrintSetup.setSilentPrint(true);
  
-   // print the page
-   jsPrintSetup.print();
+ 
 
 	printDiv('printable-area-duplicate');
 	});
