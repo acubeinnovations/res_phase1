@@ -29,7 +29,7 @@
 			$counteritem->counter_id=$_SESSION[SESSION_TITLE.'counter_id'];	
 			$counteritem->item_id=$get_item[$item_index]["id"];	
 			$available_quantity=$counteritem->get_item_quantity_today();
-			print_r($available_quantity);
+			//print_r($available_quantity);
 			$counteritem->counter_id=$_SESSION[SESSION_TITLE.'counter_id'];	
 			$counteritem->item_id=$get_item[$item_index]["id"];	
 			$available_quantity=$counteritem->get_item_quantity_today();
