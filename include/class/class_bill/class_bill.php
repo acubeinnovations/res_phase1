@@ -125,8 +125,11 @@ $this->amount=0;
 	    }
 		
 		 if($this->amount!=''){
-	    $strSQL .= "amount = '".addslashes(trim($this->amount))."'";
-	    }
+	    $strSQL .= "amount = '".addslashes(trim($this->amount))."',";
+		    }
+			if($this->bill_date!=''){
+            $strSQL .= "bill_date = '".addslashes(trim($this->bill_date))."'";
+	     }
  		
 					
 	    $strSQL .= " WHERE id = ".$this->id;
