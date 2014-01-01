@@ -1,10 +1,25 @@
+@media screen
+  {
+  #printable-div{
+	  display:none;
+  }
+  }
+@media print
+  {
+ #media{
+	  display:none;
+  }
+  .reveal-modal{
+	  display:none !important;
+  }
+  
+  }
+
 .parent {
 
 	min-height:550px;
 }
-#printable-area-duplicate{
-display:none;
-}
+
 P.pagebreakhere {
 page-break-before: always;
 }

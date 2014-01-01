@@ -84,8 +84,9 @@ flash_alert(alert_message,alert_redirect);
 </script>
 		<?php if (!empty($this->style)) echo $this->style ?>
 	</head>
+	
   <body>
-
+	<div id="media">
     <!-- Navigation -->
 
   <nav class="top-bar" data-topbar>
@@ -184,5 +185,7 @@ flash_alert(alert_message,alert_redirect);
 
 <!-- the jScrollPane script -->
 <script type="text/javascript" src="/js/jscroll/jquery.jscrollpane.min.js"></script>
-  </body>
+ 	</div>
+	  <div id='printable-div'></div>
+ </body>
 </html>

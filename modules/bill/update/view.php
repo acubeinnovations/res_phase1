@@ -1,6 +1,6 @@
+
 <div id="openedbills" class="reveal-modal" data-reveal>  </div>
-<div id='printable-area-duplicate'></div>
-<div id="print_bill" class="reveal-modal" data-reveal><a class="close-reveal-modal">&#215;</a><div id='printable-area'></div> <a href="#" class="tiny button  print_div" id= "print_div">PRINT</a></div>
+<div id="print_bill" class="reveal-modal"  data-reveal><a class="close-reveal-modal" id="close-print-div">&#215;</a><div id='printable-area'></div> <a href="#" class="tiny button  print_div" id= "print_div">PRINT</a></div>
 <div id="calculater_div" class="reveal-modal calc" data-reveal>
 <a class="close-reveal-modal" id="close_calc_modal">&#215;</a>
 				<div class="row">
@@ -88,7 +88,7 @@
 
 
 
-<div class="row">
+<div class="row" id="counter-row">
 
 <div class="medium-12 columns counter">
 <br>
@@ -173,3 +173,5 @@
 
   </div>
   </div>
+
+

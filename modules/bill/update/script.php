@@ -487,8 +487,8 @@ $(document).keypress(function(e) {
 		});
 	success_post.done(function(data){
 		$('#printable-area').html(data);
-		$('#printable-area-duplicate').append(data);
-		$('#printable-area-duplicate').append(data);
+		$('#printable-div').append(data);
+		$('#printable-div').append(data);
 		
 		});
 
@@ -498,16 +498,12 @@ $(document).keypress(function(e) {
 
 
 	$( document ).on("click", "#print_div", function() {
-		printDiv('printable-area-duplicate');
+		printDiv('printable-div');
 	});
 
 	function printDiv(divName) {
-	var printContents = document.getElementById(divName).innerHTML;
-   var originalContents = document.body.innerHTML;
-   document.body.innerHTML = printContents;
-   window.print();
-   document.body.innerHTML = originalContents;
-       var new_bill='new_bill';
+	 window.print();
+   var new_bill='new_bill';
        var success_post = $.post('cancel.php',
                {
                        new_bill:new_bill,
