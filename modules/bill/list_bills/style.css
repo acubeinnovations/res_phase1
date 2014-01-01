@@ -1,4 +1,19 @@
-
+@media screen
+  {
+  #printable-div{
+	  display:none;
+  }
+  }
+@media print
+  {
+ #media{
+	  display:none;
+  }
+  .reveal-modal{
+	  display:none !important;
+  }
+  
+  }
 td{
 height:20px !important;
 padding:0 !important;

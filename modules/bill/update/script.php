@@ -498,11 +498,14 @@ $(document).keypress(function(e) {
 
 
 	$( document ).on("click", "#print_div", function() {
+		$('#close-print-div').trigger('click');
 		printDiv('printable-div');
+		
 	});
 
 	function printDiv(divName) {
 	 window.print();
+	
    var new_bill='new_bill';
        var success_post = $.post('cancel.php',
                {
@@ -510,7 +513,8 @@ $(document).keypress(function(e) {
                });
        success_post.done(function(data){
                if(data==1){
-               location.reload();
+				popup_alert("Order Placed..!","dashboard.php","Ok","false");
+               
                }
                });
 
