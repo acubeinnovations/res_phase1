@@ -19,7 +19,7 @@
         <th>User Name</th>
         <th>Name </th>
         <th colspan="2">Last Login</th>
-         <th>Status</th>
+         <!--<th>Status</th>-->
       
     </tr>
 
@@ -44,7 +44,8 @@
          <td colspan="2"> <?php echo $array_kitchen[$i]['name'] ;?></td>
           <td> <?php echo $array_kitchen[$i]['lastlogin'] ;?></td>
            <td colspan="2">  <?php if(isset($g_ARRAY_STATUS[$array_kitchen[$i]['status_id']])){ echo $g_ARRAY_STATUS[$array_kitchen[$i]['status_id']];}?></td>
-     
+            <td colspan="4"> <a href="admin_kitchen_sales_report.php?id=<?php echo $array_kitchen[$i]['id']?>">View Report</a></td>
+
       </td>
       </tr>
 

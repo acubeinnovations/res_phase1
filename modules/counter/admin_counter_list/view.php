@@ -18,10 +18,10 @@
 
     <tr>
         <th>Slno</th>
-        <th>User Name</th>
-        <th>Name </th>
-        <th colspan="3">Last Login</th>
-         <th>Status</th>
+        <th colspan="5">User Name</th>
+        <th colspan="5">Name </th>
+        <th colspan="4">Last Login</th>
+      <!--   <th>Status</th>-->
       
     </tr>
 
@@ -43,10 +43,11 @@
      <tr>
     
       <td><?php echo $array_admin_counter[$i]['id']?></td>
-      <td><?php echo $array_admin_counter[$i]['username']?></td>
-          <td colspan="2"> <?php echo $array_admin_counter[$i]['name'] ;?></td>
-          <td colspan="2"> <?php echo $array_admin_counter[$i]['lastlogin'] ;?></td>
-          <td colspan="2"><?php if(isset($g_ARRAY_STATUS[$array_admin_counter[$i]['status_id']])){ echo $g_ARRAY_STATUS[$array_admin_counter[$i]['status_id']];}?> </td>
+      <td colspan="5"><?php echo $array_admin_counter[$i]['username']?></td>
+          <td colspan="5"> <?php echo $array_admin_counter[$i]['name'] ;?></td>
+          <td colspan="4"> <?php echo $array_admin_counter[$i]['lastlogin'] ;?></td>
+          <td colspan=""><?php if(isset($g_ARRAY_STATUS[$array_admin_counter[$i]['status_id']])){ echo $g_ARRAY_STATUS[$array_admin_counter[$i]['status_id']];}?> </td>
+          <td colspan="4"> <a href="admin_counter_sale_report.php?counter_id=<?php echo $array_admin_counter[$i]['id']?>" >View Sales Report</a></td>
       </td>
       </tr>
 
