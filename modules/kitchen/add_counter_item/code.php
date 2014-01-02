@@ -11,6 +11,7 @@ if(!defined('CHECK_INCLUDED')){
 		$mycounteritems->connection=($myconnection);
 		$mycounteritems->item_id = $_POST['item_id'];
 		$mycounteritems->counter_id = $_POST['counter_id'];
+		
 		$mycounteritems->kitchen_id = $_POST['kitchen_id'];
 		$mycounteritems->date = date("Y-m-d");
 		$mycounteritems->quantity = $_POST['quantity'];
