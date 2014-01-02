@@ -108,6 +108,26 @@ function change_password($newpasswd,$oldpasswd){
            }
        
  }
+ 
+ 
+function get_array(){
+       $users = array();
+       $strSQL = "SELECT id,username FROM counters ORDER BY username";
+       $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
+       if ( mysql_num_rows($rsRES) > 0 ){
+       while ( list ($id,$username) = mysql_fetch_row($rsRES) ){
+         $users[$id] = $username;
+       }
+       return $users;
+       }
+       else{
+       $this->error_number = 4;
+       $this->error_description="Can't list users";
+       return false;
+       }
+} 
+ 
+ 
     
   }             
 

@@ -81,6 +81,7 @@ $(document).ready(function(){
 		item_id = $("#h_item_id").val();
     	counter_id = $("#h_counter_id").val();
         kitchen_id = $("#h_kitchen_id").val();
+		counter_id = $("select[name='lstcounter']").val(); alert(counter_id);
         quantity = $("#txtquantity").val();
 		quantity = $("#txtaddquantity").val();
 		var success_post = $.post('add_counter_item.php',{ item_id:item_id , counter_id:counter_id, kitchen_id:kitchen_id,quantity:quantity});

@@ -6,6 +6,9 @@ if(!defined('CHECK_INCLUDED')){
 $item=new Item($myconnection);
 $item->connection=($myconnection);
 
+$mycounter=new Counter($myconnection);
+$mycounter->connection=($myconnection);
+
 $item_category=new ItemCategory($myconnection);
 $item_category->connection=($myconnection);
 
@@ -20,7 +23,7 @@ if($get_item!=false){
 $item->item_category_id=1;
 $get_item_sub=$item->get_items_by_category();
 
-$getcounters=$counteritem->get_list_array_bylimit();
+$getcounters=$mycounter->get_array();
 
 //$array_item=$item->get_array();
 

@@ -45,7 +45,23 @@ GLOBAL $g_obj_select_default_text;
 	
 <?php }	
 
-
+	function populate_array($objname, $data_array, $defaultvalue=-1,$disable=false, $default_message = true,$options='class = "select styled hasCustomSelect" '){ 
+		// function used to populate list from  array 
+		GLOBAL $g_obj_select_default_text;
+		($disable == true)?$disabled = 'disabled="true"':$disabled='';
+		$list = '<select name="'.$objname.'" '.$disabled.'" '.$options.'>';
+		$list .= ($default_message == true)?'<option selected="selected" value="-1">'.$g_obj_select_default_text.'</option>' : "";		
+		if($data_array == false){
+			// Do Nothing
+		}else{
+			foreach ($data_array as $key => $value) {
+				($defaultvalue == $key)?$selected='selected="selected"':$selected="";
+				$list .= '<option '.$selected.' value="'.$key.'">'.$value.'</option>';
+			}
+		}
+			$list .= '</select>';
+			echo  $list;
+	}
 
 
 
