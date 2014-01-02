@@ -5,8 +5,8 @@ if(!defined('CHECK_INCLUDED')){;
 	$admin_kitchen_report=new KitchenReport($myconnection);
 	$admin_kitchen_report->connection=($myconnection);
 
-	$my_counter =new Counter($myconnection);
-	$my_counter->connection($myconnection);
+	$my_counter =new Counter();
+	$my_counter->connection=$myconnection;
 	$array_counter=$my_counter->get_array();
 
 	if(isset($_GET['date'])){
@@ -19,8 +19,8 @@ if(!defined('CHECK_INCLUDED')){;
 	if(isset($_GET['id'])){
 	  $admin_kitchen_report->kitchen_id=$_GET['id'];
 	}
-	if(isset($_GET['lismaster'])){
-		 $admin_kitchen_report->counter_id=$_GET['lismaster'];
+	if(isset($_GET['listcounter'])){
+		 $admin_kitchen_report->counter_id=$_GET['listcounter'];
 
 	}
 	

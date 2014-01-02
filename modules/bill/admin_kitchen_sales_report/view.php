@@ -1,9 +1,31 @@
 <form id="form" name="form" method="GET" action="">
 	<fieldset>
-		<table width="800" hight="68" align="center" border="0">
-			<b>Select Date <input name="date" class="mydatepicker" id="date" readonly="readonly" value="<?php echo $admin_kitchen_report->date; ?>"></b> &nbsp; <input class = "tiny button" type="submit" value="search"/>
+
+		<div class="small-6  medium-6 large-6 column">
+			<div class="row">
+				<div class="small-6  medium-6 large-6 column">
+					<b>Select Date</b> 
+				</div>
+
+				<div class="small-6  medium-6 large-6 column">
+					<input name="date" class="mydatepicker" id="date" readonly="readonly" value="<?php echo $admin_kitchen_report->date; ?>"> 
+				</div>	
+			</div>
+			<div class="row">
+				<div class="small-6  medium-6 large-6 column">
+					<b>Counter</b> &nbsp;
+				</div>
+
+				<div class="small-6  medium-6 large-6 column">
+					  <?php echo populate_array("listcounter", $array_counter, $admin_kitchen_report->counter_id,$disable=false);?>
+				</div>
+			</div>
 			<input name="kitchen_id" type="hidden" id="kitchen_id" value="<?php echo $admin_kitchen_report->kitchen_id; ?>"/>
-			<td><?php echo populate_list_array("listcounter", $arr_admin_counter, 'id','name', $my_counter->counter_id,$disable=false);?></td>
+			<input class = "tiny button" type="submit" value="search"/>
+		</div>
+		<table width="800" hight="68" align="center" border="0">
+
+			<tr>
 			
 				<td>Item</td>
 				<td width="200">Kitchen Quantity</td>
@@ -22,8 +44,9 @@
 				<tr>
 					
 						<td ><?php echo $array_kitchen_report[$i]['name'];?></td>
-						<td ><?php echo $array_kitchen_report[$i]['quantity'];?></td>
-						<td></td>
+						<td ><?php echo $array_kitchen_report[$i]['counter_quantity'];?></td>
+						<td ><?php echo $array_kitchen_report[$i]['bill_quantity'];?></td>
+						<td><?php echo ($array_kitchen_report[$i]['counter_quantity'] - $array_kitchen_report[$i]['bill_quantity']);?></td>
 						<td></td>
 
 					</tr>
