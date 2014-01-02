@@ -47,7 +47,7 @@
 			
 			<div class="medium-4 columns" id="counter_item_form" style="display:none;" >
 				<ul class="pricing-table">
-				<li class="title">Counter Items </li>
+				<li class="title">Counter Items <?php if ($_SESSION[SESSION_TITLE.'user_type']== MASTER_KITCHEN){ echo "master kitchen";} else { echo "counter";} ?> </li>
 				</ul>
 				<div class="medium-2 columns"><font size="2">Item Name</font></div>
 				<div class="medium-2 columns"><font size="2">Todays Total Qty</font></div>
