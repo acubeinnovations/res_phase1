@@ -38,7 +38,6 @@ class Counter{
               $strSQL .= addslashes(trim($this->securityquestion_id)).",'";
               $strSQL .= addslashes(trim($this->answer))."',";
               $strSQL .= "now())";
-
               $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
               if ( mysql_affected_rows($this->connection) > 0 ){
                     $this->id = mysql_insert_id();;
