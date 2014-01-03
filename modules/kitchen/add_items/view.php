@@ -26,12 +26,10 @@
 			$count = count($get_item_sub);
 			$item_index=0;
 					while($item_index<$count){
+
 			$counteritem->counter_id=$_SESSION[SESSION_TITLE.'counter_id'];	
 			$counteritem->item_id=$get_item[$item_index]["id"];	
-			$available_quantity=$counteritem->get_item_quantity_today();
-			$counteritem->counter_id=$_SESSION[SESSION_TITLE.'counter_id'];	
-			$counteritem->item_id=$get_item[$item_index]["id"];	
-			$available_quantity=$counteritem->get_item_quantity_today();
+			$available_quantity=$counteritem->get_item_quantity_today();			
 						 ?>
 			<a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><b><?php echo $get_item_sub[$item_index]["name"].'<br>  Q .'.$available_quantity; ?></b></a>
 		<?php
@@ -46,9 +44,9 @@
 			
 			<div class="medium-4 columns" id="counter_item_form" style="display:none;" >
 				<ul class="pricing-table">
-				<li class="title">Counter Items <?php if ($_SESSION[SESSION_TITLE.'user_type']== MASTER_KITCHEN){ 
+				<li class="title"> <?php if ($_SESSION[SESSION_TITLE.'user_type']== MASTER_KITCHEN){ 
 				echo populate_array("lstcounter", $getcounters, 'id',$disable=false);
-				} else { echo "counter";} ?> </li>
+				} else { echo "Counter";} ?> </li>
 				</ul>
 				<div class="medium-2 columns"><font size="2">Item Name</font></div>
 				<div class="medium-2 columns"><font size="2">Todays Total Qty</font></div>

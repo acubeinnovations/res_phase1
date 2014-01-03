@@ -57,7 +57,6 @@ $(document).ready(function(){
     
 	var success_post = $.post('get_items.php',{counter_id:counter_id, item_id:item_id});
 	success_post.done(function(data){
- alert (data);
 		if(data!=''){
 			if (data.indexOf('!@#$%*') >= 0){
 				var item =data.split('!@#$%*');
