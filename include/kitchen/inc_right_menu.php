@@ -1,4 +1,8 @@
     <section class="top-bar-section">
+	    <!-- Left Nav Section -->
+      <ul class="left">
+	  <li><a href="#"  ><?php if(isset($_SESSION[SESSION_TITLE.'kitchen_username']) && trim($_SESSION[SESSION_TITLE.'kitchen_username']) !=""){  echo "Logged in as ".$_SESSION[SESSION_TITLE.'kitchen_username']; }?></a></li>
+	  </ul>
       <!-- Right Nav Section -->
       <ul class="right">
 
@@ -31,9 +35,7 @@
         <li class="divider"></li>
          <?php if(isset($_SESSION[SESSION_TITLE.'kitchen_userid']) && $_SESSION[SESSION_TITLE.'kitchen_userid'] > 0){ ?>
 			   <li><a href="logout.php"  >Logout</a></li>
-		<?php if ($_SESSION[SESSION_TITLE.'user_type']== MASTER_KITCHEN){ ?>
-			<a href="#"  ><font color="#FF0000">Master Kitchen   .</font></a>
-				<?php }  ?> 	   
+	   
 			   
          <?php } else {?>
           <li><a href="index.php"  >Login</a></li>

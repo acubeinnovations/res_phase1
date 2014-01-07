@@ -1,7 +1,7 @@
 <!--
 
 var current_url = "<?php echo $current_url; ?>";
-
+ 
 $(document).ready(function(){
 	var refresh="refresh";
 	var success_post = $.post('page_refresh_bill.php',
