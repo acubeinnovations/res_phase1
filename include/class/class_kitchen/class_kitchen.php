@@ -88,7 +88,7 @@ function change_password($newpasswd,$oldpasswd){
         $limited_data = array();
         $i=0;
         $str_condition = "";
-        $strSQL = "SELECT id,username,name,lastlogin,status_id FROM kitchen WHERE 1 ";
+        $strSQL = "SELECT id,username,name,lastlogin,status_id ,counter_id FROM kitchen WHERE 1 ";
          if($this->id!='' && $this->id!=gINVALID){
            $strSQL .= " AND id = '".addslashes(trim($this->id))."'";
          }
@@ -97,12 +97,13 @@ function change_password($newpasswd,$oldpasswd){
       $strSQL_limit = sprintf("%s LIMIT %d, %d", $strSQL, $start_record, $max_records);
       $rsRES = mysql_query($strSQL_limit, $this->connection) or die(mysql_error(). $strSQL_limit);
     if ( mysql_num_rows($rsRES) > 0 ){
-        while ( list ($id,$username,$name,$lastlogin,$status_id) = mysql_fetch_row($rsRES) ){
+        while ( list ($id,$username,$name,$lastlogin,$status_id,$counter_id) = mysql_fetch_row($rsRES) ){
               $limited_data[$i]["id"] = $id;
               $limited_data[$i]["username"] = $username;
               $limited_data[$i]["name"] = $name;
               $limited_data[$i]["lastlogin"] = date('m/d/Y H:i:s', strtotime($lastlogin));
                $limited_data[$i]["status_id"] = $status_id;
+               $limited_data[$i]["counter_id"] = $counter_id;
               $i++;
           }return $limited_data;
           }else{
