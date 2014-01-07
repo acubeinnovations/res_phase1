@@ -9,7 +9,7 @@ $page = new Page;
 
 	$page->root_path = ROOT_PATH;
 	$page->current_url = $current_url;	// current url for pages
-	$page->title = "Administrator - Chang Password";	// page Title
+	$page->title = "Administrator - Kitchen sales report";	// page Title
 	$page->page_name = 'index';		// page name for menu and other purpose
 	$page->layout = 'restaurant.html';		// layout name
 

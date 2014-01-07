@@ -13,7 +13,7 @@ class KitchenReport
 	var $item_name="";
     var $from_date="";
     var $to_date="";
-	
+	var $date='';
 
 	var $error = false;
     var $error_number=gINVALID;
@@ -28,7 +28,7 @@ function datewise_sales_report($start_record = 0,$max_records = 25){
     $strSQL="SELECT CI.item_id,I.name,sum(CI.quantity)AS counter_quantity,sum(BI.quantity)AS bill_quantity
     FROM counter_items CI
     INNER JOIN items I ON I.id= CI.item_id 
-    LEFT JOIN bill_items BI ON CI.item_id=BI.item_id
+    LEFT JOIN bill_items BI ON CI.item_id=BI.item_id AND BI.bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'
     WHERE CI.counter_id='".$this->counter_id."' ";
 
     
@@ -36,8 +36,8 @@ function datewise_sales_report($start_record = 0,$max_records = 25){
     $strSQL .=" AND CI.counter_id='".$this->counter_id."'";
     }
  
-     if ($this->from_date!='') { 
-     $strSQL .= " AND  DATE_FORMAT(CI.date,'%d-%m-%Y')= '".addslashes(trim($this->from_date))."'";  
+     if ($this->date!='') { 
+     $strSQL .= " AND  DATE_FORMAT(CI.date,'%d-%m-%Y')= '".addslashes(trim($this->date))."'";  
      }
 	 $strSQL .= "GROUP BY CI.item_id";	
 
@@ -73,10 +73,10 @@ function datewise_sales_report($start_record = 0,$max_records = 25){
         $limited_data = array(); 
         $i=0;
         $str_condition = "";
-         $strSQL=" SELECT DATE_FORMAT(CI.date,'%d/%m/%Y')AS date_formated ,CI.item_id,I.name,sum(CI.quantity)AS counter_quantity,sum(BI.quantity)AS bill_quantity
+        $strSQL=" SELECT DATE_FORMAT(CI.date,'%d/%m/%Y')AS date_formated ,CI.item_id,I.name,sum(CI.quantity)AS counter_quantity,sum(BI.quantity)AS bill_quantity
             FROM counter_items CI
             INNER JOIN items I ON I.id= CI.item_id 
-            LEFT JOIN bill_items BI ON CI.item_id=BI.item_id";
+            LEFT JOIN bill_items BI ON CI.item_id=BI.item_id AND BI.bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."' ";
              
 
     
@@ -109,7 +109,7 @@ function datewise_sales_report($start_record = 0,$max_records = 25){
      }
         
      if($str_condition!=''){
-        $strSQL .= " WHERE".$str_condition;
+      $strSQL .= " WHERE ".$str_condition;
      }
 
    $strSQL .= "GROUP BY CI.item_id";   
@@ -142,13 +142,7 @@ function datewise_sales_report($start_record = 0,$max_records = 25){
         else{
             return false;
         }
-
-
-
-
-
-
-    }
+	}
 
 
 

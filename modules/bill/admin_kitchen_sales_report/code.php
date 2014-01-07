@@ -16,11 +16,11 @@ if(!defined('CHECK_INCLUDED')){;
 
 if(isset($_GET['report_type'])){
 	if($_GET['report_type']=='1'){
-		if(isset($_GET['bill_date'])){
-			  $admin_kitchen_report->date=$_GET['date'];
+		if(isset($_GET['date'])){
+			$admin_kitchen_report->date=$_GET['date'];
 
 		}else{
-			  $admin_kitchen_report->date=date('d-m-Y');
+			 $admin_kitchen_report->date=date('d-m-Y');
 		}
 		if(isset($_GET['id'])){
 			  $admin_kitchen_report->kitchen_id=$_GET['id'];
