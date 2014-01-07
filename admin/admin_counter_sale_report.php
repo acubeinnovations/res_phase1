@@ -9,7 +9,7 @@ $page = new Page;
 
 	$page->root_path = ROOT_PATH;
 	$page->current_url = $current_url;	// current url for pages
-	$page->title = "Administrator - Chang Password";	// page Title
+	$page->title = "Administrator - counter sales report";	// page Title
 	$page->page_name = 'index';		// page name for menu and other purpose
 	$page->layout = 'restaurant.html';		// layout name
 
@@ -20,7 +20,7 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 	$page->function_list = array("functions.php");
 	$page->class_list = array("class_counter_reports.php","class_bill.php","class_bill_items.php");
-
+	$page->script_list = array("jquery.min.js");
 	$page->access_list = array("ADMINISTRATOR");
 
 

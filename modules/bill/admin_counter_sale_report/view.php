@@ -10,8 +10,18 @@
   		<td> Sales Quantity </td>
   		<td> Amount </td>
   	</tr>
-    <b>Select Date <input name="bill_date" class="mydatepicker" id="bill_date" readonly="readonly" value="<?php echo $admin_sale_counter->bill_date; ?>"></b> &nbsp; <input class = "tiny button" type="submit" value="search"/>
+	<div class="report-option-container">
+	<input type="radio" name="report_type" class="report_type" value="1" checked ><label>Date Wise</label><br><input type="radio" name="report_type"  value="2" class="report_type"><label>Period Wise</label>
+	</div>
+	<div class="datewise">
+	<b>Select Date <input name="bill_date" class="mydatepicker" id="bill_date" readonly="readonly" value="<?php echo $admin_sale_counter->bill_date; ?>"></b> &nbsp; <input class = "tiny button" type="submit" value="search"/>
+   	</div>
+	<div class="periodwise" style="display:none;">
+    <b>From : <input name="bill_date_from" class="mydatepicker" id="bill_date_from" readonly="readonly" value=""></b> &nbsp;&nbsp; &nbsp;&nbsp;
     <input name="counter_id" type="hidden" id="counter_id" value="<?php echo $admin_sale_counter->counter_id; ?>"/>
+	 <b>To : <input name="bill_date_to" class="mydatepicker" id="bill_date_to" readonly="readonly" value=""></b> &nbsp; <input class = "tiny button" type="submit" value="search"/>
+    <input name="counter_id" type="hidden" id="counter_id" value="<?php echo $admin_sale_counter->counter_id; ?>"/>
+	</div>
 
   	<?php
   	if($array_sales_counter==false){

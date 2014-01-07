@@ -81,7 +81,7 @@ function datewise_sales_report($start_record = 0,$max_records = 25){
 
     
     if($this->counter_id!=gINVALID){
-    exit();
+    
         if($str_condition){
             $str_condition .= " AND";
             }
@@ -92,7 +92,7 @@ function datewise_sales_report($start_record = 0,$max_records = 25){
         if($str_condition){
             $str_condition .= " AND";
             }
-        $str_condition .= "  DATE_FORMAT(CI.date,'%d-%m-%Y') BETWEEN '".addslashes(trim($this->from_date))."' AND '".addslashes(trim($this->to_date))."'";
+        $str_condition .= "  DATE_FORMAT(CI.date,'%Y-%m-%d') BETWEEN '".addslashes(trim($this->from_date))."' AND '".addslashes(trim($this->to_date))."'";
          }
 
      elseif ($this->from_date!='' && $this->to_date=='') {
@@ -112,7 +112,7 @@ function datewise_sales_report($start_record = 0,$max_records = 25){
         $strSQL .= " WHERE".$str_condition;
      }
 
-    $strSQL .= "GROUP BY CI.item_id";   
+   $strSQL .= "GROUP BY CI.item_id";   
 
 
         $strSQL_limit = sprintf("%s LIMIT %d, %d", $strSQL, $start_record, $max_records);

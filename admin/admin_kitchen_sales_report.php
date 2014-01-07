@@ -20,7 +20,7 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 	$page->function_list = array("functions.php");
 	$page->class_list = array("class_kitchen_report.php","class_counter.php");
-
+	$page->script_list = array("jquery.min.js");
 	$page->access_list = array("ADMINISTRATOR");
 
 
