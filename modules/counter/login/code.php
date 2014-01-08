@@ -27,6 +27,7 @@ if ( $login_error == "" ){
           header ("Location: dashboard.php");
           exit();
       }else{
+	
 	$login_error .= "Invalid Login name/Password.";
 	}
 

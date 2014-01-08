@@ -15,6 +15,7 @@ if(!defined('CHECK_INCLUDED')){
 		$mycounteritems->date = date("Y-m-d");
 		$mycounteritems->quantity = $_POST['quantity'];
 		$check = $mycounteritems->update();	
+		$_SESSION[SESSION_TITLE.'counter_id']= $_POST['counter_id'];
 		if ($check == true){
 			echo "Stock updated"; 
 		}else{

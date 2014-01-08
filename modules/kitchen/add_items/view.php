@@ -5,7 +5,7 @@
 <div class="medium-12 columns counter">
 <br>
 	  <div class="medium-2 columns ">
-			<a href="#" class="tiny fixed button   alert" id="scroll_up" ><b>&#x25B2; UP &#x25B2;</b></a>
+			<a href="#" class="tiny fixed button   secondary" id="scroll_up" ><b>&#x25B2; UP &#x25B2;</b></a>
 		<div class="categories" align="center" id="item-container" >
 				<a href="#" id="scroll_to_top"></a> 
 			<?php if(isset($array_item_category)){ $item_index=0; while($item_index<count($array_item_category)) {?>
@@ -13,11 +13,11 @@
 				<?php $item_index++; } } ?>
 			<a href="#" id="scroll_to_bottom"></a>
 			 </div>
-			<a href="#" class="tiny button fixed   alert" id="scroll_down" ><strong>&#x25BC; DOWN &#x25BC;</strong></a>
+			<a href="#" class="tiny button fixed  secondary" id="scroll_down" ><strong>&#x25BC; DOWN &#x25BC;</strong></a>
 	  </div>
 	  
 	  
-	  
+	 
 	  
 		<div class="medium-6 columns " id="item-container">
 		  <div class="items" id="item-inner-container" >
@@ -36,18 +36,20 @@
 		$item_index++;
 		 }
 		}
-				?>
+		?>
 
 
 		 </div>
 		</div>
-			
-			<div class="medium-4 columns" id="counter_item_form" style="display:none;" >
-				<ul class="pricing-table">
+			<div class="medium-4 columns" >
+			<ul class="pricing-table">
 				<li class="title"> <?php if ($_SESSION[SESSION_TITLE.'user_type']== MASTER_KITCHEN){ 
-				echo populate_array("lstcounter", $getcounters, 'id',false,false);
+				echo populate_array("lstcounter", $getcounters,$_SESSION[SESSION_TITLE.'counter_id'],false,false);
 				} else { echo "Counter No:". $_SESSION[SESSION_TITLE.'counter_id'];} ?> </li>
 				</ul>
+			</div>
+			<div class="medium-4 columns" id="counter_item_form" style="display:none;" >
+				
 				<div class="medium-2 columns"><font size="2">Item Name</font></div>
 				<div class="medium-2 columns"><font size="2">Todays Total Qty</font></div>
 				<div class="medium-2 columns"><font size="2">Balance Qty</font></div>
@@ -60,7 +62,7 @@
 				
 				<div class="medium-2 columns"><input name="txtquantity" type="text"  id="txtaddquantity" /> 
                 <input type="hidden" name="h_item_id" id="h_item_id" value="" />
-                <input type="hidden" name="h_counter_id" id="h_counter_id" value="<?php echo $_SESSION[SESSION_TITLE.'counter_id'];  ?>" />
+                <input type="hidden" name="h_counter_id" id="h_counter_id" value="<?php if($_SESSION[SESSION_TITLE.'user_type']==KITCHEN){ echo $_SESSION[SESSION_TITLE.'counter_id']; } ?>" />
                 <input type="hidden" name="h_kitchen_id" id="h_kitchen_id" value="<?php echo $_SESSION[SESSION_TITLE.'kitchen_userid'];  ?>" /></div>
 				<div class="medium-4 columns"><a href="#" class="button tiny" id="buttonupdate">Update</a></div>
 				<hr />

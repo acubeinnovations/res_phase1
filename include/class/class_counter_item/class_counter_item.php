@@ -15,8 +15,7 @@ class CounterItem{
 	var $quantity = 0;
 	var $bill_item_total_quantity=0;
 
- function update()
-		{
+	function update(){
 			if ( $this->id == "" || $this->id == gINVALID) {
 			$strSQL = "INSERT INTO counter_items (item_id,counter_id,kitchen_id,date, quantity) VALUES ('";
 			$strSQL .= addslashes(trim($this->item_id)) ."','";
@@ -37,33 +36,45 @@ class CounterItem{
          	}
   	}
 
-
-	
-function get_item_quantity_today()
-{
-	
-	$available_quantity=0;
-	
-	$strSQL = "SELECT sum(quantity) as total_quantity FROM counter_items WHERE  DATE_FORMAT(date,'%Y-%m-%d') = '".date("Y-m-d")."' AND counter_id = '".$this->counter_id."'"." AND item_id = '".$this->item_id."'";
-		 $strSQL1 = "SELECT sum(quantity) as bill_item_total_quantity FROM bill_items WHERE  created LIKE '".date("Y-m-d")."%' AND counter_id = '".$this->counter_id."'"." AND item_id = '".$this->item_id. "' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'";
-	//echo $strSQL1;
-	$rsRES	= mysql_query($strSQL,$this->connection) or die(mysql_error().$strSQL);
-	$rsRES1	= mysql_query($strSQL1,$this->connection) or die(mysql_error().$strSQL1);
-	 if(mysql_num_rows($rsRES) > 0){
+	function get_first_counter_id(){
+	$counter_id='';
+	$strSQL = "SELECT id FROM counters LIMIT 0,1 ";
+			 
+		$rsRES	= mysql_query($strSQL,$this->connection) or die(mysql_error().$strSQL);
+		 if(mysql_num_rows($rsRES) > 0){
 		
-			$this->quantity =mysql_result($rsRES,0,'total_quantity');
-			$this->bill_item_total_quantity =mysql_result($rsRES1,0,'bill_item_total_quantity');
-			$available_quantity=0;
-			$available_quantity=($this->quantity)-($this->bill_item_total_quantity);
-			return $available_quantity;
-		}else{
-			$this->quantity = 0;
-			return false;
-		}
+				$counter_id =mysql_result($rsRES,0,'id');
+				return $counter_id;
+			}
+
+
+	}
+	
+	function get_item_quantity_today(){
+	
+		$available_quantity=0;
+	
+		$strSQL = "SELECT sum(quantity) as total_quantity FROM counter_items WHERE  DATE_FORMAT(date,'%Y-%m-%d') = '".date("Y-m-d")."' AND counter_id = '".$this->counter_id."'"." AND item_id = '".$this->item_id."'";
+			 $strSQL1 = "SELECT sum(quantity) as bill_item_total_quantity FROM bill_items WHERE  created LIKE '".date("Y-m-d")."%' AND counter_id = '".$this->counter_id."'"." AND item_id = '".$this->item_id. "' AND bill_item_status_id='".BILL_ITEM_STATUS_ACTIVE."'";
+	
+		$rsRES	= mysql_query($strSQL,$this->connection) or die(mysql_error().$strSQL);
+		$rsRES1	= mysql_query($strSQL1,$this->connection) or die(mysql_error().$strSQL1);
+		 if(mysql_num_rows($rsRES) > 0){
+		
+				$this->quantity =mysql_result($rsRES,0,'total_quantity');
+				$this->bill_item_total_quantity =mysql_result($rsRES1,0,'bill_item_total_quantity');
+				$available_quantity=0;
+				$available_quantity=($this->quantity)-($this->bill_item_total_quantity);
+				return $available_quantity;
+			}else{
+				$this->quantity = 0;
+				return false;
+			}
 		
 		
 	
 	}	
+
     function get_list_array_bylimit($start_record = 0,$max_records = 25){
         $limited_data = array(); 
 		$i=0;

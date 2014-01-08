@@ -10,8 +10,8 @@ if ( !defined('CHECK_INCLUDED') ){
     <legend>Counter Login</legend>
 	<div class="row">
 		<div class="large-4 columns">
-		<small> <?php if(isset($myuser->err_desc)) echo $myuser->err_desc;
-	if(isset($login_error)) echo $login_error ;?> </small>
+		<small><font color="red"> <?php if(isset($myuser->error_description)){ echo $myuser->error_description; }else{
+	if(isset($login_error)) echo $login_error ; }?> </small></font>
 		</div>
 	</div>
 

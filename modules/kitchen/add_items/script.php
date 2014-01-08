@@ -75,13 +75,28 @@ $(document).ready(function(){
 		}
 		});
 	});
+	
+	$("select[name='lstcounter']").change(function(){
+	var session_counter_id=$("select[name='lstcounter']").val();
+	var success_post = $.post(current_url,{ session_counter_id:session_counter_id});
+	success_post.done(function(data){
+	if(data==1){
+	location.reload();
+	}
+	});
+	});
 
 	$( document ).on("click", "#buttonupdate", function() {
 		item_id = $("#h_item_id").val();
-    	counter_id = $("#h_counter_id").val();
-        kitchen_id = $("#h_kitchen_id").val();
+		if($("#h_counter_id").val()!=''){    	
+		counter_id = $("#h_counter_id").val();
+		}else if( $("select[name='lstcounter']").val()!=-1){ 
 		counter_id = $("select[name='lstcounter']").val(); 
-        quantity = $("#txtquantity").val();
+		}else{
+		popup_alert("Please select counter","#","close","false");
+		return false;
+		}
+        kitchen_id = $("#h_kitchen_id").val();
 		quantity = $("#txtaddquantity").val();
 		var success_post = $.post('add_counter_item.php',{ item_id:item_id , counter_id:counter_id, kitchen_id:kitchen_id,quantity:quantity});
 		success_post.done(function(data){
