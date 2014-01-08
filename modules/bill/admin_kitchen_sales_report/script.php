@@ -15,6 +15,30 @@ $(document).ready(function() {
 	}
 	});
 
+
+$( document ).on("click", "#print_div", function() {
+		
+		printDiv('printable-div');
+		
+	});
+
+	function printDiv(divName) {
+	 window.print();
+	
+   var new_bill='new_bill';
+       var success_post = $.post('cancel.php',
+               {
+                       new_bill:new_bill,
+               });
+       success_post.done(function(data){
+               if(data==1){
+				popup_alert("Order Placed..!","dashboard.php","Ok","false");
+               
+               }
+               });
+
+	}
+
 });
 
  -->

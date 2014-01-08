@@ -11,7 +11,7 @@
 	</div>
 				</div>
 
-				<div class="small-6  medium-6 large-6 column">Counter : <?php echo populate_array("listcounter", $array_counter, $admin_kitchen_report->counter_id,$disable=false);?>
+				<div class="small-6  medium-6 large-6 column"><?php if(!isset($_GET['counter_id'])){ ?>Counter : <?php echo populate_array("listcounter", $array_counter, $admin_kitchen_report->counter_id,$disable=false); }else{?><input name="counter_id" type="hidden" id="counter_id" value="<?php echo $_GET['counter_id']; ?>"/><?php } ?>
 					
 				</div>	
 			</div>
@@ -31,8 +31,43 @@
 	</div>
 		</div>
 	</div>
+		<div id="printable-div">
 		<table width="800" hight="68" align="center" border="0">
-
+			<?php if(isset($_GET['date_from']) &&$_GET['date_from']!='' && isset($_GET['date_to']) && $_GET['date_to']!=''){ ?>
+			<tr>
+				
+				<td><b>From:</b></td>
+				<td width="200"><b><?php if(isset($_GET['date_from'])){ echo $_GET['date_from']; }?></b></td>
+				<td width="200"><b>To :</b></td>
+				<td><b><?php if(isset($_GET['date_to'])) { echo $_GET['date_to']; }?></b></td>
+			</tr>
+			<?php }else if(isset($_GET['date']) && $_GET['date']!=''){ ?>
+			<tr>
+				
+				<td><b>Date :<?php echo $_GET['date']; ?></b></td>
+				<td width="200"></td>
+				<td width="200"></td>
+				<td></td>
+			</tr>
+			
+			<?php 
+			}else{
+			?>
+			<tr>
+				
+				<td><b>Date :<?php echo  date('d-m-Y');  ?></b></td>
+				<td width="200"></td>
+				<td width="200"></td>
+				<td></td>
+			</tr>
+			<?php
+			}	
+			if($array_kitchen_report==false){
+				?>
+			<tr>
+				<td>No Records Found</td>
+			</tr>
+			<?php } else {?>
 			<tr>
 			
 				<td>Item</td>
@@ -40,13 +75,7 @@
 				<td width="200">Sales Quantity</td>
 				<td>Balance</td>
 			</tr>
-			<?php 
-			if($array_kitchen_report==false){
-				?>
-			<tr>
-				<td>No Records Found</td>
-			</tr>
-			<?php } else {
+			<?php
 			$i=0;
 			while($i<$count_admin_kitchen) { ?>
 				<tr>
@@ -64,5 +93,7 @@
 	}
 	?>							
 		</table>
+		</div>
+		
 	</fieldset>
 </form>

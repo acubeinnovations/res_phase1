@@ -12,7 +12,9 @@ if(!defined('CHECK_INCLUDED')){;
 	if(isset($_GET['listcounter'])){
 		$admin_kitchen_report->counter_id=$_GET['listcounter'];
 
-	}
+	}else if(isset($_GET['counter_id'])){
+		$admin_kitchen_report->counter_id=$_GET['counter_id'];
+    }
 
 if(isset($_GET['report_type'])){
 	if($_GET['report_type']=='1'){
