@@ -19,7 +19,7 @@
   <fieldset>
     <legend> Category</legend>
 
-  <table width="500" height="68" align="center">
+  <table width="500" height="68" align="left">
 
 
     <tr>
@@ -57,7 +57,11 @@
 		  $i++;
 		  }
 		   } ?>
-       <?php  $category_pagination->pagination_style1();?>
+	<tr><td colspan="6">
+<?php  $category_pagination->pagination_style1();?>
+<td>
+</tr>
+
     </table>
     </form>
    </body>

@@ -19,7 +19,7 @@
 <fieldset>
     <legend>Item List</legend>
 
-   <table width="500" height="68" align="center">
+   <table width="500" height="68" align="left">
 
     <tr>
       <th>Slno</th>
@@ -58,9 +58,13 @@
           }
            ?>
 
+<tr><td colspan="6">
 <?php  $pagination->pagination_style1();?>
+<td>
+</tr>
 
 </table>
-   
+
+
    </body>
    </html>
