@@ -51,4 +51,5 @@ define("COUNTER_URL", "http://restaurant.local/counter");
 define("KITCHEN_URL", "http://restaurant.local/kitchen");
 define("WEB_NAME", "restaurant.local");
 define("ORG_NAME", "restaurant");
+define("SERVER_URL", "http://restaurant_admin.local");
 ?>
