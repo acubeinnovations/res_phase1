@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 19, 2013 at 10:00 AM
+-- Generation Time: Jan 13, 2014 at 12:08 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.9
 
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `administrators` (`id`, `username`, `password`, `emailid`, `registrationdate`, `lastlogin`, `image`, `securityquestion_id`, `answer`, `created`, `updated`, `record_user_id`) VALUES
-(1, 'admin', '39bb37cf36d3b29a9280d8a70a0eed42', NULL, NULL, '2013-12-17 19:15:25', NULL, NULL, NULL, '2013-04-22 00:00:00', NULL, NULL);
+(1, 'admin', '39bb37cf36d3b29a9280d8a70a0eed42', NULL, NULL, '2014-01-09 14:17:08', NULL, NULL, NULL, '2013-04-22 00:00:00', NULL, NULL);
 
 --
 -- Dumping data for table `bill_item_statuses`
@@ -70,19 +70,20 @@ INSERT INTO `contenttypes` (`id`, `name`, `description`) VALUES
 --
 
 INSERT INTO `counters` (`id`, `username`, `password`, `name`, `image`, `securityquestion_id`, `answer`, `lastlogin`, `last_bill_number`, `status_id`, `created`, `updated`) VALUES
-(1, 'counter', '39bb37cf36d3b29a9280d8a70a0eed42', 'Counter 1', NULL, NULL, NULL, '2013-12-17 19:14:43', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
+(1, 'counter', '39bb37cf36d3b29a9280d8a70a0eed42', 'Counter 1', NULL, NULL, NULL, '2014-01-10 16:04:44', 12, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`id`, `name`, `item_category_id`, `rate`, `tax`, `status_id`, `from_master_kitchen`) VALUES
-(1, 'Tea', 1, 25, 2, 1, 0),
-(2, 'Coffee', 1, 30, 5, 1, 0),
-(3, 'Fried Rice  (veg)', 3, 150, 25, 1, 0),
-(4, 'Fried Rice  (Chicken)', 3, 200, 30, 1, 0),
-(5, 'Fried Rice  (Mixed)', 3, 190, 25, 1, 0),
-(6, 'Fresh Lime', 1, 25, 5, 1, 0);
+INSERT INTO `items` (`id`, `name`, `item_category_id`, `rate`, `tax`, `status_id`, `from_master_kitchen`, `packing_id`) VALUES
+(1, 'Tea', 1, 25, 2, 1, 0, 0),
+(2, 'Coffee', 1, 30, 5, 1, 0, 0),
+(3, 'Fried Rice  (veg)', 3, 150, 32, 0, 0, -1),
+(4, 'Fried Rice  (Chicken)', 3, 200, 30, 1, 0, 0),
+(5, 'Fried Rice  (Mixed)', 3, 190, 25, 1, 0, 0),
+(6, 'Fresh Lime', 1, 25, 5, 0, 0, 3),
+(7, 'Biriyani Chicken', 2, 150, 5, 0, 0, 2);
 
 --
 -- Dumping data for table `item_categories`
@@ -98,8 +99,8 @@ INSERT INTO `item_categories` (`id`, `name`, `status_id`, `parent_id`) VALUES
 --
 
 INSERT INTO `kitchen` (`id`, `counter_id`, `username`, `password`, `name`, `image`, `securityquestion_id`, `answer`, `lastlogin`, `last_bill_number`, `status_id`, `created`, `updated`) VALUES
-(1, NULL, 'master', '39bb37cf36d3b29a9280d8a70a0eed42', 'Master Kitchen', NULL, NULL, NULL, '2013-12-04 14:20:37', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00'),
-(2, 1, 'kitchen', '39bb37cf36d3b29a9280d8a70a0eed42', 'Master Kitchen', NULL, NULL, NULL, '2013-12-17 18:49:07', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
+(1, NULL, 'master', '39bb37cf36d3b29a9280d8a70a0eed42', 'Master Kitchen', NULL, NULL, NULL, '2014-01-08 10:40:55', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00'),
+(2, 1, 'kitchen', '39bb37cf36d3b29a9280d8a70a0eed42', 'Master Kitchen', NULL, NULL, NULL, '2014-01-08 10:39:57', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Dumping data for table `languages`
@@ -108,9 +109,12 @@ INSERT INTO `kitchen` (`id`, `counter_id`, `username`, `password`, `name`, `imag
 INSERT INTO `languages` (`id`, `name`, `publish`) VALUES
 (1, 'English', 1);
 
+--
+-- Dumping data for table `packing`
+--
 
 INSERT INTO `packing` (`id`, `name`, `rate`) VALUES
-(1, 'Small Container', 5),
+(1, 'Small Container', 6),
 (2, 'Large Container', 10),
 (3, 'Juice Container', 3);
 
