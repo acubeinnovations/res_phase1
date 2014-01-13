@@ -162,6 +162,18 @@ background-color: #CCC;
 
 }
 
+#scroll_up {
+  
+    margin: 0px 0px 0px;
+}
+
+.scroll-pane
+{
+   width: 100%;
+   height: 670px;
+   overflow: hidden;
+}
+
 .calc{
 
 width:400px !important;
@@ -184,7 +196,7 @@ box-shadow:1px 1px 1px 1px gray;
 border:1px solid gray;
 display:block;
 overflow-y:scroll;
-margin-bottom:15px;
+
 }
 .categories .button{
 width:150px;
