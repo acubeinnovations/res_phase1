@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 23, 2013 at 04:26 PM
+-- Generation Time: Jan 13, 2014 at 12:07 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.9
 
@@ -74,8 +74,10 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `chair_number` tinyint(4) NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime DEFAULT NULL,
+  `sync` tinyint(1) NOT NULL DEFAULT '0',
+  `sync_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -100,9 +102,11 @@ CREATE TABLE IF NOT EXISTS `bill_items` (
   `packing_amount` double DEFAULT NULL,
   `created` datetime NOT NULL,
   `updated` datetime DEFAULT NULL,
+  `sync` tinyint(1) NOT NULL DEFAULT '0',
+  `sync_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `packing_id` (`packing_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
