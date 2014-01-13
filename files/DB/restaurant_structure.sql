@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 13, 2014 at 12:07 PM
+-- Generation Time: Jan 13, 2014 at 02:24 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.9
 
@@ -43,7 +43,14 @@ CREATE TABLE IF NOT EXISTS `administrators` (
   UNIQUE KEY `username` (`username`),
   KEY `securityquestion_id` (`securityquestion_id`),
   KEY `record_user_id` (`record_user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `administrators`
+--
+
+INSERT INTO `administrators` (`id`, `username`, `password`, `emailid`, `registrationdate`, `lastlogin`, `image`, `securityquestion_id`, `answer`, `created`, `updated`, `record_user_id`) VALUES
+(1, 'admin', '39bb37cf36d3b29a9280d8a70a0eed42', NULL, NULL, '2014-01-09 14:17:08', NULL, NULL, NULL, '2013-04-22 00:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `sync` tinyint(1) NOT NULL DEFAULT '0',
   `sync_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -106,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `bill_items` (
   `sync_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `packing_id` (`packing_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -118,7 +125,16 @@ CREATE TABLE IF NOT EXISTS `bill_item_statuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `bill_item_statuses`
+--
+
+INSERT INTO `bill_item_statuses` (`id`, `name`) VALUES
+(1, 'Active'),
+(2, 'Cancelled'),
+(3, 'Rejected by Customer');
 
 -- --------------------------------------------------------
 
@@ -130,7 +146,17 @@ CREATE TABLE IF NOT EXISTS `bill_kitchen_statuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `bill_kitchen_statuses`
+--
+
+INSERT INTO `bill_kitchen_statuses` (`id`, `name`) VALUES
+(1, 'To Kitchen'),
+(2, 'Accept'),
+(3, 'Reject'),
+(4, 'Finished');
 
 -- --------------------------------------------------------
 
@@ -142,7 +168,18 @@ CREATE TABLE IF NOT EXISTS `bill_statuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `bill_statuses`
+--
+
+INSERT INTO `bill_statuses` (`id`, `name`) VALUES
+(1, 'Billed'),
+(2, 'Paid'),
+(3, 'Cancelled'),
+(4, 'Booked'),
+(5, 'Hold');
 
 -- --------------------------------------------------------
 
@@ -162,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `contents` (
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`,`language_id`),
   KEY `contenttype_id` (`contenttype_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -175,7 +212,15 @@ CREATE TABLE IF NOT EXISTS `contenttypes` (
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `contenttypes`
+--
+
+INSERT INTO `contenttypes` (`id`, `name`, `description`) VALUES
+(1, 'HTML', 'Html Editor'),
+(2, 'TEXT', 'No Html Editor');
 
 -- --------------------------------------------------------
 
@@ -199,7 +244,14 @@ CREATE TABLE IF NOT EXISTS `counters` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   KEY `securityquestion_id` (`securityquestion_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `counters`
+--
+
+INSERT INTO `counters` (`id`, `username`, `password`, `name`, `image`, `securityquestion_id`, `answer`, `lastlogin`, `last_bill_number`, `status_id`, `created`, `updated`) VALUES
+(1, 'counter', '39bb37cf36d3b29a9280d8a70a0eed42', 'Counter 1', NULL, NULL, NULL, '2014-01-10 16:04:44', 12, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -214,8 +266,10 @@ CREATE TABLE IF NOT EXISTS `counter_items` (
   `item_id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `quantity` double NOT NULL,
+  `sync` tinyint(1) NOT NULL DEFAULT '0',
+  `sync_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -234,7 +288,20 @@ CREATE TABLE IF NOT EXISTS `items` (
   `packing_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `packing_id` (`packing_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `name`, `item_category_id`, `rate`, `tax`, `status_id`, `from_master_kitchen`, `packing_id`) VALUES
+(1, 'Tea', 1, 25, 2, 1, 0, 0),
+(2, 'Coffee', 1, 30, 5, 1, 0, 0),
+(3, 'Fried Rice  (veg)', 3, 150, 32, 0, 0, -1),
+(4, 'Fried Rice  (Chicken)', 3, 200, 30, 1, 0, 0),
+(5, 'Fried Rice  (Mixed)', 3, 190, 25, 1, 0, 0),
+(6, 'Fresh Lime', 1, 25, 5, 0, 0, 3),
+(7, 'Biriyani Chicken', 2, 150, 5, 0, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -248,7 +315,16 @@ CREATE TABLE IF NOT EXISTS `item_categories` (
   `status_id` int(11) NOT NULL,
   `parent_id` int(11) DEFAULT NULL COMMENT 'Category may have valid parent category',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `item_categories`
+--
+
+INSERT INTO `item_categories` (`id`, `name`, `status_id`, `parent_id`) VALUES
+(1, 'Beverages', 1, -1),
+(2, 'European', 1, -1),
+(3, 'Chinese', 1, -1);
 
 -- --------------------------------------------------------
 
@@ -273,7 +349,15 @@ CREATE TABLE IF NOT EXISTS `kitchen` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   KEY `securityquestion_id` (`securityquestion_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `kitchen`
+--
+
+INSERT INTO `kitchen` (`id`, `counter_id`, `username`, `password`, `name`, `image`, `securityquestion_id`, `answer`, `lastlogin`, `last_bill_number`, `status_id`, `created`, `updated`) VALUES
+(1, NULL, 'master', '39bb37cf36d3b29a9280d8a70a0eed42', 'Master Kitchen', NULL, NULL, NULL, '2014-01-08 10:40:55', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00'),
+(2, 1, 'kitchen', '39bb37cf36d3b29a9280d8a70a0eed42', 'Master Kitchen', NULL, NULL, NULL, '2014-01-08 10:39:57', 0, 0, '2013-12-02 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -286,7 +370,14 @@ CREATE TABLE IF NOT EXISTS `languages` (
   `name` varchar(255) NOT NULL,
   `publish` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `languages`
+--
+
+INSERT INTO `languages` (`id`, `name`, `publish`) VALUES
+(1, 'English', 1);
 
 -- --------------------------------------------------------
 
@@ -300,7 +391,16 @@ CREATE TABLE IF NOT EXISTS `packing` (
   `rate` double NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `packing`
+--
+
+INSERT INTO `packing` (`id`, `name`, `rate`) VALUES
+(1, 'Small Container', 6),
+(2, 'Large Container', 10),
+(3, 'Juice Container', 3);
 
 -- --------------------------------------------------------
 
@@ -312,7 +412,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -324,7 +424,15 @@ CREATE TABLE IF NOT EXISTS `statuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `statuses`
+--
+
+INSERT INTO `statuses` (`id`, `name`) VALUES
+(1, 'Active'),
+(2, 'Inactive');
 
 -- --------------------------------------------------------
 
@@ -338,7 +446,7 @@ CREATE TABLE IF NOT EXISTS `tables` (
   `number_of_chairs` smallint(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
