@@ -6,6 +6,8 @@
 
 # Ignore connection.php
 /include/connection/connection.php
+/files/DB/site-backup-restaurant
+/files/DB/db-backup-1389610820-e356a0aec470a053f344c62b964071c9.sql
 # Ignore ~ hidden
 *.php~
 .gitignore~
