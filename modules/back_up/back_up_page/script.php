@@ -1,73 +1,101 @@
 <!--
 
 var current_url = "<?php echo $current_url; ?>";
-var server_url="/../../restaurant_admin.local/sync/sync.php";
+var server_url="<?php echo SERVER_URL; ?>";
 $(document).ready(function() {
-
 	$( document ).on("click", ".backup", function() {
 	var backup='backup';
 	var success_post = $.post('backup.php',
 		{
 			backup:backup,
 		});
+
 	success_post.done(function(data){
-		/* if(data!=''){alert(data);
+		if(data!=''){
+			$('#message').show();
 			var i=0;
 			if (data.indexOf('!@#$%*') >= 0){
 			var sql=data.split('!@#$%*');
-			
 			for(i=0;i<sql.length;i++){
-				var query=sql[i];
+				var query_row=sql[i];
+				var success_post1 = $.post('post_data_to_server_encode.php',
+				{
+					query:query_row,
+				});
+			success_post1.done(function(data1){
+				var data_array=data1.split('!@#$%*');
+				query_encoded=data_array[0];
+				var id=data_array[2];
+				var table=data_array[1]; 
+			
+				var success_post3 = $.post(server_url,
+				{
+					query:query_encoded,
+					id:id,
+					table:table,
+				});
+				success_post3.done(function(data3){
 				
-				//new ajax-start
-				var data = "url=restaurant_admin.local/sync/sync.php?query="+query;             
-
-				$.ajax({
-				  url: "post_data_to_server.php",
-				  data: data,
-				  type: "POST",
-				  success: function(data, textStatus, jqXHR){
-					console.log('Success ' + data);
-				  },
-				  error: function (jqXHR, textStatus, errorThrown){
-					console.log('Error ' + jqXHR);
-				  }
-				});
-				//end
-
-			
-			
-				var success_post = $.post(server_url,
-				{
-					query:query,
-				});
-			success_post.done(function(data){
-				if(data>'0'){
 						//change sync to true
-				}else{
-					
-				}
+						if(data3==-1){
+						}else{
+						var success_post = $.post('post_data_to_server_encode.php',
+						{
+							id:id,
+							table:table,
+						});
+						}
+						
+				
 				});
-			
-			}
+				
+				});
+				}
+				
 			}else{
-			var query=data;
-				var success_post = $.post(server_url,
+			var query_row=data;
+			var success_post1 = $.post('post_data_to_server_encode.php',
 				{
-					query:query,
+					query:query_row,
 				});
-			success_post.done(function(data){
-				if(data>'0'){
+			success_post1.done(function(data1){
+				var data_array=data1.split('!@#$%*');
+				query_encoded=data_array[0];
+				var id=data_array[2];
+				var table=data_array[1]; 
+			
+				var success_post3 = $.post(server_url,
+				{
+					query:query_encoded,
+					id:id,
+					table:table,
+				});
+				success_post3.done(function(data3){
+				
 						//change sync to true
-				}else{
-					
-				}
+						if(data3==-1){
+						}else{
+						var success_post = $.post('post_data_to_server_encode.php',
+						{
+							id:id,
+							table:table,
+						});
+						}
+						
+				
 				});
+				
+				});
+				
 			}
+			$(document).ajaxStop(function () {
+			$('#message').hide();
+			popup_alert("All data Sychronized successfully..!","dashboard.php","ok","false");
+			});
 		}else{
-			alert("All data sync");
+			popup_alert("Already Sychronized..!","dashboard.php","ok","false");
 		}
-		*/
+		
 		});
 		
 	

@@ -18,7 +18,7 @@ $page = new Page;
 	$page->connection_list = array("connection.php");
 
 	$page->function_list = array("functions.php");
-	$page->class_list = array("class_item.php","class_itemcategory.php","class_pagination.php");
+	$page->class_list = array("class_sync.php");
 	$page->script_list = array("jquery.min.js");
 	
 
@@ -32,6 +32,6 @@ $page = new Page;
 	$page->content_list = $content_list;
 
 	$page->module_path = 'modules/back_up/';
-    $page->module = 'post_data_to_server';
+    $page->module = 'post_data_to_server_encode';
 	$page->display(); //completed page with dynamic cintent will be displayed
 ?>
