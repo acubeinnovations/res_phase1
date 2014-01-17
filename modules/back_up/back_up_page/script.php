@@ -10,7 +10,7 @@ $(document).ready(function() {
 			backup:backup,
 		});
 
-	success_post.done(function(data){
+	success_post.done(function(data){alert(data);
 		if(data!=''){
 			$('#message').show();
 			var i=0;
