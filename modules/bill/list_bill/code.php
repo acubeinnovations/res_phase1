@@ -20,7 +20,7 @@ $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
 
 $mybillitems->bill_id=$_POST['bill_id'];
-
+$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
 $data_bill_items=$mybillitems->get_list_array_bylimit();
 
 $mybills->id=$_POST['bill_id'];
