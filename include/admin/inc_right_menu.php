@@ -12,6 +12,12 @@
 			   <li><a href="change_password.php" data-reveal-id="change_password" id="change_password">Change Password</a></li>
       </ul>
       </li>
+		<li class="has-dropdown">
+        <a href="#" >Synchronizing Database</a>
+         <ul class="dropdown">
+			   <li><a href="backup_page.php">Synchronize</a></li>
+		 </ul>
+      </li>
 
  		<li class="has-dropdown">
         <a href="#" >Items & Category</a>

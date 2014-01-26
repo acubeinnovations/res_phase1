@@ -20,7 +20,7 @@ $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
 
 $mybillitems->bill_id=$_POST['bill_id'];
-
+//$mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
 $data_bill_items=$mybillitems->get_list_array_bylimit();
 
 $mybills->id=$_POST['bill_id'];
@@ -82,13 +82,21 @@ while($bill_item_index<count($data_bill_items)){
 		}else{
 			$temp_item_name=substr($item_name[$data_bill_items[$bill_item_index]['item_id']],0,21);
 			}
-	
+	if($data_bill_items[$bill_item_index]['bill_item_status_id']==BILL_ITEM_STATUS_CANCELLED){
+	//$strike_first='<S>';
+	//$strike_second='</S>';
+	$class='strike';
+	}else{
+	//$strike_first='';
+	//$strike_second='';
+	$class='';
+	}
 $div_content.='<tr>
-      <td align="left" colspan="2"><b><font size="1">'.$temp_item_name.'</font></b></td>
-      <td align="right"><b><font size="1">'.$data_bill_items[$bill_item_index]['quantity'].'</font></b></td>
-      <td align="right"><b><font size="1">'.$item_rate[$data_bill_items[$bill_item_index]['item_id']].'</font></b></td>
-	 <td align="right"><b><font size="1">'.$data_bill_items[$bill_item_index]['tax'].'</font></b></td>
-      <td align="right"><b><font size="1">'.$data_bill_items[$bill_item_index]['rate'].'</font></b></td>
+      <td class="'.$class.'" align="left" colspan="2"><b><font size="1">'.$temp_item_name.'</font></b></td>
+      <td class="'.$class.'" align="right"><b><font size="1">'.$data_bill_items[$bill_item_index]['quantity'].'</font></b></td>
+      <td class="'.$class.'" align="right"><b><font size="1">'.$item_rate[$data_bill_items[$bill_item_index]['item_id']].'</font></b></td>
+	 <td class="'.$class.'" align="right"><b><font size="1">'.$data_bill_items[$bill_item_index]['tax'].'</font></b></td>
+      <td class="'.$class.'" align="right"><b><font size="1">'.$data_bill_items[$bill_item_index]['rate'].'</font></b></td>
     </tr>';
 $bill_tot_amount=$bill_tot_amount + $data_bill_items[$bill_item_index]['rate'];
 $bill_item_index++;

@@ -9,6 +9,8 @@ define("MASTER_KITCHEN", 300);
 define("STATUS_ACTIVE", 1);
 define("STATUS_INACTIVE", 2);
 
+define("SYNC_FALSE", 0);
+define("SYNC_TRUE", 1);
 
 $g_ARRAY_LIST_STATUS = array();
 $g_ARRAY_LIST_STATUS[0]["id"] = 1;
@@ -51,4 +53,5 @@ define("COUNTER_URL", "http://restaurant.local/counter");
 define("KITCHEN_URL", "http://restaurant.local/kitchen");
 define("WEB_NAME", "restaurant.local");
 define("ORG_NAME", "restaurant");
+define("SERVER_URL", "http://restaurant.acubedemo.com/sync.php");
 ?>

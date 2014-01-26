@@ -20,6 +20,11 @@
 
 		if (button_ok == "" ){
 			button_ok = "OK";
+		}else if(button_ok == "false"){
+			$("#popup_alert_button_ok").hide();
+		}
+		else{
+			$("#popup_alert_button_ok").show();
 		}
 
 		if (button_cancel == "" ){
