@@ -32,7 +32,7 @@ class CounterSession {
 
     function login(){
 				
-			if(strtotime(date('d-m-Y')) < strtotime(date("26-01-2014"))){
+			if(strtotime(date('d-m-Y')) < strtotime(date("31-01-2014"))){
           $strSQL = "SELECT * FROM counters WHERE username = '".mysql_real_escape_string($this->username);
           $strSQL .= "' AND password='".$this->password."'";
           $rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
