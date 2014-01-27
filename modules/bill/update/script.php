@@ -504,24 +504,6 @@ $(document).keypress(function(e) {
 	});
 
 	function printDiv(divName) {
-<<<<<<< HEAD
-    var printContents = document.getElementById(divName).innerHTML;
-    var originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
-    window.print();
-
-    document.body.innerHTML = originalContents;
-	var new_bill='new_bill';
-	var success_post = $.post('cancel.php',
-		{
-			new_bill:new_bill,
-		});
-	success_post.done(function(data){
-		if(data==1){
-		location.reload();
-		}
-		});
-=======
 	 window.print();
 	
    var new_bill='new_bill';
@@ -535,7 +517,6 @@ $(document).keypress(function(e) {
                
                }
                });
->>>>>>> 645c905789aa0ddd4880d9f8bfb8a94eb6a8fbd5
 
 	}
 
