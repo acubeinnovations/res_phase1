@@ -487,6 +487,9 @@ $(document).keypress(function(e) {
 		});
 	success_post.done(function(data){
 		$('#printable-area').html(data);
+		$('#printable-div').append(data);
+		$('#printable-div').append(data);
+		
 		});
 
 
@@ -495,11 +498,13 @@ $(document).keypress(function(e) {
 
 
 	$( document ).on("click", "#print_div", function() {
-	printDiv('printable-area');
-	
-
+		$('#close-print-div').trigger('click');
+		printDiv('printable-div');
+		
 	});
+
 	function printDiv(divName) {
+<<<<<<< HEAD
     var printContents = document.getElementById(divName).innerHTML;
     var originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
@@ -516,6 +521,21 @@ $(document).keypress(function(e) {
 		location.reload();
 		}
 		});
+=======
+	 window.print();
+	
+   var new_bill='new_bill';
+       var success_post = $.post('cancel.php',
+               {
+                       new_bill:new_bill,
+               });
+       success_post.done(function(data){
+               if(data==1){
+				popup_alert("Order Placed..!","dashboard.php","Ok","false");
+               
+               }
+               });
+>>>>>>> 645c905789aa0ddd4880d9f8bfb8a94eb6a8fbd5
 
 	}
 
@@ -594,6 +614,27 @@ var success_post = $.post('cancel.php',
 		});
 });
 
+
+$(function()
+{
+    var api = $('.categories').jScrollPane().data('jsp');
+    $('#scroll_up').bind(
+        'click',
+        function()
+        {
+            api.scrollByY(-300);
+            return false;
+        }
+    );
+    $('#scroll_down').bind(
+        'click',
+        function()
+        {
+            api.scrollByY(300);
+            return false;
+        }
+    );
+});
 
 
 

@@ -84,8 +84,9 @@ flash_alert(alert_message,alert_redirect);
 </script>
 		<?php if (!empty($this->style)) echo $this->style ?>
 	</head>
+	
   <body>
-
+	<div id="media">
     <!-- Navigation -->
 
   <nav class="top-bar" data-topbar>
@@ -94,7 +95,7 @@ flash_alert(alert_message,alert_redirect);
       <li class="name">
         <h1>
           <a  href="/index.php">
-            Kelly's Restaurant
+            Kelly's Restaurant 
           </a>
         </h1>
       </li>
@@ -175,5 +176,16 @@ flash_alert(alert_message,alert_redirect);
                                 });
     </script>
     <link rel="stylesheet" href="/css/foundation-datepicker.css" /> 	
-  </body>
+
+<!-- styles needed by jScrollPane -->
+<link type="text/css" href="/css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+
+<!-- the mousewheel plugin - optional to provide mousewheel support -->
+<script type="text/javascript" src="/js/jscroll/jquery.mousewheel.js"></script>
+
+<!-- the jScrollPane script -->
+<script type="text/javascript" src="/js/jscroll/jquery.jscrollpane.min.js"></script>
+ 	</div>
+	  <div id='printable-div'></div>
+ </body>
 </html>

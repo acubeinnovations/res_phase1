@@ -165,7 +165,7 @@ $div_content.='<tr>
     <td colspan="6" align="center"><font size="2">Thank You</font></td>
 	</tr>	
 	</tbody>
-</table>';
+</table><br><br><P class="pagebreakhere">';
 print $div_content;
 exit();
 }else{

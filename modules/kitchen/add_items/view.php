@@ -1,45 +1,68 @@
 <div id="openedbills" class="reveal-modal" data-reveal>  </div>
 <div id="print_bill" class="reveal-modal" data-reveal> </div>
-<div class="row parent">
-	
-		<div class="medium-12 columns">
-			<br>
-			<div class="medium-2 columns">
+<div class="row">
+
+<div class="medium-12 columns counter">
+<br>
+	  <div class="medium-2 columns ">
+			<a href="#" class="tiny fixed button   secondary" id="scroll_up" ><b>&#x25B2; UP &#x25B2;</b></a>
+		<div class="categories" align="center" id="item-container" >
+				<a href="#" id="scroll_to_top"></a> 
 			<?php if(isset($array_item_category)){ $item_index=0; while($item_index<count($array_item_category)) {?>
-			<a href="#" class="small button   item_category success" item_id="<?php echo $array_item_category[$item_index]['id'];?>"><?php echo $array_item_category[$item_index]['name']; ?></a>
-			<?php $item_index++; } } ?>
-			</div>
-			<div class="medium-6 columns items">
-			<?php if($get_item_sub!=false){
+				<a href="#" class="tiny button success  item_category " item_id="<?php echo $array_item_category[$item_index]['id'];?>"><b><?php echo $array_item_category[$item_index]['name']; ?></b></a>
+				<?php $item_index++; } } ?>
+			<a href="#" id="scroll_to_bottom"></a>
+			 </div>
+			<a href="#" class="tiny button fixed  secondary" id="scroll_down" ><strong>&#x25BC; DOWN &#x25BC;</strong></a>
+	  </div>
+	  
+	  
+	 
+	  
+		<div class="medium-6 columns " id="item-container">
+		  <div class="items" id="item-inner-container" >
+
+				<?php if($get_item_sub!=false){
 			$count = count($get_item_sub);
-			$item_index=0;?>
-				<div class="row"><div class="medium-6 columns">
-			<?php
-				while($item_index<$count){ ?>
-		<div class="medium-4 columns"><a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><?php echo $get_item_sub[$item_index]["name"].'  Rs .'.$get_item_sub[$item_index]["rate"]; ?></a></div>
-	<?php
-	$item_index++;
-	 } 
-	}
-			?>
+			$item_index=0;
+					while($item_index<$count){
+
+			$counteritem->counter_id=$_SESSION[SESSION_TITLE.'counter_id'];	
+			$counteritem->item_id=$get_item[$item_index]["id"];	
+			$available_quantity=$counteritem->get_item_quantity_today();	
+			   ?>
+			<a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><b><?php echo $get_item_sub[$item_index]["name"].'<br>  Q .'.$available_quantity; ?></b></a>
+		<?php
+		$item_index++;
+		 }
+		}
+		?>
 
 
-				</div></div>
+		 </div>
+		</div>
+			<div class="medium-4 columns" >
+			<ul class="pricing-table">
+				<li class="title"> <?php if ($_SESSION[SESSION_TITLE.'user_type']== MASTER_KITCHEN){ 
+				echo populate_array("lstcounter", $getcounters,$_SESSION[SESSION_TITLE.'counter_id'],false,false);
+				} else { echo "Counter No:". $_SESSION[SESSION_TITLE.'counter_id'];} ?> </li>
+				</ul>
 			</div>
 			<div class="medium-4 columns" id="counter_item_form" style="display:none;" >
-				<ul class="pricing-table" >
-				<li class="title">Counter Items </li>
-				</ul>
-				<div class="medium-4 columns">Item Name</div>
-				<div class="medium-2 columns">Avail Qty</div>
-				<div class="medium-2 columns">Qty</div>
-				<div class="medium-4 columns">Action</div>
+				
+				<div class="medium-2 columns"><font size="2">Item Name</font></div>
+				<div class="medium-2 columns"><font size="2">Todays Total Qty</font></div>
+				<div class="medium-2 columns"><font size="2">Balance Qty</font></div>
+				<div class="medium-2 columns"><font size="2">Add Qty</font></div>
+				<div class="medium-2 columns" ><font size="2">Action</font></div>
 				<hr />
-			  	<div class="medium-4 columns"><label id="lblitemname">Tea</label></div>
-				<div class="medium-2 columns"><input name="txtavailablequantity"  id="txtavailablequantity" type="text"  disabled="disabled" value="21"/></div>
-				<div class="medium-2 columns"><input name="txtquantity" type="text" id="txtquantity" /> 
+			  	<div class="medium-2 columns"><label id="lblitemname"></label></div>
+				<div class="medium-2 columns"><input name="txtquantity" type="text" id="txtquantity" border="0" disabled="disabled" /> </div>
+				<div class="medium-2 columns"><input name="txtavailablequantity"  id="txtavailablequantity" type="text"  disabled="disabled" /></div>
+				
+				<div class="medium-2 columns"><input name="txtquantity" type="text"  id="txtaddquantity" /> 
                 <input type="hidden" name="h_item_id" id="h_item_id" value="" />
-                <input type="hidden" name="h_counter_id" id="h_counter_id" value="<?php echo $_SESSION[SESSION_TITLE.'counter_id'];  ?>" />
+                <input type="hidden" name="h_counter_id" id="h_counter_id" value="<?php if($_SESSION[SESSION_TITLE.'user_type']==KITCHEN){ echo $_SESSION[SESSION_TITLE.'counter_id']; } ?>" />
                 <input type="hidden" name="h_kitchen_id" id="h_kitchen_id" value="<?php echo $_SESSION[SESSION_TITLE.'kitchen_userid'];  ?>" /></div>
 				<div class="medium-4 columns"><a href="#" class="button tiny" id="buttonupdate">Update</a></div>
 				<hr />

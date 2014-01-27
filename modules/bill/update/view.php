@@ -1,5 +1,6 @@
+
 <div id="openedbills" class="reveal-modal" data-reveal>  </div>
-<div id="print_bill" class="reveal-modal" data-reveal><a class="close-reveal-modal">&#215;</a><div id='printable-area'></div> <a href="#" class="tiny button  print_div" id= "print_div">PRINT</a></div>
+<div id="print_bill" class="reveal-modal"  data-reveal><a class="close-reveal-modal" id="close-print-div">&#215;</a><div id='printable-area'></div> <a href="#" class="tiny button  print_div" id= "print_div">PRINT</a></div>
 <div id="calculater_div" class="reveal-modal calc" data-reveal>
 <a class="close-reveal-modal" id="close_calc_modal">&#215;</a>
 				<div class="row">
@@ -87,18 +88,20 @@
 
 
 
-<div class="row">
+<div class="row" id="counter-row">
 
 <div class="medium-12 columns counter">
 <br>
 	  <div class="medium-2 columns ">
-
+			<a href="#" class="tiny fixed button   secondary" id="scroll_up" ><b>&#x25B2; UP &#x25B2;</b></a>
 		<div class=" categories" align="center" >
+				<a href="#" id="scroll_to_top"></a>
 			<?php if(isset($array_item_category)){ $item_index=0; while($item_index<count($array_item_category)) {?>
-				<a href="#" class="tiny button success  item_category " item_id="<?php echo $array_item_category[$item_index]['id'];?>"><b><?php echo $array_item_category[$item_index]['name']; ?></b></a>
+				<a href="#" class="tiny button success  item_category " item_id="<?php echo $array_item_category[$item_index]['id'];?>"><font size="3"><b><?php echo $array_item_category[$item_index]['name']; ?></b></font></a>
 				<?php $item_index++; } } ?>
-
+			<a href="#" id="scroll_to_bottom"></a>
 			 </div>
+			<a href="#" class="tiny button fixed  secondary" id="scroll_down" ><strong>&#x25BC; DOWN &#x25BC;</strong></a>
 	  </div>
 
 
@@ -110,7 +113,7 @@
 			$count = count($get_item_sub);
 			$item_index=0;
 					while($item_index<$count){ ?>
-			<a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><b><?php echo $get_item_sub[$item_index]["name"].'<br>  Rs .'.$get_item_sub[$item_index]["rate"]; ?></b></a>
+			<a href="#" class="tiny button items" item_id="<?php echo $get_item_sub[$item_index]['id']; ?>" item_details="<?php echo $get_item_sub[$item_index]['name'].'/'.$get_item_sub[$item_index]['rate'].'/'.$get_item_sub[$item_index]['tax'];?>"><font size="3"><b><?php echo $get_item_sub[$item_index]["name"].'<br>  Rs .'.$get_item_sub[$item_index]["rate"]; ?></b></font></a>
 		<?php
 		$item_index++;
 		 }
@@ -170,3 +173,5 @@
 
   </div>
   </div>
+
+

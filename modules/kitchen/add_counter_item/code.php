@@ -6,7 +6,7 @@ if(!defined('CHECK_INCLUDED')){
 
 	if( isset($_POST['item_id']) && isset($_POST['counter_id']) && isset($_POST['kitchen_id']) && isset($_POST['quantity'])){
 
-
+		
 		$mycounteritems=new CounterItem($myconnection);
 		$mycounteritems->connection=($myconnection);
 		$mycounteritems->item_id = $_POST['item_id'];
@@ -15,8 +15,9 @@ if(!defined('CHECK_INCLUDED')){
 		$mycounteritems->date = date("Y-m-d");
 		$mycounteritems->quantity = $_POST['quantity'];
 		$check = $mycounteritems->update();	
+		$_SESSION[SESSION_TITLE.'counter_id']= $_POST['counter_id'];
 		if ($check == true){
-			echo "Stock updated";
+			echo "Stock updated"; 
 		}else{
 			echo "Unable to update Data";
 		}

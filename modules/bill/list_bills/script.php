@@ -58,6 +58,7 @@ $( document ).on("click", ".print_bill_button", function() {
 
 	success_post.done(function(data){
 		$('#printable-area').html(data);
+		$('#printable-div').html(data);
 		});
 	
 });
@@ -73,21 +74,20 @@ $( document ).on("click", "#print_summary_bill_button", function() {
 
 	success_post.done(function(data){
 		$('#printable-area').html(data);
+		$('#printable-div').append(data);
 		$("print_bill").foundation('reveal','open','#');
 		});
 
 });
 	
 	$( document ).on("click", "#print_div", function() {
-	printDiv('printable-area');
+	$('#close-print-div').trigger('click');
+	printDiv('printable-div');
 	
 	});
 	function printDiv(divName) {
-    var printContents = document.getElementById(divName).innerHTML;
-    var originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
     window.print();
-    document.body.innerHTML = originalContents;
+    
 	}
 
 	});

@@ -211,7 +211,7 @@ function get_array_item_packing_id(){
 function get_array_item_name(){
 		$names = array();
 			$i=0;
-			$strSQL = "SELECT  id,name FROM items";
+			$strSQL = "SELECT  id,name FROM items ";
 			$rsRES = mysql_query($strSQL,$this->connection) or die(mysql_error(). $strSQL );
 			if ( mysql_num_rows($rsRES) > 0 )
 				 {
@@ -296,6 +296,7 @@ function get_array_item_tax(){
         	return false;
         }
     }
+
 
 }
 ?>

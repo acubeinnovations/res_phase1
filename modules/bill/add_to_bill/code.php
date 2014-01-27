@@ -188,6 +188,7 @@ $mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
 $mybillitems->quantity=1;
 $mybillitems->counter_id=$_SESSION[SESSION_TITLE.'counter_userid'];
 $mybillitems->tax=$mybillitems->rate*$item_tax[$mybillitems->item_id]/100;
+
 $mybillitems->update();
 $mybills->id=$_SESSION['bill_id'];
 $mybills->get_detail();
@@ -216,6 +217,7 @@ $mybillitems->rate=$item_rate[$mybillitems->item_id];
 $mybillitems->bill_item_status_id=BILL_ITEM_STATUS_ACTIVE;
 $mybillitems->quantity=1;
 $mybillitems->tax=$mybillitems->rate*$item_tax[$mybillitems->item_id]/100;
+
 $mybillitems->update();
 $mybills->get_detail();
 $mybills->tax=$mybillitems->tax;

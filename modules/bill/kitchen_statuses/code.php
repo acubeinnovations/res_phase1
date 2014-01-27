@@ -11,6 +11,7 @@ $bill_amount='';
 $mybills=new Bills($myconnection);
 $mybills->connection=($myconnection);
 $mybills->id=$_SESSION['bill_id'];
+$mybills->bill_number=$_SESSION['bill_number'];
 $mybillitems=new BillItems($myconnection);
 $mybillitems->connection=($myconnection);
 $mybillitems->bill_id=$_SESSION['bill_id'];
@@ -25,7 +26,5 @@ $mybills->update();
 print '1';
 exit();
 }
-
-
 
 ?>

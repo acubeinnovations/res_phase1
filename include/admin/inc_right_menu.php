@@ -26,7 +26,7 @@
       </ul>
       </li>
       <li class="has-dropdown">
-        <a href="#" >packing</a>
+        <a href="#" >Packing</a>
          <ul class="dropdown">
          <li><a href="packing.php">Packing</a></li>
          <li class="divider"></li>

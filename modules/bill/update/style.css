@@ -1,8 +1,28 @@
+@media screen
+  {
+  #printable-div{
+	  display:none;
+  }
+  }
+@media print
+  {
+ #media{
+	  display:none;
+  }
+  .reveal-modal{
+	  display:none !important;
+  }
+  
+  }
+
 .parent {
 
 	min-height:550px;
 }
 
+P.pagebreakhere {
+page-break-before: always;
+}
 .bill{
     overflow:auto;
 	height:400px !important;
@@ -159,11 +179,12 @@ padding-bottom:20px;
 
 .categories{
 background:#fff;
-height:500px;
+height:400px;
 box-shadow:1px 1px 1px 1px gray;
 border:1px solid gray;
 display:block;
 overflow-y:scroll;
+margin-bottom:15px;
 }
 .categories .button{
 width:150px;

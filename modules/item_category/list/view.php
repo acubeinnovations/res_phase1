@@ -6,10 +6,10 @@
 </head>
 
 <body>
-<form action="" method="post">
+<form action="" method="get">
   <table>
    <tr>
-    <td> Search By Category :<input type="text" name="search" />
+    <td> Search By Category :<input type="text" name="search"  value="<?php if(isset($_GET['search'])) {echo $_GET['search']; }?>"/>
       <input type="submit" name="submit" value="Submit" /></td>
     </tr>
       </table>
@@ -19,7 +19,7 @@
   <fieldset>
     <legend> Category</legend>
 
-  <table width="500" height="68" align="center">
+  <table width="500" height="68" align="left">
 
 
     <tr>
@@ -57,6 +57,11 @@
 		  $i++;
 		  }
 		   } ?>
+	<tr><td colspan="6">
+<?php  $category_pagination->pagination_style1();?>
+<td>
+</tr>
+
     </table>
     </form>
    </body>
